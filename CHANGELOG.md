@@ -11,6 +11,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## 0.0.1 (2022-04-24)
+
+**Note:** Version bump only for package node
+
+
+
+
+
 ## 0.0.2 (2022-04-24)
 
 **Note:** Version bump only for package node
