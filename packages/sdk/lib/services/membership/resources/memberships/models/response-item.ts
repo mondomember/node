@@ -1,0 +1,122 @@
+import { JsonSchemaType } from "../../../../../schema";
+import {
+  IdPropertyInterface,
+  CreatedAtPropertySchema,
+  CreatedAtPropertyInterface,
+  UpdatedAtPropertySchema,
+  UpdatedAtPropertyInterface,
+  DeletedAtPropertySchema,
+  DeletedAtPropertyInterface,
+  LastUpdatedPropertySchema,
+  LastUpdatedPropertyInterface,
+  MetadataPropertySchema,
+  MetadataPropertyInterface,
+  PropertiesPropertySchema,
+  PropertiesPropertyInterface,
+} from "../../../../../models";
+import {
+  CustomerPropertyResponseSchema,
+  CustomerPropertyResponseInterface,
+} from "../../../../crm/models";
+import {
+  StatusPropertySchema,
+  StatusPropertyInterface,
+  ContactsPropertySchema,
+  ContactsPropertyInterface,
+  DescriptionPropertySchema,
+  DescriptionPropertyInterface,
+  JoinedAtPropertySchema,
+  JoinedAtPropertyInterface,
+  ExpiresAtPropertySchema,
+  ExpiresAtPropertyInterface,
+  ProductPropertyResponseSchema,
+  ProductPropertyResponseInterface,
+  MembershipIdPropertySchema,
+  IsDelegatedPropertyInterface,
+  IsDelegatedPropertySchema,
+} from "./base";
+
+export const MembershipResponseItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: [
+    "id",
+    "status",
+    "customer",
+    "product",
+    "joinedAt",
+    "createdAt",
+    "updatedAt",
+  ],
+  properties: {
+    ...MembershipIdPropertySchema,
+    ...StatusPropertySchema,
+    ...CustomerPropertyResponseSchema,
+    ...ProductPropertyResponseSchema,
+    ...ContactsPropertySchema,
+    ...DescriptionPropertySchema,
+    ...JoinedAtPropertySchema,
+    ...ExpiresAtPropertySchema,
+    ...PropertiesPropertySchema,
+    ...MetadataPropertySchema,
+    ...CreatedAtPropertySchema,
+    ...UpdatedAtPropertySchema,
+    ...DeletedAtPropertySchema,
+    ...LastUpdatedPropertySchema,
+  },
+};
+
+export const DelegatedMembershipResponseItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: [
+    "id",
+    "status",
+    "customer",
+    "product",
+    "delegated",
+    "joinedAt",
+    "createdAt",
+    "updatedAt",
+  ],
+  properties: {
+    ...MembershipIdPropertySchema,
+    ...StatusPropertySchema,
+    ...CustomerPropertyResponseSchema,
+    ...ProductPropertyResponseSchema,
+    ...IsDelegatedPropertySchema,
+    ...CreatedAtPropertySchema,
+    ...UpdatedAtPropertySchema,
+    ...DeletedAtPropertySchema,
+    ...LastUpdatedPropertySchema,
+  },
+};
+
+export interface MembershipResponseItemInterface
+  extends IdPropertyInterface,
+    StatusPropertyInterface,
+    CustomerPropertyResponseInterface,
+    ProductPropertyResponseInterface,
+    JoinedAtPropertyInterface,
+    Partial<ExpiresAtPropertyInterface>,
+    Partial<ContactsPropertyInterface>,
+    Partial<DescriptionPropertyInterface>,
+    CreatedAtPropertyInterface,
+    UpdatedAtPropertyInterface,
+    Partial<DeletedAtPropertyInterface>,
+    Partial<LastUpdatedPropertyInterface>,
+    Partial<MetadataPropertyInterface>,
+    Partial<PropertiesPropertyInterface> {}
+
+export interface DelegatedMembershipResponseItemInterface
+  extends IdPropertyInterface,
+    StatusPropertyInterface,
+    CustomerPropertyResponseInterface,
+    ProductPropertyResponseInterface,
+    JoinedAtPropertyInterface,
+    IsDelegatedPropertyInterface,
+    Partial<ExpiresAtPropertyInterface>,
+    CreatedAtPropertyInterface,
+    UpdatedAtPropertyInterface,
+    Partial<DeletedAtPropertyInterface>,
+    Partial<LastUpdatedPropertyInterface> {}

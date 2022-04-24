@@ -1,0 +1,31 @@
+{
+  "description": "Mondo Member Node.js utilities and libraries",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mondomember/node.git"
+  },
+  "author": {
+    "name": "Flipbox Digital",
+    "url": "https://flipboxdigital.com"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "ls": "lerna ls",
+    "analyse": "yarn workspaces run analyse",
+    "build": "lerna run build",
+    "publish:alpha": "yarn && yarn build && lerna publish --yes --canary",
+    "publish:patch": "yarn && yarn build && lerna publish patch --yes",
+    "publish:minor": "yarn && yarn build && lerna publish minor --yes",
+    "publish:major": "yarn && yarn build && lerna publish major --yes",
+    "test": "yarn workspaces run test"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "dependencies": {
+    "lerna": "^4.0"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "npm.packageManager": "yarn",
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "[typescript, json]": {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true
+  },
+  "editor.formatOnSave": true,
+  "javascript.format.enable": false,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.d.ts": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": {
+      "when": "$(basename)"
+    },
+    "**/node_modules": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "extensions": [".ts"]
+  },
+  "eslint.enable": true,
+  "eslint.validate": ["typescript", "javascript"],
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

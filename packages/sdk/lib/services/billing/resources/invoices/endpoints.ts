@@ -1,0 +1,151 @@
+import * as template from "url-template";
+import { PaginationParams } from "../../../../models";
+
+import {
+  ClientInstance,
+  ClientResponse,
+  CRUDEndpoints,
+} from "../../../../client";
+
+import {
+  InvoiceChargeItemInterface,
+  InvoicePayItemInterface,
+  InvoiceInsertItemInterface,
+  InvoiceModifyItemInterface,
+  InvoiceResponseItemInterface,
+  InvoiceResponseListInterface,
+} from "./models";
+import { InvoiceTransactionInsertItemInterface } from "./resources/transactions";
+
+import { InvoiceFilter } from "./interfaces";
+import TransactionEndpoints from "./resources/transactions/endpoints";
+
+const PATH = {
+  base: "billing/invoices",
+  item: "billing/invoices/{invoice}",
+};
+
+type Expressions = {
+  invoice: string;
+};
+
+type ListItemsParams = {
+  pagination: PaginationParams;
+  filter: InvoiceFilter;
+};
+
+export default class extends CRUDEndpoints<
+  Expressions,
+  InvoiceInsertItemInterface,
+  InvoiceModifyItemInterface,
+  InvoiceResponseItemInterface
+> {
+  readonly Transactions: TransactionEndpoints;
+
+  constructor(client: ClientInstance) {
+    super(PATH, client);
+
+    this.Transactions = new TransactionEndpoints(PATH.item, client);
+  }
+
+  /**
+   * List items
+   *
+   * @returns
+   */
+  public listItems(
+    params?: ListItemsParams
+  ): ClientResponse<InvoiceResponseListInterface> {
+    return this.client.get(PATH.base, { params });
+  }
+
+  /**
+   * Submit payment for an item
+   *
+   * @param expression
+   * @returns
+   */
+  public payItem(
+    expression: Expressions,
+    payload: InvoicePayItemInterface
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/pay`).expand(expression),
+      payload
+    );
+  }
+
+  /**
+   * Charge a tokenized payment
+   *
+   * @param expression
+   * @returns
+   */
+  public chargeItem(
+    expression: Expressions,
+    payload: InvoiceChargeItemInterface
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/charge`).expand(expression),
+      payload
+    );
+  }
+
+  /**
+   * Adjust payment for an item
+   *
+   * @param expression
+   * @returns
+   */
+  public adjustItem(
+    expression: Expressions,
+    payload: InvoiceTransactionInsertItemInterface
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/adjust`).expand(expression),
+      payload
+    );
+  }
+
+  /**
+   * Finalize an item
+   *
+   * @param expression
+   * @returns
+   */
+  public finalizeItem(
+    expression: Expressions
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/finalize`).expand(expression)
+    );
+  }
+
+  /**
+   * Void an item
+   *
+   * @param expression
+   * @returns
+   */
+  public voidItem(
+    expression: Expressions
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/void`).expand(expression)
+    );
+  }
+
+  /**
+   * Restore a previously deleted item.
+   *
+   * @param expression
+   * @returns
+   */
+  public restoreItem(
+    expression: Expressions
+  ): ClientResponse<InvoiceResponseItemInterface> {
+    return this.client.post(
+      template.parse(`${PATH.item}/restore`).expand(expression)
+    );
+  }
+}
