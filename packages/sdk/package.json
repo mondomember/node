@@ -2,7 +2,7 @@
   "name": "@mondomember/sdk",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -27,7 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/test": "^0.0.3",
+    "@mondomember/test": "^0.0.4",
     "axios": "^0.26.1",
     "qs": "^6.10.3",
     "url-template": "^2.0.8"
