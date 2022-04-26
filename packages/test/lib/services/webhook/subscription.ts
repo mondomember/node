@@ -1,73 +1,48 @@
 import { Chance } from "chance";
+
 import {
+  generateTestKSUID,
   createCreatedAtProperty,
   createUpdatedAtProperty,
-  createUID,
-  IdPropertyInterface,
-  IdType,
-} from "@mondo-rest-api/util-models";
-
-import {
-  SubscriptionInsertItemInterface,
-  SubscriptionModifyItemInterface,
-  SubscriptionResponseItemInterface,
-  SubscriptionResponseListInterface,
-} from "../models";
-
-import { UIDPrefix } from "../../../constants";
+} from "../../utils";
+import { Webhook } from "@mondomember/sdk";
 
 const chance: Chance.Chance = new Chance();
 
-const Subscription = {
-  label: chance.word(),
-  url: chance.url(),
-  events: ["some.test.event", "some.test.alt"],
-};
-
-export function createSubscriptionId(override?: IdType): IdType {
-  return override || createUID(UIDPrefix.SUBSCRIPTION);
-}
-
-export function createSubscriptionIdProperty(
-  override?: IdType
-): IdPropertyInterface {
+function createSubscription() {
   return {
-    id: createSubscriptionId(override),
+    label: chance.word(),
+    url: chance.url(),
+    events: ["some.test.event", "some.test.alt"],
   };
 }
 
-export function createSubscriptionInsertItem(
-  overrides?: Partial<SubscriptionInsertItemInterface>
-): SubscriptionInsertItemInterface {
+export function createTestSubscriptionInsertItem(
+  overrides?: Partial<Webhook.SubscriptionInsertItemInterface>
+): Webhook.SubscriptionInsertItemInterface {
   return {
-    ...Subscription,
+    ...createSubscription(),
     ...overrides,
   };
 }
 
-export function createSubscriptionModifyItem(
-  overrides?: Partial<SubscriptionModifyItemInterface>
-): SubscriptionModifyItemInterface {
+export function createTestSubscriptionModifyItem(
+  overrides?: Partial<Webhook.SubscriptionModifyItemInterface>
+): Webhook.SubscriptionModifyItemInterface {
   return {
-    ...Subscription,
+    ...createSubscription(),
     ...overrides,
   };
 }
 
-export function createSubscriptionResponseItem(
-  overrides?: Partial<SubscriptionResponseItemInterface>
-): SubscriptionResponseItemInterface {
+export function createTestSubscriptionResponseItem(
+  overrides?: Partial<Webhook.SubscriptionResponseItemInterface>
+): Webhook.SubscriptionResponseItemInterface {
   return {
-    ...createSubscriptionIdProperty(),
-    ...Subscription,
+    id: generateTestKSUID(Webhook.UIDPrefix.SUBSCRIPTION),
+    ...createSubscription(),
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
     ...overrides,
-  };
-}
-
-export function createSubscriptionResponseList(): SubscriptionResponseListInterface {
-  return {
-    items: [createSubscriptionResponseItem(), createSubscriptionResponseItem()],
   };
 }

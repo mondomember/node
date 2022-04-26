@@ -6,7 +6,12 @@ export const Service = {
   MEMBERSHIP: "Membership",
 } as const;
 
-export type AnyPropertiesService = typeof Service[keyof typeof Service];
+export type AnyService = typeof Service[keyof typeof Service];
+
+/**
+ * @deprecated Use `AnyService`
+ */
+export type AnyPropertiesService = AnyService;
 
 export const UIDPrefix = {
   FIELD: ModelUIDPrefix.FIELD,

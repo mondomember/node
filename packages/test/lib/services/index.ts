@@ -7,6 +7,7 @@ import * as Integration from "./integration";
 import * as Membership from "./membership";
 import * as Payment from "./payment";
 import * as Settings from "./settings";
+import * as Webhook from "./webhook";
 
 export {
   Account,
@@ -18,4 +19,5 @@ export {
   Membership,
   Payment,
   Settings,
+  Webhook,
 };
