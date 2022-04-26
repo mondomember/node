@@ -21,7 +21,7 @@ const Delivery = {
   },
 };
 
-export function createTestDeliveryResponseItem(
+export function createTestDelivery(
   overrides?: Partial<Webhook.DeliveryResponseItemInterface>
 ): Webhook.DeliveryResponseItemInterface {
   return {
@@ -31,4 +31,13 @@ export function createTestDeliveryResponseItem(
     ...createUpdatedAtProperty(),
     ...overrides,
   };
+}
+
+/**
+ * @deprecated
+ */
+export function createTestDeliveryResponseItem(
+  overrides?: Partial<Webhook.DeliveryResponseItemInterface>
+): Webhook.DeliveryResponseItemInterface {
+  return createTestDelivery(overrides);
 }

@@ -17,7 +17,7 @@ function createSubscription() {
   };
 }
 
-export function createTestSubscriptionInsertItem(
+export function createTestInsertSubscription(
   overrides?: Partial<Webhook.SubscriptionInsertItemInterface>
 ): Webhook.SubscriptionInsertItemInterface {
   return {
@@ -26,7 +26,7 @@ export function createTestSubscriptionInsertItem(
   };
 }
 
-export function createTestSubscriptionModifyItem(
+export function createTestModifySubscription(
   overrides?: Partial<Webhook.SubscriptionModifyItemInterface>
 ): Webhook.SubscriptionModifyItemInterface {
   return {
@@ -35,7 +35,7 @@ export function createTestSubscriptionModifyItem(
   };
 }
 
-export function createTestSubscriptionResponseItem(
+export function createTestSubscription(
   overrides?: Partial<Webhook.SubscriptionResponseItemInterface>
 ): Webhook.SubscriptionResponseItemInterface {
   return {
@@ -45,4 +45,31 @@ export function createTestSubscriptionResponseItem(
     ...createUpdatedAtProperty(),
     ...overrides,
   };
+}
+
+/**
+ * @deprecated
+ */
+export function createTestSubscriptionInsertItem(
+  overrides?: Partial<Webhook.SubscriptionInsertItemInterface>
+): Webhook.SubscriptionInsertItemInterface {
+  return createTestInsertSubscription(overrides);
+}
+
+/**
+ * @deprecated
+ */
+export function createTestSubscriptionModifyItem(
+  overrides?: Partial<Webhook.SubscriptionModifyItemInterface>
+): Webhook.SubscriptionModifyItemInterface {
+  return createTestModifySubscription(overrides);
+}
+
+/**
+ * @deprecated
+ */
+export function createTestSubscriptionResponseItem(
+  overrides?: Partial<Webhook.SubscriptionResponseItemInterface>
+): Webhook.SubscriptionResponseItemInterface {
+  return createTestSubscription(overrides);
 }
