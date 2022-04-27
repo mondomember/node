@@ -27,8 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/sdk": "^0.0.5",
-    "ksuid": "^3.0.0"
+    "@mondomember/sdk": "^0.0.5"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
