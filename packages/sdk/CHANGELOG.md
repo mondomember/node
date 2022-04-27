@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.8](https://github.com/mondomember/node/compare/v0.0.7...v0.0.8) (2022-04-27)
+
+
+### Bug Fixes
+
+* fake/temp id generation was a mess ([169bb5c](https://github.com/mondomember/node/commit/169bb5c175b73c479a7d27846ff1f9076a14eb81))
+
+
+
+
+
 ## [0.0.7](https://github.com/mondomember/node/compare/v0.0.6...v0.0.7) (2022-04-27)
 
 
