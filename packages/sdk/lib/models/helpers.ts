@@ -1,7 +1,18 @@
+const VALID_CHARACTERS =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+export function generateFakeId(length = 27) {
+  let result = "";
+
+  for (var i = 0; i < length; i++) {
+    result += VALID_CHARACTERS.charAt(
+      Math.floor(Math.random() * VALID_CHARACTERS.length)
+    );
+  }
+
+  return result;
+}
+
 export function generateTempKSUID(prefix = "TEMP") {
-  return `${prefix}_${Math.random()
-    .toString(36)
-    .substring(2, 10)}${Math.random()
-    .toString(36)
-    .substring(2, 15)}${Math.random().toString(36).substring(2, 10)}`;
+  return `${prefix}_${generateFakeId()}`;
 }
