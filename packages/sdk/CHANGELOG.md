@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.7](https://github.com/mondomember/node/compare/v0.0.6...v0.0.7) (2022-04-27)
+
+
+### Bug Fixes
+
+* test ids should be alpha-numeric ([98b04a4](https://github.com/mondomember/node/commit/98b04a486a3bca76aba581b8485ea9cfa6001be0))
+
+
+
+
+
 ## [0.0.6](https://github.com/mondomember/node/compare/v0.0.5...v0.0.6) (2022-04-27)
 
 **Note:** Version bump only for package @mondomember/sdk
