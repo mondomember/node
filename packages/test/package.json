@@ -27,14 +27,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/sdk": "^0.0.8"
+    "@mondomember/sdk": "^0.0.8",
+    "chance": "^1.1.8"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/chance": "^1.1.2",
     "@types/jest": "^27.0",
     "@types/node": "^14.0.27",
-    "chance": "^1.1.6",
     "jest": "^27.0",
     "ts-jest": "^27.1.4",
     "ts-node": "^8.10.2",
