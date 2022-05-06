@@ -1,6 +1,6 @@
 import Properties from "./properties/endpoints";
 
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 export class SettingsEndpoints {
   readonly Properties: Properties;

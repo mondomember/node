@@ -2,7 +2,7 @@ import Contracts from "./contracts/endpoints";
 import Memberships from "./memberships/endpoints";
 import Products from "./products/endpoints";
 
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 export class MembershipEndpoints {
   readonly Contracts: Contracts;

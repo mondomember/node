@@ -1,12 +1,8 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../client/url-template";
 import { PaginationParams } from "../../../../models";
 
-import {
-  ClientInstance,
-  ClientResponse,
-  CRUDEndpoints,
-} from "../../../../client";
-
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../client/endpoints";
 import {
   ContractInsertItemInterface,
   ContractModifyItemInterface,
@@ -56,7 +52,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ContractResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 
@@ -70,7 +66,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ContractResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/finalize`).expand(expression)
+      parseTemplate(`${PATH.item}/finalize`).expand(expression)
     );
   }
 
@@ -84,7 +80,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ContractResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/approve`).expand(expression)
+      parseTemplate(`${PATH.item}/approve`).expand(expression)
     );
   }
 
@@ -98,7 +94,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ContractResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/cancel`).expand(expression)
+      parseTemplate(`${PATH.item}/cancel`).expand(expression)
     );
   }
 }

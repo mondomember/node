@@ -1,10 +1,10 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../../../client/url-template";
 
 import {
   ClientInstance,
   ClientResponse,
-  CRUDEndpoints,
-} from "../../../../../../client";
+} from "../../../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../../../client/endpoints";
 
 import {
   NotificationInsertItemInterface,
@@ -51,7 +51,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<NotificationResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 }

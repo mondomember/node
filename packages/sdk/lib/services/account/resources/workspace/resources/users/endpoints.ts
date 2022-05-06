@@ -1,10 +1,9 @@
-import * as template from "url-template";
-
+import { parseTemplate } from "../../../../../../client/url-template";
 import {
   ClientInstance,
   ClientResponse,
-  CRUDEndpoints,
-} from "../../../../../../client";
+} from "../../../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../../../client/endpoints";
 
 import {
   WorkspaceUserInsertItemInterface,
@@ -63,7 +62,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<WorkspaceUserResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 
@@ -77,7 +76,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<WorkspaceUserAuthenticationResponseListInterface> {
     return this.client.get(
-      template.parse(`${PATH.item}/authentications`).expand(expression)
+      parseTemplate(`${PATH.item}/authentications`).expand(expression)
     );
   }
 }

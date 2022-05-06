@@ -1,4 +1,4 @@
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 import Subscriptions from "./subscriptions/endpoints";
 

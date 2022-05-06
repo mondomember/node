@@ -6,7 +6,7 @@ import {
 import { AnyChargeStatus, ChargeStatusEnum } from ".";
 import { AnyPaymentProvider, Provider } from "../../../models";
 import { UIDPrefix } from "../../../constants";
-import * as Billing from "../../../../../services/billing";
+import * as Billing from "../../../../../services/billing/constants";
 
 import { SourceIdSchema } from "../../sources/models/base";
 import { GatewayIdSchema } from "../../gateways/models/base";

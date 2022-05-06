@@ -1,10 +1,9 @@
-import * as template from "url-template";
-
+import { parseTemplate } from "../../../../../../client/url-template";
+import { buildResourcePath } from "../../../../../../client/utilities";
 import {
-  buildResourcePath,
   ClientInstance,
   ClientResponse,
-} from "../../../../../../client";
+} from "../../../../../../client/interfaces";
 import { PaginationParams } from "../../../../../../models";
 
 import { RowResponseListInterface } from "./models";
@@ -37,7 +36,7 @@ export default class {
     expression: Expressions,
     params?: ListItemsParams
   ): ClientResponse<RowResponseListInterface> {
-    return this.client.get(template.parse(this.path).expand(expression), {
+    return this.client.get(parseTemplate(this.path).expand(expression), {
       params,
     });
   }

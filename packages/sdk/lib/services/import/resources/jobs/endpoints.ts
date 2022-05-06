@@ -1,7 +1,7 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../client/url-template";
 import RowEndpoints from "./resources/rows/endpoints";
 
-import { ClientInstance, ClientResponse } from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { PaginationParams } from "../../../../models";
 
 import { JobResponseItemInterface, JobResponseListInterface } from "./models";
@@ -46,6 +46,6 @@ export default class {
   public getItem(
     expression: Expressions
   ): ClientResponse<JobResponseItemInterface> {
-    return this.client.get(template.parse(PATH.item).expand(expression));
+    return this.client.get(parseTemplate(PATH.item).expand(expression));
   }
 }

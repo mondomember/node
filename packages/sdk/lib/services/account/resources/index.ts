@@ -1,4 +1,4 @@
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 import { AccountEndpoints } from "./endpoints";
 
 export * from "./endpoints";

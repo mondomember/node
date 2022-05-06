@@ -1,4 +1,7 @@
-import { ClientInstance, ClientResponse } from "../../../../../../client";
+import {
+  ClientInstance,
+  ClientResponse,
+} from "../../../../../../client/interfaces";
 
 import {
   WorkspacePreferencesUpsertItemInterface,

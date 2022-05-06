@@ -2,7 +2,7 @@ import Workspace from "./workspace/endpoints";
 import Identity from "./identity/endpoints";
 import Settings from "./settings/endpoints";
 
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 export class AccountEndpoints {
   readonly Identity: Identity;

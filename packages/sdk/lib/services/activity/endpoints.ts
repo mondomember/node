@@ -1,9 +1,6 @@
-import * as template from "url-template";
-import {
-  ClientInstance,
-  ClientResponse,
-  NestedCRUDEndpoints,
-} from "../../client";
+import { parseTemplate } from "../../client/url-template";
+import { ClientInstance, ClientResponse } from "../../client/interfaces";
+import { NestedCRUDEndpoints } from "../../client/endpoints";
 
 import {
   ActivityInsertItemInterface,
@@ -39,7 +36,7 @@ export class ActivityEndpoints extends NestedCRUDEndpoints<
   public listItems(
     expression: Expressions
   ): ClientResponse<ActivityResponseListInterface> {
-    return this.client.get(template.parse(this.path.base).expand(expression));
+    return this.client.get(parseTemplate(this.path.base).expand(expression));
   }
 
   /**
@@ -52,7 +49,7 @@ export class ActivityEndpoints extends NestedCRUDEndpoints<
     expression: Expressions & ItemExpressions
   ): ClientResponse<ActivityResponseItemInterface> {
     return this.client.post(
-      template.parse(`${this.path.item}/restore`).expand(expression)
+      parseTemplate(`${this.path.item}/restore`).expand(expression)
     );
   }
 }

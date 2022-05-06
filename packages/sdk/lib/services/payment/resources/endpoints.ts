@@ -2,7 +2,7 @@ import Charges from "./charges/endpoints";
 import Gateways from "./gateways/endpoints";
 import Sources from "./sources/endpoints";
 
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 export class PaymentEndpoints {
   readonly Charges: Charges;

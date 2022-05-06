@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { ActivityType } from "../..";
+import { ActivityType } from "../../constants";
 
 export const TypePropertySchema = {
   type: {

@@ -1,5 +1,5 @@
-import * as template from "url-template";
-import { ClientInstance, ClientResponse } from "../../../client";
+import { parseTemplate } from "../../../client/url-template";
+import { ClientInstance, ClientResponse } from "../../../client/interfaces";
 
 import { PaginationParams } from "../../../models";
 import { SearchResponseListInterface } from "./models";
@@ -62,7 +62,7 @@ export class SearchEndpoints {
     filter?: any,
     pagination?: PaginationParams
   ): ClientResponse<SearchResponseListInterface<Item>> {
-    return this.client.get(template.parse(`/search/{key}`).expand(expression), {
+    return this.client.get(parseTemplate(`/search/{key}`).expand(expression), {
       params: {
         filter,
         pagination,

@@ -1,11 +1,7 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../client/url-template";
 
-import {
-  ClientInstance,
-  ClientResponse,
-  CRUDEndpoints,
-} from "../../../../client";
-
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../client/endpoints";
 import {
   ProductInsertItemInterface,
   ProductModifyItemInterface,
@@ -57,7 +53,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ProductResponseItemInterface> {
     return this.client.post(
-      template.parse(`${this.path.item}/restore`).expand(expression)
+      parseTemplate(`${this.path.item}/restore`).expand(expression)
     );
   }
 }

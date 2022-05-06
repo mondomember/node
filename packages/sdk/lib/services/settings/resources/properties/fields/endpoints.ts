@@ -1,11 +1,10 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../../client/url-template";
 import {
   ClientInstance,
   ClientResponse,
-  buildResourcePath,
-  NestedCRUDEndpoints,
-} from "../../../../../client";
-
+} from "../../../../../client/interfaces";
+import { NestedCRUDEndpoints } from "../../../../../client/endpoints";
+import { buildResourcePath } from "../../../../../client/utilities";
 import {
   FieldInsertItemInterface,
   FieldModifyItemInterface,
@@ -48,7 +47,7 @@ export default class<Expressions extends {}> extends NestedCRUDEndpoints<
     expression: Expressions
   ): ClientResponse<FieldResponseItemInterface> {
     return this.client.post(
-      template.parse(`${this.path.item}/restore`).expand(expression)
+      parseTemplate(`${this.path.item}/restore`).expand(expression)
     );
   }
 }

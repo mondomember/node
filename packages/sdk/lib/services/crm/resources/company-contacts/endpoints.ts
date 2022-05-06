@@ -1,7 +1,6 @@
-import * as template from "url-template";
-
+import { parseTemplate } from "../../../../client/url-template";
 import { PaginationParams } from "../../../../models";
-import { ClientInstance, ClientResponse } from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
 import {
   CompanyContactUpsertItemInterface,
@@ -37,7 +36,7 @@ export default class<
     params?: ListItemsParams
   ): ClientResponse<CompanyContactResponseListInterface> {
     return this.client.get(
-      template.parse(`${this.path.base}`).expand(expression),
+      parseTemplate(`${this.path.base}`).expand(expression),
       { params }
     );
   }
@@ -51,7 +50,7 @@ export default class<
   public getItem(
     expression: BaseExpressions & ItemExpressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
-    return this.client.get(template.parse(this.path.item).expand(expression));
+    return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 
   /**
@@ -66,7 +65,7 @@ export default class<
     payload: CompanyContactUpsertItemInterface
   ): ClientResponse<CompanyContactResponseItemInterface> {
     return this.client.put(
-      template.parse(this.path.item).expand(expression),
+      parseTemplate(this.path.item).expand(expression),
       payload
     );
   }
@@ -80,9 +79,7 @@ export default class<
   public deleteItem(
     expression: BaseExpressions & ItemExpressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
-    return this.client.delete(
-      template.parse(this.path.item).expand(expression)
-    );
+    return this.client.delete(parseTemplate(this.path.item).expand(expression));
   }
 
   /**
@@ -95,7 +92,7 @@ export default class<
     expression: BaseExpressions & ItemExpressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
     return this.client.post(
-      template.parse(`${this.path.item}/restore`).expand(expression)
+      parseTemplate(`${this.path.item}/restore`).expand(expression)
     );
   }
 }

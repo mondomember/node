@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { Provider, AnyPaymentProvider } from "../../..";
+import { Provider, AnyPaymentProvider } from "../../../models";
 import {
   constructUIDPropertySchema,
   constructUIDSchema,

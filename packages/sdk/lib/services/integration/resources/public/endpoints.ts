@@ -1,6 +1,6 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../client/url-template";
 
-import { ClientInstance, ClientResponse } from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
 import {
   PublicTokenCreateItemInterface,
@@ -26,6 +26,6 @@ export default class {
     expression: Expressions,
     payload: PublicTokenCreateItemInterface
   ): ClientResponse<PublicTokenResponseItemInterface> {
-    return this.client.post(template.parse(PATH).expand(expression), payload);
+    return this.client.post(parseTemplate(PATH).expand(expression), payload);
   }
 }

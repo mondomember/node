@@ -1,4 +1,4 @@
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 import ServerSide from "./server-side/endpoints";
 import Public from "./public/endpoints";

@@ -1,7 +1,7 @@
 import Companies from "./companies/endpoints";
 import Contacts from "./contacts/endpoints";
 
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 export class CRMEndpoints {
   readonly Companies: Companies;

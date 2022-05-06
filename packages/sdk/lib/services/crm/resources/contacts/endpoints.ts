@@ -1,11 +1,7 @@
-import * as template from "url-template";
-
 import { PaginationParams } from "../../../../models";
-import {
-  ClientInstance,
-  ClientResponse,
-  CRUDEndpoints,
-} from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../client/endpoints";
+import { parseTemplate } from "../../../../client/url-template";
 
 import {
   ContactInsertItemInterface,
@@ -69,7 +65,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<ContactResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 }

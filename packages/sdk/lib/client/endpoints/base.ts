@@ -1,6 +1,5 @@
-import * as template from "url-template";
-
-import { ClientInstance, ClientResponse } from "../../client";
+import { parseTemplate } from "../../client/url-template";
+import { ClientInstance, ClientResponse } from "../../client/interfaces";
 
 type Path = {
   base: string;
@@ -21,7 +20,7 @@ export abstract class BaseEndpoints<
    * @returns
    */
   public getItem(expression: Expressions): ClientResponse<ItemResponse> {
-    return this.client.get(template.parse(this.path.item).expand(expression));
+    return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 
   /**
@@ -36,7 +35,7 @@ export abstract class BaseEndpoints<
     payload: UpdatePayload
   ): ClientResponse<ItemResponse> {
     return this.client.put(
-      template.parse(this.path.item).expand(expression),
+      parseTemplate(this.path.item).expand(expression),
       payload
     );
   }
@@ -48,8 +47,6 @@ export abstract class BaseEndpoints<
    * @returns
    */
   public deleteItem(expression: Expressions): ClientResponse<ItemResponse> {
-    return this.client.delete(
-      template.parse(this.path.item).expand(expression)
-    );
+    return this.client.delete(parseTemplate(this.path.item).expand(expression));
   }
 }

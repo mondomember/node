@@ -1,4 +1,4 @@
-import { ClientResponse } from "../../client";
+import { ClientResponse } from "../../client/interfaces";
 import { BaseEndpoints } from "./base";
 
 export abstract class CRUDEndpoints<

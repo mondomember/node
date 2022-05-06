@@ -1,12 +1,10 @@
-import * as template from "url-template";
-
+import { parseTemplate } from "../../../../../../client/url-template";
 import {
-  buildResourcePath,
   ClientInstance,
   ClientResponse,
-  NestedCRUDEndpoints,
-} from "../../../../../../client";
-
+} from "../../../../../../client/interfaces";
+import { NestedCRUDEndpoints } from "../../../../../../client/endpoints";
+import { buildResourcePath } from "../../../../../../client/utilities";
 import {
   ProductTierInsertItemInterface,
   ProductTierModifyItemInterface,
@@ -58,6 +56,6 @@ export default class extends NestedCRUDEndpoints<
   public listItems(
     expression: Expressions
   ): ClientResponse<ProductTierResponseListInterface> {
-    return this.client.get(template.parse(this.path.base).expand(expression));
+    return this.client.get(parseTemplate(this.path.base).expand(expression));
   }
 }

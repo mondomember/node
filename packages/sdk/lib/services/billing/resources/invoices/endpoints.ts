@@ -1,11 +1,8 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../client/url-template";
 import { PaginationParams } from "../../../../models";
 
-import {
-  ClientInstance,
-  ClientResponse,
-  CRUDEndpoints,
-} from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { CRUDEndpoints } from "../../../../client/endpoints";
 
 import {
   InvoiceChargeItemInterface,
@@ -70,7 +67,7 @@ export default class extends CRUDEndpoints<
     payload: InvoicePayItemInterface
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/pay`).expand(expression),
+      parseTemplate(`${PATH.item}/pay`).expand(expression),
       payload
     );
   }
@@ -86,7 +83,7 @@ export default class extends CRUDEndpoints<
     payload: InvoiceChargeItemInterface
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/charge`).expand(expression),
+      parseTemplate(`${PATH.item}/charge`).expand(expression),
       payload
     );
   }
@@ -102,7 +99,7 @@ export default class extends CRUDEndpoints<
     payload: InvoiceTransactionInsertItemInterface
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/adjust`).expand(expression),
+      parseTemplate(`${PATH.item}/adjust`).expand(expression),
       payload
     );
   }
@@ -117,7 +114,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/finalize`).expand(expression)
+      parseTemplate(`${PATH.item}/finalize`).expand(expression)
     );
   }
 
@@ -131,7 +128,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/void`).expand(expression)
+      parseTemplate(`${PATH.item}/void`).expand(expression)
     );
   }
 
@@ -145,7 +142,7 @@ export default class extends CRUDEndpoints<
     expression: Expressions
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
-      template.parse(`${PATH.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 }

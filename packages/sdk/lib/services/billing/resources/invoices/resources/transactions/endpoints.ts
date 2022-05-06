@@ -1,10 +1,10 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../../../client/url-template";
 import { PaginationParams } from "../../../../../../models";
 import {
-  buildResourcePath,
   ClientInstance,
   ClientResponse,
-} from "../../../../../../client";
+} from "../../../../../../client/interfaces";
+import { buildResourcePath } from "../../../../../../client/utilities";
 
 import {
   InvoiceTransactionInsertItemInterface,
@@ -52,7 +52,7 @@ export default class {
     payload: InvoiceTransactionInsertItemInterface
   ): ClientResponse<InvoiceTransactionResponseItemInterface> {
     return this.client.post(
-      template.parse(this.path.base).expand(expression),
+      parseTemplate(this.path.base).expand(expression),
       payload
     );
   }
@@ -66,7 +66,7 @@ export default class {
     expression: Expressions,
     params?: ListItemsParams
   ): ClientResponse<InvoiceTransactionResponseListInterface> {
-    return this.client.get(template.parse(this.path.base).expand(expression), {
+    return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });
   }
@@ -80,6 +80,6 @@ export default class {
   public getItem(
     expression: TransactionExpressions
   ): ClientResponse<InvoiceTransactionResponseItemInterface> {
-    return this.client.get(template.parse(this.path.item).expand(expression));
+    return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 }

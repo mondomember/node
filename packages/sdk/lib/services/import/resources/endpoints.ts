@@ -1,4 +1,4 @@
-import { ClientInstance } from "../../../client";
+import { ClientInstance } from "../../../client/interfaces";
 
 import UploadEndpoints from "./upload/endpoints";
 import JobEndpoints from "./jobs/endpoints";

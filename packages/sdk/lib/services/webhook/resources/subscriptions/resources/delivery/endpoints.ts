@@ -1,6 +1,9 @@
-import * as template from "url-template";
+import { parseTemplate } from "../../../../../../client/url-template";
 import { PaginationParams } from "../../../../../../models";
-import { ClientInstance, ClientResponse } from "../../../../../../client";
+import {
+  ClientInstance,
+  ClientResponse,
+} from "../../../../../../client/interfaces";
 
 import {
   DeliveryResponseItemInterface,
@@ -48,7 +51,7 @@ export default class {
   public getItem(
     expression: DeliveryExpressions
   ): ClientResponse<DeliveryResponseItemInterface> {
-    return this.client.get(template.parse(this.path.item).expand(expression));
+    return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 
   /**
@@ -60,7 +63,7 @@ export default class {
     expression: Expressions,
     params?: ListItemsParams
   ): ClientResponse<DeliveryResponseListInterface> {
-    return this.client.get(template.parse(this.path.base).expand(expression), {
+    return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });
   }

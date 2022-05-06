@@ -1,8 +1,5 @@
-import {
-  ClientInstance,
-  ClientResponse,
-  buildResourcePath,
-} from "../../../../client";
+import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { buildResourcePath } from "../../../../client/utilities";
 import { FieldGroupsInterface } from "../../models";
 
 import FieldGroupEndpoints from "./field-groups/endpoints";

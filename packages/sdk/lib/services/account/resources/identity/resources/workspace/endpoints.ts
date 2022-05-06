@@ -1,5 +1,8 @@
-import * as template from "url-template";
-import { ClientInstance, ClientResponse } from "../../../../../../client";
+import { parseTemplate } from "../../../../../../client/url-template";
+import {
+  ClientInstance,
+  ClientResponse,
+} from "../../../../../../client/interfaces";
 
 import {
   IdentityWorkspaceResponseItemInterface,
@@ -54,7 +57,7 @@ export default class {
     payload: WorkspaceTenantModifyItemInterface
   ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
     return this.client.put(
-      template.parse(PATH.item).expand(expression),
+      parseTemplate(PATH.item).expand(expression),
       payload
     );
   }
@@ -68,7 +71,7 @@ export default class {
   public switchToItem(
     expression: Expressions
   ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
-    return this.client.post(template.parse(PATH.item).expand(expression));
+    return this.client.post(parseTemplate(PATH.item).expand(expression));
   }
 
   /**
@@ -80,6 +83,6 @@ export default class {
   public leaveItem(
     expression: Expressions
   ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
-    return this.client.delete(template.parse(PATH.item).expand(expression));
+    return this.client.delete(parseTemplate(PATH.item).expand(expression));
   }
 }

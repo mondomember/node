@@ -1,6 +1,5 @@
-import * as template from "url-template";
-
-import { ClientResponse } from "../../client";
+import { parseTemplate } from "../../client/url-template";
+import { ClientResponse } from "../../client/interfaces";
 import { BaseEndpoints } from "./base";
 
 export abstract class NestedCRUDEndpoints<
@@ -26,7 +25,7 @@ export abstract class NestedCRUDEndpoints<
     payload: CreatePayload
   ): ClientResponse<ItemResponse> {
     return this.client.post(
-      template.parse(this.path.base).expand(expression),
+      parseTemplate(this.path.base).expand(expression),
       payload
     );
   }
