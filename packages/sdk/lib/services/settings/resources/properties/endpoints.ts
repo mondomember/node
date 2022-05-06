@@ -1,20 +1,21 @@
+import { parseTemplate } from "../../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { buildResourcePath } from "../../../../client/utilities";
 import { FieldGroupsInterface } from "../../models";
 
 import FieldGroupEndpoints from "./field-groups/endpoints";
 import FieldEndpoints from "./fields/endpoints";
-import { AnyPropertiesService } from "../../constants";
+import { AnyService, AnyResource, Resource } from "../../constants";
 
 type Expressions = { objectType: string };
 
 interface SettingsResponseInterface {
-  "Billing.Invoice"?: FieldGroupsInterface;
-  "CRM.Company"?: FieldGroupsInterface;
-  "CRM.Contact"?: FieldGroupsInterface;
-  "CRM.Company-Contact"?: FieldGroupsInterface;
-  "Membership.Contract"?: FieldGroupsInterface;
-  "Membership.Membership"?: FieldGroupsInterface;
+  [Resource.BILLING_INVOICE]?: FieldGroupsInterface;
+  [Resource.CRM_COMPANY]?: FieldGroupsInterface;
+  [Resource.CRM_CONTACT]?: FieldGroupsInterface;
+  [Resource.CRM_COMPANY_CONTACT]?: FieldGroupsInterface;
+  [Resource.MEMBERSHIP_CONTRACT]?: FieldGroupsInterface;
+  [Resource.MEMBERSHIP_MEMBERSHIP]?: FieldGroupsInterface;
 }
 
 /**
@@ -36,13 +37,25 @@ export default class {
   }
 
   /**
+   * Get for a specific resource
+   *
+   * @param expression
+   * @returns
+   */
+  public get(resource: AnyResource): ClientResponse<FieldGroupsInterface> {
+    return this.client.get(
+      parseTemplate(`${this.path}/{resource}`).expand({ resource })
+    );
+  }
+
+  /**
    * Get properties for a module/service
    *
    * @param expression
    * @returns
    */
   public listItems(
-    service: AnyPropertiesService
+    service: AnyService
   ): ClientResponse<SettingsResponseInterface> {
     return this.client.get(this.path, { params: { service } });
   }
