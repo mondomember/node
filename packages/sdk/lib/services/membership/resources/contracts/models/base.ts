@@ -132,6 +132,22 @@ interface FinalizedBillingInterface {
   type: typeof ContractBillingTermType.FINALIZED;
 }
 
+const ApprovedBillingSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractBillingTermType.APPROVED],
+    },
+  },
+};
+
+interface ApprovedBillingInterface {
+  type: typeof ContractBillingTermType.APPROVED;
+}
+
 const OffsetBillingSchema = {
   type: [JsonSchemaType.OBJECT],
   additionalProperties: false,
@@ -193,6 +209,7 @@ export const ResponseBillingPropertySchema = {
     discriminator: { propertyName: "type" },
     oneOf: [
       FinalizedBillingSchema,
+      ApprovedBillingSchema,
       OffsetBillingSchema,
       ScheduledBillingSchema,
     ],
@@ -201,6 +218,7 @@ export const ResponseBillingPropertySchema = {
 
 export type BillingInterface =
   | FinalizedBillingInterface
+  | ApprovedBillingInterface
   | OffsetBillingInterface
   | ScheduledBillingInterface;
 

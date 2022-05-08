@@ -41,6 +41,7 @@ export const RenewalFrequencySchemaEnum = [
 
 export const ContractBillingTermType = {
   FINALIZED: "Finalized",
+  APPROVED: "Approved",
   OFFSET: "Offset",
   SCHEDULED: "Scheduled",
 } as const;
