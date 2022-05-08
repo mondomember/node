@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.12](https://github.com/mondomember/node/compare/v0.0.11...v0.0.12) (2022-05-08)
+
+
+### Features
+
+* adding contract Approved billing term type ([1ff6ad6](https://github.com/mondomember/node/commit/1ff6ad634ee5c3c806daf0d1fe328c0a59799fa6))
+
+
+
+
+
 ## [0.0.11](https://github.com/mondomember/node/compare/v0.0.10...v0.0.11) (2022-05-06)
 
 
