@@ -137,22 +137,6 @@ export class SearchEndpoints {
   /**
    * @returns
    */
-  public listInvoiceItems(
-    query?: Omit<ParsedQuery, "target">,
-    pagination?: PaginationParams
-  ) {
-    return this.listItems<InvoiceResponseItemInterface>(
-      {
-        ...query,
-        target: "Membership.Invoice",
-      },
-      pagination
-    );
-  }
-
-  /**
-   * @returns
-   */
   public listMembershipItems(
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
@@ -161,6 +145,22 @@ export class SearchEndpoints {
       {
         ...query,
         target: "Membership.Membership",
+      },
+      pagination
+    );
+  }
+
+  /**
+   * @returns
+   */
+  public listInvoiceItems(
+    query?: Omit<ParsedQuery, "target">,
+    pagination?: PaginationParams
+  ) {
+    return this.listItems<InvoiceResponseItemInterface>(
+      {
+        ...query,
+        target: "Billings.Invoice",
       },
       pagination
     );
