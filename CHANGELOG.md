@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.13](https://github.com/mondomember/node/compare/v0.0.12...v0.0.13) (2022-05-11)
+
+
+### Bug Fixes
+
+* correcting billing model type ([e23106d](https://github.com/mondomember/node/commit/e23106dc633260d931b21c05c07878d7b5415c01))
+
+
+
+
+
 ## [0.0.12](https://github.com/mondomember/node/compare/v0.0.11...v0.0.12) (2022-05-08)
 
 
