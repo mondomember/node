@@ -30,7 +30,6 @@ export const ContactImportModifyItemSchema = {
 
 export const ContactImportItemSchema = {
   type: JsonSchemaType.OBJECT,
-  discriminator: { propertyName: "id" },
   oneOf: [ContactImportInsertItemSchema, ContactImportModifyItemSchema],
 };
 
