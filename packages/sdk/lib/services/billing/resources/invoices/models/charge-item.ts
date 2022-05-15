@@ -1,4 +1,4 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 
 export const TokenPropertySchema = {
   token: {
@@ -16,7 +16,7 @@ const NotesPropertySchema = {
   },
 };
 
-export const InvoiceChargeItemSchema: JsonSchema = {
+export const InvoiceChargeItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["token"],

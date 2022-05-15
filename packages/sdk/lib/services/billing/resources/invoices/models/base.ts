@@ -438,6 +438,7 @@ const ProductLineItemRequestPropertySchema = {
 
 const LineItemRequestPropertySchema = {
   type: JsonSchemaType.OBJECT,
+  discriminator: { propertyName: "type" },
   oneOf: [
     CustomLineItemRequestPropertySchema,
     ProductLineItemRequestPropertySchema,

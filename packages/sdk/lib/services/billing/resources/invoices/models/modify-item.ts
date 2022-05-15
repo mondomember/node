@@ -1,4 +1,4 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
@@ -24,7 +24,7 @@ import {
   DueAtPropertyInterface,
 } from "./base";
 
-export const InvoiceModifyItemSchema: JsonSchema = {
+export const InvoiceModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {

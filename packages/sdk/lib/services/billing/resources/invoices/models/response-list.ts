@@ -1,4 +1,4 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   PaginationPropertySchema,
   PaginationPropertyInterface,
@@ -8,7 +8,7 @@ import {
   InvoiceResponseItemInterface,
 } from "./response-item";
 
-export const InvoiceResponseListSchema: JsonSchema = {
+export const InvoiceResponseListSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["items"],

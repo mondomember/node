@@ -1,4 +1,4 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   IdPropertyInterface,
   CreatedAtPropertySchema,
@@ -49,7 +49,7 @@ import {
   CustomerPropertyResponseInterface,
 } from "../../../../crm";
 
-export const InvoiceResponseItemSchema: JsonSchema = {
+export const InvoiceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
