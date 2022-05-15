@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.14](https://github.com/mondomember/node/compare/v0.0.13...v0.0.14) (2022-05-15)
+
+
+### Bug Fixes
+
+* removing contact import discriminator ([0a03433](https://github.com/mondomember/node/commit/0a03433043f20ce87e665b3aa2c790029187f3e8))
+
+
+
+
+
 ## [0.0.13](https://github.com/mondomember/node/compare/v0.0.12...v0.0.13) (2022-05-11)
 
 
