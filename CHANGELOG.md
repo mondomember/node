@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.15](https://github.com/mondomember/node/compare/v0.0.14...v0.0.15) (2022-05-18)
+
+
+### Features
+
+* adding account workspace delete resource ([65d6a6a](https://github.com/mondomember/node/commit/65d6a6a72e17da2f427053562591e0eca9c32548))
+
+
+
+
+
 ## [0.0.14](https://github.com/mondomember/node/compare/v0.0.13...v0.0.14) (2022-05-15)
 
 
