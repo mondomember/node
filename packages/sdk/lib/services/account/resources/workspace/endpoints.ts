@@ -38,4 +38,13 @@ export default class WorkspaceEndpoints {
   ): ClientResponse<WorkspaceTenantResponseItemInterface> {
     return this.client.put("/account/workspace", payload);
   }
+
+  /**
+   * Delete an item.
+   *
+   * @returns
+   */
+  public deleteItem(): ClientResponse<WorkspaceTenantResponseItemInterface> {
+    return this.client.delete("/account/workspace");
+  }
 }
