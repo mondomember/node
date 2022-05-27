@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../client/url-template";
+import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -19,6 +20,10 @@ type Expressions = {
   gateway: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends CRUDEndpoints<
   Expressions,
   GatewayInsertItemInterface,
@@ -34,8 +39,10 @@ export default class extends CRUDEndpoints<
    *
    * @returns
    */
-  public listItems(): ClientResponse<GatewayResponseListInterface> {
-    return this.client.get(PATH.base);
+  public listItems(
+    params?: ListItemsParams
+  ): ClientResponse<GatewayResponseListInterface> {
+    return this.client.get(PATH.base, { params });
   }
 
   /**

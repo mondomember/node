@@ -3,7 +3,7 @@ import {
   constructUIDSchema,
   constructUIDPropertySchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
+import { UIDPrefix, WebhookEvents } from "../../../constants";
 import { AuthType } from "./interfaces";
 
 export const SubscriptionIdSchema = constructUIDSchema([
@@ -18,6 +18,7 @@ export const EventsSchema = {
   type: JsonSchemaType.ARRAY,
   items: {
     type: JsonSchemaType.STRING,
+    enum: Object.values(WebhookEvents),
   },
 };
 

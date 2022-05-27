@@ -1,5 +1,9 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
+  PaginationPropertySchema,
+  PaginationPropertyInterface,
+} from "../../../../../models";
+import {
   GatewayResponseItemSchema,
   GatewayResponseItemInterface,
 } from "./response-item";
@@ -13,9 +17,11 @@ export const GatewayResponseListSchema = {
       type: JsonSchemaType.ARRAY,
       items: GatewayResponseItemSchema,
     },
+    ...PaginationPropertySchema,
   },
 };
 
-export interface GatewayResponseListInterface {
+export interface GatewayResponseListInterface
+  extends Partial<PaginationPropertyInterface> {
   items?: GatewayResponseItemInterface[];
 }

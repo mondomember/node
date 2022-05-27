@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../client/url-template";
+import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -20,6 +21,10 @@ type Expressions = {
   source: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends CRUDEndpoints<
   Expressions,
   SourceInsertItemInterface,
@@ -36,10 +41,8 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    filter?: SourceFilter
+    params?: ListItemsParams
   ): ClientResponse<SourceResponseListInterface> {
-    const params = !!filter ? { filter } : undefined;
-
     return this.client.get(PATH.base, { params });
   }
 

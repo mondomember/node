@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../../../../../client/url-template";
+import { PaginationParams } from "../../../../../../../../models";
 
 import {
   ClientInstance,
@@ -27,6 +28,10 @@ type PriceExpressions = Expressions & {
   price: number;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends NestedCRUDEndpoints<
   Expressions,
   PriceExpressions,
@@ -50,9 +55,12 @@ export default class extends NestedCRUDEndpoints<
    * @returns
    */
   public listItems(
-    expression: Expressions
+    expression: Expressions,
+    params?: ListItemsParams
   ): ClientResponse<ProductTierPriceResponseListInterface> {
-    return this.client.get(parseTemplate(this.path.base).expand(expression));
+    return this.client.get(parseTemplate(this.path.base).expand(expression), {
+      params,
+    });
   }
 
   /**

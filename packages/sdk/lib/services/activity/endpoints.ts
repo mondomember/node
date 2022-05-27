@@ -1,4 +1,6 @@
 import { parseTemplate } from "../../client/url-template";
+import { PaginationParams } from "../../models";
+
 import { ClientInstance, ClientResponse } from "../../client/interfaces";
 import { NestedCRUDEndpoints } from "../../client/endpoints";
 
@@ -22,6 +24,10 @@ type ItemExpressions = {
   activity: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export class ActivityEndpoints extends NestedCRUDEndpoints<
   Expressions,
   ItemExpressions,
@@ -34,9 +40,12 @@ export class ActivityEndpoints extends NestedCRUDEndpoints<
   }
 
   public listItems(
-    expression: Expressions
+    expression: Expressions,
+    params?: ListItemsParams
   ): ClientResponse<ActivityResponseListInterface> {
-    return this.client.get(parseTemplate(this.path.base).expand(expression));
+    return this.client.get(parseTemplate(this.path.base).expand(expression), {
+      params,
+    });
   }
 
   /**

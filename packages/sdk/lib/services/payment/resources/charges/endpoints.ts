@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../client/url-template";
+import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -22,6 +23,11 @@ type Expressions = {
   charge: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+  filter?: ChargeFilter;
+};
+
 export default class extends CRUDEndpoints<
   Expressions,
   ChargeInsertItemInterface,
@@ -42,10 +48,8 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    filter?: ChargeFilter
+    params?: ListItemsParams
   ): ClientResponse<ChargeResponseListInterface> {
-    const params = !!filter ? { filter } : undefined;
-
     return this.client.get(PATH.base, { params });
   }
 
