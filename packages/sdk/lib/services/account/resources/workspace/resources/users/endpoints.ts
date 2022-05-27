@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../../../client/url-template";
+import { PaginationParams } from "../../../../../../models";
 import {
   ClientInstance,
   ClientResponse,
@@ -23,6 +24,10 @@ type Expressions = {
   user: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends CRUDEndpoints<
   Expressions,
   WorkspaceUserInsertItemInterface,
@@ -36,8 +41,10 @@ export default class extends CRUDEndpoints<
   /**
    * List items
    */
-  public listItems(): ClientResponse<WorkspaceUserResponseListInterface> {
-    return this.client.get(PATH.base);
+  public listItems(
+    params?: ListItemsParams
+  ): ClientResponse<WorkspaceUserResponseListInterface> {
+    return this.client.get(PATH.base, { params });
   }
 
   /**
