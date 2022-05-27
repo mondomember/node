@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.17](https://github.com/mondomember/node/compare/v0.0.16...v0.0.17) (2022-05-27)
+
+
+### Features
+
+* adding list resource filterings ([8f41919](https://github.com/mondomember/node/commit/8f419192f4a4c326c03f77553291f0c60a80bd94))
+
+
+
+
+
 ## [0.0.16](https://github.com/mondomember/node/compare/v0.0.15...v0.0.16) (2022-05-27)
 
 
