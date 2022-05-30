@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.18](https://github.com/mondomember/node/compare/v0.0.17...v0.0.18) (2022-05-30)
+
+
+### Features
+
+* adding integration id to gateways ([9ec22f2](https://github.com/mondomember/node/commit/9ec22f27ffb50543c9b99e7a06b9df660ec9e059))
+
+
+
+
+
 ## [0.0.17](https://github.com/mondomember/node/compare/v0.0.16...v0.0.17) (2022-05-27)
 
 **Note:** Version bump only for package @mondomember/test
