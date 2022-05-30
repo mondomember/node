@@ -18,6 +18,8 @@ import {
 import {
   GatewayIdPropertySchema,
   GatewayIdPropertyInterface,
+  IntegrationIdPropertySchema,
+  IntegrationIdPropertyInterface,
   DefaultPropertySchema,
   DefaultPropertyInterface,
   LivePropertySchema,
@@ -31,9 +33,17 @@ import {
 export const StripeGatewayResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["id", "provider", "label", "createdAt", "updatedAt"],
+  required: [
+    "id",
+    "integrationId",
+    "provider",
+    "label",
+    "createdAt",
+    "updatedAt",
+  ],
   properties: {
     ...GatewayIdPropertySchema,
+    ...IntegrationIdPropertySchema,
     ...DefaultPropertySchema,
     ...LivePropertySchema,
     ...LabelPropertySchema,
@@ -49,6 +59,7 @@ export const StripeGatewayResponseItemSchema = {
 
 export interface StripeGatewayResponseItemInterface
   extends GatewayIdPropertyInterface,
+    IntegrationIdPropertyInterface,
     StripeProviderPropertyInterface,
     LabelPropertyInterface,
     Partial<DefaultPropertyInterface>,

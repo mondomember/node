@@ -9,6 +9,10 @@ import {
 
 const chance: Chance.Chance = new Chance();
 
+const IntegrationIdProperty = {
+  integrationId: chance.guid(),
+};
+
 const LabelProperty = {
   label: chance.word(),
 };
@@ -72,6 +76,7 @@ export function createTestStripeGateway(
 ): Payment.StripeGatewayResponseItemInterface {
   return {
     id: chance.guid(),
+    ...IntegrationIdProperty,
     ...DefaultProperty,
     ...LabelProperty,
     ...DescriptionProperty,

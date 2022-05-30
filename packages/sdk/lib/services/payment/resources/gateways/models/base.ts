@@ -13,6 +13,16 @@ export interface GatewayIdPropertyInterface {
   id: string;
 }
 
+export const IntegrationIdPropertySchema = {
+  integrationId: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
+export interface IntegrationIdPropertyInterface {
+  integrationId: string;
+}
+
 export const LabelPropertySchema = {
   label: {
     type: JsonSchemaType.STRING,
