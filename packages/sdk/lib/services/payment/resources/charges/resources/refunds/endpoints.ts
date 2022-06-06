@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../../../client/url-template";
+import { PaginationParams } from "../../../../../../models";
 import {
   ClientInstance,
   ClientResponse,
@@ -25,6 +26,10 @@ type RefundExpressions = Expressions & {
   refund: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends NestedCRUDEndpoints<
   Expressions,
   RefundExpressions,
@@ -48,8 +53,11 @@ export default class extends NestedCRUDEndpoints<
    * @returns
    */
   public listItems(
-    expression: Expressions
+    expression: Expressions,
+    params?: ListItemsParams
   ): ClientResponse<RefundResponseListInterface> {
-    return this.client.get(parseTemplate(this.path.base).expand(expression));
+    return this.client.get(parseTemplate(this.path.base).expand(expression), {
+      params,
+    });
   }
 }

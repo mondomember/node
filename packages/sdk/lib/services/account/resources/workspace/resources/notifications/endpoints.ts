@@ -1,4 +1,5 @@
 import { parseTemplate } from "../../../../../../client/url-template";
+import { PaginationParams } from "../../../../../../models";
 
 import {
   ClientInstance,
@@ -22,6 +23,10 @@ type Expressions = {
   notification: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class extends CRUDEndpoints<
   Expressions,
   NotificationInsertItemInterface,
@@ -37,8 +42,10 @@ export default class extends CRUDEndpoints<
    *
    * @returns
    */
-  public listItems(): ClientResponse<NotificationResponseListInterface> {
-    return this.client.get(PATH.base);
+  public listItems(
+    params?: ListItemsParams
+  ): ClientResponse<NotificationResponseListInterface> {
+    return this.client.get(PATH.base, { params });
   }
 
   /**

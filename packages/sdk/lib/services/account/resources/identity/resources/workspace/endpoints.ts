@@ -1,4 +1,6 @@
 import { parseTemplate } from "../../../../../../client/url-template";
+import { PaginationParams } from "../../../../../../models";
+
 import {
   ClientInstance,
   ClientResponse,
@@ -22,6 +24,10 @@ type Expressions = {
   workspace: string;
 };
 
+type ListItemsParams = {
+  pagination: PaginationParams;
+};
+
 export default class {
   constructor(readonly client: ClientInstance) {}
 
@@ -30,8 +36,10 @@ export default class {
    *
    * @returns
    */
-  public listItems(): ClientResponse<IdentityWorkspaceResponseListInterface> {
-    return this.client.get(PATH.base);
+  public listItems(
+    params?: ListItemsParams
+  ): ClientResponse<IdentityWorkspaceResponseListInterface> {
+    return this.client.get(PATH.base, { params });
   }
 
   /**
