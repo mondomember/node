@@ -197,6 +197,7 @@ export const RequestBillingPropertySchema = {
         ...FinalizedBillingSchema,
         type: [JsonSchemaType.OBJECT, JsonSchemaType.NULL],
       },
+      ApprovedBillingSchema,
       OffsetBillingSchema,
       ScheduledBillingSchema,
     ],
