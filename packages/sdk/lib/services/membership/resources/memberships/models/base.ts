@@ -60,24 +60,29 @@ export interface ContactsPropertyInterface {
       ];
 }
 
-export const ExpiresAtPropertySchema = {
-  expiresAt: {
-    type: JsonSchemaType.STRING,
+export const PeriodPropertySchema = {
+  period: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    required: ["startAt"],
+    properties: {
+      startAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+      endAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+    },
   },
 };
 
-export interface ExpiresAtPropertyInterface {
-  expiresAt: string;
-}
-
-export const JoinedAtPropertySchema = {
-  joinedAt: {
-    type: JsonSchemaType.STRING,
-  },
-};
-
-export interface JoinedAtPropertyInterface {
-  joinedAt: string;
+export interface PeriodPropertyInterface {
+  period: {
+    startAt: string;
+    endAt?: string;
+  };
 }
 
 export const IsDelegatedPropertySchema = {

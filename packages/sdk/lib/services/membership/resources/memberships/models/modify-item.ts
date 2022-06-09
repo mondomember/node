@@ -10,10 +10,8 @@ import {
   ContactsPropertyInterface,
   DescriptionPropertySchema,
   DescriptionPropertyInterface,
-  JoinedAtPropertySchema,
-  JoinedAtPropertyInterface,
-  ExpiresAtPropertySchema,
-  ExpiresAtPropertyInterface,
+  PeriodPropertyInterface,
+  PeriodPropertySchema,
 } from "./base";
 
 export const MembershipModifyItemSchema = {
@@ -22,16 +20,14 @@ export const MembershipModifyItemSchema = {
   properties: {
     ...ContactsPropertySchema,
     ...DescriptionPropertySchema,
-    ...JoinedAtPropertySchema,
-    ...ExpiresAtPropertySchema,
+    ...PeriodPropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
   },
 };
 
 export interface MembershipModifyItemInterface
-  extends Partial<JoinedAtPropertyInterface>,
-    Partial<ExpiresAtPropertyInterface>,
+  extends Partial<PeriodPropertyInterface>,
     Partial<ContactsPropertyInterface>,
     Partial<DescriptionPropertyInterface>,
     Partial<MetadataPropertyInterface>,

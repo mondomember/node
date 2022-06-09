@@ -23,12 +23,11 @@ const ContactsProperty: { contacts: [string, string, string] } = {
   ],
 };
 
-const JoinedAtProperty = {
-  joinedAt: chance.date().toISOString(),
-};
-
-const ExpiresAtProperty = {
-  expiresAt: chance.date().toISOString(),
+const PeriodProperty = {
+  period: {
+    startAt: chance.date().toISOString(),
+    endAt: chance.date().toISOString(),
+  },
 };
 
 const DescriptionProperty = {
@@ -65,8 +64,7 @@ export function createTestMembership(
     },
     ...ContactsProperty,
     ...DescriptionProperty,
-    ...JoinedAtProperty,
-    ...ExpiresAtProperty,
+    ...PeriodProperty,
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
     ...createMetadataProperty(),
@@ -102,8 +100,7 @@ export function createTestInsertMembership(
       id: generateTestKSUID(Membership.UIDPrefix.PRODUCT),
     },
     ...ContactsProperty,
-    ...JoinedAtProperty,
-    ...ExpiresAtProperty,
+    ...PeriodProperty,
     ...DescriptionProperty,
     ...createMetadataProperty(),
     ...createPropertiesProperty(),
@@ -117,8 +114,7 @@ export function createTestModifyMembership(
   return {
     ...ContactsProperty,
     ...DescriptionProperty,
-    ...JoinedAtProperty,
-    ...ExpiresAtProperty,
+    ...PeriodProperty,
     ...createMetadataProperty(),
     ...createPropertiesProperty(),
     ...overide,
