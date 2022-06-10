@@ -22,7 +22,8 @@ type Expressions = {
 };
 
 type ListItemsParams = {
-  pagination: PaginationParams;
+  pagination?: PaginationParams;
+  filter?: SourceFilter;
 };
 
 export default class extends CRUDEndpoints<
