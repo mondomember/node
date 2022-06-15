@@ -14,6 +14,8 @@ import {
 import {
   StripeProviderPropertySchema,
   StripeProviderPropertyInterface,
+  StripeSettingsPropertySchema,
+  StripeSettingsPropertyInterface,
 } from "./base";
 import {
   GatewayIdPropertySchema,
@@ -38,6 +40,7 @@ export const StripeGatewayResponseItemSchema = {
     "integrationId",
     "provider",
     "label",
+    "settings",
     "createdAt",
     "updatedAt",
   ],
@@ -49,6 +52,7 @@ export const StripeGatewayResponseItemSchema = {
     ...LabelPropertySchema,
     ...DescriptionPropertySchema,
     ...StripeProviderPropertySchema,
+    ...StripeSettingsPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -62,6 +66,7 @@ export interface StripeGatewayResponseItemInterface
     IntegrationIdPropertyInterface,
     StripeProviderPropertyInterface,
     LabelPropertyInterface,
+    StripeSettingsPropertyInterface,
     Partial<DefaultPropertyInterface>,
     Partial<LivePropertyInterface>,
     Partial<DescriptionPropertyInterface>,

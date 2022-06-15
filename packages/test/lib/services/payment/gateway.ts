@@ -33,6 +33,12 @@ const StripeProviderProperty = {
   provider: Payment.Provider.STRIPE,
 };
 
+const StripeSettingsProviderProperty = {
+  settings: {
+    publishableKey: chance.guid(),
+  },
+};
+
 export function createTestInsertStripeGateway(
   overrides?: Partial<Payment.StripeGatewayInsertItemInterface>
 ): Payment.StripeGatewayInsertItemInterface {
@@ -81,6 +87,7 @@ export function createTestStripeGateway(
     ...LabelProperty,
     ...DescriptionProperty,
     ...StripeProviderProperty,
+    ...StripeSettingsProviderProperty,
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
     ...createMetadataProperty(),

@@ -21,3 +21,21 @@ export const StripeProviderPropertySchema = {
 export interface StripeProviderPropertyInterface {
   provider: typeof Provider.STRIPE;
 }
+
+export const StripeSettingsPropertySchema = {
+  settings: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    properties: {
+      publishableKey: {
+        type: JsonSchemaType.STRING,
+      },
+    },
+  },
+};
+
+export interface StripeSettingsPropertyInterface {
+  settings: {
+    publishableKey: string;
+  };
+}

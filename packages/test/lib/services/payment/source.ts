@@ -59,6 +59,18 @@ export function createTestInsertStripeSource(
   };
 }
 
+export function createTestInsertSourceSession(
+  overrides?: Partial<Payment.SourceSessionInsertItemInterface>
+): Payment.SourceSessionInsertItemInterface {
+  return {
+    customer: {
+      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+    },
+    ...GatewayProperty,
+    ...overrides,
+  };
+}
+
 export function createTestInsertSource(
   overrides?: Partial<Payment.SourceInsertItemInterface>
 ): Payment.SourceInsertItemInterface {
