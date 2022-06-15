@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/mondomember/node/compare/v0.1.1...v0.1.2) (2022-06-15)
+
+
+### Features
+
+* adding payment source session for token mngt ops ([ef7a4fa](https://github.com/mondomember/node/commit/ef7a4fa907724fe73d94901a0fd1a5eccb30e7fc))
+
+
+
+
+
 ## [0.1.1](https://github.com/mondomember/node/compare/v0.1.0...v0.1.1) (2022-06-10)
 
 
