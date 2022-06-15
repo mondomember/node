@@ -1,9 +1,9 @@
-import { JsonSchemaType } from "../../../../../schema";
+import { JsonSchemaType } from "../../../../../../schema";
 import {
   CustomerPropertyRequestSchema,
   CustomerPropertyRequestInterface,
-} from "../../../../crm";
-import { GatewayInterface, GatewaySchema } from "./base";
+} from "../../../../../crm";
+import { GatewayInterface, GatewaySchema } from "../../models/base";
 
 export const SourceSessionInsertItemSchema = {
   type: JsonSchemaType.OBJECT,

@@ -10,6 +10,8 @@ import {
   SourceResponseListInterface,
 } from "./models";
 
+import Session from "./session/endpoints";
+
 import { SourceFilter } from "./interfaces";
 
 const PATH = {
@@ -32,8 +34,12 @@ export default class extends CRUDEndpoints<
   SourceModifyItemInterface,
   SourceResponseItemInterface
 > {
+  readonly Session: Session;
+
   constructor(client: ClientInstance) {
     super(PATH, client);
+
+    this.Session = new Session(this.client);
   }
 
   /**

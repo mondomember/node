@@ -1,5 +1,5 @@
 import { matchers } from "jest-json-schema";
-import { SourceSessionInsertItemSchema as Schema } from "./create-session";
+import { SourceSessionInsertItemSchema as Schema } from "./insert-item";
 import { Payment } from "@mondomember/test";
 
 expect.extend(matchers);
