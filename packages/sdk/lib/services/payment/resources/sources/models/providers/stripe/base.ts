@@ -27,6 +27,8 @@ export const StripeObjectPropertySchema = {
           JsonSchemaType.NUMBER,
           JsonSchemaType.NULL,
           JsonSchemaType.OBJECT,
+          JsonSchemaType.BOOLEAN,
+          JsonSchemaType.ARRAY,
         ],
       },
     },
