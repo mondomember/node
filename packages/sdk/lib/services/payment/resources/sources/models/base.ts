@@ -63,23 +63,3 @@ export interface GatewayInterface {
     provider: AnyPaymentProvider;
   };
 }
-
-export const SourceCardSchema = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["brand", "lastFour", "expirationMonth", "expirationYear"],
-  properties: {
-    brand: {
-      type: JsonSchemaType.STRING,
-    },
-    lastFour: {
-      type: JsonSchemaType.NUMBER,
-    },
-    expirationMonth: {
-      type: JsonSchemaType.NUMBER,
-    },
-    expirationYear: {
-      type: JsonSchemaType.NUMBER,
-    },
-  },
-};

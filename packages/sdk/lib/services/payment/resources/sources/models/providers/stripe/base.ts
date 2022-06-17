@@ -1,26 +1,38 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import { SourceCardSchema } from "../../base";
 import {
-  SourceCardInterface,
-  SourceType,
-  AnySourceType,
-} from "../../interfaces";
+  StripeSourceObjectInterface,
+  StripeSourceType,
+  AnyStripeSourceType,
+} from "./interfaces";
 
 export const StripeTypePropertySchema = {
   type: {
     type: JsonSchemaType.STRING,
-    enum: [SourceType.CARD],
+    enum: [StripeSourceType.CARD, StripeSourceType.US_BANK_ACCOUNT],
   },
 };
 
 export interface StripeTypePropertyInterface {
-  type: AnySourceType;
+  type: AnyStripeSourceType;
 }
 
-export const StripeCardPropertySchema = {
-  card: SourceCardSchema,
+export const StripeObjectPropertySchema = {
+  object: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    patternProperties: {
+      "^.*$": {
+        type: [
+          JsonSchemaType.STRING,
+          JsonSchemaType.NUMBER,
+          JsonSchemaType.NULL,
+          JsonSchemaType.OBJECT,
+        ],
+      },
+    },
+  },
 };
 
-export interface StripeCardPropertyInterface {
-  card: SourceCardInterface;
+export interface StripeObjectPropertyInterface {
+  object: StripeSourceObjectInterface;
 }

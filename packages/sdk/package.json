@@ -28,7 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.26.1",
-    "qs": "^6.10.3"
+    "qs": "^6.10.3",
+    "stripe": "^9.8.0"
   },
   "devDependencies": {
     "@mondomember/test": "^0.1.3",

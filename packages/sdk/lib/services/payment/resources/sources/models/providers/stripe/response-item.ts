@@ -28,8 +28,8 @@ import {
 import {
   StripeTypePropertySchema,
   StripeTypePropertyInterface,
-  StripeCardPropertySchema,
-  StripeCardPropertyInterface,
+  StripeObjectPropertySchema,
+  StripeObjectPropertyInterface,
 } from "./base";
 
 const StripeCardSource = {
@@ -40,7 +40,7 @@ const StripeCardSource = {
     "gateway",
     "customer",
     "type",
-    "card",
+    "object",
     "createdAt",
     "updatedAt",
   ],
@@ -51,7 +51,7 @@ const StripeCardSource = {
     ...CustomerPropertyResponseSchema,
     ...DefaultSchema,
     ...StripeTypePropertySchema,
-    ...StripeCardPropertySchema,
+    ...StripeObjectPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -65,11 +65,11 @@ export const StripeSourceResponseItemSchema = {
   oneOf: [StripeCardSource],
 };
 
-interface StripeCardResponseInterface
+export interface StripeSourceResponseItemInterface
   extends IdPropertyInterface,
     GatewayInterface,
     CustomerPropertyResponseInterface,
-    StripeCardPropertyInterface,
+    StripeObjectPropertyInterface,
     StripeTypePropertyInterface,
     Partial<DefaultInterface>,
     Partial<LabelInterface>,
@@ -78,5 +78,3 @@ interface StripeCardResponseInterface
     UpdatedAtPropertyInterface,
     Partial<LastUpdatedPropertyInterface>,
     Partial<MetadataPropertyInterface> {}
-
-export type StripeSourceResponseItemInterface = StripeCardResponseInterface;
