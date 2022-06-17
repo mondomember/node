@@ -19,6 +19,8 @@ import {
 import {
   DefaultSchema,
   DefaultInterface,
+  ReferenceSchema,
+  ReferenceInterface,
   LabelSchema,
   LabelInterface,
   GatewaySchema,
@@ -41,11 +43,13 @@ const StripeCardSource = {
     "customer",
     "type",
     "object",
+    "reference",
     "createdAt",
     "updatedAt",
   ],
   properties: {
     ...SourceIdPropertySchema,
+    ...ReferenceSchema,
     ...LabelSchema,
     ...GatewaySchema,
     ...CustomerPropertyResponseSchema,
@@ -67,6 +71,7 @@ export const StripeSourceResponseItemSchema = {
 
 export interface StripeSourceResponseItemInterface
   extends IdPropertyInterface,
+    ReferenceInterface,
     GatewayInterface,
     CustomerPropertyResponseInterface,
     StripeObjectPropertyInterface,

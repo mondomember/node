@@ -33,6 +33,16 @@ export interface DefaultInterface {
   default: boolean;
 }
 
+export const ReferenceSchema = {
+  reference: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
+export interface ReferenceInterface {
+  reference: string;
+}
+
 export const TokenSchema = {
   token: {
     type: JsonSchemaType.STRING,

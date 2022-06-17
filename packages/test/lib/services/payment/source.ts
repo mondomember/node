@@ -20,6 +20,10 @@ const DefaultProperty = {
   default: chance.bool(),
 };
 
+const ReferenceProperty = {
+  reference: chance.guid(),
+};
+
 const TokenProperty = {
   token: chance.guid(),
 };
@@ -158,6 +162,7 @@ export function createTestStripeSource(
       },
     ]),
     ...DefaultProperty,
+    ...ReferenceProperty,
     ...StripeTypeProperty,
     ...StripeObjectProperty,
     ...createCreatedAtProperty(),
