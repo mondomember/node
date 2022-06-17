@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/mondomember/node/compare/v0.2.0...v0.2.1) (2022-06-17)
+
+
+### Bug Fixes
+
+* adding stripe source object types to schema ([317d0d7](https://github.com/mondomember/node/commit/317d0d7f49f88f0ad1325f374d53900ae991b228))
+
+
+### Features
+
+* passing source database with creating session ([95af037](https://github.com/mondomember/node/commit/95af037b42796231562d4d18ce07c4b63ba8d8f0))
+
+
+
+
+
 # [0.2.0](https://github.com/mondomember/node/compare/v0.1.3...v0.2.0) (2022-06-17)
 
 **Note:** Version bump only for package @mondomember/sdk
