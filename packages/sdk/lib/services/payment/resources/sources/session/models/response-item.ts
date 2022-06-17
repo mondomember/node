@@ -1,4 +1,5 @@
 import { JsonSchemaType } from "../../../../../../schema";
+import { SourceIdSchema } from "../../models/base";
 
 export const SourceSessionResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -7,9 +8,11 @@ export const SourceSessionResponseItemSchema = {
     key: {
       type: JsonSchemaType.STRING,
     },
+    source: SourceIdSchema,
   },
 };
 
 export interface SourceSessionResponseItemInterface {
   key: string;
+  source: string;
 }

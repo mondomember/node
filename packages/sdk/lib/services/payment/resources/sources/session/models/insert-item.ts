@@ -12,9 +12,25 @@ export const SourceSessionInsertItemSchema = {
   properties: {
     ...CustomerPropertyRequestSchema,
     ...GatewaySchema,
+    options: {
+      type: JsonSchemaType.OBJECT,
+      additionalProperties: false,
+      patternProperties: {
+        "^.*$": {
+          type: [
+            JsonSchemaType.STRING,
+            JsonSchemaType.NUMBER,
+            JsonSchemaType.NULL,
+            JsonSchemaType.OBJECT,
+          ],
+        },
+      },
+    },
   },
 };
 
 export interface SourceSessionInsertItemInterface
   extends CustomerPropertyRequestInterface,
-    GatewayInterface {}
+    GatewayInterface {
+  options?: Record<string, string>;
+}
