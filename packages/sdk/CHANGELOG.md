@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/mondomember/node/compare/v0.2.1...v0.2.2) (2022-06-17)
+
+
+### Bug Fixes
+
+* adding additional response attribute to source ([9e2d776](https://github.com/mondomember/node/commit/9e2d776f81f715ec39e4aed08954096cbe6e3cee))
+
+
+
+
+
 ## [0.2.1](https://github.com/mondomember/node/compare/v0.2.0...v0.2.1) (2022-06-17)
 
 
