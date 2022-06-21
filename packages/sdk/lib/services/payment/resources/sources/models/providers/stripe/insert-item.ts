@@ -15,8 +15,8 @@ import {
   LabelInterface,
   TokenSchema,
   TokenInterface,
-  GatewayInterface,
-  GatewaySchema,
+  GatewayPropertyInterface,
+  GatewayPropertySchema,
   SourceIdPropertySchema,
 } from "../../base";
 
@@ -27,7 +27,7 @@ export const StripeSourceInsertItemSchema = {
   properties: {
     ...SourceIdPropertySchema,
     ...CustomerPropertyRequestSchema,
-    ...GatewaySchema,
+    ...GatewayPropertySchema,
     ...DefaultSchema,
     ...LabelSchema,
     ...TokenSchema,
@@ -39,7 +39,7 @@ export interface StripeSourceInsertItemInterface
   extends Partial<IdPropertyInterface>,
     TokenInterface,
     CustomerPropertyRequestInterface,
-    GatewayInterface,
+    GatewayPropertyInterface,
     Partial<LabelInterface>,
     Partial<DefaultInterface>,
     Partial<MetadataPropertyInterface> {}

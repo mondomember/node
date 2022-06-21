@@ -53,7 +53,7 @@ export interface TokenInterface {
   token: string;
 }
 
-export const GatewaySchema = {
+export const GatewayPropertySchema = {
   gateway: {
     type: JsonSchemaType.OBJECT,
     additionalProperties: false,
@@ -67,7 +67,7 @@ export const GatewaySchema = {
     },
   },
 };
-export interface GatewayInterface {
+export interface GatewayPropertyInterface {
   gateway: {
     id: string;
     provider: AnyPaymentProvider;

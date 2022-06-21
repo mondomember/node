@@ -25,6 +25,8 @@ import {
   AmountPropertyInterface,
   SourcePropertySchema,
   SourcePropertyInterface,
+  TokenPropertySchema,
+  TokenPropertyInterface,
   InvoicePropertySchema,
   InvoicePropertyInterface,
   ReferencePropertySchema,
@@ -45,7 +47,6 @@ export const StripeChargeResponseItemSchema = {
     "invoice",
     "amount",
     "customer",
-    "source",
     "gateway",
     "object",
     "reference",
@@ -58,6 +59,7 @@ export const StripeChargeResponseItemSchema = {
     ...RefundableAmountPropertySchema,
     ...AmountPropertySchema,
     ...SourcePropertySchema,
+    ...TokenPropertySchema,
     ...GatewayPropertySchema,
     ...CustomerPropertyResponseSchema,
     ...InvoicePropertySchema,
@@ -71,12 +73,11 @@ export const StripeChargeResponseItemSchema = {
   },
 };
 
-export interface StripeChargeResponseItemInterface
+interface BaseStripeChargeResponseItemInterface
   extends IdPropertyInterface,
     StatusPropertyInterface,
     InvoicePropertyInterface,
     CustomerPropertyResponseInterface,
-    SourcePropertyInterface,
     GatewayPropertyInterface,
     AmountPropertyInterface,
     StripeObjectInterface,
@@ -87,3 +88,15 @@ export interface StripeChargeResponseItemInterface
     Partial<DeletedAtPropertyInterface>,
     Partial<LastUpdatedPropertyInterface>,
     Partial<MetadataPropertyInterface> {}
+
+interface StripeTokenChargeResponseItemInterface
+  extends BaseStripeChargeResponseItemInterface,
+    TokenPropertyInterface {}
+
+interface StripeSourceChargeResponseItemInterface
+  extends BaseStripeChargeResponseItemInterface,
+    SourcePropertyInterface {}
+
+export type StripeChargeResponseItemInterface =
+  | StripeSourceChargeResponseItemInterface
+  | StripeTokenChargeResponseItemInterface;

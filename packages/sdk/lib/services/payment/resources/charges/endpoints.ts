@@ -13,6 +13,7 @@ import {
 import { ChargeFilter } from "./interfaces";
 
 import Refunds from "./resources/refunds/endpoints";
+import Session from "./resources/session/endpoints";
 
 const PATH = {
   base: "payment/charges",
@@ -35,11 +36,13 @@ export default class extends CRUDEndpoints<
   ChargeResponseItemInterface
 > {
   readonly Refunds: Refunds;
+  readonly Session: Session;
 
   constructor(client: ClientInstance) {
     super(PATH, client);
 
     this.Refunds = new Refunds(PATH.item, client);
+    this.Session = new Session(this.client);
   }
 
   /**

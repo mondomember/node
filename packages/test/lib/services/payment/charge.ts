@@ -48,16 +48,25 @@ const ReferenceProperty = {
   reference: chance.string(),
 };
 
+export function createTestInsertChargeSession(
+  overrides?: Partial<Payment.ChargeSessionInsertItemInterface>
+): Payment.ChargeSessionInsertItemInterface {
+  return {
+    customer: {
+      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+    },
+    invoice: generateTestKSUID(Billing.UIDPrefix.INVOICE),
+    ...GatewayProperty,
+    ...overrides,
+  };
+}
+
 export function createTestInsertCharge(
   overrides?: Partial<Payment.ChargeInsertItemInterface>
 ): Payment.ChargeInsertItemInterface {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.CHARGE),
-    ...AmountProperty,
     ...SourceProperty,
-    customer: {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-    },
     ...InvoiceProperty,
     ...createMetadataProperty(),
     ...overrides,

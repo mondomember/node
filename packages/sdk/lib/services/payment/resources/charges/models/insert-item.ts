@@ -8,9 +8,14 @@ import {
   CustomerPropertyRequestSchema,
   CustomerPropertyRequestInterface,
 } from "../../../../crm";
+
 import {
-  AmountPropertySchema,
-  AmountPropertyInterface,
+  SaveSourcePropertySchema,
+  SaveSourcePropertyInterface,
+  TokenPropertySchema,
+  TokenPropertyInterface,
+  GatewayPropertySchema,
+  GatewayPropertyInterface,
   SourcePropertySchema,
   SourcePropertyInterface,
   InvoicePropertySchema,
@@ -18,24 +23,54 @@ import {
   ChargeIdPropertySchema,
 } from "./base";
 
-export const ChargeInsertItemSchema = {
+// Invoice + Token (new source to pay invoice)
+const TokenChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["customer", "amount", "invoice"],
+  required: ["token", "invoice"],
   properties: {
     ...ChargeIdPropertySchema,
-    ...AmountPropertySchema,
+    ...TokenPropertySchema,
+    ...GatewayPropertySchema,
+    ...InvoicePropertySchema,
+    ...SaveSourcePropertySchema,
+    ...MetadataPropertySchema,
+  },
+};
+
+interface TokenChargeChargeInsertItemInterface
+  extends Partial<IdPropertyInterface>,
+    TokenPropertyInterface,
+    InvoicePropertyInterface,
+    SourcePropertyInterface,
+    Partial<GatewayPropertyInterface>,
+    Partial<SaveSourcePropertyInterface>,
+    Partial<MetadataPropertyInterface> {}
+
+// Invoice + Source (use source on file to pay invoice)
+const SourceChargeInsertItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["source", "invoice"],
+  properties: {
+    ...ChargeIdPropertySchema,
     ...SourcePropertySchema,
-    ...CustomerPropertyRequestSchema,
     ...InvoicePropertySchema,
     ...MetadataPropertySchema,
   },
 };
 
-export interface ChargeInsertItemInterface
+interface SourceChargeInsertItemInterface
   extends Partial<IdPropertyInterface>,
-    AmountPropertyInterface,
-    CustomerPropertyRequestInterface,
     InvoicePropertyInterface,
-    Partial<SourcePropertyInterface>,
+    SourcePropertyInterface,
     Partial<MetadataPropertyInterface> {}
+
+export const ChargeInsertItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  oneOf: [SourceChargeInsertItemSchema, TokenChargeInsertItemSchema],
+};
+
+export type ChargeInsertItemInterface =
+  | SourceChargeInsertItemInterface
+  | TokenChargeChargeInsertItemInterface;

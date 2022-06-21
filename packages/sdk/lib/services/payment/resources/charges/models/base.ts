@@ -76,6 +76,26 @@ export interface SourcePropertyInterface {
   source: string;
 }
 
+export const TokenPropertySchema = {
+  token: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
+export interface TokenPropertyInterface {
+  token: string;
+}
+
+export interface SaveSourcePropertyInterface {
+  saveSource: boolean;
+}
+
+export const SaveSourcePropertySchema = {
+  saveSource: {
+    type: JsonSchemaType.BOOLEAN,
+  },
+};
+
 export const GatewayPropertySchema = {
   gateway: {
     type: JsonSchemaType.OBJECT,
