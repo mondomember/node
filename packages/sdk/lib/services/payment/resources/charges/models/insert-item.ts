@@ -42,7 +42,6 @@ interface TokenChargeChargeInsertItemInterface
   extends Partial<IdPropertyInterface>,
     TokenPropertyInterface,
     InvoicePropertyInterface,
-    SourcePropertyInterface,
     Partial<GatewayPropertyInterface>,
     Partial<SaveSourcePropertyInterface>,
     Partial<MetadataPropertyInterface> {}

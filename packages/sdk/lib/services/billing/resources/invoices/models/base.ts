@@ -16,6 +16,8 @@ import {
   InvoicePaymentMethodEnum,
   InvoiceLineItemType,
   InvoiceAutoPayType,
+  InvoicePaymentStatus,
+  AnyInvoicePaymentStatus,
 } from "./interfaces";
 
 export const InvoiceIdSchema = constructUIDSchema([UIDPrefix.INVOICE]);
@@ -219,6 +221,13 @@ export const AutoPayPropertySchema = {
 
 export type AutoPayPropertyInterface = AutoPayFinalizedPropertyInterface;
 
+const InvoicePaymentStatusPropertySchema = {
+  status: {
+    type: JsonSchemaType.STRING,
+    enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.SUCCCESSFUL],
+  },
+};
+
 const InvoicePaymentMethodOfflineResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -243,16 +252,16 @@ interface InvoicePaymentMethodOfflineResponseInterface {
     | typeof InvoicePaymentMethodType.CASH
     | typeof InvoicePaymentMethodType.CHECK
     | typeof InvoicePaymentMethodType.WIRE;
-
   reference?: string;
 }
 
-const InvoicePaymentMethodSourceResponseSchema = {
+const InvoicePaymentMethodOnlineResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["id", "type"],
   properties: {
     id: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
+    ...InvoicePaymentStatusPropertySchema,
     type: {
       type: JsonSchemaType.STRING,
       enum: [InvoicePaymentMethodType.SOURCE],
@@ -260,7 +269,7 @@ const InvoicePaymentMethodSourceResponseSchema = {
   },
 };
 
-interface InvoicePaymentMethodSourceResponseInterface {
+interface InvoicePaymentMethodOnlineResponseInterface {
   type: typeof InvoicePaymentMethodType.SOURCE;
   id: string;
 }
@@ -269,13 +278,13 @@ const InvoicePaymentMethodResponseSchema = {
   type: JsonSchemaType.OBJECT,
   oneOf: [
     InvoicePaymentMethodOfflineResponseSchema,
-    InvoicePaymentMethodSourceResponseSchema,
+    InvoicePaymentMethodOnlineResponseSchema,
   ],
 };
 
 type InvoicePaymentMethodResponseInterface =
   | InvoicePaymentMethodOfflineResponseInterface
-  | InvoicePaymentMethodSourceResponseInterface;
+  | InvoicePaymentMethodOnlineResponseInterface;
 
 const InvoicePaymentReceiptManualResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -331,8 +340,9 @@ export const PaymentPropertyResponseSchema = {
   payment: {
     type: JsonSchemaType.OBJECT,
     additionalProperties: false,
-    required: ["method", "receipt", "paidAt"],
+    required: ["method", "status", "paidAt"],
     properties: {
+      ...InvoicePaymentStatusPropertySchema,
       paidAt: {
         type: JsonSchemaType.STRING,
         format: "date-time",
@@ -344,9 +354,10 @@ export const PaymentPropertyResponseSchema = {
 };
 
 export interface InvoicePaymentResponseInterface {
-  paidAt: string;
+  status: AnyInvoicePaymentStatus;
   method: InvoicePaymentMethodResponseInterface;
-  receipt: InvoicePaymentReceiptResponseInterface;
+  paidAt: string;
+  receipt?: InvoicePaymentReceiptResponseInterface;
   notes?: string;
 }
 

@@ -92,6 +92,22 @@ export function createTestModifyInvoice(
   };
 }
 
+export function createTestInvoicePayment(
+  overrides?: Partial<Billing.InvoiceResponseItemInterface["payment"]>
+): Billing.InvoiceResponseItemInterface["payment"] {
+  return {
+    status: Billing.InvoicePaymentStatus.SUCCCESSFUL,
+    method: {
+      type: Billing.InvoicePaymentMethodType.CASH,
+    },
+    receipt: {
+      type: Billing.InvoicePaymentReceiptType.MANUAL,
+    },
+    paidAt: new Date().toISOString(),
+    ...overrides,
+  };
+}
+
 export function createTestInvoice(
   overrides?: Partial<Billing.InvoiceResponseItemInterface>
 ): Billing.InvoiceResponseItemInterface {
@@ -121,15 +137,7 @@ export function createTestInvoice(
     ...PayableTotal,
     ...AdjustedTotal,
     ...PaymentIntentProperty,
-    payment: {
-      method: {
-        type: Billing.InvoicePaymentMethodType.CASH,
-      },
-      receipt: {
-        type: Billing.InvoicePaymentReceiptType.MANUAL,
-      },
-      paidAt: new Date().toISOString(),
-    },
+    payment: createTestInvoicePayment(),
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
     ...createMetadataProperty(),

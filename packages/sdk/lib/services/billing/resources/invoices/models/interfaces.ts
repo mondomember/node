@@ -1,6 +1,7 @@
 export const InvoiceStatus = {
   DRAFT: "Draft",
   OPEN: "Open", // Finalized
+  PROCESSING: "Processing",
   PAID: "Paid",
   VOID: "Void",
   PAST_DUE: "Past Due",
@@ -12,9 +13,18 @@ export const InvoiceStatusEnum = [
   InvoiceStatus.DRAFT,
   InvoiceStatus.OPEN,
   InvoiceStatus.PAID,
+  InvoiceStatus.PROCESSING,
   InvoiceStatus.VOID,
   InvoiceStatus.PAST_DUE,
 ];
+
+export const InvoicePaymentStatus = {
+  PENDING: "Pending",
+  SUCCCESSFUL: "Successful",
+} as const;
+
+export type AnyInvoicePaymentStatus =
+  typeof InvoicePaymentStatus[keyof typeof InvoicePaymentStatus];
 
 export const InvoicePaymentMethodType = {
   CHECK: "Check",
