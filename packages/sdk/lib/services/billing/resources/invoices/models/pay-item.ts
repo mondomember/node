@@ -1,7 +1,5 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import { constructUIDSchema } from "../../../../../models";
 import { InvoicePaymentMethodType } from "./interfaces";
-import * as Payment from "../../../../../services/payment";
 
 const Notes = {
   notes: {
@@ -21,10 +19,8 @@ const Method = {
           InvoicePaymentMethodType.CASH,
           InvoicePaymentMethodType.CHECK,
           InvoicePaymentMethodType.WIRE,
-          InvoicePaymentMethodType.SOURCE,
         ],
       },
-      id: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
       reference: {
         type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
       },
@@ -66,16 +62,4 @@ interface WirePayment {
   };
 }
 
-interface SourcePayment {
-  notes?: string;
-  method: {
-    id?: string;
-    type: typeof InvoicePaymentMethodType.SOURCE;
-  };
-}
-
-export type InvoicePayItemInterface =
-  | CheckPayment
-  | CashPayment
-  | WirePayment
-  | SourcePayment;
+export type InvoicePayItemInterface = CheckPayment | CashPayment | WirePayment;

@@ -5,7 +5,6 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
 import {
-  InvoiceChargeItemInterface,
   InvoicePayItemInterface,
   InvoiceInsertItemInterface,
   InvoiceModifyItemInterface,
@@ -57,7 +56,7 @@ export default class extends CRUDEndpoints<
   }
 
   /**
-   * Submit payment for an item
+   * Submit an 'offline' payment for an item
    *
    * @param expression
    * @returns
@@ -68,22 +67,6 @@ export default class extends CRUDEndpoints<
   ): ClientResponse<InvoiceResponseItemInterface> {
     return this.client.post(
       parseTemplate(`${PATH.item}/pay`).expand(expression),
-      payload
-    );
-  }
-
-  /**
-   * Charge a tokenized payment
-   *
-   * @param expression
-   * @returns
-   */
-  public chargeItem(
-    expression: Expressions,
-    payload: InvoiceChargeItemInterface
-  ): ClientResponse<InvoiceResponseItemInterface> {
-    return this.client.post(
-      parseTemplate(`${PATH.item}/charge`).expand(expression),
       payload
     );
   }
