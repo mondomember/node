@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/mondomember/node/compare/v0.4.1...v0.4.2) (2022-06-23)
+
+
+### Bug Fixes
+
+* charge / invoices ([d9a901d](https://github.com/mondomember/node/commit/d9a901d200086ce6fb31d98302488ea76b2b3ca1))
+
+
+
+
+
 ## [0.4.1](https://github.com/mondomember/node/compare/v0.4.0...v0.4.1) (2022-06-23)
 
 
