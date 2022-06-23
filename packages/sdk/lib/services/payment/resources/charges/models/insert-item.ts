@@ -4,10 +4,6 @@ import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../models";
-import {
-  CustomerPropertyRequestSchema,
-  CustomerPropertyRequestInterface,
-} from "../../../../crm";
 
 import {
   SaveSourcePropertySchema,
@@ -20,8 +16,9 @@ import {
   SourcePropertyInterface,
   InvoicePropertySchema,
   InvoicePropertyInterface,
-  ChargeIdPropertySchema,
+  TypePropertyInterface,
 } from "./base";
+import { ChargeType } from "./interfaces";
 
 // Invoice + Token (new source to pay invoice)
 const TokenChargeInsertItemSchema = {
@@ -29,7 +26,10 @@ const TokenChargeInsertItemSchema = {
   additionalProperties: false,
   required: ["token", "invoice"],
   properties: {
-    ...ChargeIdPropertySchema,
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargeType.TOKEN],
+    },
     ...TokenPropertySchema,
     ...GatewayPropertySchema,
     ...InvoicePropertySchema,
@@ -38,21 +38,25 @@ const TokenChargeInsertItemSchema = {
   },
 };
 
-interface TokenChargeChargeInsertItemInterface
-  extends Partial<IdPropertyInterface>,
-    TokenPropertyInterface,
+interface TokenChargeInsertItemInterface
+  extends TokenPropertyInterface,
     InvoicePropertyInterface,
     Partial<GatewayPropertyInterface>,
     Partial<SaveSourcePropertyInterface>,
-    Partial<MetadataPropertyInterface> {}
+    Partial<MetadataPropertyInterface> {
+  type: typeof ChargeType.TOKEN;
+}
 
 // Invoice + Source (use source on file to pay invoice)
 const SourceChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["source", "invoice"],
+  required: ["type", "source", "invoice"],
   properties: {
-    ...ChargeIdPropertySchema,
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargeType.SOURCE],
+    },
     ...SourcePropertySchema,
     ...InvoicePropertySchema,
     ...MetadataPropertySchema,
@@ -60,10 +64,11 @@ const SourceChargeInsertItemSchema = {
 };
 
 interface SourceChargeInsertItemInterface
-  extends Partial<IdPropertyInterface>,
-    InvoicePropertyInterface,
+  extends InvoicePropertyInterface,
     SourcePropertyInterface,
-    Partial<MetadataPropertyInterface> {}
+    Partial<MetadataPropertyInterface> {
+  type: typeof ChargeType.SOURCE;
+}
 
 export const ChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -72,4 +77,4 @@ export const ChargeInsertItemSchema = {
 
 export type ChargeInsertItemInterface =
   | SourceChargeInsertItemInterface
-  | TokenChargeChargeInsertItemInterface;
+  | TokenChargeInsertItemInterface;

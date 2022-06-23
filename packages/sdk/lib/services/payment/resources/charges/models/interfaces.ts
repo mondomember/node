@@ -1,3 +1,12 @@
+export const ChargeType = {
+  TOKEN: "Token",
+  SOURCE: "Source",
+} as const;
+
+export type AnyChargeType = typeof ChargeType[keyof typeof ChargeType];
+
+export const ChargeTypeEnum = [ChargeType.TOKEN, ChargeType.SOURCE];
+
 export const ChargeStatus = {
   PROCESSING: "Processing",
   SUCCEEDED: "Succeeded",

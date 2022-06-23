@@ -3,13 +3,18 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { AnyChargeStatus, ChargeStatusEnum } from ".";
 import { AnyPaymentProvider, Provider } from "../../../models";
 import { UIDPrefix } from "../../../constants";
 import * as Billing from "../../../../../services/billing/constants";
 
 import { SourceIdSchema } from "../../sources/models/base";
 import { GatewayIdSchema } from "../../gateways/models/base";
+import {
+  AnyChargeType,
+  ChargeTypeEnum,
+  AnyChargeStatus,
+  ChargeStatusEnum,
+} from "./interfaces";
 
 export const ChargeIdSchema = constructUIDSchema([UIDPrefix.CHARGE]);
 
@@ -26,6 +31,17 @@ export const StatusPropertySchema = {
 
 export interface StatusPropertyInterface {
   status: AnyChargeStatus;
+}
+
+export const TypePropertySchema = {
+  type: {
+    type: JsonSchemaType.STRING,
+    enum: ChargeTypeEnum,
+  },
+};
+
+export interface TypePropertyInterface {
+  type: AnyChargeType;
 }
 
 export const RefundableAmountPropertySchema = {
