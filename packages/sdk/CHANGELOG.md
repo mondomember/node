@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/mondomember/node/compare/v0.4.0...v0.4.1) (2022-06-23)
+
+
+### Bug Fixes
+
+* Adding charge types ([d48ea50](https://github.com/mondomember/node/commit/d48ea5033dba4b0511c46111fb41de0225303ad8))
+
+
+
+
+
 # [0.4.0](https://github.com/mondomember/node/compare/v0.3.0...v0.4.0) (2022-06-22)
 
 **Note:** Version bump only for package @mondomember/sdk
