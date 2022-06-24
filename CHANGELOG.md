@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/mondomember/node/compare/v0.4.2...v0.4.3) (2022-06-24)
+
+
+### Bug Fixes
+
+* adding type to charge schema ([7989bb3](https://github.com/mondomember/node/commit/7989bb31ea97735423ee3e800ebdc18492d92085))
+
+
+
+
+
 ## [0.4.2](https://github.com/mondomember/node/compare/v0.4.1...v0.4.2) (2022-06-23)
 
 
