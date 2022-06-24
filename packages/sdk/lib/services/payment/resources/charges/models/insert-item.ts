@@ -16,7 +16,6 @@ import {
   SourcePropertyInterface,
   InvoicePropertySchema,
   InvoicePropertyInterface,
-  TypePropertyInterface,
 } from "./base";
 import { ChargeType } from "./interfaces";
 
@@ -24,7 +23,7 @@ import { ChargeType } from "./interfaces";
 const TokenChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["token", "invoice"],
+  required: ["type", "token", "invoice"],
   properties: {
     type: {
       type: JsonSchemaType.STRING,
