@@ -548,7 +548,7 @@ const CustomLineItemResponsePropertySchema = {
       type: JsonSchemaType.STRING,
     },
     quantity: {
-      type: JsonSchemaType.STRING,
+      type: JsonSchemaType.NUMBER,
     },
     amount: {
       type: JsonSchemaType.NUMBER,
@@ -573,7 +573,7 @@ const ProductLineItemResponsePropertySchema = {
       type: JsonSchemaType.STRING,
     },
     quantity: {
-      type: JsonSchemaType.STRING,
+      type: JsonSchemaType.NUMBER,
     },
     amount: {
       type: JsonSchemaType.NUMBER,
