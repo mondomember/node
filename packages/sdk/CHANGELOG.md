@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4](https://github.com/mondomember/node/compare/v0.4.3...v0.4.4) (2022-07-01)
+
+
+### Bug Fixes
+
+* quantity is numeric ([638efeb](https://github.com/mondomember/node/commit/638efeb76c628e2fdea3d5f3dfd39325519a7f8d))
+
+
+
+
+
 ## [0.4.3](https://github.com/mondomember/node/compare/v0.4.2...v0.4.3) (2022-06-24)
 
 
