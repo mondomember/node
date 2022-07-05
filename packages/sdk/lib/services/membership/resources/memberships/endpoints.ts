@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -10,7 +9,7 @@ import {
   MembershipResponseListInterface,
 } from "./models";
 
-import { MembershipFilter } from "./interfaces";
+import { MembershipListItemsParams } from "./interfaces";
 
 const PATH = {
   base: "membership/memberships",
@@ -19,11 +18,6 @@ const PATH = {
 
 type Expressions = {
   membership: string;
-};
-
-export type MembershipListItemsParams = {
-  pagination: PaginationParams;
-  filter?: MembershipFilter;
 };
 
 export default class extends CRUDEndpoints<

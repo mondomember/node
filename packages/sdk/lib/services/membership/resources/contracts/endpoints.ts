@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -10,7 +9,7 @@ import {
   ContractResponseListInterface,
 } from "./models";
 
-import { ContractFilter } from "./interfaces";
+import { ContractListItemsParams } from "./interfaces";
 
 const PATH = {
   base: "membership/contracts",
@@ -19,11 +18,6 @@ const PATH = {
 
 type Expressions = {
   contract: string;
-};
-
-export type ContractListItemsParams = {
-  pagination: PaginationParams;
-  filter?: ContractFilter;
 };
 
 export default class extends CRUDEndpoints<

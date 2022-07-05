@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
 import {
@@ -7,6 +6,7 @@ import {
   CompanyContactResponseItemInterface,
   CompanyContactResponseListInterface,
 } from "./models";
+import { CompanyContactListItemsParams } from "./interfaces";
 
 type ContactExpressions = {
   contact: string;
@@ -19,10 +19,6 @@ type CompanyExpressions = {
 type Path = {
   base: string;
   item: string;
-};
-
-type CompanyContactListItemsParams = {
-  pagination: PaginationParams;
 };
 
 export default class<

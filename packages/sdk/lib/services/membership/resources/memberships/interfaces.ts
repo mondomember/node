@@ -1,3 +1,5 @@
+import { PaginationParams } from "../../../../models";
+
 export interface MembershipCustomerFilter {
   customer: string;
 }
@@ -15,3 +17,8 @@ export interface MembershipInvoiceFilter {
 export type MembershipFilter = Partial<MembershipCustomerFilter> &
   Partial<MembershipContractFilter> &
   Partial<MembershipInvoiceFilter>;
+
+export type MembershipListItemsParams = {
+  pagination: PaginationParams;
+  filter?: MembershipFilter;
+};

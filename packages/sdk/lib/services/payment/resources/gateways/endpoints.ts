@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -11,6 +10,8 @@ import {
   GatewayResponseListInterface,
 } from "./models";
 
+import { GatewayListItemsParams } from "./interfaces";
+
 const PATH = {
   base: "payment/gateways",
   item: "payment/gateways/{gateway}",
@@ -18,10 +19,6 @@ const PATH = {
 
 type Expressions = {
   gateway: string;
-};
-
-export type GatewayListItemsParams = {
-  pagination: PaginationParams;
 };
 
 export default class extends CRUDEndpoints<

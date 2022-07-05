@@ -1,4 +1,3 @@
-import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import { parseTemplate } from "../../../../client/url-template";
@@ -9,6 +8,7 @@ import {
   ContactResponseItemInterface,
   ContactResponseListInterface,
 } from "./models";
+import { ContactListItemsParams } from "./interfaces";
 
 import ContactContactEndpoints from "../company-contacts/endpoints";
 
@@ -23,10 +23,6 @@ type Expressions = {
 
 type CompanyExpressions = Expressions & {
   company: string;
-};
-
-type ContactListItemsParams = {
-  pagination: PaginationParams;
 };
 
 export default class extends CRUDEndpoints<

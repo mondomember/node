@@ -1,3 +1,5 @@
+import { PaginationParams } from "../../../../models";
+
 export interface RefundCustomerFilter {
   customer: {
     type: "Company" | "Contact";
@@ -10,3 +12,8 @@ export interface RefundChargeFilter {
 }
 
 export type RefundFilter = RefundChargeFilter | RefundCustomerFilter;
+
+export type RefundListItemsParams = {
+  pagination: PaginationParams;
+  filter?: RefundFilter;
+};

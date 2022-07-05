@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -13,7 +12,7 @@ import {
 } from "./models";
 import { InvoiceTransactionInsertItemInterface } from "./resources/transactions";
 
-import { InvoiceFilter } from "./interfaces";
+import { InvoiceListItemsParams } from "./interfaces";
 import TransactionEndpoints from "./resources/transactions/endpoints";
 
 const PATH = {
@@ -23,11 +22,6 @@ const PATH = {
 
 type Expressions = {
   invoice: string;
-};
-
-export type InvoiceListItemsParams = {
-  pagination: PaginationParams;
-  filter?: InvoiceFilter;
 };
 
 export default class extends CRUDEndpoints<

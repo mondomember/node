@@ -1,3 +1,5 @@
+import { PaginationParams } from "../../../../models";
+
 export interface ChargeCustomerFilter {
   customer: {
     type: "Company" | "Contact";
@@ -10,3 +12,8 @@ export interface ChargeInvoiceFilter {
 }
 
 export type ChargeFilter = ChargeInvoiceFilter | ChargeCustomerFilter;
+
+export type ChargeListItemsParams = {
+  pagination: PaginationParams;
+  filter?: ChargeFilter;
+};

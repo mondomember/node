@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -9,6 +8,7 @@ import {
   ProductResponseItemInterface,
   ProductResponseListInterface,
 } from "./models";
+import { ProductListItemsParams } from "./interfaces";
 
 import ProductTierEndpoints from "./resources/tiers/endpoints";
 
@@ -19,10 +19,6 @@ const PATH = {
 
 type Expressions = {
   product: string;
-};
-
-export type ProductListItemsParams = {
-  pagination: PaginationParams;
 };
 
 export default class extends CRUDEndpoints<

@@ -1,5 +1,3 @@
-import { PaginationParams } from "../../../../models";
-
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import {
@@ -9,7 +7,7 @@ import {
   ChargeResponseListInterface,
 } from "./models";
 
-import { ChargeFilter } from "./interfaces";
+import { ChargeListItemsParams } from "./interfaces";
 
 import Session from "./resources/session/endpoints";
 
@@ -20,11 +18,6 @@ const PATH = {
 
 type Expressions = {
   charge: string;
-};
-
-export type ChargeListItemsParams = {
-  pagination: PaginationParams;
-  filter?: ChargeFilter;
 };
 
 export default class extends CRUDEndpoints<

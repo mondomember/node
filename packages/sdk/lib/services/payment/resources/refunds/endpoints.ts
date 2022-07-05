@@ -8,7 +8,7 @@ import {
   RefundResponseListInterface,
 } from "./models";
 
-import { RefundFilter } from "./interfaces";
+import { RefundListItemsParams } from "./interfaces";
 
 const PATH = {
   base: "payment/refunds",
@@ -17,11 +17,6 @@ const PATH = {
 
 type Expressions = {
   refund: string;
-};
-
-export type RefundListItemsParams = {
-  pagination: PaginationParams;
-  filter?: RefundFilter;
 };
 
 export default class extends CRUDEndpoints<

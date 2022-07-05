@@ -1,5 +1,4 @@
 import { parseTemplate } from "../../../../client/url-template";
-import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
@@ -12,7 +11,7 @@ import {
 
 import Session from "./session/endpoints";
 
-import { SourceFilter } from "./interfaces";
+import { SourceListItemsParams } from "./interfaces";
 
 const PATH = {
   base: "payment/sources",
@@ -21,11 +20,6 @@ const PATH = {
 
 type Expressions = {
   source: string;
-};
-
-export type SourceListItemsParams = {
-  pagination?: PaginationParams;
-  filter?: SourceFilter;
 };
 
 export default class extends CRUDEndpoints<
