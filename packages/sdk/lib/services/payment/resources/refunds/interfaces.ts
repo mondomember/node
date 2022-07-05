@@ -1,9 +1,7 @@
 import { PaginationParams } from "../../../../models";
 
 export interface RefundCustomerFilter {
-  customer: {
-    id: string;
-  };
+  customer: string;
 }
 
 export interface RefundChargeFilter {
