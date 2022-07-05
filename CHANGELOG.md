@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/mondomember/node/compare/v1.0.0...v1.0.1) (2022-07-05)
+
+
+### Features
+
+* exposing list types for resources ([a20ab3e](https://github.com/mondomember/node/commit/a20ab3e4511a7ae4ca2fc3303359c2f1b84c075b))
+
+
+
+
+
 # [1.0.0](https://github.com/mondomember/node/compare/v0.4.4...v1.0.0) (2022-07-05)
 
 **Note:** Version bump only for package node
