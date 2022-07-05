@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/mondomember/node/compare/v1.0.1...v1.0.2) (2022-07-05)
+
+
+### Features
+
+* adding refund filter options ([d578ca2](https://github.com/mondomember/node/commit/d578ca256014f567c15c15fb1d019e23c472a86f))
+
+
+
+
+
 ## [1.0.1](https://github.com/mondomember/node/compare/v1.0.0...v1.0.1) (2022-07-05)
 
 
