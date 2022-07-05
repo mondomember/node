@@ -1,4 +1,3 @@
-import { parseTemplate } from "../../../../client/url-template";
 import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
@@ -12,7 +11,6 @@ import {
 
 import { ChargeFilter } from "./interfaces";
 
-import Refunds from "./resources/refunds/endpoints";
 import Session from "./resources/session/endpoints";
 
 const PATH = {
@@ -24,7 +22,7 @@ type Expressions = {
   charge: string;
 };
 
-type ListItemsParams = {
+export type ChargeListItemsParams = {
   pagination: PaginationParams;
   filter?: ChargeFilter;
 };
@@ -35,13 +33,11 @@ export default class extends CRUDEndpoints<
   ChargeModifyItemInterface,
   ChargeResponseItemInterface
 > {
-  readonly Refunds: Refunds;
   readonly Session: Session;
 
   constructor(client: ClientInstance) {
     super(PATH, client);
 
-    this.Refunds = new Refunds(PATH.item, client);
     this.Session = new Session(this.client);
   }
 
@@ -51,22 +47,8 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: ChargeListItemsParams
   ): ClientResponse<ChargeResponseListInterface> {
     return this.client.get(PATH.base, { params });
-  }
-
-  /**
-   * Restore a previously deleted item.
-   *
-   * @param expression
-   * @returns
-   */
-  public restoreItem(
-    expression: Expressions
-  ): ClientResponse<ChargeResponseItemInterface> {
-    return this.client.post(
-      parseTemplate(`${PATH.item}/restore`).expand(expression)
-    );
   }
 }

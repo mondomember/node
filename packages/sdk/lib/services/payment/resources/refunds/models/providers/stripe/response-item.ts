@@ -1,4 +1,4 @@
-import { JsonSchemaType } from "../../../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../../../schema";
 import {
   IdPropertyInterface,
   CreatedAtPropertySchema,
@@ -11,11 +11,11 @@ import {
   LastUpdatedPropertyInterface,
   MetadataPropertySchema,
   MetadataPropertyInterface,
-} from "../../../../../../../../../models";
+} from "../../../../../../../models";
 import {
   CustomerPropertyResponseSchema,
   CustomerPropertyResponseInterface,
-} from "../../../../../../../../crm/models";
+} from "../../../../../../crm/models";
 import {
   StatusPropertySchema,
   StatusPropertyInterface,

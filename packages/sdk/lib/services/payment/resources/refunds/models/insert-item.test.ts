@@ -16,17 +16,23 @@ describe("Payment Refund - Create Item Schema", () => {
     expect(payload).toMatchSchema(Schema);
   });
 
-  test("succeed with Id only", async () => {
+  test("succeed with Id and charge", async () => {
+    const refund = Payment.createTestInsertRefund();
+
     const payload = {
-      id: Payment.createTestInsertRefund().id,
+      id: refund.id,
+      charge: refund.charge,
     };
 
     expect(payload).toMatchSchema(Schema);
   });
 
   test("fail with improper Id format", async () => {
+    const refund = Payment.createTestInsertRefund();
+
     const payload = {
       ...Payment.createTestInsertRefund(),
+      charge: refund.charge,
       id: chance.word(),
     };
 

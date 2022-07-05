@@ -20,7 +20,7 @@ type Expressions = {
   gateway: string;
 };
 
-type ListItemsParams = {
+export type GatewayListItemsParams = {
   pagination: PaginationParams;
 };
 
@@ -40,7 +40,7 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: GatewayListItemsParams
   ): ClientResponse<GatewayResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

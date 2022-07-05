@@ -1,8 +1,8 @@
-import { JsonSchemaType } from "../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   PaginationPropertySchema,
   PaginationPropertyInterface,
-} from "../../../../../../../models";
+} from "../../../../../models";
 import {
   RefundResponseItemSchema,
   RefundResponseItemInterface,

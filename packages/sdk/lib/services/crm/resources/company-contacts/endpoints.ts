@@ -21,7 +21,7 @@ type Path = {
   item: string;
 };
 
-type ListItemsParams = {
+type CompanyContactListItemsParams = {
   pagination: PaginationParams;
 };
 
@@ -33,7 +33,7 @@ export default class<
 
   public listItems(
     expression: BaseExpressions,
-    params?: ListItemsParams
+    params?: CompanyContactListItemsParams
   ): ClientResponse<CompanyContactResponseListInterface> {
     return this.client.get(
       parseTemplate(`${this.path.base}`).expand(expression),

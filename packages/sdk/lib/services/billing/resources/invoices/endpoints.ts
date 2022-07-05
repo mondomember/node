@@ -25,7 +25,7 @@ type Expressions = {
   invoice: string;
 };
 
-type ListItemsParams = {
+export type InvoiceListItemsParams = {
   pagination: PaginationParams;
   filter?: InvoiceFilter;
 };
@@ -50,7 +50,7 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: InvoiceListItemsParams
   ): ClientResponse<InvoiceResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

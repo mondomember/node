@@ -1,14 +1,14 @@
-import { JsonSchemaType } from "../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import { AnyRefundStatus, RefundStatusEnum } from ".";
 import {
   constructUIDPropertySchema,
   constructUIDSchema,
-} from "../../../../../../../models";
-import { UIDPrefix } from "../../../../../constants";
-import { AnyPaymentProvider, Provider } from "../../../../../models";
-import { SourceIdSchema } from "../../../../sources/models/base";
-import { ChargeIdSchema } from "../../..//models/base";
-import { GatewayIdSchema } from "../../../../gateways/models/base";
+} from "../../../../../models";
+import { UIDPrefix } from "../../../constants";
+import { AnyPaymentProvider, Provider } from "../../../models";
+import { SourceIdSchema } from "../../sources/models/base";
+import { ChargeIdSchema } from "../../charges/models/base";
+import { GatewayIdSchema } from "../../gateways/models/base";
 
 export const RefundIdSchema = constructUIDSchema([UIDPrefix.REFUND]);
 

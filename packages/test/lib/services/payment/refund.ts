@@ -44,6 +44,7 @@ export function createTestInsertRefund(
 ): Payment.RefundInsertItemInterface {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.REFUND),
+    charge: generateTestKSUID(Payment.UIDPrefix.CHARGE),
     ...AmountProperty,
     ...createMetadataProperty(),
     ...overrides,

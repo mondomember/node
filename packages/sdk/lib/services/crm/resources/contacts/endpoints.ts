@@ -25,7 +25,7 @@ type CompanyExpressions = Expressions & {
   company: string;
 };
 
-type ListItemsParams = {
+type ContactListItemsParams = {
   pagination: PaginationParams;
 };
 
@@ -50,7 +50,7 @@ export default class extends CRUDEndpoints<
   }
 
   public listItems(
-    params?: ListItemsParams
+    params?: ContactListItemsParams
   ): ClientResponse<ContactResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

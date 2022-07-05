@@ -21,7 +21,7 @@ type Expressions = {
   membership: string;
 };
 
-type ListItemsParams = {
+export type MembershipListItemsParams = {
   pagination: PaginationParams;
   filter?: MembershipFilter;
 };
@@ -42,7 +42,7 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: MembershipListItemsParams
   ): ClientResponse<MembershipResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

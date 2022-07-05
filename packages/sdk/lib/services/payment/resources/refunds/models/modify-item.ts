@@ -1,8 +1,8 @@
-import { JsonSchemaType } from "../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
-} from "../../../../../../../models";
+} from "../../../../../models";
 
 export const RefundModifyItemSchema = {
   type: JsonSchemaType.OBJECT,

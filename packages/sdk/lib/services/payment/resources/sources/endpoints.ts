@@ -23,7 +23,7 @@ type Expressions = {
   source: string;
 };
 
-type ListItemsParams = {
+export type SourceListItemsParams = {
   pagination?: PaginationParams;
   filter?: SourceFilter;
 };
@@ -48,7 +48,7 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: SourceListItemsParams
   ): ClientResponse<SourceResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

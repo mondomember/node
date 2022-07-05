@@ -21,7 +21,7 @@ type Expressions = {
   product: string;
 };
 
-type ListItemsParams = {
+export type ProductListItemsParams = {
   pagination: PaginationParams;
 };
 
@@ -45,7 +45,7 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public listItems(
-    params?: ListItemsParams
+    params?: ProductListItemsParams
   ): ClientResponse<ProductResponseListInterface> {
     return this.client.get(this.path.base, { params });
   }

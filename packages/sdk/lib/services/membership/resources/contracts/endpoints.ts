@@ -21,7 +21,7 @@ type Expressions = {
   contract: string;
 };
 
-type ListItemsParams = {
+export type ContractListItemsParams = {
   pagination: PaginationParams;
   filter?: ContractFilter;
 };
@@ -37,7 +37,7 @@ export default class extends CRUDEndpoints<
   }
 
   public listItems(
-    params?: ListItemsParams
+    params?: ContractListItemsParams
   ): ClientResponse<ContractResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }

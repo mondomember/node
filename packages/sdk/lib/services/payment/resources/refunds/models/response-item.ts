@@ -1,4 +1,4 @@
-import { JsonSchemaType } from "../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../schema";
 import {
   StripeRefundResponseItemSchema,
   StripeRefundResponseItemInterface,
