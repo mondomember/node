@@ -8,11 +8,16 @@ export type AnyAction = typeof Action[keyof typeof Action];
 export const ActionEnum = [Action.READ, Action.WRITE];
 
 export const AuthorizationService = {
+  ACTIVITY: "activity",
   CRM: "crm",
   BILLING: "billing",
+  IMPORT: "import",
   MEMBERSHIP: "membership",
   PAYMENT: "payment",
   SEARCH: "search",
+
+  WEBHOOK: "webhook",
+  SETTINGS: "settings",
 } as const;
 
 export type AnyAuthorizationService =

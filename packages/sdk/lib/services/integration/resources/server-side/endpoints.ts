@@ -13,11 +13,11 @@ import {
 
 const PATH = {
   base: "integrations/server-side",
-  item: "integrations/server-side/{jwt}",
+  item: "integrations/server-side/{token}",
 };
 
 type Expressions = {
-  jwt: string;
+  token: string;
 };
 
 type ListItemsParams = {
