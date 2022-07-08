@@ -1,7 +1,11 @@
 import { Chance } from "chance";
 import { Integration } from "@mondomember/sdk";
 
-import { createCreatedAtProperty, createUpdatedAtProperty } from "../../utils";
+import {
+  createCreatedAtProperty,
+  createUpdatedAtProperty,
+  generateTestKSUID,
+} from "../../utils";
 
 const chance: Chance.Chance = new Chance();
 
@@ -10,6 +14,10 @@ const JWT =
 
 const TokenProperty = {
   jwt: JWT,
+};
+
+const IdProperty = {
+  id: generateTestKSUID(Integration.UIDPrefix.SERVER_SIDE_TOKEN),
 };
 
 const LabelProperty = {
@@ -54,6 +62,7 @@ export function createTestServerSideToken(
   overrides?: Partial<Integration.ServerSideTokenResponseItemInterface>
 ): Integration.ServerSideTokenResponseItemInterface {
   return {
+    ...IdProperty,
     ...TokenProperty,
     ...LabelProperty,
     ...DescriptionProperty,

@@ -1,5 +1,6 @@
-import { constructJWTSchema } from "../../../../../models";
+import { constructJWTSchema, constructUIDSchema } from "../../../../../models";
 import { JsonSchemaType } from "../../../../../schema";
+import { UIDPrefix } from "../../../constants";
 
 import { ActionEnum, AuthorizationService } from "../../../interfaces";
 import {
@@ -10,6 +11,18 @@ import {
 } from "./interfaces";
 
 export const ServerSideTokenSchema = constructJWTSchema();
+
+export const ServerSideIdSchema = constructUIDSchema([
+  UIDPrefix.SERVER_SIDE_TOKEN,
+]);
+
+export const IdPropertySchema = {
+  id: ServerSideIdSchema,
+};
+
+export interface IdPropertyInterface {
+  id: string;
+}
 
 export const TokenPropertySchema = {
   jwt: ServerSideTokenSchema,

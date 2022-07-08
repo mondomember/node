@@ -11,6 +11,8 @@ import {
 } from "../../../../../models";
 
 import {
+  IdPropertyInterface,
+  IdPropertySchema,
   LabelPropertySchema,
   LabelPropertyInterface,
   DescriptionPropertySchema,
@@ -24,8 +26,9 @@ import {
 export const ServerSideTokenResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["jwt", "label", "createdAt", "updatedAt"],
+  required: ["id", "jwt", "label", "createdAt", "updatedAt"],
   properties: {
+    ...IdPropertySchema,
     ...TokenPropertySchema,
     ...LabelPropertySchema,
     ...DescriptionPropertySchema,
@@ -38,7 +41,8 @@ export const ServerSideTokenResponseItemSchema: JsonSchema = {
 };
 
 export interface ServerSideTokenResponseItemInterface
-  extends TokenPropertyInterface,
+  extends IdPropertyInterface,
+    TokenPropertyInterface,
     LabelPropertyInterface,
     AuthorizationsPropertyInterface,
     Partial<DescriptionPropertyInterface>,
