@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/mondomember/node/compare/v1.2.0...v1.2.1) (2022-07-08)
+
+
+### Bug Fixes
+
+* adding id to api token schema ([82d65f3](https://github.com/mondomember/node/commit/82d65f3a31274bfdbdcec85243250ae4c7b2c3d5))
+
+
+
+
+
 # [1.2.0](https://github.com/mondomember/node/compare/v1.1.0...v1.2.0) (2022-07-07)
 
 **Note:** Version bump only for package @mondomember/test
