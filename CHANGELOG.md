@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/mondomember/node/compare/v1.2.1...v1.2.2) (2022-07-10)
+
+
+### Features
+
+* adding exports ([4469206](https://github.com/mondomember/node/commit/4469206c23f058a517deaeb367f88eaa9d61979b))
+
+
+
+
+
 ## [1.2.1](https://github.com/mondomember/node/compare/v1.2.0...v1.2.1) (2022-07-08)
 
 
