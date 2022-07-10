@@ -1,6 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../models";
@@ -20,7 +19,7 @@ import {
 import { ChargeType } from "./interfaces";
 
 // Invoice + Token (new source to pay invoice)
-const TokenChargeInsertItemSchema = {
+export const TokenChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type", "token", "invoice"],
@@ -37,7 +36,7 @@ const TokenChargeInsertItemSchema = {
   },
 };
 
-interface TokenChargeInsertItemInterface
+export interface TokenChargeInsertItemInterface
   extends TokenPropertyInterface,
     InvoicePropertyInterface,
     Partial<GatewayPropertyInterface>,
@@ -47,7 +46,7 @@ interface TokenChargeInsertItemInterface
 }
 
 // Invoice + Source (use source on file to pay invoice)
-const SourceChargeInsertItemSchema = {
+export const SourceChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type", "source", "invoice"],
@@ -62,7 +61,7 @@ const SourceChargeInsertItemSchema = {
   },
 };
 
-interface SourceChargeInsertItemInterface
+export interface SourceChargeInsertItemInterface
   extends InvoicePropertyInterface,
     SourcePropertyInterface,
     Partial<MetadataPropertyInterface> {
