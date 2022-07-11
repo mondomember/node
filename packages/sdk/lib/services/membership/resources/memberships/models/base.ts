@@ -78,6 +78,23 @@ export const PeriodPropertySchema = {
   },
 };
 
+export const PartialPeriodPropertySchema = {
+  period: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    properties: {
+      startAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+      endAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+    },
+  },
+};
+
 export interface PeriodPropertyInterface {
   period: {
     startAt: string;
@@ -152,26 +169,26 @@ interface AutoPayInterface {
   source: string | "DEFAULT";
 }
 
-const ProductTierPriceRequest = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["version"],
-  properties: {
-    version: {
-      type: JsonSchemaType.NUMBER,
-    },
-  },
-};
+// const ProductTierPriceRequest = {
+//   type: JsonSchemaType.OBJECT,
+//   additionalProperties: false,
+//   required: ["version"],
+//   properties: {
+//     version: {
+//       type: JsonSchemaType.NUMBER,
+//     },
+//   },
+// };
 
-const ProductTierRequest = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["id", "price"],
-  properties: {
-    id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
-    price: ProductTierPriceRequest,
-  },
-};
+// const ProductTierRequest = {
+//   type: JsonSchemaType.OBJECT,
+//   additionalProperties: false,
+//   required: ["id", "price"],
+//   properties: {
+//     id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
+//     price: ProductTierPriceRequest,
+//   },
+// };
 
 export const ProductPropertyResponseSchema = {
   product: {
@@ -194,32 +211,32 @@ export interface ProductPropertyResponseInterface {
   };
 }
 
-const ProductTierPriceResponseSchema = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["version", "amount"],
-  properties: {
-    version: {
-      type: JsonSchemaType.NUMBER,
-    },
-    amount: {
-      type: JsonSchemaType.NUMBER,
-    },
-  },
-};
+// const ProductTierPriceResponseSchema = {
+//   type: JsonSchemaType.OBJECT,
+//   additionalProperties: false,
+//   required: ["version", "amount"],
+//   properties: {
+//     version: {
+//       type: JsonSchemaType.NUMBER,
+//     },
+//     amount: {
+//       type: JsonSchemaType.NUMBER,
+//     },
+//   },
+// };
 
-const ProductTierResponseSchema = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["id", "label", "price"],
-  properties: {
-    id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
-    label: {
-      type: JsonSchemaType.STRING,
-    },
-    price: ProductTierPriceResponseSchema,
-  },
-};
+// const ProductTierResponseSchema = {
+//   type: JsonSchemaType.OBJECT,
+//   additionalProperties: false,
+//   required: ["id", "label", "price"],
+//   properties: {
+//     id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
+//     label: {
+//       type: JsonSchemaType.STRING,
+//     },
+//     price: ProductTierPriceResponseSchema,
+//   },
+// };
 
 export interface MembershipRecurringResponseInterface {
   autoPay?: AutoPayInterface;

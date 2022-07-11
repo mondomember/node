@@ -11,8 +11,10 @@ import {
   DescriptionPropertySchema,
   DescriptionPropertyInterface,
   PeriodPropertyInterface,
-  PeriodPropertySchema,
+  PartialPeriodPropertySchema,
 } from "./base";
+
+import { DeepPartial } from "utility-types";
 
 export const MembershipModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,14 +22,14 @@ export const MembershipModifyItemSchema = {
   properties: {
     ...ContactsPropertySchema,
     ...DescriptionPropertySchema,
-    ...PeriodPropertySchema,
+    ...PartialPeriodPropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
   },
 };
 
 export interface MembershipModifyItemInterface
-  extends Partial<PeriodPropertyInterface>,
+  extends DeepPartial<PeriodPropertyInterface>,
     Partial<ContactsPropertyInterface>,
     Partial<DescriptionPropertyInterface>,
     Partial<MetadataPropertyInterface>,

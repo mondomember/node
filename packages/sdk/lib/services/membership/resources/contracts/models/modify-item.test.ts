@@ -23,12 +23,12 @@ describe("Membership Contract - Update Item Schema", () => {
     expect(payload).toMatchSchema(Schema);
   });
 
-  test("fail with invalid period start", async () => {
+  test("fail with invalid period", async () => {
     const payload = {
       ...Membership.createTestModifyContract(),
       ...{
         period: {
-          endAt: new Date().toISOString(),
+          endAt: "foo",
         },
       },
     };

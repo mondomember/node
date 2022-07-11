@@ -9,7 +9,7 @@ import {
 import {
   ContactsPropertySchema,
   ContactsPropertyInterface,
-  PeriodPropertySchema,
+  PartialPeriodPropertySchema,
   PeriodPropertyInterface,
   LineItemsRequestPropertySchema,
   LineItemsRequestPropertyInterface,
@@ -19,11 +19,13 @@ import {
   RequestRecurringPropertyInterface,
 } from "./base";
 
+import { DeepPartial } from "utility-types";
+
 export const ContractModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {
-    ...PeriodPropertySchema,
+    ...PartialPeriodPropertySchema,
     ...LineItemsRequestPropertySchema,
     ...RequestBillingPropertySchema,
     ...RequestRecurringPropertySchema,
@@ -34,7 +36,7 @@ export const ContractModifyItemSchema = {
 };
 
 export interface ContractModifyItemInterface
-  extends Partial<PeriodPropertyInterface>,
+  extends DeepPartial<PeriodPropertyInterface>,
     Partial<LineItemsRequestPropertyInterface>,
     Partial<RequestBillingPropertyInterface>,
     Partial<RequestRecurringPropertyInterface>,

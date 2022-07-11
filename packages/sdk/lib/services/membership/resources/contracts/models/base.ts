@@ -58,6 +58,23 @@ export const PeriodPropertySchema = {
   },
 };
 
+export const PartialPeriodPropertySchema = {
+  period: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    properties: {
+      startAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+      endAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+    },
+  },
+};
+
 export interface PeriodPropertyInterface {
   period: {
     startAt: string;
