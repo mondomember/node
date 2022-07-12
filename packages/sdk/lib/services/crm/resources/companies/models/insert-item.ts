@@ -4,6 +4,8 @@ import {
   MetadataPropertyInterface,
   PropertiesPropertySchema,
   PropertiesPropertyInterface,
+  ExternalIdPropertySchema,
+  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 
 import { NamePropertySchema, NamePropertyInterface } from "./base";
@@ -16,10 +18,12 @@ export const CompanyInsertItemSchema = {
     ...NamePropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
+    ...ExternalIdPropertySchema,
   },
 };
 
 export interface CompanyInsertItemInterface
   extends NamePropertyInterface,
     Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}
+    Partial<PropertiesPropertyInterface>,
+    Partial<ExternalIdsPropertyInterface> {}

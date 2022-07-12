@@ -4,6 +4,8 @@ import {
   MetadataPropertyInterface,
   PropertiesPropertySchema,
   PropertiesPropertyInterface,
+  ExternalIdPropertySchema,
+  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 import {
   ContractPropertySchema,
@@ -42,6 +44,7 @@ export const InvoiceInsertItemSchema = {
     ...MembershipsPropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
+    ...ExternalIdPropertySchema,
   },
 };
 
@@ -56,4 +59,5 @@ export interface InvoiceInsertItemInterface
     Partial<ContactsPropertyInterface>,
     Partial<MembershipsPropertyInterface>,
     Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}
+    Partial<PropertiesPropertyInterface>,
+    Partial<ExternalIdsPropertyInterface> {}

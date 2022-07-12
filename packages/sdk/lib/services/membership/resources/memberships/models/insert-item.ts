@@ -4,6 +4,8 @@ import {
   MetadataPropertyInterface,
   PropertiesPropertySchema,
   PropertiesPropertyInterface,
+  ExternalIdPropertySchema,
+  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 import {
   CustomerPropertyRequestSchema,
@@ -32,6 +34,7 @@ export const MembershipInsertItemSchema = {
     ...PeriodPropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
+    ...ExternalIdPropertySchema,
   },
 };
 
@@ -42,4 +45,5 @@ export interface MembershipInsertItemInterface
     Partial<ContactsPropertyInterface>,
     Partial<DescriptionPropertyInterface>,
     Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}
+    Partial<PropertiesPropertyInterface>,
+    Partial<ExternalIdsPropertyInterface> {}

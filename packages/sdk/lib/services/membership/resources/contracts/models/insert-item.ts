@@ -4,6 +4,8 @@ import {
   MetadataPropertyInterface,
   PropertiesPropertySchema,
   PropertiesPropertyInterface,
+  ExternalIdPropertySchema,
+  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 
 import {
@@ -36,6 +38,7 @@ export const ContractInsertItemSchema = {
 
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
+    ...ExternalIdPropertySchema,
   },
 };
 
@@ -47,4 +50,5 @@ export interface ContractInsertItemInterface
     Partial<RequestRecurringPropertyInterface>,
     Partial<ContactsPropertyInterface>,
     Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}
+    Partial<PropertiesPropertyInterface>,
+    Partial<ExternalIdsPropertyInterface> {}
