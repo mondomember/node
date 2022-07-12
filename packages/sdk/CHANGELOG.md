@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/mondomember/node/compare/v1.2.3...v1.3.0) (2022-07-12)
+
+
+### Features
+
+* adding external id to select create item schemas ([cacf9f0](https://github.com/mondomember/node/commit/cacf9f0c7f8975d1de6a4dec96d52299811ca89a))
+
+
+
+
+
 ## [1.2.3](https://github.com/mondomember/node/compare/v1.2.2...v1.2.3) (2022-07-11)
 
 
