@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/mondomember/node/compare/v1.3.1...v1.3.2) (2022-07-13)
+
+
+### Bug Fixes
+
+* fixing plural usage of external id ([67570a3](https://github.com/mondomember/node/commit/67570a3d25e7a560471787127a39571e84ddd44c))
+
+
+
+
+
 ## [1.3.1](https://github.com/mondomember/node/compare/v1.3.0...v1.3.1) (2022-07-13)
 
 **Note:** Version bump only for package @mondomember/sdk
