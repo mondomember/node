@@ -102,6 +102,12 @@ export const PaymentSourceWebhookEvents = {
 } as const;
 
 export const PaymentChargeWebhookEvents = {
+  CHARGE_CREATE: `payment.charge.insert`,
+
+  CHARGE_CANCELED: `payment.charge.canceled`,
+  CHARGE_REQUIRES_ACTION: `payment.charge.require-action`,
+  CHARGE_PROCESSING: `payment.charge.processing`,
+
   CHARGE_SUCCEEDED: `payment.charge.succeeded`,
   CHARGE_FAILED: `payment.charge.failed`,
   CHARGE_REFUNDED: `payment.charge.refunded`,
