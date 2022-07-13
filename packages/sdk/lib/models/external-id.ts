@@ -1,7 +1,7 @@
 import { JsonSchemaType } from "../schema";
 
 export const ExternalIdPropertySchema = {
-  externalId: {
+  externalIds: {
     type: JsonSchemaType.ARRAY,
     items: {
       type: JsonSchemaType.STRING,
