@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.3](https://github.com/mondomember/node/compare/v1.3.2...v1.3.3) (2022-07-14)
+
+
+### Features
+
+* adding sort to search parse query interfaces ([14384c0](https://github.com/mondomember/node/commit/14384c0e9e2e8724f3f1914edd66c7fad7253c7e))
+
+
+
+
+
 ## [1.3.2](https://github.com/mondomember/node/compare/v1.3.1...v1.3.2) (2022-07-13)
 
 
