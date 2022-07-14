@@ -16,18 +16,18 @@ import { InvoiceResponseItemInterface } from "../../billing";
 
 export interface ParsedQuery {
   query?: string;
-  sort?: Record<string, string | Record<string, string>>[];
+  sort?: string | Record<string, "asc" | "desc">[];
   // index or alias
   target?: string | string[];
   relatedIds?: {
-    customerId?: string;
-    companyId?: string;
-    contactId?: string;
-    invoiceId?: string;
-    contractId?: string;
-    productId?: string;
-    membershipId?: string;
-    chargeId?: string;
+    customerId?: string | string[];
+    companyId?: string | string[];
+    contactId?: string | string[];
+    invoiceId?: string | string[];
+    contractId?: string | string[];
+    productId?: string | string[];
+    membershipId?: string | string[];
+    chargeId?: string | string[];
   };
   dateStart?: string;
   dateEnd?: string;
