@@ -16,8 +16,9 @@ import { InvoiceResponseItemInterface } from "../../billing";
 
 export interface ParsedQuery {
   query?: string;
+  sort?: Record<string, string | Record<string, string>>[];
   // index or alias
-  target?: string;
+  target?: string | string[];
   relatedIds?: {
     customerId?: string;
     companyId?: string;
