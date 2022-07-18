@@ -1,4 +1,5 @@
 import {
+  Action,
   AnyAction,
   AuthorizationService,
   ResourceAuthorizations,
@@ -38,6 +39,11 @@ export interface ServerSideSearchAuthorizations extends ResourceAuthorizations {
   global?: AnyAction;
 }
 
+export interface ServerSideAccountAuthorizations
+  extends ResourceAuthorizations {
+  settings?: typeof Action.READ;
+}
+
 export interface ServerSideActivityAuthorizations
   extends ResourceAuthorizations {}
 
@@ -50,6 +56,7 @@ export interface ServerSideSettingsAuthorizations
 }
 
 export interface ServerSideAuthorizations extends ServiceAuthorizations {
+  [AuthorizationService.ACCOUNT]?: ServerSideAccountAuthorizations;
   [AuthorizationService.ACTIVITY]?: ServerSideActivityAuthorizations;
   [AuthorizationService.BILLING]?: ServerSideBillingAuthorizations;
   [AuthorizationService.CRM]?: ServerSideCRMAuthorizations;

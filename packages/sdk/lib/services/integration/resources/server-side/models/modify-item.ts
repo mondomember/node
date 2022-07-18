@@ -1,3 +1,4 @@
+import { DeepPartial } from "utility-types";
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 
 import {
@@ -21,5 +22,5 @@ export const ServerSideTokenModifyItemSchema: JsonSchema = {
 
 export interface ServerSideTokenModifyItemInterface
   extends Partial<LabelPropertyInterface>,
-    Partial<AuthorizationsPropertyInterface>,
+    DeepPartial<AuthorizationsPropertyInterface>,
     Partial<DescriptionPropertyInterface> {}
