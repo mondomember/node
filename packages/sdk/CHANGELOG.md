@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/mondomember/node/compare/v1.4.0...v1.4.1) (2022-07-18)
+
+
+### Features
+
+* adding view account settings integration permission ([98991cd](https://github.com/mondomember/node/commit/98991cdec0c9f013ae8e1c6007146240235ff77a))
+
+
+
+
+
 # [1.4.0](https://github.com/mondomember/node/compare/v1.3.4...v1.4.0) (2022-07-18)
 
 **Note:** Version bump only for package @mondomember/sdk
