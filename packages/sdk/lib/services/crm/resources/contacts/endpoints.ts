@@ -10,8 +10,6 @@ import {
 } from "./models";
 import { ContactListItemsParams } from "./interfaces";
 
-import ContactContactEndpoints from "../company-contacts/endpoints";
-
 const PATH = {
   base: "crm/contacts",
   item: "crm/contacts/{contact}",
@@ -21,28 +19,14 @@ type Expressions = {
   contact: string;
 };
 
-type CompanyExpressions = Expressions & {
-  company: string;
-};
-
 export default class extends CRUDEndpoints<
   Expressions,
   ContactInsertItemInterface,
   ContactModifyItemInterface,
   ContactResponseItemInterface
 > {
-  readonly Companies: ContactContactEndpoints<Expressions, CompanyExpressions>;
-
   constructor(client: ClientInstance) {
     super(PATH, client);
-
-    this.Companies = new ContactContactEndpoints(
-      {
-        base: `${PATH.item}/companies`,
-        item: `${PATH.item}/companies/{company}`,
-      },
-      client
-    );
   }
 
   public listItems(

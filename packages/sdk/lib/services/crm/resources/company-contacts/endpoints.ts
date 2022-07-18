@@ -6,35 +6,26 @@ import {
   CompanyContactResponseItemInterface,
   CompanyContactResponseListInterface,
 } from "./models";
+
 import { CompanyContactListItemsParams } from "./interfaces";
 
-type ContactExpressions = {
-  contact: string;
+const PATH = {
+  base: "crm/company-contacts",
+  item: "crm/company-contacts/{company}/{contact}",
 };
 
-type CompanyExpressions = {
+type Expressions = {
+  contact: string;
   company: string;
 };
 
-type Path = {
-  base: string;
-  item: string;
-};
-
-export default class<
-  BaseExpressions extends ContactExpressions | CompanyExpressions,
-  ItemExpressions extends ContactExpressions | CompanyExpressions
-> {
-  constructor(readonly path: Path, readonly client: ClientInstance) {}
+export default class {
+  constructor(readonly client: ClientInstance) {}
 
   public listItems(
-    expression: BaseExpressions,
     params?: CompanyContactListItemsParams
   ): ClientResponse<CompanyContactResponseListInterface> {
-    return this.client.get(
-      parseTemplate(`${this.path.base}`).expand(expression),
-      { params }
-    );
+    return this.client.get(PATH.base, { params });
   }
 
   /**
@@ -44,9 +35,9 @@ export default class<
    * @returns
    */
   public getItem(
-    expression: BaseExpressions & ItemExpressions
+    expression: Expressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
-    return this.client.get(parseTemplate(this.path.item).expand(expression));
+    return this.client.get(parseTemplate(PATH.item).expand(expression));
   }
 
   /**
@@ -57,11 +48,11 @@ export default class<
    * @returns
    */
   public upsertItem(
-    expression: BaseExpressions & ItemExpressions,
+    expression: Expressions,
     payload: CompanyContactUpsertItemInterface
   ): ClientResponse<CompanyContactResponseItemInterface> {
     return this.client.put(
-      parseTemplate(this.path.item).expand(expression),
+      parseTemplate(PATH.item).expand(expression),
       payload
     );
   }
@@ -73,9 +64,9 @@ export default class<
    * @returns
    */
   public deleteItem(
-    expression: BaseExpressions & ItemExpressions
+    expression: Expressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
-    return this.client.delete(parseTemplate(this.path.item).expand(expression));
+    return this.client.delete(parseTemplate(PATH.item).expand(expression));
   }
 
   /**
@@ -85,10 +76,10 @@ export default class<
    * @returns
    */
   public restoreItem(
-    expression: BaseExpressions & ItemExpressions
+    expression: Expressions
   ): ClientResponse<CompanyContactResponseItemInterface> {
     return this.client.post(
-      parseTemplate(`${this.path.item}/restore`).expand(expression)
+      parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
   }
 }
