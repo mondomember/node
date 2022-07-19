@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.4](https://github.com/mondomember/node/compare/v1.4.3...v1.4.4) (2022-07-19)
+
+
+### Bug Fixes
+
+* changing comapny-contact integration resource name ([6284370](https://github.com/mondomember/node/commit/628437065cfcd3ea0b8ac6f8624886df0edd9579))
+
+
+
+
+
 ## [1.4.3](https://github.com/mondomember/node/compare/v1.4.2...v1.4.3) (2022-07-19)
 
 
