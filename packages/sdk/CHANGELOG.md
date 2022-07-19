@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/mondomember/node/compare/v1.4.1...v1.4.2) (2022-07-19)
+
+
+### Features
+
+* adding integration roles ([4ebd480](https://github.com/mondomember/node/commit/4ebd4800cf58f7e9e9e247710957ab845c7d6b87))
+
+
+
+
+
 ## [1.4.1](https://github.com/mondomember/node/compare/v1.4.0...v1.4.1) (2022-07-18)
 
 
