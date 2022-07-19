@@ -21,9 +21,11 @@ export const PerformedBySchema = {
       type: JsonSchemaType.STRING,
       enum: [
         PerformerType.SYSTEM,
+        PerformerType.GUEST,
         PerformerType.IDENTITY,
         PerformerType.AUTOMATION,
         PerformerType.WORKFLOW,
+        PerformerType.INTEGRATION,
       ],
     },
     identifier: {

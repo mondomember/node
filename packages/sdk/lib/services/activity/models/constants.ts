@@ -12,6 +12,7 @@ export const PerformerType = {
   IDENTITY: "Identity",
   AUTOMATION: "Automation",
   WORKFLOW: "Workflow",
+  INTEGRATION: "Integration",
 } as const;
 
 export type AnyPerformerType = typeof PerformerType[keyof typeof PerformerType];
