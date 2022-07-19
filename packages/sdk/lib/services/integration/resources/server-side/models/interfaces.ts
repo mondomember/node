@@ -36,11 +36,12 @@ export interface ServerSideImportAuthorizations extends ResourceAuthorizations {
   jobs?: AnyAction;
 }
 export interface ServerSideSearchAuthorizations extends ResourceAuthorizations {
-  global?: AnyAction;
+  "*"?: typeof Action.READ;
 }
 
 export interface ServerSideAccountAuthorizations
   extends ResourceAuthorizations {
+  "*"?: typeof Action.READ;
   settings?: typeof Action.READ;
 }
 
