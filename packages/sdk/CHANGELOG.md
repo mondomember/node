@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.3](https://github.com/mondomember/node/compare/v1.4.2...v1.4.3) (2022-07-19)
+
+
+### Features
+
+* adding more resources to integrations schemas ([0672d39](https://github.com/mondomember/node/commit/0672d39e0fd135ed418a7d7e3139c30c3a95ca3c))
+
+
+
+
+
 ## [1.4.2](https://github.com/mondomember/node/compare/v1.4.1...v1.4.2) (2022-07-19)
 
 
