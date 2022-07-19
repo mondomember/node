@@ -14,7 +14,7 @@ export interface ServerSideBillingAuthorizations
 export interface ServerSideCRMAuthorizations extends ResourceAuthorizations {
   companies?: AnyAction;
   contacts?: AnyAction;
-  companyContacts?: AnyAction;
+  "company-contacts"?: AnyAction;
 }
 
 export interface ServerSideMembershipAuthorizations
