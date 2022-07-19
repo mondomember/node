@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.5](https://github.com/mondomember/node/compare/v1.4.4...v1.4.5) (2022-07-19)
+
+
+### Features
+
+* adjusting activity performers ([4ca6ee9](https://github.com/mondomember/node/commit/4ca6ee975c24d4c2e4d08b9d9578ff6986483b5c))
+
+
+
+
+
 ## [1.4.4](https://github.com/mondomember/node/compare/v1.4.3...v1.4.4) (2022-07-19)
 
 

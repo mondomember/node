@@ -2,7 +2,7 @@
   "name": "@mondomember/test",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -27,7 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/sdk": "^1.4.4",
+    "@mondomember/sdk": "^1.4.5",
     "chance": "^1.1.8",
     "stripe": "^9.8.0"
   },
