@@ -2,12 +2,17 @@ import { constructJWTSchema, constructUIDSchema } from "../../../../../models";
 import { JsonSchemaType } from "../../../../../schema";
 import { UIDPrefix } from "../../../constants";
 
-import { ActionEnum, AuthorizationService } from "../../../interfaces";
+import { Action, ActionEnum, AuthorizationService } from "../../../interfaces";
 import {
+  ServerSideAccountAuthorizations,
+  ServerSideActivityAuthorizations,
+  ServerSideBillingAuthorizations,
   ServerSideCRMAuthorizations,
   ServerSideMembershipAuthorizations,
   ServerSidePaymentAuthorizations,
   ServerSideSearchAuthorizations,
+  ServerSideSettingsAuthorizations,
+  ServerSideWebhookAuthorizations,
 } from "./interfaces";
 
 export const ServerSideTokenSchema = constructJWTSchema();
@@ -53,6 +58,40 @@ export interface DescriptionPropertyInterface {
   description: string;
 }
 
+export const AccountAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: [Action.READ],
+    },
+    settings: {
+      type: JsonSchemaType.STRING,
+      enum: [Action.READ],
+    },
+  },
+};
+
+export const ActivityAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: ActionEnum,
+    },
+  },
+};
+
+export const BillingAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: ActionEnum,
+    },
+  },
+};
+
 export const CRMAuthorizationsSchema = {
   type: JsonSchemaType.OBJECT,
   properties: {
@@ -83,7 +122,37 @@ export const PaymentAuthorizationsSchema = {
   },
 };
 
+export const ImportAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: ActionEnum,
+    },
+  },
+};
+
 export const SearchAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: ActionEnum,
+    },
+  },
+};
+
+export const SettingsAuthorizationsSchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    "*": {
+      type: JsonSchemaType.STRING,
+      enum: ActionEnum,
+    },
+  },
+};
+
+export const WebhookAuthorizationsSchema = {
   type: JsonSchemaType.OBJECT,
   properties: {
     "*": {
@@ -97,19 +166,30 @@ export const AuthorizationsPropertySchema = {
   authorizations: {
     type: JsonSchemaType.OBJECT,
     properties: {
+      [AuthorizationService.ACCOUNT]: AccountAuthorizationsSchema,
+      [AuthorizationService.ACTIVITY]: ActivityAuthorizationsSchema,
+      [AuthorizationService.BILLING]: BillingAuthorizationsSchema,
       [AuthorizationService.CRM]: CRMAuthorizationsSchema,
+      [AuthorizationService.IMPORT]: ImportAuthorizationsSchema,
       [AuthorizationService.MEMBERSHIP]: MembershipAuthorizationsSchema,
       [AuthorizationService.PAYMENT]: PaymentAuthorizationsSchema,
       [AuthorizationService.SEARCH]: SearchAuthorizationsSchema,
+      [AuthorizationService.SETTINGS]: SettingsAuthorizationsSchema,
+      [AuthorizationService.WEBHOOK]: WebhookAuthorizationsSchema,
     },
   },
 };
 
 export interface AuthorizationsPropertyInterface {
   authorizations: {
+    [AuthorizationService.ACCOUNT]?: ServerSideAccountAuthorizations;
+    [AuthorizationService.ACTIVITY]?: ServerSideActivityAuthorizations;
+    [AuthorizationService.BILLING]?: ServerSideBillingAuthorizations;
     [AuthorizationService.CRM]?: ServerSideCRMAuthorizations;
     [AuthorizationService.MEMBERSHIP]?: ServerSideMembershipAuthorizations;
     [AuthorizationService.PAYMENT]?: ServerSidePaymentAuthorizations;
     [AuthorizationService.SEARCH]?: ServerSideSearchAuthorizations;
+    [AuthorizationService.SETTINGS]?: ServerSideSettingsAuthorizations;
+    [AuthorizationService.WEBHOOK]?: ServerSideWebhookAuthorizations;
   };
 }
