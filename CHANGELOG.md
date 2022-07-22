@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.8](https://github.com/mondomember/node/compare/v1.4.7...v1.4.8) (2022-07-22)
+
+
+### Bug Fixes
+
+* incorrect import attribute keys ([389f7d3](https://github.com/mondomember/node/commit/389f7d3883662274f4bed7d6c591e3dd003aebc6))
+
+
+
+
+
 ## [1.4.7](https://github.com/mondomember/node/compare/v1.4.6...v1.4.7) (2022-07-22)
 
 
