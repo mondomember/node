@@ -17,6 +17,12 @@ import {
 } from "../../companies/models/base";
 import { NamePropertyInterface } from "../../companies/models/interfaces";
 
+export const AnyIdPropertySchema = {
+  id: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
 export const ContactPropertySchema = {
   contact: {
     type: JsonSchemaType.OBJECT,
@@ -37,7 +43,7 @@ export const ContactUpsertPropertySchema = {
     additionalProperties: false,
     required: ["id"],
     properties: {
-      ...ContactIdPropertySchema,
+      ...AnyIdPropertySchema,
     },
   },
 };
@@ -68,7 +74,7 @@ export const CompanyUpsertPropertySchema = {
     additionalProperties: false,
     required: ["id"],
     properties: {
-      ...CompanyIdPropertySchema,
+      ...AnyIdPropertySchema,
     },
   },
 };
