@@ -17,7 +17,7 @@ import {
 } from "../../companies/models/base";
 import { NamePropertyInterface } from "../../companies/models/interfaces";
 
-export const AnyIdPropertySchema = {
+const AnyIdPropertySchema = {
   id: {
     type: JsonSchemaType.STRING,
   },

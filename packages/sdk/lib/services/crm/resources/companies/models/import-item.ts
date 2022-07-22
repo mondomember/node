@@ -1,6 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
 import { IdPropertyInterface } from "../../../../../models";
-import { CompanyIdPropertySchema } from "./base";
 
 import {
   CompanyInsertItemSchema,
@@ -11,11 +10,17 @@ import {
   CompanyModifyItemInterface,
 } from "./modify-item";
 
+const AnyIdPropertySchema = {
+  id: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
 export const CompanyImportInsertItemSchema = {
   ...CompanyInsertItemSchema,
   properties: {
     ...CompanyInsertItemSchema.properties,
-    ...CompanyIdPropertySchema,
+    ...AnyIdPropertySchema,
   },
 };
 
@@ -24,7 +29,7 @@ export const CompanyImportModifyItemSchema = {
   required: ["id"],
   properties: {
     ...CompanyModifyItemSchema.properties,
-    ...CompanyIdPropertySchema,
+    ...AnyIdPropertySchema,
   },
 };
 

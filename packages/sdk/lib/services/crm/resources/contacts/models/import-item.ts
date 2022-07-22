@@ -1,6 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
 import { IdPropertyInterface } from "../../../../../models";
-import { ContactIdPropertySchema } from "./base";
 
 import {
   ContactInsertItemSchema,
@@ -11,11 +10,17 @@ import {
   ContactModifyItemInterface,
 } from "./modify-item";
 
+const AnyIdPropertySchema = {
+  id: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
 export const ContactImportInsertItemSchema = {
   ...ContactInsertItemSchema,
   properties: {
     ...ContactInsertItemSchema.properties,
-    ...ContactIdPropertySchema,
+    ...AnyIdPropertySchema,
   },
 };
 
@@ -24,7 +29,7 @@ export const ContactImportModifyItemSchema = {
   required: ["id"],
   properties: {
     ...ContactModifyItemSchema.properties,
-    ...ContactIdPropertySchema,
+    ...AnyIdPropertySchema,
   },
 };
 

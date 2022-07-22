@@ -1,6 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
 import { IdPropertyInterface } from "../../../../../models";
-import { ProductIdPropertySchema } from "./base";
 
 import {
   ProductInsertItemSchema,
@@ -11,12 +10,18 @@ import {
   ProductModifyItemInterface,
 } from "./modify-item";
 
+const AnyIdPropertySchema = {
+  id: {
+    type: JsonSchemaType.STRING,
+  },
+};
+
 export const ProductImportInsertItemSchema = {
   ...ProductInsertItemSchema,
   additionalProperties: true,
   properties: {
     ...ProductInsertItemSchema.properties,
-    ...ProductIdPropertySchema,
+    ...AnyIdPropertySchema,
     default: {
       type: JsonSchemaType.BOOLEAN,
     },
@@ -29,7 +34,7 @@ export const ProductImportModifyItemSchema = {
   required: ["id"],
   properties: {
     ...ProductModifyItemSchema.properties,
-    ...ProductIdPropertySchema,
+    ...AnyIdPropertySchema,
     default: {
       type: JsonSchemaType.BOOLEAN,
     },
