@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.6](https://github.com/mondomember/node/compare/v1.4.5...v1.4.6) (2022-07-22)
+
+
+### Bug Fixes
+
+* correcting search billing index name ([ef3819c](https://github.com/mondomember/node/commit/ef3819c5f83aaee291a1bb54bbd210793abef342))
+
+
+
+
+
 ## [1.4.5](https://github.com/mondomember/node/compare/v1.4.4...v1.4.5) (2022-07-19)
 
 
