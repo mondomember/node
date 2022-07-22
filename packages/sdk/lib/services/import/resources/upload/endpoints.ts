@@ -12,6 +12,7 @@ const PATH = {
 export default class UploadEndpoints {
   readonly Companies: UploadResourceEndpoints;
   readonly Contacts: UploadResourceEndpoints;
+  readonly CompanyContacts: UploadResourceEndpoints;
   readonly Memberships: UploadResourceEndpoints;
   readonly Contracts: UploadResourceEndpoints;
   readonly Products: UploadResourceEndpoints;
@@ -25,6 +26,10 @@ export default class UploadEndpoints {
     );
     this.Contacts = new UploadResourceEndpoints(
       `${PATH.base}/contacts`,
+      client
+    );
+    this.CompanyContacts = new UploadResourceEndpoints(
+      `${PATH.base}/company-contacts`,
       client
     );
     this.Memberships = new UploadResourceEndpoints(
