@@ -5,22 +5,29 @@ import {
   CompanyUpsertInterface,
 } from "./base";
 
+import { JsonSchemaType } from "../../../../../schema";
 import {
-  CompanyContactUpsertItemSchema,
-  CompanyContactUpsertItemInterface,
-} from "./upsert-item";
+  MetadataPropertySchema,
+  MetadataPropertyInterface,
+  PropertiesPropertySchema,
+  PropertiesPropertyInterface,
+} from "../../../../../models";
 
 export const CompanyContactImportItemSchema = {
-  ...CompanyContactUpsertItemSchema,
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["company", "contact"],
   properties: {
-    ...CompanyContactUpsertItemSchema.properties,
     ...CompanyUpsertPropertySchema,
     ...ContactUpsertPropertySchema,
+    ...PropertiesPropertySchema,
+    ...MetadataPropertySchema,
   },
 };
 
 export interface CompanyContactImportItemInterface
-  extends CompanyContactUpsertItemInterface {
+  extends Partial<MetadataPropertyInterface>,
+    Partial<PropertiesPropertyInterface> {
   contact: ContactUpsertInterface;
   company: CompanyUpsertInterface;
 }
