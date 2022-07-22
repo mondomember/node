@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.7](https://github.com/mondomember/node/compare/v1.4.6...v1.4.7) (2022-07-22)
+
+
+### Features
+
+* adding import schema for company contacts ([9b3721b](https://github.com/mondomember/node/commit/9b3721bf42f3be2e0dd850ab161e2593ada59f11))
+
+
+
+
+
 ## [1.4.6](https://github.com/mondomember/node/compare/v1.4.5...v1.4.6) (2022-07-22)
 
 
