@@ -1,6 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
   CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
@@ -16,57 +15,11 @@ import {
 } from "../../../../../models";
 
 import {
-  ContactIdPropertySchema as ContactIdPropertySchema,
-  EmailPropertySchema,
-  FirstNamePropertySchema,
-  LastNamePropertySchema,
-} from "../../contacts/models/base";
-import {
-  EmailPropertyInterface,
-  FirstNamePropertyInterface,
-  LastNamePropertyInterface,
-} from "../../contacts/models/base";
-import {
-  CompanyIdPropertySchema as CompanyIdPropertySchema,
-  NamePropertySchema,
-} from "../../companies/models/base";
-import { NamePropertyInterface } from "../../companies/models/interfaces";
-
-const ContactPropertySchema = {
-  contact: {
-    type: JsonSchemaType.OBJECT,
-    additionalProperties: false,
-    required: ["id", "email"],
-    properties: {
-      ...ContactIdPropertySchema,
-      ...EmailPropertySchema,
-      ...FirstNamePropertySchema,
-      ...LastNamePropertySchema,
-    },
-  },
-};
-
-interface ContactPropertyInterface
-  extends IdPropertyInterface,
-    EmailPropertyInterface,
-    Partial<FirstNamePropertyInterface>,
-    Partial<LastNamePropertyInterface> {}
-
-const CompanyPropertySchema = {
-  company: {
-    type: JsonSchemaType.OBJECT,
-    additionalProperties: false,
-    required: ["id", "name"],
-    properties: {
-      ...CompanyIdPropertySchema,
-      ...NamePropertySchema,
-    },
-  },
-};
-
-interface CompanyPropertyInterface
-  extends IdPropertyInterface,
-    NamePropertyInterface {}
+  ContactPropertySchema,
+  ContactPropertyInterface,
+  CompanyPropertySchema,
+  CompanyPropertyInterface,
+} from "./base";
 
 export const CompanyContactResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
