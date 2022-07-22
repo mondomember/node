@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.10](https://github.com/mondomember/node/compare/v1.4.9...v1.4.10) (2022-07-22)
+
+
+### Features
+
+* adding company contact import resources ([e083f99](https://github.com/mondomember/node/commit/e083f993a0af50eb6f8a1870fec747f589234ae5))
+
+
+
+
+
 ## [1.4.9](https://github.com/mondomember/node/compare/v1.4.8...v1.4.9) (2022-07-22)
 
 
