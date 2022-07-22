@@ -161,7 +161,39 @@ export class SearchEndpoints {
     return this.listItems<InvoiceResponseItemInterface>(
       {
         ...query,
-        target: "Billings.Invoice",
+        target: "Billing.Invoice",
+      },
+      pagination
+    );
+  }
+
+  /**
+   * @returns
+   */
+  public listPaymentCharges(
+    query?: Omit<ParsedQuery, "target">,
+    pagination?: PaginationParams
+  ) {
+    return this.listItems<InvoiceResponseItemInterface>(
+      {
+        ...query,
+        target: "Payment.Charge",
+      },
+      pagination
+    );
+  }
+
+  /**
+   * @returns
+   */
+  public listPaymentRefunds(
+    query?: Omit<ParsedQuery, "target">,
+    pagination?: PaginationParams
+  ) {
+    return this.listItems<InvoiceResponseItemInterface>(
+      {
+        ...query,
+        target: "Payment.Refund",
       },
       pagination
     );
