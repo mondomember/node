@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.11](https://github.com/mondomember/node/compare/v1.4.10...v1.4.11) (2022-07-22)
+
+
+### Features
+
+* laxing the import ids schemas ([c6cb473](https://github.com/mondomember/node/commit/c6cb47333d6e7829eaf6d3b025b8e4bfd75ad42a))
+
+
+
+
+
 ## [1.4.10](https://github.com/mondomember/node/compare/v1.4.9...v1.4.10) (2022-07-22)
 
 
