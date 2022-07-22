@@ -42,13 +42,13 @@ export const ContactUpsertPropertySchema = {
   },
 };
 
-export interface ContactPropertyInterface
+export interface ContactInterface
   extends IdPropertyInterface,
     EmailPropertyInterface,
     Partial<FirstNamePropertyInterface>,
     Partial<LastNamePropertyInterface> {}
 
-export interface ContactUpsertPropertyInterface extends IdPropertyInterface {}
+export interface ContactUpsertInterface extends IdPropertyInterface {}
 
 export const CompanyPropertySchema = {
   company: {
@@ -73,8 +73,8 @@ export const CompanyUpsertPropertySchema = {
   },
 };
 
-export interface CompanyPropertyInterface
+export interface CompanyInterface
   extends IdPropertyInterface,
     NamePropertyInterface {}
 
-export interface CompanyUpsertPropertyInterface extends IdPropertyInterface {}
+export interface CompanyUpsertInterface extends IdPropertyInterface {}

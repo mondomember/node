@@ -16,9 +16,9 @@ import {
 
 import {
   ContactPropertySchema,
-  ContactPropertyInterface,
+  ContactInterface,
   CompanyPropertySchema,
-  CompanyPropertyInterface,
+  CompanyInterface,
 } from "./base";
 
 export const CompanyContactResponseItemSchema = {
@@ -44,6 +44,6 @@ export interface CompanyContactResponseItemInterface
     Partial<LastUpdatedPropertyInterface>,
     Partial<MetadataPropertyInterface>,
     Partial<PropertiesPropertyInterface> {
-  contact: ContactPropertyInterface;
-  company: CompanyPropertyInterface;
+  contact: ContactInterface;
+  company: CompanyInterface;
 }

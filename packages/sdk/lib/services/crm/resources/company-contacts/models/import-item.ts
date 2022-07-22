@@ -1,8 +1,8 @@
 import {
   ContactUpsertPropertySchema,
-  ContactUpsertPropertyInterface,
+  ContactUpsertInterface,
   CompanyUpsertPropertySchema,
-  CompanyUpsertPropertyInterface,
+  CompanyUpsertInterface,
 } from "./base";
 
 import {
@@ -20,6 +20,7 @@ export const CompanyContactImportItemSchema = {
 };
 
 export interface CompanyContactImportItemInterface
-  extends CompanyContactUpsertItemInterface,
-    ContactUpsertPropertyInterface,
-    CompanyUpsertPropertyInterface {}
+  extends CompanyContactUpsertItemInterface {
+  contact: ContactUpsertInterface;
+  company: CompanyUpsertInterface;
+}
