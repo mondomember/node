@@ -1,6 +1,6 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
-import { SettingsResponseItemInterface } from "./models";
+import { AppSettingsResponseItemInterface } from "./models";
 
 export default class SettingsEndpoints {
   constructor(readonly client: ClientInstance) {}
@@ -10,7 +10,7 @@ export default class SettingsEndpoints {
    *
    * @returns
    */
-  public getItem(): ClientResponse<SettingsResponseItemInterface> {
-    return this.client.get("/account/settings");
+  public getItem(): ClientResponse<AppSettingsResponseItemInterface> {
+    return this.client.get("/settings/app");
   }
 }

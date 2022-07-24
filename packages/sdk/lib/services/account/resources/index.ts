@@ -4,7 +4,6 @@ import { AccountEndpoints } from "./endpoints";
 export * from "./endpoints";
 
 export * from "./identity";
-export * from "./settings";
 export * from "./workspace";
 
 const AccountResources = (client: ClientInstance) =>

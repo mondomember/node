@@ -1,7 +1,7 @@
 import { JsonSchemaType } from "../../../../../schema";
 import { NameSchema, NameInterface } from "./base";
 
-export const SettingsResponseItemSchema = {
+export const AppSettingsResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["name"],
@@ -10,4 +10,4 @@ export const SettingsResponseItemSchema = {
   },
 };
 
-export interface SettingsResponseItemInterface extends NameInterface {}
+export interface AppSettingsResponseItemInterface extends NameInterface {}

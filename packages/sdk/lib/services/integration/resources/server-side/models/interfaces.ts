@@ -42,7 +42,6 @@ export interface ServerSideSearchAuthorizations extends ResourceAuthorizations {
 export interface ServerSideAccountAuthorizations
   extends ResourceAuthorizations {
   "*"?: typeof Action.READ;
-  settings?: typeof Action.READ;
 }
 
 export interface ServerSideActivityAuthorizations
@@ -53,6 +52,7 @@ export interface ServerSideWebhookAuthorizations
 
 export interface ServerSideSettingsAuthorizations
   extends ResourceAuthorizations {
+  app?: AnyAction;
   properties?: AnyAction;
 }
 
