@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.2](https://github.com/mondomember/node/compare/v1.6.1...v1.6.2) (2022-07-25)
+
+
+### Bug Fixes
+
+* import row operation is optional ([6c93d52](https://github.com/mondomember/node/commit/6c93d529564aa262a8d2289ac9e78c4f806c7c57))
+
+
+
+
+
 ## [1.6.1](https://github.com/mondomember/node/compare/v1.6.0...v1.6.1) (2022-07-25)
 
 
