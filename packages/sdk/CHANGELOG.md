@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.4](https://github.com/mondomember/node/compare/v1.6.3...v1.6.4) (2022-07-25)
+
+
+### Features
+
+* updating payment schemas to comply with aws openAPI exports ([20b5cd2](https://github.com/mondomember/node/commit/20b5cd258bd4caf40cd8cdfbbe2a3990731eb121))
+
+
+
+
+
 ## [1.6.3](https://github.com/mondomember/node/compare/v1.6.2...v1.6.3) (2022-07-25)
 
 
