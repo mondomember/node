@@ -1,13 +1,25 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { NameSchema, NameInterface } from "./base";
+import {
+  NamePropertySchema,
+  NamePropertyInterface,
+  AppPropertySchema,
+  AppPropertyInterface,
+  BrandingPropertySchema,
+  BrandingPropertyInterface,
+} from "./base";
 
 export const AppSettingsResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["name"],
   properties: {
-    ...NameSchema,
+    ...NamePropertySchema,
+    ...AppPropertySchema,
+    ...BrandingPropertySchema,
   },
 };
 
-export interface AppSettingsResponseItemInterface extends NameInterface {}
+export interface AppSettingsResponseItemInterface
+  extends NamePropertyInterface,
+    AppPropertyInterface,
+    BrandingPropertyInterface {}
