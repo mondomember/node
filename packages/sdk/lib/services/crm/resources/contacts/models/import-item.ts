@@ -18,6 +18,7 @@ const AnyIdPropertySchema = {
 
 export const ContactImportInsertItemSchema = {
   ...ContactInsertItemSchema,
+  additionalProperties: true,
   properties: {
     ...ContactInsertItemSchema.properties,
     ...AnyIdPropertySchema,
@@ -26,6 +27,7 @@ export const ContactImportInsertItemSchema = {
 
 export const ContactImportModifyItemSchema = {
   ...ContactModifyItemSchema,
+  additionalProperties: true,
   required: ["id"],
   properties: {
     ...ContactModifyItemSchema.properties,
@@ -35,6 +37,7 @@ export const ContactImportModifyItemSchema = {
 
 export const ContactImportItemSchema = {
   type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
   oneOf: [ContactImportInsertItemSchema, ContactImportModifyItemSchema],
 };
 

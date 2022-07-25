@@ -15,7 +15,7 @@ import {
 
 export const CompanyContactImportItemSchema = {
   type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
+  additionalProperties: true,
   required: ["company", "contact"],
   properties: {
     ...CompanyUpsertPropertySchema,

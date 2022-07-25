@@ -18,6 +18,7 @@ const AnyIdPropertySchema = {
 
 export const CompanyImportInsertItemSchema = {
   ...CompanyInsertItemSchema,
+  additionalProperties: true,
   properties: {
     ...CompanyInsertItemSchema.properties,
     ...AnyIdPropertySchema,
@@ -26,6 +27,7 @@ export const CompanyImportInsertItemSchema = {
 
 export const CompanyImportModifyItemSchema = {
   ...CompanyModifyItemSchema,
+  additionalProperties: true,
   required: ["id"],
   properties: {
     ...CompanyModifyItemSchema.properties,
@@ -35,6 +37,7 @@ export const CompanyImportModifyItemSchema = {
 
 export const CompanyImportItemSchema = {
   type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
   oneOf: [CompanyImportInsertItemSchema, CompanyImportModifyItemSchema],
 };
 
