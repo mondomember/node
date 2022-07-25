@@ -133,8 +133,20 @@ export interface CustomerPropertyInterface {
   };
 }
 
+const NullBillingSchema = {
+  type: JsonSchemaType.NULL,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [" "],
+    },
+  },
+};
+
 const FinalizedBillingSchema = {
-  type: [JsonSchemaType.OBJECT, JsonSchemaType.NULL],
+  type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
   properties: {
@@ -166,7 +178,7 @@ interface ApprovedBillingInterface {
 }
 
 const OffsetBillingSchema = {
-  type: [JsonSchemaType.OBJECT],
+  type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
   properties: {
@@ -186,7 +198,7 @@ interface OffsetBillingInterface {
 }
 
 const ScheduledBillingSchema = {
-  type: [JsonSchemaType.OBJECT],
+  type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
   properties: {
@@ -207,13 +219,10 @@ interface ScheduledBillingInterface {
 
 export const RequestBillingPropertySchema = {
   billing: {
-    type: JsonSchemaType.OBJECT,
     discriminator: { propertyName: "type" },
     oneOf: [
-      {
-        ...FinalizedBillingSchema,
-        type: [JsonSchemaType.OBJECT, JsonSchemaType.NULL],
-      },
+      NullBillingSchema,
+      FinalizedBillingSchema,
       ApprovedBillingSchema,
       OffsetBillingSchema,
       ScheduledBillingSchema,
@@ -223,7 +232,6 @@ export const RequestBillingPropertySchema = {
 
 export const ResponseBillingPropertySchema = {
   billing: {
-    type: JsonSchemaType.OBJECT,
     discriminator: { propertyName: "type" },
     oneOf: [
       FinalizedBillingSchema,
@@ -266,7 +274,7 @@ interface RecurringAutoPayFinalizedInterface {
 }
 
 const RecurringSchema = {
-  type: [JsonSchemaType.OBJECT],
+  type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["frequency", "terms"],
   properties: {
@@ -289,8 +297,12 @@ const RecurringSchema = {
 
 export const RequestRecurringPropertySchema = {
   recurring: {
-    ...RecurringSchema,
-    type: [JsonSchemaType.OBJECT, JsonSchemaType.NULL],
+    oneOf: [
+      RecurringSchema,
+      {
+        type: JsonSchemaType.NULL,
+      },
+    ],
   },
 };
 
