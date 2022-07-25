@@ -24,7 +24,7 @@ import {
 export const RowResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["id", "job", "row", "operation", "createdAt"],
+  required: ["id", "job", "row", "createdAt"],
   properties: {
     ...RowIdPropertySchema,
     ...JobPropertySchema,
@@ -41,7 +41,7 @@ export interface RowResponseItemInterface
   extends IdPropertyInterface,
     JobPropertyInterface,
     RowPropertyInterface,
-    OperationPropertyInterface,
+    Partial<OperationPropertyInterface>,
     Partial<ErrorPropertyInterface>,
     Partial<ValidationErrorsPropertyInterface>,
     Partial<ImportedIdPropertyInterface>,
