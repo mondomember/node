@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.3](https://github.com/mondomember/node/compare/v1.6.2...v1.6.3) (2022-07-25)
+
+
+### Bug Fixes
+
+* aws open api v3 export membership errors ([5dba536](https://github.com/mondomember/node/commit/5dba536740dc22264f1be66f0710a9f867766bca))
+
+
+
+
+
 ## [1.6.2](https://github.com/mondomember/node/compare/v1.6.1...v1.6.2) (2022-07-25)
 
 
