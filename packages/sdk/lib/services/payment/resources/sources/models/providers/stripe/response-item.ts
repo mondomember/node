@@ -34,7 +34,7 @@ import {
   StripeObjectPropertyInterface,
 } from "./base";
 
-const StripeCardSource = {
+export const StripeSourceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
@@ -62,11 +62,6 @@ const StripeCardSource = {
     ...DeletedAtPropertySchema,
     ...LastUpdatedPropertySchema,
   },
-};
-
-export const StripeSourceResponseItemSchema = {
-  type: JsonSchemaType.OBJECT,
-  oneOf: [StripeCardSource],
 };
 
 export interface StripeSourceResponseItemInterface
