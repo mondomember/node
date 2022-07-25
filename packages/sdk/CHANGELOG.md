@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.1](https://github.com/mondomember/node/compare/v1.6.0...v1.6.1) (2022-07-25)
+
+
+### Features
+
+* adding to app settings schema ([2a19170](https://github.com/mondomember/node/commit/2a191701d661d99635c4933451d34c476cd433ed))
+
+
+
+
+
 # [1.6.0](https://github.com/mondomember/node/compare/v1.5.0...v1.6.0) (2022-07-25)
 
 
