@@ -39,11 +39,6 @@ export interface ServerSideSearchAuthorizations extends ResourceAuthorizations {
   "*"?: typeof Action.READ;
 }
 
-export interface ServerSideAccountAuthorizations
-  extends ResourceAuthorizations {
-  "*"?: typeof Action.READ;
-}
-
 export interface ServerSideActivityAuthorizations
   extends ResourceAuthorizations {}
 
@@ -57,7 +52,6 @@ export interface ServerSideSettingsAuthorizations
 }
 
 export interface ServerSideAuthorizations extends ServiceAuthorizations {
-  [AuthorizationService.ACCOUNT]?: ServerSideAccountAuthorizations;
   [AuthorizationService.ACTIVITY]?: ServerSideActivityAuthorizations;
   [AuthorizationService.BILLING]?: ServerSideBillingAuthorizations;
   [AuthorizationService.CRM]?: ServerSideCRMAuthorizations;

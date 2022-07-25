@@ -4,7 +4,6 @@ import { UIDPrefix } from "../../../constants";
 
 import { Action, ActionEnum, AuthorizationService } from "../../../interfaces";
 import {
-  ServerSideAccountAuthorizations,
   ServerSideActivityAuthorizations,
   ServerSideBillingAuthorizations,
   ServerSideCRMAuthorizations,
@@ -57,20 +56,6 @@ export const DescriptionPropertySchema = {
 export interface DescriptionPropertyInterface {
   description: string;
 }
-
-export const AccountAuthorizationsSchema = {
-  type: JsonSchemaType.OBJECT,
-  properties: {
-    "*": {
-      type: JsonSchemaType.STRING,
-      enum: [Action.READ],
-    },
-    settings: {
-      type: JsonSchemaType.STRING,
-      enum: [Action.READ],
-    },
-  },
-};
 
 export const ActivityAuthorizationsSchema = {
   type: JsonSchemaType.OBJECT,
@@ -166,7 +151,6 @@ export const AuthorizationsPropertySchema = {
   authorizations: {
     type: JsonSchemaType.OBJECT,
     properties: {
-      [AuthorizationService.ACCOUNT]: AccountAuthorizationsSchema,
       [AuthorizationService.ACTIVITY]: ActivityAuthorizationsSchema,
       [AuthorizationService.BILLING]: BillingAuthorizationsSchema,
       [AuthorizationService.CRM]: CRMAuthorizationsSchema,
@@ -182,7 +166,6 @@ export const AuthorizationsPropertySchema = {
 
 export interface AuthorizationsPropertyInterface {
   authorizations: {
-    [AuthorizationService.ACCOUNT]?: ServerSideAccountAuthorizations;
     [AuthorizationService.ACTIVITY]?: ServerSideActivityAuthorizations;
     [AuthorizationService.BILLING]?: ServerSideBillingAuthorizations;
     [AuthorizationService.CRM]?: ServerSideCRMAuthorizations;
