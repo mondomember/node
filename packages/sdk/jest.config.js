@@ -1,11 +1,5 @@
 const TEST_REGEX = "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$";
 
-// get listing of packages in the mono repo
-const basePath = path.resolve(__dirname, "packages");
-const packages = readdirSync(basePath).filter((name) => {
-  return lstatSync(path.join(basePath, name)).isDirectory();
-});
-
 module.exports = {
   testRegex: TEST_REGEX,
   transform: {
@@ -20,12 +14,6 @@ module.exports = {
   ],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   moduleNameMapper: {
-    ...packages.reduce(
-      (acc, name) => ({
-        ...acc,
-        [`@mondomember/${name}(.*)$`]: `<rootDir>/packages/./${name}/lib/$1`,
-      }),
-      {}
-    ),
+    [`@mondomember/test(.*)$`]: `<rootDir>/../test/lib/$1`,
   },
 };
