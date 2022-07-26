@@ -50,5 +50,17 @@
   "engines": {
     "node": ">=14"
   },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test))\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  },
   "gitHead": "ad62bbf3bf0d4acafc409f9f72e2fcccb4de9a0f"
 }

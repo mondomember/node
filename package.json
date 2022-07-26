@@ -18,7 +18,8 @@
     "publish:patch": "yarn && yarn build && lerna publish patch --yes",
     "publish:minor": "yarn && yarn build && lerna publish minor --yes",
     "publish:major": "yarn && yarn build && lerna publish major --yes",
-    "test": "lerna run test"
+    "test": "jest --passWithNoTests",
+    "test:ci": "jest --passWithNoTests -i"
   },
   "workspaces": {
     "packages": [
