@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.5](https://github.com/mondomember/node/compare/v1.6.4...v1.6.5) (2022-07-26)
+
+
+### Features
+
+* adding webhook delivery payloads typings ([3a1f73c](https://github.com/mondomember/node/commit/3a1f73c95c04e49aa88560055dcf0ae038d1ff97))
+
+
+
+
+
 ## [1.6.4](https://github.com/mondomember/node/compare/v1.6.3...v1.6.4) (2022-07-25)
 
 
