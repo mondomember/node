@@ -5,9 +5,9 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "removeComments": true,
-    "baseUrl": "./",
+    "baseUrl": "./packages",
     "paths": {
-      "@mondomember/*": ["packages/*/lib"]
+      "@mondomember/*": ["*/lib"]
     }
   }
 }

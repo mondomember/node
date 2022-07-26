@@ -1,6 +1,7 @@
 const TEST_REGEX = "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$";
 
 module.exports = {
+  preset: "ts-jest",
   testRegex: TEST_REGEX,
   transform: {
     "^.+\\.tsx?$": "ts-jest",
@@ -15,7 +16,7 @@ module.exports = {
   testEnvironment: "node",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   moduleNameMapper: {
-    [`@mondomember/test(.*)$`]: `<rootDir>/packages/./test/lib/$1`,
-    [`@mondomember/sdk(.*)$`]: `<rootDir>/packages/./sdk/lib/$1`,
+    [`@mondomember/test(.*)$`]: `<rootDir>/packages/./test/$1`,
+    [`@mondomember/sdk(.*)$`]: `<rootDir>/packages/./sdk/$1`,
   },
 };
