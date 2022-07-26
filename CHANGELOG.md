@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.8](https://github.com/mondomember/node/compare/v1.6.7...v1.6.8) (2022-07-26)
+
+**Note:** Version bump only for package node
+
+
+
+
+
 ## [1.6.7](https://github.com/mondomember/node/compare/v1.6.6...v1.6.7) (2022-07-26)
 
 **Note:** Version bump only for package node
