@@ -10,12 +10,18 @@ export const CustomerCompanyWebhookEvents = {
   COMPANY_RESTORE: `crm.company.restore`,
 } as const;
 
+export type AnyCustomerCompanyWebhookEvents =
+  typeof CustomerCompanyWebhookEvents[keyof typeof CustomerCompanyWebhookEvents];
+
 export const CustomerContactWebhookEvents = {
   CONTACT_CREATE: `crm.contact.insert`,
   CONTACT_UPDATE: `crm.contact.modify`,
   CONTACT_DELETE: `crm.contact.remove`,
   CONTACT_RESTORE: `crm.contact.restore`,
 } as const;
+
+export type AnyCustomerContactWebhookEvents =
+  typeof CustomerContactWebhookEvents[keyof typeof CustomerContactWebhookEvents];
 
 export const CustomerCompanyContactWebhookEvents = {
   COMPANY_CONTACT_CREATE: `crm.company-contact.insert`,
@@ -24,11 +30,17 @@ export const CustomerCompanyContactWebhookEvents = {
   COMPANY_CONTACT_RESTORE: `crm.company-contact.restore`,
 } as const;
 
+export type AnyCustomerCompanyContactWebhookEvents =
+  typeof CustomerCompanyContactWebhookEvents[keyof typeof CustomerCompanyContactWebhookEvents];
+
 export const CustomerWebhookEvents = {
   ...CustomerCompanyWebhookEvents,
   ...CustomerContactWebhookEvents,
   ...CustomerCompanyContactWebhookEvents,
 } as const;
+
+export type AnyCustomerWebhookEvents =
+  typeof CustomerWebhookEvents[keyof typeof CustomerWebhookEvents];
 
 export const MembershipMembershipWebhookEvents = {
   MEMBERSHIP_CREATE: `membership.membership.insert`,
@@ -41,6 +53,9 @@ export const MembershipMembershipWebhookEvents = {
   MEMBERSHIP_STATUS_CANCELED: `membership.membership.status.canceled`,
   MEMBERSHIP_STATUS_LAPSED: `membership.membership.status.lapsed`,
 } as const;
+
+export type AnyMembershipMembershipWebhookEvents =
+  typeof MembershipMembershipWebhookEvents[keyof typeof MembershipMembershipWebhookEvents];
 
 export const MembershipContractWebhookEvents = {
   CONTRACT_CREATE: `membership.contract.insert`,
@@ -55,10 +70,16 @@ export const MembershipContractWebhookEvents = {
   CONTRACT_STATUS_ACTIVE: `membership.contract.status.active`,
 } as const;
 
+export type AnyMembershipContractWebhookEvents =
+  typeof MembershipContractWebhookEvents[keyof typeof MembershipContractWebhookEvents];
+
 export const MembershipWebhookEvents = {
   ...MembershipMembershipWebhookEvents,
   ...MembershipContractWebhookEvents,
 };
+
+export type AnyMembershipWebhookEvents =
+  typeof MembershipWebhookEvents[keyof typeof MembershipWebhookEvents];
 
 export const BillingInvoiceWebhookEvents = {
   INVOICE_VIEW: `billing.invoice.view`,
@@ -77,9 +98,15 @@ export const BillingInvoiceWebhookEvents = {
   INVOICE_PAYMENT_ADJUSTMENT: `billing.invoice-payment.adjustment`,
 } as const;
 
+export type AnyBillingInvoiceWebhookEvents =
+  typeof BillingInvoiceWebhookEvents[keyof typeof BillingInvoiceWebhookEvents];
+
 export const BillingWebhookEvents = {
   ...BillingInvoiceWebhookEvents,
 };
+
+export type AnyBillingWebhookEvents =
+  typeof BillingWebhookEvents[keyof typeof BillingWebhookEvents];
 
 export const PaymentGatewayWebhookEvents = {
   GATEWAY_CREATE: `payment.gateway.insert`,
@@ -91,6 +118,9 @@ export const PaymentGatewayWebhookEvents = {
   GATEWAY_DEFAULT_PROMOTE: `payment.gateway.default.promote`,
 } as const;
 
+export type AnyPaymentGatewayWebhookEvents =
+  typeof PaymentGatewayWebhookEvents[keyof typeof PaymentGatewayWebhookEvents];
+
 export const PaymentSourceWebhookEvents = {
   SOURCE_CREATE: `payment.source.insert`,
   SOURCE_UPDATE: `payment.source.modify`,
@@ -100,6 +130,9 @@ export const PaymentSourceWebhookEvents = {
   SOURCE_DEFAULT_DEMOTE: `payment.source.default.demote`,
   SOURCE_DEFAULT_PROMOTE: `payment.source.default.promote`,
 } as const;
+
+export type AnyPaymentSourceWebhookEvents =
+  typeof PaymentSourceWebhookEvents[keyof typeof PaymentSourceWebhookEvents];
 
 export const PaymentChargeWebhookEvents = {
   CHARGE_CREATE: `payment.charge.insert`,
@@ -114,10 +147,16 @@ export const PaymentChargeWebhookEvents = {
   CHARGE_PARTIALLY_REFUNDED: `payment.charge.refunded.partially`,
 } as const;
 
+export type AnyPaymentChargeWebhookEvents =
+  typeof PaymentChargeWebhookEvents[keyof typeof PaymentChargeWebhookEvents];
+
 export const PaymentRefundWebhookEvents = {
   REFUND_SUCCEEDED: `payment.refund.succeeded`,
   REFUND_FAILED: `payment.refund.failed`,
 } as const;
+
+export type AnyPaymentRefundWebhookEvents =
+  typeof PaymentRefundWebhookEvents[keyof typeof PaymentRefundWebhookEvents];
 
 export const PaymentWebhookEvents = {
   ...PaymentGatewayWebhookEvents,
@@ -125,6 +164,9 @@ export const PaymentWebhookEvents = {
   ...PaymentChargeWebhookEvents,
   ...PaymentRefundWebhookEvents,
 } as const;
+
+export type AnyPaymentWebhookEvents =
+  typeof PaymentWebhookEvents[keyof typeof PaymentWebhookEvents];
 
 export const WebhookEvents = {
   ...CustomerWebhookEvents,
