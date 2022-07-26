@@ -1,4 +1,3 @@
-import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import {

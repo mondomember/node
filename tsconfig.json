@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node14/tsconfig.json",
+  "compilerOptions": {
+    "preserveConstEnums": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "baseUrl": "./",
+    "paths": {
+      "@mondomember/sdk": ["packages/sdk/lib"],
+      "@mondomember/test": ["packages/test/lib"]
+    }
+  }
+}

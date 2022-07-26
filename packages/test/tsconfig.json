@@ -1,9 +1,5 @@
 {
-  "extends": "@tsconfig/node14/tsconfig.json",
-  "compilerOptions": {
-    "preserveConstEnums": true
-  },
-  "types": [],
+  "extends": "../../tsconfig.json",
   "include": ["./lib/index.ts"],
   "exclude": ["**/*.test.ts", "__mocks__", "dist", "node_modules", "coverage"]
 }

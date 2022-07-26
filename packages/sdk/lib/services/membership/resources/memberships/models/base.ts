@@ -5,7 +5,7 @@ import {
 } from "../../../../../models";
 import { UIDPrefix } from "../../../constants";
 import * as CRM from "../../../../../services/crm";
-import * as Payment from "../../../../../services/payment";
+// import * as Payment from "../../../../../services/payment";
 import { AnyMembershipStatus, MembershipStatusEnum } from "./interfaces";
 
 export const MembershipIdSchema = constructUIDSchema([UIDPrefix.MEMBERSHIP]);
@@ -140,30 +140,30 @@ export interface ProductPropertyRequestInterface {
   };
 }
 
-const AutoPaySchema = {
-  type: JsonSchemaType.OBJECT,
-  oneOf: [
-    {
-      type: JsonSchemaType.OBJECT,
-      additionalProperties: false,
-      required: ["source"],
-      properties: {
-        source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
-      },
-    },
-    {
-      type: JsonSchemaType.OBJECT,
-      additionalProperties: false,
-      required: ["source"],
-      properties: {
-        source: {
-          type: JsonSchemaType.STRING,
-          enum: ["DEFAULT"],
-        },
-      },
-    },
-  ],
-};
+// const AutoPaySchema = {
+//   type: JsonSchemaType.OBJECT,
+//   oneOf: [
+//     {
+//       type: JsonSchemaType.OBJECT,
+//       additionalProperties: false,
+//       required: ["source"],
+//       properties: {
+//         source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
+//       },
+//     },
+//     {
+//       type: JsonSchemaType.OBJECT,
+//       additionalProperties: false,
+//       required: ["source"],
+//       properties: {
+//         source: {
+//           type: JsonSchemaType.STRING,
+//           enum: ["DEFAULT"],
+//         },
+//       },
+//     },
+//   ],
+// };
 
 interface AutoPayInterface {
   source: string | "DEFAULT";

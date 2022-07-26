@@ -2,7 +2,7 @@ import { constructJWTSchema, constructUIDSchema } from "../../../../../models";
 import { JsonSchemaType } from "../../../../../schema";
 import { UIDPrefix } from "../../../constants";
 
-import { Action, ActionEnum, AuthorizationService } from "../../../interfaces";
+import { ActionEnum, AuthorizationService } from "../../../interfaces";
 import {
   ServerSideActivityAuthorizations,
   ServerSideBillingAuthorizations,
