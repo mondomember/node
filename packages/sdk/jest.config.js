@@ -12,8 +12,9 @@ module.exports = {
     "<rootDir>/node_modules/",
     "<rootDir>/dist/",
   ],
+  testEnvironment: "node",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json"],
   moduleNameMapper: {
-    [`@mondomember/test(.*)$`]: `<rootDir>/../test/lib/$1`,
+    [`@mondomember/test/(.*)$`]: `<rootDir>/../test/lib/$1`,
   },
 };
