@@ -12,12 +12,23 @@ const NameProperty = {
   name: chance.company(),
 };
 
+const MembershipProperty = {
+  membership: {
+    plan: chance.pickone([
+      Account.MembershipPlan.FREE,
+      Account.MembershipPlan.ON_DEMAND,
+      Account.MembershipPlan.BUSINCESS,
+    ]),
+  },
+};
+
 export function createTestTenant(
   overides?: Partial<Account.WorkspaceTenantResponseItemInterface>
 ): Account.WorkspaceTenantResponseItemInterface {
   return {
     id: chance.guid(),
     ...NameProperty,
+    ...MembershipProperty,
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
     ...createMetadataProperty(),

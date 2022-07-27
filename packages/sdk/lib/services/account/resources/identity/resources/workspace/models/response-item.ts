@@ -13,7 +13,10 @@ import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../../../models";
-import { NameSchema, NameInterface } from "../../../../workspace/models/base";
+import {
+  NamePropertySchema,
+  NamePropertyInterface,
+} from "../../../../workspace/models/base";
 
 export const IdentityWorkspaceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -21,7 +24,7 @@ export const IdentityWorkspaceResponseItemSchema = {
   required: ["id", "name", "createdAt", "updatedAt"],
   properties: {
     ...UUIDPropertySchema,
-    ...NameSchema,
+    ...NamePropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -32,7 +35,7 @@ export const IdentityWorkspaceResponseItemSchema = {
 
 export interface IdentityWorkspaceResponseItemInterface
   extends IdPropertyInterface,
-    NameInterface,
+    NamePropertyInterface,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,
     Partial<DeletedAtPropertyInterface>,

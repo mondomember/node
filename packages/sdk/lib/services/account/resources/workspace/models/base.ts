@@ -42,8 +42,12 @@ export const MembershipPropertySchema = {
   },
 };
 
-export interface MembershipPropertyInterface {
+export interface MembershipInterface {
   plan: AnyMembershipPlan;
   startAt?: string;
   endAt?: string;
+}
+
+export interface MembershipPropertyInterface {
+  membership: MembershipInterface;
 }
