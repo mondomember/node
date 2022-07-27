@@ -4,7 +4,11 @@ import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../models";
-import { NameSchema, NameInterface, TenantIdPropertySchema } from "./base";
+import {
+  NamePropertySchema,
+  NamePropertyInterface,
+  TenantIdPropertySchema,
+} from "./base";
 
 export const WorkspaceTenantInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -12,12 +16,12 @@ export const WorkspaceTenantInsertItemSchema = {
   required: ["name"],
   properties: {
     ...TenantIdPropertySchema,
-    ...NameSchema,
+    ...NamePropertySchema,
     ...MetadataPropertySchema,
   },
 };
 
 export interface WorkspaceTenantInsertItemInterface
   extends Partial<IdPropertyInterface>,
-    NameInterface,
+    NamePropertyInterface,
     Partial<MetadataPropertyInterface> {}

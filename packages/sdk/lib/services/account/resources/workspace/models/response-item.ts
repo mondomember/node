@@ -12,26 +12,34 @@ import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../models";
-import { NameSchema, NameInterface, TenantIdPropertySchema } from "./base";
+import {
+  NamePropertySchema,
+  NamePropertyInterface,
+  TenantIdPropertySchema,
+  MembershipPropertyInterface,
+  MembershipPropertySchema,
+} from "./base";
 
 export const WorkspaceTenantResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["id", "name", "createdAt", "updatedAt"],
+  required: ["id", "name", "membership", "createdAt", "updatedAt"],
   properties: {
     ...TenantIdPropertySchema,
-    ...NameSchema,
+    ...NamePropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
     ...DeletedAtPropertySchema,
     ...LastUpdatedPropertySchema,
+    ...MembershipPropertySchema,
   },
 };
 
 export interface WorkspaceTenantResponseItemInterface
   extends IdPropertyInterface,
-    NameInterface,
+    NamePropertyInterface,
+    MembershipPropertyInterface,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,
     Partial<DeletedAtPropertyInterface>,

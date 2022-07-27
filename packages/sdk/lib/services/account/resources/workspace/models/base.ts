@@ -1,16 +1,49 @@
 import { JsonSchemaType } from "../../../../../schema";
 import { UUIDSchema, UUIDPropertySchema } from "../../../../../models";
+import { MembershipPlan, AnyMembershipPlan } from "./interfaces";
 
 export const TenantIdSchema = UUIDSchema;
 export const TenantIdPropertySchema = UUIDPropertySchema;
 
-export const NameSchema = {
+export const NamePropertySchema = {
   name: {
     type: JsonSchemaType.STRING,
     minLength: 1,
   },
 };
 
-export interface NameInterface {
+export interface NamePropertyInterface {
   name: string;
+}
+
+export const MembershipPropertySchema = {
+  membership: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    required: ["plan"],
+    properties: {
+      plan: {
+        type: JsonSchemaType.STRING,
+        enum: [
+          MembershipPlan.FREE,
+          MembershipPlan.ON_DEMAND,
+          MembershipPlan.BUSINCESS,
+        ],
+      },
+      startAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+      endAt: {
+        type: JsonSchemaType.STRING,
+        format: "date-time",
+      },
+    },
+  },
+};
+
+export interface MembershipPropertyInterface {
+  plan: AnyMembershipPlan;
+  startAt?: string;
+  endAt?: string;
 }

@@ -3,17 +3,17 @@ import {
   MetadataPropertySchema,
   MetadataPropertyInterface,
 } from "../../../../../models";
-import { NameSchema, NameInterface } from "./base";
+import { NamePropertySchema, NamePropertyInterface } from "./base";
 
 export const WorkspaceTenantModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {
-    ...NameSchema,
+    ...NamePropertySchema,
     ...MetadataPropertySchema,
   },
 };
 
 export interface WorkspaceTenantModifyItemInterface
-  extends Partial<NameInterface>,
+  extends Partial<NamePropertyInterface>,
     Partial<MetadataPropertyInterface> {}
