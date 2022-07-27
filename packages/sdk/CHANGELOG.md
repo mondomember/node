@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/mondomember/node/compare/v1.6.10...v1.7.0) (2022-07-27)
+
+
+### Bug Fixes
+
+* fixing renamed internal properties ([71f332b](https://github.com/mondomember/node/commit/71f332be09ae34544afdad1f5f98e111c4c490e2))
+
+
+### Features
+
+* adding membership to account tenant response ([be45d0b](https://github.com/mondomember/node/commit/be45d0b712b79c02926500368ac51aeaed3292f0))
+
+
+
+
+
 ## [1.6.10](https://github.com/mondomember/node/compare/v1.6.9...v1.6.10) (2022-07-26)
 
 **Note:** Version bump only for package @mondomember/sdk
