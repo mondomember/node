@@ -6,6 +6,8 @@ import {
   AppPropertyInterface,
   BrandingPropertySchema,
   BrandingPropertyInterface,
+  IntegrationsPropertyInterface,
+  IntegrationsPropertySchema,
 } from "./base";
 
 export const AppSettingsResponseItemSchema = {
@@ -16,10 +18,12 @@ export const AppSettingsResponseItemSchema = {
     ...NamePropertySchema,
     ...AppPropertySchema,
     ...BrandingPropertySchema,
+    ...IntegrationsPropertySchema,
   },
 };
 
 export interface AppSettingsResponseItemInterface
   extends NamePropertyInterface,
     AppPropertyInterface,
-    BrandingPropertyInterface {}
+    Partial<BrandingPropertyInterface>,
+    Partial<IntegrationsPropertyInterface> {}
