@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.1](https://github.com/mondomember/node/compare/v1.8.0...v1.8.1) (2022-07-28)
+
+
+### Features
+
+* adding external id endpoint nodes to services ([59ccd4c](https://github.com/mondomember/node/commit/59ccd4cc791d44364b5b69c88ba87ebd7cbb323f))
+* exporting external id schemas ([c3122c0](https://github.com/mondomember/node/commit/c3122c0ab0299d7f098a72c49108a9349b0270ed))
+
+
+
+
+
 # [1.8.0](https://github.com/mondomember/node/compare/v1.7.1...v1.8.0) (2022-07-28)
 
 **Note:** Version bump only for package @mondomember/sdk
