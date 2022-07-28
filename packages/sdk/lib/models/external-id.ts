@@ -2,37 +2,17 @@ import { JsonSchemaType } from "../schema";
 
 export const ExternalIdPropertySchema = {
   externalIds: {
-    type: JsonSchemaType.ARRAY,
-    items: {
-      type: JsonSchemaType.STRING,
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    patternProperties: {
+      "^.*$": {
+        type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
+      },
     },
-    uniqueItems: true,
-    maxItems: 10,
+    maxProperties: 10,
   },
 };
 
 export interface ExternalIdsPropertyInterface {
-  externalIds:
-    | []
-    | [string]
-    | [string, string]
-    | [string, string, string]
-    | [string, string, string, string]
-    | [string, string, string, string, string]
-    | [string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string, string]
-    | [
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string
-      ];
+  externalIds: { [k: string]: string | number };
 }
