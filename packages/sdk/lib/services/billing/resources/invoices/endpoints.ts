@@ -2,6 +2,7 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
 
 import {
   InvoicePayItemInterface,
@@ -30,11 +31,16 @@ export default class extends CRUDEndpoints<
   InvoiceModifyItemInterface,
   InvoiceResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    InvoiceResponseItemInterface,
+    "invoice"
+  >;
   readonly Transactions: TransactionEndpoints;
 
   constructor(client: ClientInstance) {
     super(PATH, client);
 
+    this.External = new ExternalIdEndpoints(this.path.base, "invoice", client);
     this.Transactions = new TransactionEndpoints(PATH.item, client);
   }
 

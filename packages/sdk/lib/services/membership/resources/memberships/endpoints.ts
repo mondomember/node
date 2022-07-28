@@ -2,6 +2,8 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
+
 import {
   MembershipInsertItemInterface,
   MembershipModifyItemInterface,
@@ -26,8 +28,19 @@ export default class extends CRUDEndpoints<
   MembershipModifyItemInterface,
   MembershipResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    MembershipResponseItemInterface,
+    "membership"
+  >;
+
   constructor(client: ClientInstance) {
     super(PATH, client);
+
+    this.External = new ExternalIdEndpoints(
+      this.path.base,
+      "membership",
+      client
+    );
   }
 
   /**

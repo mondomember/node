@@ -1,18 +1,24 @@
 import { JsonSchemaType } from "../schema";
 
-export const ExternalIdPropertySchema = {
-  externalIds: {
-    type: JsonSchemaType.OBJECT,
-    additionalProperties: false,
-    patternProperties: {
-      "^.*$": {
-        type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
-      },
+export const ExternalIdSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  patternProperties: {
+    "^.*$": {
+      type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
     },
-    maxProperties: 10,
   },
+  maxProperties: 10,
 };
 
+export const ExternalIdPropertySchema = {
+  externalIds: ExternalIdSchema,
+};
+
+export interface ExternalIdsInterface {
+  [k: string]: string | number;
+}
+
 export interface ExternalIdsPropertyInterface {
-  externalIds: { [k: string]: string | number };
+  externalIds: ExternalIdsInterface;
 }

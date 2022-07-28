@@ -2,6 +2,8 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
+
 import {
   ProductInsertItemInterface,
   ProductModifyItemInterface,
@@ -27,11 +29,17 @@ export default class extends CRUDEndpoints<
   ProductModifyItemInterface,
   ProductResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    ProductResponseItemInterface,
+    "product"
+  >;
+
   readonly Tiers: ProductTierEndpoints;
 
   constructor(client: ClientInstance) {
     super(PATH, client);
 
+    this.External = new ExternalIdEndpoints(this.path.base, "product", client);
     this.Tiers = new ProductTierEndpoints(this.path.item, client);
   }
 

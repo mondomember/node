@@ -2,6 +2,8 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
+
 import {
   ContractInsertItemInterface,
   ContractModifyItemInterface,
@@ -26,8 +28,15 @@ export default class extends CRUDEndpoints<
   ContractModifyItemInterface,
   ContractResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    ContractResponseItemInterface,
+    "contract"
+  >;
+
   constructor(client: ClientInstance) {
     super(PATH, client);
+
+    this.External = new ExternalIdEndpoints(this.path.base, "contract", client);
   }
 
   public listItems(

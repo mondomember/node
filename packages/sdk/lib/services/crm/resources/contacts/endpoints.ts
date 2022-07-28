@@ -1,5 +1,6 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
 import { parseTemplate } from "../../../../client/url-template";
 
 import {
@@ -25,8 +26,15 @@ export default class extends CRUDEndpoints<
   ContactModifyItemInterface,
   ContactResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    ContactResponseItemInterface,
+    "contact"
+  >;
+
   constructor(client: ClientInstance) {
     super(PATH, client);
+
+    this.External = new ExternalIdEndpoints(this.path.base, "contact", client);
   }
 
   public listItems(

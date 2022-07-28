@@ -1,5 +1,6 @@
 import { parseTemplate } from "../../../../client/url-template";
 import { CRUDEndpoints } from "../../../../client/endpoints";
+import { ExternalIdEndpoints } from "../../../../shared/external-id";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
 import {
@@ -9,7 +10,6 @@ import {
   CompanyResponseListInterface,
 } from "./models";
 import { CompanyListItemsParams } from "./interfaces";
-
 const PATH = {
   base: "crm/companies",
   item: "crm/companies/{company}",
@@ -25,8 +25,15 @@ export default class extends CRUDEndpoints<
   CompanyModifyItemInterface,
   CompanyResponseItemInterface
 > {
+  readonly External: ExternalIdEndpoints<
+    CompanyResponseItemInterface,
+    "company"
+  >;
+
   constructor(client: ClientInstance) {
     super(PATH, client);
+
+    this.External = new ExternalIdEndpoints(this.path.base, "company", client);
   }
 
   public listItems(
