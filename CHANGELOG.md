@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.2](https://github.com/mondomember/node/compare/v1.8.1...v1.8.2) (2022-07-29)
+
+
+### Bug Fixes
+
+* aligning external id schemas ([888507d](https://github.com/mondomember/node/commit/888507df26baacabba474bb3adeffd93fc584200))
+
+
+
+
+
 ## [1.8.1](https://github.com/mondomember/node/compare/v1.8.0...v1.8.1) (2022-07-28)
 
 
