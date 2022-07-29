@@ -11,14 +11,45 @@ export const ExternalIdSchema = {
   maxProperties: 10,
 };
 
-export const ExternalIdPropertySchema = {
-  externalIds: ExternalIdSchema,
+export const ExternalIdArraySchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  patternProperties: {
+    "^.*$": {
+      type: JsonSchemaType.ARRAY,
+      items: {
+        type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
+      },
+    },
+  },
+  maxProperties: 10,
 };
 
+export const ExternalIdArrayPropertySchema = {
+  externalIds: ExternalIdArraySchema,
+};
+
+export const ExternalIdPropertySchema = {
+  externalIds: {
+    type: JsonSchemaType.OBJECT,
+    oneOf: [ExternalIdSchema, ExternalIdArraySchema],
+  },
+};
+
+export type ExternalIdValue = string | number;
+
 export interface ExternalIdsInterface {
-  [k: string]: string | number;
+  [k: string]: ExternalIdValue;
+}
+
+export interface ExternalIdsArrayInterface {
+  [k: string]: ExternalIdValue[] | Set<ExternalIdValue>;
 }
 
 export interface ExternalIdsPropertyInterface {
-  externalIds: ExternalIdsInterface;
+  externalIds: ExternalIdsInterface | ExternalIdsArrayInterface;
+}
+
+export interface ExternalIdsArrayPropertyInterface {
+  externalIds: ExternalIdsArrayInterface;
 }

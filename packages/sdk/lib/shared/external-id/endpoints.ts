@@ -32,7 +32,7 @@ export class ExternalIdEndpoints<ItemResponse, Resource extends string> {
   ) {
     this.path = {
       base: `${basePath}/${PATH.base}`,
-      listIds: `${basePath}/${PATH.base}/${resource}`,
+      listIds: `${basePath}/${PATH.base}`,
       getItem: `${basePath}/${PATH.item}`,
       manageItem: `${basePath}/${PATH.item}/${resource}`,
     };
@@ -41,13 +41,13 @@ export class ExternalIdEndpoints<ItemResponse, Resource extends string> {
   /**
    * List external Id's assigned to a resource.
    *
-   * @param expression
+   * @param params
    * @returns
    */
-  public listIds(expression: {
+  public listIds(params: {
     [key in Resource]: string;
   }): ClientResponse<ExternalIdResponseListInterface> {
-    return this.client.get(parseTemplate(this.path.listIds).expand(expression));
+    return this.client.get(this.path.listIds, { params });
   }
 
   /**

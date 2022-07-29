@@ -1,7 +1,8 @@
 import {
-  ExternalIdSchema,
-  ExternalIdsInterface,
+  ExternalIdArraySchema,
+  ExternalIdsArrayInterface,
 } from "../../../models/external-id";
 
-export const ExternalIdResponseListSchema = ExternalIdSchema;
-export interface ExternalIdResponseListInterface extends ExternalIdsInterface {}
+export const ExternalIdResponseListSchema = ExternalIdArraySchema;
+export interface ExternalIdResponseListInterface
+  extends ExternalIdsArrayInterface {}
