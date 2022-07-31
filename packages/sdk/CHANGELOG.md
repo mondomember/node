@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.3](https://github.com/mondomember/node/compare/v1.8.2...v1.8.3) (2022-07-31)
+
+
+### Features
+
+* update app setting resources ([8e9f41b](https://github.com/mondomember/node/commit/8e9f41b02f98481da22e85b4d119a1736921b038))
+
+
+
+
+
 ## [1.8.2](https://github.com/mondomember/node/compare/v1.8.1...v1.8.2) (2022-07-29)
 
 
