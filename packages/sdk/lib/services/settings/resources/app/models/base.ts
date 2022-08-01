@@ -31,11 +31,13 @@ const IntegrationSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["label"],
-  label: {
-    type: JsonSchemaType.STRING,
-  },
-  url: {
-    type: JsonSchemaType.STRING,
+  properties: {
+    label: {
+      type: JsonSchemaType.STRING,
+    },
+    url: {
+      type: JsonSchemaType.STRING,
+    },
   },
 };
 

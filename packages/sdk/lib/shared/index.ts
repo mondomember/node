@@ -1,1 +1,1 @@
-export * from "./external-id/models";
+export * as ExternalId from "./external-id";

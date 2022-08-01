@@ -34,7 +34,7 @@ export class ExternalIdEndpoints<ItemResponse, Resource extends string> {
       base: `${basePath}/${PATH.base}`,
       listIds: `${basePath}/${PATH.base}`,
       getItem: `${basePath}/${PATH.item}`,
-      manageItem: `${basePath}/${PATH.item}/${resource}`,
+      manageItem: `${basePath}/${PATH.item}/{${resource}}`,
     };
   }
 

@@ -2,7 +2,7 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
-import { ExternalIdEndpoints } from "../../../../shared/external-id";
+import { ExternalIdEndpoints } from "../../../../shared/external-id/endpoints";
 
 import {
   MembershipInsertItemInterface,
