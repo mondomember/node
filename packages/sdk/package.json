@@ -2,7 +2,7 @@
   "name": "@mondomember/sdk",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -32,7 +32,7 @@
     "stripe": "^9.8.0"
   },
   "devDependencies": {
-    "@mondomember/test": "^1.9.0",
+    "@mondomember/test": "^1.9.1",
     "@tsconfig/node14": "^1.0.1",
     "@types/chance": "^1.1.2",
     "@types/jest": "^27.0",
