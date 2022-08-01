@@ -3,6 +3,6 @@ import {
   ExternalIdsArrayInterface,
 } from "../../../models/external-id";
 
-export const ExternalIdResponseListSchema = ExternalIdArraySchema;
-export interface ExternalIdResponseListInterface
-  extends ExternalIdsArrayInterface {}
+export const ResponseListSchema = ExternalIdArraySchema;
+
+export interface ResponseListInterface extends ExternalIdsArrayInterface {}

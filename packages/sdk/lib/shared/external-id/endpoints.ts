@@ -1,6 +1,6 @@
 import { parseTemplate } from "../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../client/interfaces";
-import { ExternalIdResponseListInterface } from "./models";
+import { ResponseListInterface } from "./models";
 
 const PATH = {
   base: "external",
@@ -46,7 +46,7 @@ export class ExternalIdEndpoints<ItemResponse, Resource extends string> {
    */
   public listIds(params: {
     [key in Resource]: string;
-  }): ClientResponse<ExternalIdResponseListInterface> {
+  }): ClientResponse<ResponseListInterface> {
     return this.client.get(this.path.listIds, { params });
   }
 
