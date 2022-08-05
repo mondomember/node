@@ -9,8 +9,8 @@ type CustomerResponseItemInterface =
   | CompanyResponseItemInterface;
 
 const PATH = {
-  base: "external",
-  item: "external/{appKey}/{externalId}",
+  base: "crm/external",
+  item: "crm/external/{appKey}/{externalId}",
 };
 
 type Expressions = {
