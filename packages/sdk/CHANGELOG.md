@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/mondomember/node/compare/v1.9.1...v1.10.0) (2022-08-05)
+
+
+### Features
+
+* adding external lookup resource for customers ([44becb2](https://github.com/mondomember/node/commit/44becb2402c13c5b7a3c46156cdc015f4100b17f))
+
+
+
+
+
 ## [1.9.1](https://github.com/mondomember/node/compare/v1.9.0...v1.9.1) (2022-08-01)
 
 **Note:** Version bump only for package @mondomember/sdk
