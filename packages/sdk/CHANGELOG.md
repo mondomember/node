@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.10.1](https://github.com/mondomember/node/compare/v1.10.0...v1.10.1) (2022-08-05)
+
+
+### Bug Fixes
+
+* adjusting external lookup param ([af2513c](https://github.com/mondomember/node/commit/af2513c36e97e6960aba519ed6e4b36685d99a37))
+
+
+
+
+
 # [1.10.0](https://github.com/mondomember/node/compare/v1.9.1...v1.10.0) (2022-08-05)
 
 
