@@ -27,7 +27,9 @@ export default class {
    * @param params
    * @returns
    */
-  public listIds(params: Expressions): ClientResponse<ResponseListInterface> {
+  public listIds(params: {
+    customer: string;
+  }): ClientResponse<ResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }
 
