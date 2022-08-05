@@ -27,6 +27,16 @@ export interface AppPropertyInterface {
   app?: { uiVersion?: string };
 }
 
+const IntegrationUrlSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  patternProperties: {
+    "^.*$": {
+      type: JsonSchemaType.STRING,
+    },
+  },
+};
+
 const IntegrationSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -35,9 +45,7 @@ const IntegrationSchema = {
     label: {
       type: JsonSchemaType.STRING,
     },
-    url: {
-      type: JsonSchemaType.STRING,
-    },
+    urls: IntegrationUrlSchema,
   },
 };
 
@@ -53,7 +61,9 @@ export const IntegrationsPropertySchema = {
 
 interface IntegrationInterface {
   label: string;
-  url?: string;
+  urls?: {
+    [key: string]: string;
+  };
 }
 
 export interface IntegrationsPropertyInterface {
