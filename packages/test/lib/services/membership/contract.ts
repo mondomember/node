@@ -51,6 +51,7 @@ const TestContractProps: Membership.ContractResponseItemInterface = {
   ]),
   lines: [
     {
+      type: "Product",
       quantity: 1,
       label: chance.word(),
       amount: chance.natural({ min: 1, max: 9999 }),
@@ -94,6 +95,7 @@ export function createTestInsertContract(
     },
     lines: [
       {
+        type: "Product",
         product: {
           id: generateTestKSUID(Membership.UIDPrefix.PRODUCT),
           tier: {

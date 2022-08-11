@@ -22,6 +22,14 @@ export const ContractStatusEnum = [
   ContractStatus.CANCELED,
 ];
 
+export const ContractLineItemType = {
+  CUSTOM: "Custom",
+  PRODUCT: "Product",
+} as const;
+
+export type AnyIContractLineItemType =
+  typeof ContractLineItemType[keyof typeof ContractLineItemType];
+
 export const RenewalFrequency = {
   DAILY: "Daily",
   WEEKLY: "Weekly",
@@ -68,14 +76,18 @@ interface LineItemProductRequestPropertyInterface {
   };
 }
 
-export interface ContractLineItemRequestInterface
+interface ContractLineItemProductRequestInterface
   extends LineItemProductRequestPropertyInterface {
+  type: typeof ContractLineItemType.PRODUCT;
   membership?: string;
   label?: string;
   description?: string;
   quantity?: number;
   amount?: number;
 }
+
+export type ContractLineItemRequestInterface =
+  ContractLineItemProductRequestInterface;
 
 interface LineItemProductResponsePropertyInterface {
   product: {
@@ -92,11 +104,15 @@ interface LineItemProductResponsePropertyInterface {
   };
 }
 
-export interface ContractLineItemResponseInterface
+export interface ContractLineItemProductResponseInterface
   extends LineItemProductResponsePropertyInterface {
+  type: typeof ContractLineItemType.PRODUCT;
   membership?: string;
   quantity: number;
   label: string;
   description?: string;
   amount: number;
 }
+
+export type ContractLineItemResponseInterface =
+  ContractLineItemProductResponseInterface;

@@ -9,6 +9,7 @@ import * as Payment from "../../../../../services/payment";
 import {
   ContractStatus,
   ContractStatusEnum,
+  ContractLineItemType,
   ContractBillingTermType,
   ContractRecurringAutoPayType,
   RenewalFrequencySchemaEnum,
@@ -405,11 +406,15 @@ const ProductResponsePropertySchema = {
   },
 };
 
-const LineItemRequestPropertySchema = {
+const ProductLineItemRequestPropertySchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["product"],
+  required: ["type", "product"],
   properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractLineItemType.PRODUCT],
+    },
     ...ProductRequestPropertySchema,
     membership: constructUIDSchema([UIDPrefix.MEMBERSHIP]),
     quantity: {
@@ -430,7 +435,7 @@ const LineItemRequestPropertySchema = {
 export const LineItemsRequestPropertySchema = {
   lines: {
     type: JsonSchemaType.ARRAY,
-    items: LineItemRequestPropertySchema,
+    items: ProductLineItemRequestPropertySchema,
   },
 };
 export interface LineItemsRequestPropertyInterface {
@@ -440,8 +445,12 @@ export interface LineItemsRequestPropertyInterface {
 const LineItemResponsePropertySchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["quantity", "product", "label", "amount"],
+  required: ["type", "quantity", "product", "label", "amount"],
   properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractLineItemType.PRODUCT],
+    },
     ...ProductResponsePropertySchema,
     membership: constructUIDSchema([UIDPrefix.MEMBERSHIP]),
     quantity: {
