@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/mondomember/node/compare/v1.10.3...v2.0.0) (2022-08-12)
+
+
+### Features
+
+* adding contract line item type capabilities ([91823af](https://github.com/mondomember/node/commit/91823afbcc432a060bbf4054497f3cb6b3f2db2b))
+
+
+
+
+
 ## [1.10.3](https://github.com/mondomember/node/compare/v1.10.2...v1.10.3) (2022-08-05)
 
 **Note:** Version bump only for package @mondomember/test
