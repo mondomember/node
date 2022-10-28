@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/mondomember/node/compare/v2.1.0...v3.0.0) (2022-10-28)
+
+**Note:** Version bump only for package @mondomember/test
+
+
+
+
+
 # [2.1.0](https://github.com/mondomember/node/compare/v2.0.0...v2.1.0) (2022-10-27)
 
 **Note:** Version bump only for package @mondomember/test
