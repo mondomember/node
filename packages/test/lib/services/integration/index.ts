@@ -1,2 +1,2 @@
 export * from "./public";
-export * from "./server-side";
+export * from "./workspace";

@@ -1,15 +1,15 @@
 import { matchers } from "jest-json-schema";
-import { ServerSideTokenResponseListSchema as Schema } from "./response-list";
+import { WorkspaceTokenResponseListSchema as Schema } from "./response-list";
 import { Integration } from "@mondomember/test";
 
 expect.extend(matchers);
 
-describe("Integration Server Side Token - Response List Schema", () => {
+describe("Integration Workspace Token - Response List Schema", () => {
   test("succeed with items", async () => {
     const payload = {
       items: [
-        Integration.createTestServerSideToken(),
-        Integration.createTestServerSideToken(),
+        Integration.createTestWorkspaceToken(),
+        Integration.createTestWorkspaceToken(),
       ],
     };
 

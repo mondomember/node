@@ -1,5 +1,5 @@
 import { matchers } from "jest-json-schema";
-import { ServerSideTokenModifyItemSchema as Schema } from "./modify-item";
+import { WorkspaceTokenModifyItemSchema as Schema } from "./modify-item";
 import { Chance } from "chance";
 import { Integration } from "@mondomember/test";
 
@@ -7,10 +7,10 @@ expect.extend(matchers);
 
 const chance: Chance.Chance = new Chance();
 
-describe("Integration Server Side Token - Update Item Schema", () => {
+describe("Integration Workspace Token - Update Item Schema", () => {
   test("succeed with full payload", async () => {
     const payload = {
-      ...Integration.createTestModifyServerSideToken(),
+      ...Integration.createTestModifyWorkspaceToken(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -18,7 +18,7 @@ describe("Integration Server Side Token - Update Item Schema", () => {
 
   test("fail with Id", async () => {
     const payload = {
-      ...Integration.createTestModifyServerSideToken(),
+      ...Integration.createTestModifyWorkspaceToken(),
       id: chance.guid(),
     };
 
@@ -27,7 +27,7 @@ describe("Integration Server Side Token - Update Item Schema", () => {
 
   test("fail null label", async () => {
     const payload = {
-      ...Integration.createTestModifyServerSideToken(),
+      ...Integration.createTestModifyWorkspaceToken(),
       label: null,
     };
 
@@ -36,7 +36,7 @@ describe("Integration Server Side Token - Update Item Schema", () => {
 
   test("fail with empty label", async () => {
     const payload = {
-      ...Integration.createTestModifyServerSideToken(),
+      ...Integration.createTestModifyWorkspaceToken(),
       label: "",
     };
 
@@ -45,7 +45,7 @@ describe("Integration Server Side Token - Update Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Integration.createTestModifyServerSideToken(),
+      ...Integration.createTestModifyWorkspaceToken(),
       foo: chance.word(),
     };
 

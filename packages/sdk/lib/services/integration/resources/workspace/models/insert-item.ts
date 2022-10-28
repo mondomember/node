@@ -9,7 +9,7 @@ import {
   AuthorizationsPropertySchema,
 } from "./base";
 
-export const ServerSideTokenInsertItemSchema: JsonSchema = {
+export const WorkspaceTokenInsertItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["label"],
@@ -20,7 +20,7 @@ export const ServerSideTokenInsertItemSchema: JsonSchema = {
   },
 };
 
-export interface ServerSideTokenInsertItemInterface
+export interface WorkspaceTokenInsertItemInterface
   extends LabelPropertyInterface,
     DescriptionPropertyInterface,
     AuthorizationsPropertyInterface {}

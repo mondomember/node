@@ -4,24 +4,24 @@ import {
   PaginationPropertyInterface,
 } from "../../../../../models";
 import {
-  ServerSideTokenResponseItemSchema,
-  ServerSideTokenResponseItemInterface,
+  WorkspaceTokenResponseItemSchema,
+  WorkspaceTokenResponseItemInterface,
 } from "./response-item";
 
-export const ServerSideTokenResponseListSchema: JsonSchema = {
+export const WorkspaceTokenResponseListSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["items"],
   properties: {
     items: {
       type: JsonSchemaType.ARRAY,
-      items: ServerSideTokenResponseItemSchema,
+      items: WorkspaceTokenResponseItemSchema,
     },
     ...PaginationPropertySchema,
   },
 };
 
-export interface ServerSideTokenResponseListInterface
+export interface WorkspaceTokenResponseListInterface
   extends Partial<PaginationPropertyInterface> {
-  items?: ServerSideTokenResponseItemInterface[];
+  items?: WorkspaceTokenResponseItemInterface[];
 }

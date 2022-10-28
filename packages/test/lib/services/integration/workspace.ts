@@ -17,7 +17,7 @@ const TokenProperty = {
 };
 
 const IdProperty = {
-  id: generateTestKSUID(Integration.UIDPrefix.SERVER_SIDE_TOKEN),
+  id: generateTestKSUID(Integration.UIDPrefix.WORKSPACE_TOKEN),
 };
 
 const LabelProperty = {
@@ -36,9 +36,9 @@ const AuthorizationsProperty = {
   },
 };
 
-export function createTestInsertServerSideToken(
-  overrides?: Partial<Integration.ServerSideTokenInsertItemInterface>
-): Integration.ServerSideTokenInsertItemInterface {
+export function createTestInsertWorkspaceToken(
+  overrides?: Partial<Integration.WorkspaceTokenInsertItemInterface>
+): Integration.WorkspaceTokenInsertItemInterface {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -47,9 +47,9 @@ export function createTestInsertServerSideToken(
   };
 }
 
-export function createTestModifyServerSideToken(
-  overrides?: Partial<Integration.ServerSideTokenModifyItemInterface>
-): Integration.ServerSideTokenModifyItemInterface {
+export function createTestModifyWorkspaceToken(
+  overrides?: Partial<Integration.WorkspaceTokenModifyItemInterface>
+): Integration.WorkspaceTokenModifyItemInterface {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -58,9 +58,9 @@ export function createTestModifyServerSideToken(
   };
 }
 
-export function createTestServerSideToken(
-  overrides?: Partial<Integration.ServerSideTokenResponseItemInterface>
-): Integration.ServerSideTokenResponseItemInterface {
+export function createTestWorkspaceToken(
+  overrides?: Partial<Integration.WorkspaceTokenResponseItemInterface>
+): Integration.WorkspaceTokenResponseItemInterface {
   return {
     ...IdProperty,
     ...TokenProperty,

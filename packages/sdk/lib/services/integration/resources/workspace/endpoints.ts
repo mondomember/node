@@ -5,15 +5,15 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
 import {
-  ServerSideTokenInsertItemInterface,
-  ServerSideTokenModifyItemInterface,
-  ServerSideTokenResponseItemInterface,
-  ServerSideTokenResponseListInterface,
+  WorkspaceTokenInsertItemInterface,
+  WorkspaceTokenModifyItemInterface,
+  WorkspaceTokenResponseItemInterface,
+  WorkspaceTokenResponseListInterface,
 } from "./models";
 
 const PATH = {
-  base: "integrations/server-side",
-  item: "integrations/server-side/{token}",
+  base: "integrations/workspace",
+  item: "integrations/workspace/{token}",
 };
 
 type Expressions = {
@@ -26,9 +26,9 @@ type ListItemsParams = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  ServerSideTokenInsertItemInterface,
-  ServerSideTokenModifyItemInterface,
-  ServerSideTokenResponseItemInterface
+  WorkspaceTokenInsertItemInterface,
+  WorkspaceTokenModifyItemInterface,
+  WorkspaceTokenResponseItemInterface
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -36,7 +36,7 @@ export default class extends CRUDEndpoints<
 
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<ServerSideTokenResponseListInterface> {
+  ): ClientResponse<WorkspaceTokenResponseListInterface> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -48,7 +48,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<ServerSideTokenResponseItemInterface> {
+  ): ClientResponse<WorkspaceTokenResponseItemInterface> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

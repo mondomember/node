@@ -4,24 +4,24 @@ import { UIDPrefix } from "../../../constants";
 
 import { ActionEnum, AuthorizationService } from "../../../interfaces";
 import {
-  ServerSideActivityAuthorizations,
-  ServerSideBillingAuthorizations,
-  ServerSideCRMAuthorizations,
-  ServerSideMembershipAuthorizations,
-  ServerSidePaymentAuthorizations,
-  ServerSideSearchAuthorizations,
-  ServerSideSettingsAuthorizations,
-  ServerSideWebhookAuthorizations,
+  WorkspaceActivityAuthorizations,
+  WorkspaceBillingAuthorizations,
+  WorkspaceCRMAuthorizations,
+  WorkspaceMembershipAuthorizations,
+  WorkspacePaymentAuthorizations,
+  WorkspaceSearchAuthorizations,
+  WorkspaceSettingsAuthorizations,
+  WorkspaceWebhookAuthorizations,
 } from "./interfaces";
 
-export const ServerSideTokenSchema = constructJWTSchema();
+export const WorkspaceTokenSchema = constructJWTSchema();
 
-export const ServerSideIdSchema = constructUIDSchema([
-  UIDPrefix.SERVER_SIDE_TOKEN,
+export const WorkspaceIdSchema = constructUIDSchema([
+  UIDPrefix.WORKSPACE_TOKEN,
 ]);
 
 export const IdPropertySchema = {
-  id: ServerSideIdSchema,
+  id: WorkspaceIdSchema,
 };
 
 export interface IdPropertyInterface {
@@ -29,7 +29,7 @@ export interface IdPropertyInterface {
 }
 
 export const TokenPropertySchema = {
-  jwt: ServerSideTokenSchema,
+  jwt: WorkspaceTokenSchema,
 };
 
 export interface TokenPropertyInterface {
@@ -166,13 +166,13 @@ export const AuthorizationsPropertySchema = {
 
 export interface AuthorizationsPropertyInterface {
   authorizations: {
-    [AuthorizationService.ACTIVITY]?: ServerSideActivityAuthorizations;
-    [AuthorizationService.BILLING]?: ServerSideBillingAuthorizations;
-    [AuthorizationService.CRM]?: ServerSideCRMAuthorizations;
-    [AuthorizationService.MEMBERSHIP]?: ServerSideMembershipAuthorizations;
-    [AuthorizationService.PAYMENT]?: ServerSidePaymentAuthorizations;
-    [AuthorizationService.SEARCH]?: ServerSideSearchAuthorizations;
-    [AuthorizationService.SETTINGS]?: ServerSideSettingsAuthorizations;
-    [AuthorizationService.WEBHOOK]?: ServerSideWebhookAuthorizations;
+    [AuthorizationService.ACTIVITY]?: WorkspaceActivityAuthorizations;
+    [AuthorizationService.BILLING]?: WorkspaceBillingAuthorizations;
+    [AuthorizationService.CRM]?: WorkspaceCRMAuthorizations;
+    [AuthorizationService.MEMBERSHIP]?: WorkspaceMembershipAuthorizations;
+    [AuthorizationService.PAYMENT]?: WorkspacePaymentAuthorizations;
+    [AuthorizationService.SEARCH]?: WorkspaceSearchAuthorizations;
+    [AuthorizationService.SETTINGS]?: WorkspaceSettingsAuthorizations;
+    [AuthorizationService.WEBHOOK]?: WorkspaceWebhookAuthorizations;
   };
 }

@@ -23,7 +23,7 @@ import {
   TokenPropertyInterface,
 } from "./base";
 
-export const ServerSideTokenResponseItemSchema: JsonSchema = {
+export const WorkspaceTokenResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["id", "jwt", "label", "createdAt", "updatedAt"],
@@ -40,7 +40,7 @@ export const ServerSideTokenResponseItemSchema: JsonSchema = {
   },
 };
 
-export interface ServerSideTokenResponseItemInterface
+export interface WorkspaceTokenResponseItemInterface
   extends IdPropertyInterface,
     TokenPropertyInterface,
     LabelPropertyInterface,

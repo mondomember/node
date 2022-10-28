@@ -10,7 +10,7 @@ import {
   DescriptionPropertyInterface,
 } from "./base";
 
-export const ServerSideTokenModifyItemSchema: JsonSchema = {
+export const WorkspaceTokenModifyItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {
@@ -20,7 +20,7 @@ export const ServerSideTokenModifyItemSchema: JsonSchema = {
   },
 };
 
-export interface ServerSideTokenModifyItemInterface
+export interface WorkspaceTokenModifyItemInterface
   extends Partial<LabelPropertyInterface>,
     DeepPartial<AuthorizationsPropertyInterface>,
     Partial<DescriptionPropertyInterface> {}

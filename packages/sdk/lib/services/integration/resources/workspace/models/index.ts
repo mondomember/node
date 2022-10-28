@@ -5,4 +5,4 @@ export * from "./modify-item";
 export * from "./response-list";
 export * from "./response-item";
 
-export { ServerSideIdSchema, ServerSideTokenSchema } from "./base";
+export { WorkspaceIdSchema, WorkspaceTokenSchema } from "./base";

@@ -1,14 +1,14 @@
 import { ClientInstance } from "../../../client/interfaces";
 
-import ServerSide from "./server-side/endpoints";
+import Workspace from "./workspace/endpoints";
 import Public from "./public/endpoints";
 
 export class IntegrationEndpoints {
-  readonly ServerSide: ServerSide;
+  readonly Workspace: Workspace;
   readonly Public: Public;
 
   constructor(readonly client: ClientInstance) {
-    this.ServerSide = new ServerSide(this.client);
+    this.Workspace = new Workspace(this.client);
     this.Public = new Public(this.client);
   }
 }

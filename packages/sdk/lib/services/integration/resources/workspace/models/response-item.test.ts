@@ -1,13 +1,13 @@
 import { matchers } from "jest-json-schema";
-import { ServerSideTokenResponseItemSchema as Schema } from "./response-item";
+import { WorkspaceTokenResponseItemSchema as Schema } from "./response-item";
 import { Integration } from "@mondomember/test";
 
 expect.extend(matchers);
 
-describe("Integration Server Side Token - Response Item Schema", () => {
+describe("Integration Workspace Token - Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Integration.createTestServerSideToken(),
+      ...Integration.createTestWorkspaceToken(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -15,7 +15,7 @@ describe("Integration Server Side Token - Response Item Schema", () => {
 
   test("fail without id", async () => {
     const payload = {
-      ...Integration.createTestServerSideToken(),
+      ...Integration.createTestWorkspaceToken(),
       id: undefined,
     };
 
@@ -24,7 +24,7 @@ describe("Integration Server Side Token - Response Item Schema", () => {
 
   test("fail without label", async () => {
     const payload = {
-      ...Integration.createTestServerSideToken(),
+      ...Integration.createTestWorkspaceToken(),
       label: undefined,
     };
 
