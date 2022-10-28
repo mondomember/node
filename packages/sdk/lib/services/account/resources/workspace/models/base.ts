@@ -16,6 +16,17 @@ export interface NamePropertyInterface {
   name: string;
 }
 
+export const SlugPropertySchema = {
+  slug: {
+    type: JsonSchemaType.STRING,
+    minLength: 3,
+  },
+};
+
+export interface SlugPropertyInterface {
+  slug: string;
+}
+
 export const MembershipPropertySchema = {
   membership: {
     type: JsonSchemaType.OBJECT,

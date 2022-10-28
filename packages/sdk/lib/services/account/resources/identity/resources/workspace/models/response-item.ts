@@ -16,15 +16,18 @@ import {
 import {
   NamePropertySchema,
   NamePropertyInterface,
+  SlugPropertySchema,
+  SlugPropertyInterface,
 } from "../../../../workspace/models/base";
 
 export const IdentityWorkspaceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["id", "name", "createdAt", "updatedAt"],
+  required: ["id", "name", "slug", "createdAt", "updatedAt"],
   properties: {
     ...UUIDPropertySchema,
     ...NamePropertySchema,
+    ...SlugPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -36,6 +39,7 @@ export const IdentityWorkspaceResponseItemSchema = {
 export interface IdentityWorkspaceResponseItemInterface
   extends IdPropertyInterface,
     NamePropertyInterface,
+    SlugPropertyInterface,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,
     Partial<DeletedAtPropertyInterface>,

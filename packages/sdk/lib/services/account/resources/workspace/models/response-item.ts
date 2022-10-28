@@ -15,6 +15,8 @@ import {
 import {
   NamePropertySchema,
   NamePropertyInterface,
+  SlugPropertySchema,
+  SlugPropertyInterface,
   TenantIdPropertySchema,
   MembershipPropertyInterface,
   MembershipPropertySchema,
@@ -23,10 +25,11 @@ import {
 export const WorkspaceTenantResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["id", "name", "membership", "createdAt", "updatedAt"],
+  required: ["id", "name", "slug", "membership", "createdAt", "updatedAt"],
   properties: {
     ...TenantIdPropertySchema,
     ...NamePropertySchema,
+    ...SlugPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -39,6 +42,7 @@ export const WorkspaceTenantResponseItemSchema = {
 export interface WorkspaceTenantResponseItemInterface
   extends IdPropertyInterface,
     NamePropertyInterface,
+    SlugPropertyInterface,
     MembershipPropertyInterface,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,

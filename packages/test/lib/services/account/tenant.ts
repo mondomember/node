@@ -12,6 +12,10 @@ const NameProperty = {
   name: chance.company(),
 };
 
+const SlugProperty = {
+  slug: chance.string({ length: 12 }),
+};
+
 const MembershipProperty = {
   membership: {
     plan: chance.pickone([
@@ -28,6 +32,7 @@ export function createTestTenant(
   return {
     id: chance.guid(),
     ...NameProperty,
+    ...SlugProperty,
     ...MembershipProperty,
     ...createCreatedAtProperty(),
     ...createUpdatedAtProperty(),
@@ -42,6 +47,7 @@ export function createTestInsertTenant(
   return {
     id: chance.guid(),
     ...NameProperty,
+    ...SlugProperty,
     ...createMetadataProperty(),
     ...overides,
   };
@@ -52,6 +58,7 @@ export function createTestModifyTenant(
 ): Account.WorkspaceTenantModifyItemInterface {
   return {
     ...NameProperty,
+    ...SlugProperty,
     ...createMetadataProperty(),
     ...overides,
   };

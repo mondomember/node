@@ -7,6 +7,8 @@ import {
 import {
   NamePropertySchema,
   NamePropertyInterface,
+  SlugPropertySchema,
+  SlugPropertyInterface,
   TenantIdPropertySchema,
 } from "./base";
 
@@ -17,6 +19,7 @@ export const WorkspaceTenantInsertItemSchema = {
   properties: {
     ...TenantIdPropertySchema,
     ...NamePropertySchema,
+    ...SlugPropertySchema,
     ...MetadataPropertySchema,
   },
 };
@@ -24,4 +27,5 @@ export const WorkspaceTenantInsertItemSchema = {
 export interface WorkspaceTenantInsertItemInterface
   extends Partial<IdPropertyInterface>,
     NamePropertyInterface,
+    Partial<SlugPropertyInterface>,
     Partial<MetadataPropertyInterface> {}
