@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/mondomember/node/compare/v3.0.0...v3.0.1) (2022-10-28)
+
+
+### Features
+
+* workspace schema slug update ([5dc405b](https://github.com/mondomember/node/commit/5dc405bee9f9eaad774cd08b0cd75436a956048a))
+
+
+
+
+
 # [3.0.0](https://github.com/mondomember/node/compare/v2.1.0...v3.0.0) (2022-10-28)
 
 **Note:** Version bump only for package @mondomember/test
