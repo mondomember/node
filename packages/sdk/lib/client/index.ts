@@ -14,6 +14,7 @@ import { AccountResources, AccountEndpoints } from "../services/account";
 import { ActivityResources, ActivityEndpoints } from "../services/activity";
 import { BillingResources, BillingEndpoints } from "../services/billing";
 import { CRMResources, CRMEndpoints } from "../services/crm";
+import { IdentityResources, IdentityEndpoints } from "../services/identity";
 import { ImportResources, ImportEndpoints } from "../services/import";
 import {
   IntegrationResources,
@@ -27,14 +28,19 @@ import { PaymentResources, PaymentEndpoints } from "../services/payment";
 import { SearchResources, SearchEndpoints } from "../services/search";
 import { SettingsResources, SettingsEndpoints } from "../services/settings";
 import { WebhookResources, WebhookEndpoints } from "../services/webhook";
+import { WorkspaceResources, WorkspaceEndpoints } from "../services/workspace";
 
 export class Mondo {
   readonly client: ClientInstance;
 
+  /**
+   * @deprecated
+   */
   readonly Account: AccountEndpoints;
   readonly Activities: ActivityEndpoints;
   readonly Billing: BillingEndpoints;
   readonly CRM: CRMEndpoints;
+  readonly Identity: IdentityEndpoints;
   readonly Imports: ImportEndpoints;
   readonly Integrations: IntegrationEndpoints;
   readonly Membership: MembershipEndpoints;
@@ -42,6 +48,7 @@ export class Mondo {
   readonly Search: SearchEndpoints;
   readonly Settings: SettingsEndpoints;
   readonly Webhooks: WebhookEndpoints;
+  readonly Workspace: WorkspaceEndpoints;
 
   constructor(config?: ClientConfig) {
     this.client = createClientInstance({
@@ -52,6 +59,7 @@ export class Mondo {
     this.Activities = ActivityResources(this.client);
     this.Billing = BillingResources(this.client);
     this.CRM = CRMResources(this.client);
+    this.Identity = IdentityResources(this.client);
     this.Imports = ImportResources(this.client);
     this.Integrations = IntegrationResources(this.client);
     this.Membership = MembershipResources(this.client);
@@ -59,5 +67,6 @@ export class Mondo {
     this.Search = SearchResources(this.client);
     this.Settings = SettingsResources(this.client);
     this.Webhooks = WebhookResources(this.client);
+    this.Workspace = WorkspaceResources(this.client);
   }
 }
