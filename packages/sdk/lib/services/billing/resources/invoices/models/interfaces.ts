@@ -21,6 +21,7 @@ export const InvoiceStatusEnum = [
 export const InvoicePaymentStatus = {
   PENDING: "Pending",
   SUCCCESSFUL: "Successful",
+  FAILED: "Failed",
 } as const;
 
 export type AnyInvoicePaymentStatus =

@@ -224,7 +224,11 @@ export type AutoPayPropertyInterface = AutoPayFinalizedPropertyInterface;
 const InvoicePaymentStatusPropertySchema = {
   status: {
     type: JsonSchemaType.STRING,
-    enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.SUCCCESSFUL],
+    enum: [
+      InvoicePaymentStatus.PENDING,
+      InvoicePaymentStatus.SUCCCESSFUL,
+      InvoicePaymentStatus.FAILED,
+    ],
   },
 };
 
