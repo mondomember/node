@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/mondomember/node/compare/v4.0.0...v4.0.1) (2022-12-12)
+
+
+### Features
+
+* adding Failed invoice payment status ([833d235](https://github.com/mondomember/node/commit/833d23533e1d45d07bc1d6ed56b52b1a3e850575))
+
+
+
+
+
 # [4.0.0](https://github.com/mondomember/node/compare/v3.0.1...v4.0.0) (2022-11-24)
 
 **Note:** Version bump only for package node
