@@ -344,7 +344,7 @@ export const PaymentPropertyResponseSchema = {
   payment: {
     type: JsonSchemaType.OBJECT,
     additionalProperties: false,
-    required: ["method", "status", "paidAt"],
+    required: ["status"],
     properties: {
       ...InvoicePaymentStatusPropertySchema,
       paidAt: {
@@ -359,8 +359,8 @@ export const PaymentPropertyResponseSchema = {
 
 export interface InvoicePaymentResponseInterface {
   status: AnyInvoicePaymentStatus;
-  method: InvoicePaymentMethodResponseInterface;
-  paidAt: string;
+  method?: InvoicePaymentMethodResponseInterface;
+  paidAt?: string;
   receipt?: InvoicePaymentReceiptResponseInterface;
   notes?: string;
 }
