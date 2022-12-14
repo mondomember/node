@@ -12,6 +12,7 @@ const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
   status: chance.pickone([
+    Billing.InvoiceTransactionStatus.PENDING,
     Billing.InvoiceTransactionStatus.SUCCESS,
     Billing.InvoiceTransactionStatus.FAIL,
   ]),

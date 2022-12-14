@@ -9,6 +9,7 @@ export type AnyInvoiceTransactionType =
   typeof InvoiceTransactionType[keyof typeof InvoiceTransactionType];
 
 export const InvoiceTransactionStatus = {
+  PENDING: "Pending",
   SUCCESS: "Success",
   FAIL: "Fail",
 } as const;

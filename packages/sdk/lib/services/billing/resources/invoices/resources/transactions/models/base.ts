@@ -24,7 +24,11 @@ export interface InvoicePropertyInterface {
 export const StatusPropertySchema = {
   status: {
     type: JsonSchemaType.STRING,
-    enum: [InvoiceTransactionStatus.SUCCESS, InvoiceTransactionStatus.FAIL],
+    enum: [
+      InvoiceTransactionStatus.PENDING,
+      InvoiceTransactionStatus.SUCCESS,
+      InvoiceTransactionStatus.FAIL,
+    ],
     minLength: 1,
   },
 };
