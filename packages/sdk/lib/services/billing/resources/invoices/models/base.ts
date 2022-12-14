@@ -327,46 +327,41 @@ type InvoicePaymentReceiptResponseInterface =
   | InvoicePaymentReceiptManualResponseInterface
   | InvoicePaymentReceiptChargeResponseInterface;
 
-export const SuccessfulPaymentPropertyResponseSchema = {
-  payment: {
-    type: JsonSchemaType.OBJECT,
-    additionalProperties: false,
-    required: ["status", "paidAt", "method", "receipt"],
-    properties: {
-      status: {
-        type: JsonSchemaType.STRING,
-        enum: [InvoicePaymentStatus.SUCCCESSFUL],
-      },
-      paidAt: {
-        type: JsonSchemaType.STRING,
-        format: "date-time",
-      },
-      method: InvoicePaymentMethodResponseSchema,
-      receipt: InvoicePaymentReceiptResponseSchema,
+export const SuccessfulPaymentResponseSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["status", "paidAt", "method", "receipt"],
+  properties: {
+    status: {
+      type: JsonSchemaType.STRING,
+      enum: [InvoicePaymentStatus.SUCCCESSFUL],
     },
+    paidAt: {
+      type: JsonSchemaType.STRING,
+      format: "date-time",
+    },
+    method: InvoicePaymentMethodResponseSchema,
+    receipt: InvoicePaymentReceiptResponseSchema,
   },
 };
 
-export const IncompletePaymentPropertyResponseSchema = {
-  payment: {
-    type: JsonSchemaType.OBJECT,
-    additionalProperties: false,
-    required: ["status"],
-    properties: {
-      status: {
-        type: JsonSchemaType.STRING,
-        enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.FAILED],
-      },
+export const IncompletePaymentResponseSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["status"],
+  properties: {
+    status: {
+      type: JsonSchemaType.STRING,
+      enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.FAILED],
     },
   },
 };
 
 export const PaymentPropertyResponseSchema = {
-  type: JsonSchemaType.OBJECT,
-  oneOf: [
-    SuccessfulPaymentPropertyResponseSchema,
-    IncompletePaymentPropertyResponseSchema,
-  ],
+  payment: {
+    type: JsonSchemaType.OBJECT,
+    oneOf: [SuccessfulPaymentResponseSchema, IncompletePaymentResponseSchema],
+  },
 };
 
 interface SuccessfulInvoicePaymentResponseInterface {
