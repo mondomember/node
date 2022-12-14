@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/mondomember/node/compare/v4.0.5...v4.0.6) (2022-12-14)
+
+
+### Features
+
+* adding new status to invoice transaction ([236fffe](https://github.com/mondomember/node/commit/236fffec627351b6e52e09c0e8d9daf6bd52af9a))
+
+
+
+
+
 ## [4.0.5](https://github.com/mondomember/node/compare/v4.0.4...v4.0.5) (2022-12-14)
 
 
