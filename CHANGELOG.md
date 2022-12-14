@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/mondomember/node/compare/v4.0.4...v4.0.5) (2022-12-14)
+
+
+### Bug Fixes
+
+* updating invoice payment test object ([7162d57](https://github.com/mondomember/node/commit/7162d5758c37abe62a03ecf79971db2841b410ca))
+
+
+### Features
+
+* adding invoice payment attributes ([365bc7c](https://github.com/mondomember/node/commit/365bc7c230bb4665ccb687f03c4b1ecac59d7604))
+
+
+
+
+
 ## [4.0.4](https://github.com/mondomember/node/compare/v4.0.3...v4.0.4) (2022-12-14)
 
 
