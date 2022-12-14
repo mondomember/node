@@ -104,6 +104,7 @@ export function createTestInvoicePayment(
       type: Billing.InvoicePaymentReceiptType.MANUAL,
     },
     paidAt: new Date().toISOString(),
+    lastActivityAt: new Date().toISOString(),
     ...overrides,
   };
 }
