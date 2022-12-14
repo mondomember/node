@@ -17,7 +17,6 @@ import {
   InvoiceLineItemType,
   InvoiceAutoPayType,
   InvoicePaymentStatus,
-  AnyInvoicePaymentStatus,
 } from "./interfaces";
 
 export const InvoiceIdSchema = constructUIDSchema([UIDPrefix.INVOICE]);
@@ -221,17 +220,6 @@ export const AutoPayPropertySchema = {
 
 export type AutoPayPropertyInterface = AutoPayFinalizedPropertyInterface;
 
-const InvoicePaymentStatusPropertySchema = {
-  status: {
-    type: JsonSchemaType.STRING,
-    enum: [
-      InvoicePaymentStatus.PENDING,
-      InvoicePaymentStatus.SUCCCESSFUL,
-      InvoicePaymentStatus.FAILED,
-    ],
-  },
-};
-
 const InvoicePaymentMethodOfflineResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -265,7 +253,6 @@ const InvoicePaymentMethodOnlineResponseSchema = {
   required: ["id", "type"],
   properties: {
     id: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
-    ...InvoicePaymentStatusPropertySchema,
     type: {
       type: JsonSchemaType.STRING,
       enum: [InvoicePaymentMethodType.SOURCE],
@@ -340,13 +327,16 @@ type InvoicePaymentReceiptResponseInterface =
   | InvoicePaymentReceiptManualResponseInterface
   | InvoicePaymentReceiptChargeResponseInterface;
 
-export const PaymentPropertyResponseSchema = {
+export const SuccessfulPaymentPropertyResponseSchema = {
   payment: {
     type: JsonSchemaType.OBJECT,
     additionalProperties: false,
-    required: ["status"],
+    required: ["status", "paidAt", "method", "receipt"],
     properties: {
-      ...InvoicePaymentStatusPropertySchema,
+      status: {
+        type: JsonSchemaType.STRING,
+        enum: [InvoicePaymentStatus.SUCCCESSFUL],
+      },
       paidAt: {
         type: JsonSchemaType.STRING,
         format: "date-time",
@@ -357,13 +347,46 @@ export const PaymentPropertyResponseSchema = {
   },
 };
 
-export interface InvoicePaymentResponseInterface {
-  status: AnyInvoicePaymentStatus;
-  method?: InvoicePaymentMethodResponseInterface;
-  paidAt?: string;
-  receipt?: InvoicePaymentReceiptResponseInterface;
+export const IncompletePaymentPropertyResponseSchema = {
+  payment: {
+    type: JsonSchemaType.OBJECT,
+    additionalProperties: false,
+    required: ["status"],
+    properties: {
+      status: {
+        type: JsonSchemaType.STRING,
+        enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.FAILED],
+      },
+    },
+  },
+};
+
+export const PaymentPropertyResponseSchema = {
+  type: JsonSchemaType.OBJECT,
+  oneOf: [
+    SuccessfulPaymentPropertyResponseSchema,
+    IncompletePaymentPropertyResponseSchema,
+  ],
+};
+
+interface SuccessfulInvoicePaymentResponseInterface {
+  status: typeof InvoicePaymentStatus.SUCCCESSFUL;
+  method: InvoicePaymentMethodResponseInterface;
+  paidAt: string;
+  receipt: InvoicePaymentReceiptResponseInterface;
   notes?: string;
 }
+
+interface IncompleteInvoicePaymentResponseInterface {
+  status:
+    | typeof InvoicePaymentStatus.FAILED
+    | typeof InvoicePaymentStatus.PENDING;
+  notes?: string;
+}
+
+export type InvoicePaymentResponseInterface =
+  | SuccessfulInvoicePaymentResponseInterface
+  | IncompleteInvoicePaymentResponseInterface;
 
 export interface PaymentPropertyResponseInterface {
   payment: InvoicePaymentResponseInterface;
