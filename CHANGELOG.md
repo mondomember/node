@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.4](https://github.com/mondomember/node/compare/v4.0.3...v4.0.4) (2022-12-14)
+
+
+### Bug Fixes
+
+* improper schema syntax ([b5f9b15](https://github.com/mondomember/node/commit/b5f9b15dd1f547e4cfe5a84769abd1d6bfae1b19))
+
+
+
+
+
 ## [4.0.3](https://github.com/mondomember/node/compare/v4.0.2...v4.0.3) (2022-12-14)
 
 
