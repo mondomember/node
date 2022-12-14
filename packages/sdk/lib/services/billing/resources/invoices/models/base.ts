@@ -330,13 +330,17 @@ type InvoicePaymentReceiptResponseInterface =
 export const SuccessfulPaymentResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["status", "paidAt", "method", "receipt"],
+  required: ["status", "paidAt", "method", "receipt", "lastActivityAt"],
   properties: {
     status: {
       type: JsonSchemaType.STRING,
       enum: [InvoicePaymentStatus.SUCCCESSFUL],
     },
     paidAt: {
+      type: JsonSchemaType.STRING,
+      format: "date-time",
+    },
+    lastActivityAt: {
       type: JsonSchemaType.STRING,
       format: "date-time",
     },
@@ -348,11 +352,16 @@ export const SuccessfulPaymentResponseSchema = {
 export const IncompletePaymentResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["status"],
+  required: ["status", "method", "lastActivityAt"],
   properties: {
     status: {
       type: JsonSchemaType.STRING,
       enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.FAILED],
+    },
+    method: InvoicePaymentMethodResponseSchema,
+    lastActivityAt: {
+      type: JsonSchemaType.STRING,
+      format: "date-time",
     },
   },
 };
@@ -368,6 +377,7 @@ interface SuccessfulInvoicePaymentResponseInterface {
   status: typeof InvoicePaymentStatus.SUCCCESSFUL;
   method: InvoicePaymentMethodResponseInterface;
   paidAt: string;
+  lastActivityAt: string;
   receipt: InvoicePaymentReceiptResponseInterface;
   notes?: string;
 }
@@ -376,6 +386,8 @@ interface IncompleteInvoicePaymentResponseInterface {
   status:
     | typeof InvoicePaymentStatus.FAILED
     | typeof InvoicePaymentStatus.PENDING;
+  method: InvoicePaymentMethodResponseInterface;
+  lastActivityAt: string;
   notes?: string;
 }
 
