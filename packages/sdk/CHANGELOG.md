@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/mondomember/node/compare/v4.0.2...v4.0.3) (2022-12-14)
+
+
+### Features
+
+* updating invoice payment schema ([69d8ea6](https://github.com/mondomember/node/commit/69d8ea6090a75f2a4f3e3eef47e414a72d22b001))
+
+
+
+
+
 ## [4.0.2](https://github.com/mondomember/node/compare/v4.0.1...v4.0.2) (2022-12-13)
 
 
