@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.7](https://github.com/mondomember/node/compare/v4.0.6...v4.0.7) (2022-12-15)
+
+
+### Features
+
+* enabling charge/refund transaction creation ([658a8d8](https://github.com/mondomember/node/commit/658a8d825c500d88bb697511fd7a130953af39cb))
+
+
+
+
+
 ## [4.0.6](https://github.com/mondomember/node/compare/v4.0.5...v4.0.6) (2022-12-14)
 
 
