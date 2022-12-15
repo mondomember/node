@@ -40,6 +40,7 @@ const OnlineTokenMethod = {
     token: {
       type: JsonSchemaType.STRING,
     },
+    gateway: constructUIDSchema([PaymentUIDPrefix.GATEWAY]),
   },
 };
 
@@ -110,6 +111,7 @@ interface SourceTokenPayment {
   method: {
     type: typeof InvoicePaymentMethodType.SOURCE;
     token: string;
+    gateway?: string;
   };
 }
 
