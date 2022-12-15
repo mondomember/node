@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.8](https://github.com/mondomember/node/compare/v4.0.7...v4.0.8) (2022-12-15)
+
+
+### Features
+
+* reviewing invoice payment / invoice transaction types ([01c981c](https://github.com/mondomember/node/commit/01c981c6a2edaa1fe2b291745990c2556511909c))
+
+
+
+
+
 ## [4.0.7](https://github.com/mondomember/node/compare/v4.0.6...v4.0.7) (2022-12-15)
 
 
