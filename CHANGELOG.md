@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.9](https://github.com/mondomember/node/compare/v4.0.8...v4.0.9) (2022-12-15)
+
+
+### Features
+
+* allow specifying gateway for token payments ([6633fb1](https://github.com/mondomember/node/commit/6633fb118c61926029fa3962d2bf6bc33d9fa685))
+
+
+
+
+
 ## [4.0.8](https://github.com/mondomember/node/compare/v4.0.7...v4.0.8) (2022-12-15)
 
 
