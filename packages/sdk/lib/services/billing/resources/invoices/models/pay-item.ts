@@ -1,3 +1,5 @@
+import { constructUIDSchema } from "../../../../../models";
+import { UIDPrefix as PaymentUIDPrefix } from "../../../../../services/payment";
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 import { InvoicePaymentMethodType } from "./interfaces";
 
@@ -7,24 +9,57 @@ const Notes = {
   },
 };
 
-const Method = {
+const OfflineMethod = {
+  type: JsonSchemaType.OBJECT,
+  required: ["type"],
+  additionalProperties: false,
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [
+        InvoicePaymentMethodType.CASH,
+        InvoicePaymentMethodType.CHECK,
+        InvoicePaymentMethodType.WIRE,
+      ],
+    },
+    reference: {
+      type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
+    },
+  },
+};
+
+const OnlineTokenMethod = {
+  type: JsonSchemaType.OBJECT,
+  required: ["type", "token"],
+  additionalProperties: false,
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [InvoicePaymentMethodType.SOURCE],
+    },
+    token: {
+      type: JsonSchemaType.STRING,
+    },
+  },
+};
+
+const OnlineStoredMethod = {
+  type: JsonSchemaType.OBJECT,
+  required: ["type", "id"],
+  additionalProperties: false,
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [InvoicePaymentMethodType.SOURCE],
+    },
+    id: constructUIDSchema([PaymentUIDPrefix.SOURCE]),
+  },
+};
+
+const PaymentMethodPropertySchema = {
   method: {
     type: JsonSchemaType.OBJECT,
-    required: ["type"],
-    additionalProperties: false,
-    properties: {
-      type: {
-        type: JsonSchemaType.STRING,
-        enum: [
-          InvoicePaymentMethodType.CASH,
-          InvoicePaymentMethodType.CHECK,
-          InvoicePaymentMethodType.WIRE,
-        ],
-      },
-      reference: {
-        type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
-      },
-    },
+    oneOf: [OfflineMethod, OnlineTokenMethod, OnlineStoredMethod],
   },
 };
 
@@ -33,7 +68,7 @@ export const InvoicePayItemSchema: JsonSchema = {
   additionalProperties: false,
   required: ["method"],
   properties: {
-    ...Method,
+    ...PaymentMethodPropertySchema,
     ...Notes,
   },
 };
@@ -62,4 +97,25 @@ interface WirePayment {
   };
 }
 
-export type InvoicePayItemInterface = CheckPayment | CashPayment | WirePayment;
+interface SourceStoredPayment {
+  notes?: string;
+  method: {
+    type: typeof InvoicePaymentMethodType.SOURCE;
+    id: string;
+  };
+}
+
+interface SourceTokenPayment {
+  notes?: string;
+  method: {
+    type: typeof InvoicePaymentMethodType.SOURCE;
+    token: string;
+  };
+}
+
+export type InvoicePayItemInterface =
+  | CheckPayment
+  | CashPayment
+  | WirePayment
+  | SourceStoredPayment
+  | SourceTokenPayment;

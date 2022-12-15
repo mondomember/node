@@ -30,19 +30,6 @@ const InvoiceChargeRefundTransactionInsertItemSchema: JsonSchema = {
   },
 };
 
-const InvoiceChargeTransactionInsertItemSchema: JsonSchema = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["type"],
-  properties: {
-    type: {
-      type: JsonSchemaType.STRING,
-      enum: [InvoiceTransactionType.CHARGE],
-    },
-    ...NotesProperty,
-  },
-};
-
 const InvoiceManualRefundTransactionInsertItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -75,16 +62,10 @@ export const InvoiceTransactionInsertItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   oneOf: [
     InvoiceChargeRefundTransactionInsertItemSchema,
-    InvoiceChargeTransactionInsertItemSchema,
     InvoiceManualRefundTransactionInsertItemSchema,
     InvoiceAdjustmentTransactionInsertItemSchema,
   ],
 };
-
-interface Charge {
-  type: typeof InvoiceTransactionType.CHARGE;
-  notes?: string;
-}
 
 interface ChargeRefund {
   type: typeof InvoiceTransactionType.CHARGE_REFUND;
@@ -99,14 +80,13 @@ interface ManualRefund {
   notes?: string;
 }
 
-interface Other {
+interface Adjustment {
   type: typeof InvoiceTransactionType.ADJUSTMENT;
   amount: number;
   notes?: string;
 }
 
 export type InvoiceTransactionInsertItemInterface =
-  | Charge
   | ChargeRefund
   | ManualRefund
-  | Other;
+  | Adjustment;
