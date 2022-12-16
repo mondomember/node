@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.11](https://github.com/mondomember/node/compare/v4.0.10...v4.0.11) (2022-12-16)
+
+
+### Bug Fixes
+
+* changing token type ([e53e284](https://github.com/mondomember/node/commit/e53e28406f370a8b906bc96fc22ae2e87160b997))
+
+
+
+
+
 ## [4.0.10](https://github.com/mondomember/node/compare/v4.0.9...v4.0.10) (2022-12-16)
 
 
