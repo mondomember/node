@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.10](https://github.com/mondomember/node/compare/v4.0.9...v4.0.10) (2022-12-16)
+
+
+### Bug Fixes
+
+* adding discriminator to schemas ([677b932](https://github.com/mondomember/node/commit/677b932c9b08f7ce6c073b130abcebd5ea53b863))
+
+
+
+
+
 ## [4.0.9](https://github.com/mondomember/node/compare/v4.0.8...v4.0.9) (2022-12-15)
 
 
