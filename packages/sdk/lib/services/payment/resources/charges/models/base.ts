@@ -12,6 +12,7 @@ import { GatewayIdSchema } from "../../gateways/models/base";
 import {
   AnyChargeType,
   ChargeTypeEnum,
+  ChargePaymentType,
   AnyChargeStatus,
   ChargeStatusEnum,
 } from "./interfaces";
@@ -42,6 +43,101 @@ export const TypePropertySchema = {
 
 export interface TypePropertyInterface {
   type: AnyChargeType;
+}
+
+export interface SaveSourcePropertyInterface {
+  saveSource: boolean;
+}
+
+export const SaveSourcePropertySchema = {
+  saveSource: {
+    type: JsonSchemaType.BOOLEAN,
+  },
+};
+
+const TokenPaymentRequestSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type", "token"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargePaymentType.TOKEN],
+    },
+    token: {
+      type: JsonSchemaType.STRING,
+    },
+    ...SaveSourcePropertySchema,
+  },
+};
+
+const TokenPaymentResponseSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type", "token"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargePaymentType.TOKEN],
+    },
+    token: {
+      type: JsonSchemaType.STRING,
+    },
+  },
+};
+
+const SourcePaymentSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type", "id"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargePaymentType.SOURCE],
+    },
+    id: SourceIdSchema,
+  },
+};
+
+const PaymentRequestSchema = {
+  type: JsonSchemaType.OBJECT,
+  oneOf: [TokenPaymentRequestSchema, SourcePaymentSchema],
+};
+
+const PaymentResponseSchema = {
+  type: JsonSchemaType.OBJECT,
+  oneOf: [TokenPaymentResponseSchema, SourcePaymentSchema],
+};
+
+export const PaymentRequestPropertySchema = {
+  payment: PaymentRequestSchema,
+};
+
+export const PaymentResponsePropertySchema = {
+  payment: PaymentResponseSchema,
+};
+
+interface SourcePaymentInterface {
+  type: typeof ChargePaymentType.SOURCE;
+  id: string;
+}
+
+interface TokenPaymentRequestInterface extends SaveSourcePropertyInterface {
+  type: typeof ChargePaymentType.TOKEN;
+  token: string;
+}
+
+interface TokenPaymentResponseInterface {
+  type: typeof ChargePaymentType.TOKEN;
+  token: string;
+}
+
+export interface PaymentResponsePropertyInterface {
+  payment: SourcePaymentInterface | TokenPaymentResponseInterface;
+}
+
+export interface PaymentRequestPropertyInterface {
+  payment: SourcePaymentInterface | TokenPaymentRequestInterface;
 }
 
 export const RefundableAmountPropertySchema = {
@@ -83,34 +179,6 @@ export const ReferencePropertySchema = {
 export interface ReferencePropertyInterface {
   reference: string;
 }
-
-export const SourcePropertySchema = {
-  source: SourceIdSchema,
-};
-
-export interface SourcePropertyInterface {
-  source: string;
-}
-
-export const TokenPropertySchema = {
-  token: {
-    type: JsonSchemaType.STRING,
-  },
-};
-
-export interface TokenPropertyInterface {
-  token: string;
-}
-
-export interface SaveSourcePropertyInterface {
-  saveSource: boolean;
-}
-
-export const SaveSourcePropertySchema = {
-  saveSource: {
-    type: JsonSchemaType.BOOLEAN,
-  },
-};
 
 export const GatewayPropertySchema = {
   gateway: {

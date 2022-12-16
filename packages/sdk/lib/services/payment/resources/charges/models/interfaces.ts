@@ -1,11 +1,23 @@
 export const ChargeType = {
-  TOKEN: "Token",
-  SOURCE: "Source",
+  INVOICE: "Invoice",
 } as const;
 
 export type AnyChargeType = typeof ChargeType[keyof typeof ChargeType];
 
-export const ChargeTypeEnum = [ChargeType.TOKEN, ChargeType.SOURCE];
+export const ChargeTypeEnum = [ChargeType.INVOICE];
+
+export const ChargePaymentType = {
+  TOKEN: "Token",
+  SOURCE: "Source",
+} as const;
+
+export type AnyChargePaymentType =
+  typeof ChargePaymentType[keyof typeof ChargePaymentType];
+
+export const ChargePaymentTypeEnum = [
+  ChargePaymentType.TOKEN,
+  ChargePaymentType.SOURCE,
+];
 
 export const ChargeStatus = {
   PROCESSING: "Processing",

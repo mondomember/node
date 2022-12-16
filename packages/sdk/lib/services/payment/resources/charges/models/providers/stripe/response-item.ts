@@ -23,10 +23,10 @@ import {
   RefundableAmountPropertyInterface,
   AmountPropertySchema,
   AmountPropertyInterface,
-  SourcePropertySchema,
-  SourcePropertyInterface,
-  TokenPropertySchema,
-  TokenPropertyInterface,
+  PaymentResponsePropertySchema,
+  PaymentResponsePropertyInterface,
+  // TokenPropertySchema,
+  // TokenPropertyInterface,
   InvoicePropertySchema,
   InvoicePropertyInterface,
   ReferencePropertySchema,
@@ -35,14 +35,15 @@ import {
   GatewayPropertyInterface,
   ChargeIdPropertySchema,
 } from "../../base";
-
+import { ChargeType } from "../../interfaces";
 import { StripeObjectSchema, StripeObjectInterface } from "./base";
 
-export const StripeChargeResponseItemSchema = {
+export const StripeInvoiceChargeResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
     "id",
+    "type",
     "status",
     "invoice",
     "amount",
@@ -54,12 +55,15 @@ export const StripeChargeResponseItemSchema = {
     "updatedAt",
   ],
   properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ChargeType.INVOICE],
+    },
     ...ChargeIdPropertySchema,
     ...StatusPropertySchema,
     ...RefundableAmountPropertySchema,
     ...AmountPropertySchema,
-    ...SourcePropertySchema,
-    ...TokenPropertySchema,
+    ...PaymentResponsePropertySchema,
     ...GatewayPropertySchema,
     ...CustomerPropertyResponseSchema,
     ...InvoicePropertySchema,
@@ -73,10 +77,16 @@ export const StripeChargeResponseItemSchema = {
   },
 };
 
+export const StripeChargeResponseItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  discriminator: { propertyName: "type" },
+  oneOf: [StripeInvoiceChargeResponseItemSchema],
+};
+
 interface BaseStripeChargeResponseItemInterface
   extends IdPropertyInterface,
     StatusPropertyInterface,
-    InvoicePropertyInterface,
+    PaymentResponsePropertyInterface,
     CustomerPropertyResponseInterface,
     GatewayPropertyInterface,
     AmountPropertyInterface,
@@ -89,14 +99,11 @@ interface BaseStripeChargeResponseItemInterface
     Partial<LastUpdatedPropertyInterface>,
     Partial<MetadataPropertyInterface> {}
 
-interface StripeTokenChargeResponseItemInterface
+interface StripeInvoiceChargeResponseItemInterface
   extends BaseStripeChargeResponseItemInterface,
-    TokenPropertyInterface {}
-
-interface StripeSourceChargeResponseItemInterface
-  extends BaseStripeChargeResponseItemInterface,
-    SourcePropertyInterface {}
+    InvoicePropertyInterface {
+  type: typeof ChargeType.INVOICE;
+}
 
 export type StripeChargeResponseItemInterface =
-  | StripeSourceChargeResponseItemInterface
-  | StripeTokenChargeResponseItemInterface;
+  StripeInvoiceChargeResponseItemInterface;
