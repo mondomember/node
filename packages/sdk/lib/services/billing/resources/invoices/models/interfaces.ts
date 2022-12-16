@@ -31,6 +31,7 @@ export const InvoicePaymentMethodType = {
   CHECK: "Check",
   CASH: "Cash",
   SOURCE: "Source",
+  TOKEN: "Token",
   WIRE: "Wire",
 } as const;
 
@@ -41,6 +42,7 @@ export const InvoicePaymentMethodEnum = [
   InvoicePaymentMethodType.CHECK,
   InvoicePaymentMethodType.CASH,
   InvoicePaymentMethodType.SOURCE,
+  InvoicePaymentMethodType.TOKEN,
   InvoicePaymentMethodType.WIRE,
 ];
 

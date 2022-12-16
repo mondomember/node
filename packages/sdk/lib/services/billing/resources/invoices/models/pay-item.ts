@@ -28,14 +28,14 @@ const OfflineMethod = {
   },
 };
 
-const OnlineTokenMethod = {
+const TokenMethod = {
   type: JsonSchemaType.OBJECT,
   required: ["type", "token"],
   additionalProperties: false,
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentMethodType.SOURCE],
+      enum: [InvoicePaymentMethodType.TOKEN],
     },
     token: {
       type: JsonSchemaType.STRING,
@@ -44,7 +44,7 @@ const OnlineTokenMethod = {
   },
 };
 
-const OnlineStoredMethod = {
+const SourceMethod = {
   type: JsonSchemaType.OBJECT,
   required: ["type", "id"],
   additionalProperties: false,
@@ -61,7 +61,7 @@ const PaymentMethodPropertySchema = {
   method: {
     type: JsonSchemaType.OBJECT,
     discriminator: { propertyName: "type" },
-    oneOf: [OfflineMethod, OnlineTokenMethod, OnlineStoredMethod],
+    oneOf: [OfflineMethod, TokenMethod, SourceMethod],
   },
 };
 
@@ -99,7 +99,7 @@ interface WirePayment {
   };
 }
 
-interface SourceStoredPayment {
+interface SourcePayment {
   notes?: string;
   method: {
     type: typeof InvoicePaymentMethodType.SOURCE;
@@ -107,10 +107,10 @@ interface SourceStoredPayment {
   };
 }
 
-interface SourceTokenPayment {
+interface TokenPayment {
   notes?: string;
   method: {
-    type: typeof InvoicePaymentMethodType.SOURCE;
+    type: typeof InvoicePaymentMethodType.TOKEN;
     token: string;
     gateway?: string;
   };
@@ -120,5 +120,5 @@ export type InvoicePayItemInterface =
   | CheckPayment
   | CashPayment
   | WirePayment
-  | SourceStoredPayment
-  | SourceTokenPayment;
+  | SourcePayment
+  | TokenPayment;
