@@ -60,6 +60,7 @@ const OnlineStoredMethod = {
 const PaymentMethodPropertySchema = {
   method: {
     type: JsonSchemaType.OBJECT,
+    discriminator: { propertyName: "type" },
     oneOf: [OfflineMethod, OnlineTokenMethod, OnlineStoredMethod],
   },
 };
