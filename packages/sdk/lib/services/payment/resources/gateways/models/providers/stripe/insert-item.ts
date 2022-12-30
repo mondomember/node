@@ -36,9 +36,9 @@ export const StripeGatewayInsertItemSchema = {
 };
 
 export interface StripeGatewayInsertItemInterface
-  extends GatewayIdPropertyInterface,
-    StripeProviderPropertyInterface,
+  extends StripeProviderPropertyInterface,
     StripeCodePropertyInterface,
+    Partial<GatewayIdPropertyInterface>,
     Partial<LabelPropertyInterface>,
     Partial<DefaultPropertyInterface>,
     Partial<DescriptionPropertyInterface>,
