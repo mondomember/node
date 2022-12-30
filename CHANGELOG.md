@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.16](https://github.com/mondomember/node/compare/v4.0.15...v4.0.16) (2022-12-30)
+
+
+### Bug Fixes
+
+* connecting to gateway does not require an id ([7eb49a8](https://github.com/mondomember/node/commit/7eb49a8cc375bffad1af93c091bb3accf00d182f))
+
+
+
+
+
 ## [4.0.15](https://github.com/mondomember/node/compare/v4.0.14...v4.0.15) (2022-12-30)
 
 
