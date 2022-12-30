@@ -1,7 +1,7 @@
 import { PaginationParams } from "../../../../models";
 
 export interface SourceCustomerFilter {
-  customer?: string;
+  customer: string;
 }
 
 export type SourceFilter = SourceCustomerFilter;
