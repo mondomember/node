@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.15](https://github.com/mondomember/node/compare/v4.0.14...v4.0.15) (2022-12-30)
+
+
+### Bug Fixes
+
+* source customer filter param should be required ([45ee083](https://github.com/mondomember/node/commit/45ee083cccfe4a420822ee685aedf8147c5da8da))
+
+
+
+
+
 ## [4.0.14](https://github.com/mondomember/node/compare/v4.0.13...v4.0.14) (2022-12-30)
 
 **Note:** Version bump only for package node
