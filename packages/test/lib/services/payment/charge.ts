@@ -7,10 +7,6 @@ import {
   createMetadataProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import {
-  ChargeType,
-  ChargePaymentType,
-} from "@mondomember/sdk/lib/services/payment";
 
 const chance: Chance.Chance = new Chance();
 
@@ -32,7 +28,7 @@ const InvoiceProperty = {
 
 const PaymentProperty = {
   payment: {
-    type: ChargePaymentType.SOURCE,
+    type: Payment.ChargePaymentType.SOURCE,
     id: generateTestKSUID(Payment.UIDPrefix.SOURCE),
   },
 };
@@ -72,7 +68,7 @@ export function createTestInsertCharge(
   overrides?: Payment.ChargeInsertItemInterface
 ): Payment.ChargeInsertItemInterface {
   return {
-    type: ChargeType.INVOICE,
+    type: Payment.ChargeType.INVOICE,
     ...PaymentProperty,
     ...InvoiceProperty,
     ...createMetadataProperty(),

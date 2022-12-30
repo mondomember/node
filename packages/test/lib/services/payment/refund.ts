@@ -18,8 +18,11 @@ const ChargeProperty = {
   charge: generateTestKSUID(Payment.UIDPrefix.CHARGE),
 };
 
-const SourceProperty = {
-  source: generateTestKSUID(Payment.UIDPrefix.SOURCE),
+const PaymentProperty = {
+  payment: {
+    type: Payment.ChargePaymentType.SOURCE,
+    id: generateTestKSUID(Payment.UIDPrefix.SOURCE),
+  },
 };
 
 const GatewayProperty = {
@@ -68,7 +71,7 @@ export function createTestStripeRefund(
     ...StatusProperty,
     ...AmountProperty,
     ...ChargeProperty,
-    ...SourceProperty,
+    ...PaymentProperty,
     ...GatewayProperty,
     ...StripeObjectProperty,
     customer: chance.pickone([

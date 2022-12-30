@@ -23,12 +23,14 @@ import {
   AmountPropertyInterface,
   ChargePropertySchema,
   ChargePropertyInterface,
-  SourcePropertySchema,
-  SourcePropertyInterface,
   GatewayPropertySchema,
   GatewayPropertyInterface,
   RefundIdPropertySchema,
 } from "../../base";
+import {
+  PaymentResponsePropertyInterface,
+  PaymentResponsePropertySchema,
+} from "../../../../charges/models/base";
 
 import { StripeObjectSchema, StripeObjectInterface } from "./base";
 
@@ -40,7 +42,7 @@ export const StripeRefundResponseItemSchema = {
     "amount",
     "status",
     "charge",
-    "source",
+    "payment",
     "customer",
     "createdAt",
     "updatedAt",
@@ -50,7 +52,7 @@ export const StripeRefundResponseItemSchema = {
     ...StatusPropertySchema,
     ...AmountPropertySchema,
     ...ChargePropertySchema,
-    ...SourcePropertySchema,
+    ...PaymentResponsePropertySchema,
     ...GatewayPropertySchema,
     ...StripeObjectSchema,
     ...CustomerPropertyResponseSchema,
@@ -67,7 +69,7 @@ export interface StripeRefundResponseItemInterface
     StatusPropertyInterface,
     AmountPropertyInterface,
     ChargePropertyInterface,
-    SourcePropertyInterface,
+    PaymentResponsePropertyInterface,
     GatewayPropertyInterface,
     StripeObjectInterface,
     CustomerPropertyResponseInterface,

@@ -6,7 +6,6 @@ import {
 } from "../../../../../models";
 import { UIDPrefix } from "../../../constants";
 import { AnyPaymentProvider, Provider } from "../../../models";
-import { SourceIdSchema } from "../../sources/models/base";
 import { ChargeIdSchema } from "../../charges/models/base";
 import { GatewayIdSchema } from "../../gateways/models/base";
 
@@ -44,14 +43,6 @@ export const ChargePropertySchema = {
 
 export interface ChargePropertyInterface {
   charge: string;
-}
-
-export const SourcePropertySchema = {
-  source: SourceIdSchema,
-};
-
-export interface SourcePropertyInterface {
-  source: string;
 }
 
 export const GatewayPropertySchema = {
