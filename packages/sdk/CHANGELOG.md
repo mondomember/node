@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.19](https://github.com/mondomember/node/compare/v4.0.18...v4.0.19) (2022-12-31)
+
+
+### Bug Fixes
+
+* optional payment source interfaces ([0309072](https://github.com/mondomember/node/commit/03090726fbe0e26ded51a832da786338428f48af))
+
+
+
+
+
 ## [4.0.18](https://github.com/mondomember/node/compare/v4.0.17...v4.0.18) (2022-12-31)
 
 
