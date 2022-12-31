@@ -7,16 +7,32 @@ import { LabelSchema, LabelInterface } from "../../base";
 
 const currentYear = new Date().getFullYear();
 
-const YearsEnum = [...Array(20)].map((_, i) => {
+const YearsStringEnum = [...Array(20)].map((_, i) => {
+  return String(i + currentYear);
+});
+const YearsNumericEnum = [...Array(20)].map((_, i) => {
   return i + currentYear;
 });
 
-const MonthsEnum = [...Array(12)].map((_, i) => {
+const MonthsStringNonLeadingZeroEnum = [...Array(12)].map((_, i) => {
+  return String(i + 1);
+});
+const MonthsStringLeadingZeroEnum = [...Array(12)].map((_, i) => {
   return (i + 1).toLocaleString("en-US", {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
 });
+const MonthsNumericEnum = [...Array(12)].map((_, i) => {
+  return i + 1;
+});
+
+// Dedupe
+const MonthsEnumSet = new Set([
+  ...MonthsNumericEnum,
+  ...MonthsStringNonLeadingZeroEnum,
+  ...MonthsStringLeadingZeroEnum,
+]);
 
 const CardPropertySchema = {
   card: {
@@ -24,12 +40,12 @@ const CardPropertySchema = {
     additionalProperties: false,
     properties: {
       expirationYear: {
-        type: JsonSchemaType.NUMBER,
-        enum: YearsEnum,
+        type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
+        enum: [...YearsNumericEnum, ...YearsStringEnum],
       },
       expirationMonth: {
-        type: JsonSchemaType.NUMBER,
-        enum: MonthsEnum,
+        type: [JsonSchemaType.STRING, JsonSchemaType.NUMBER],
+        enum: Array.from(MonthsEnumSet),
       },
     },
   },
@@ -117,8 +133,8 @@ interface BillingDetailsPropertyInterface {
 
 interface CardPropertyInterface {
   card: {
-    expirationMonth: number;
-    expirationYear: number;
+    expirationMonth: string | number;
+    expirationYear: string | number;
   };
 }
 
