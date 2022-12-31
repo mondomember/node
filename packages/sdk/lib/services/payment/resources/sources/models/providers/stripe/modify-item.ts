@@ -124,17 +124,17 @@ const BillingDetailsPropertySchema = {
 
 interface BillingDetailsPropertyInterface {
   billingDetails: {
-    address: AddressInterface;
-    email: string;
-    fullName: string;
-    phoneNumber: string;
+    address?: AddressInterface;
+    email?: string;
+    fullName?: string;
+    phoneNumber?: string;
   };
 }
 
 interface CardPropertyInterface {
   card: {
-    expirationMonth: string | number;
-    expirationYear: string | number;
+    expirationMonth?: string | number;
+    expirationYear?: string | number;
   };
 }
 
