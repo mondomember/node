@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.20](https://github.com/mondomember/node/compare/v4.0.19...v4.0.20) (2022-12-31)
+
+**Note:** Version bump only for package @mondomember/test
+
+
+
+
+
 ## [4.0.19](https://github.com/mondomember/node/compare/v4.0.18...v4.0.19) (2022-12-31)
 
 **Note:** Version bump only for package @mondomember/test

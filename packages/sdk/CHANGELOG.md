@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.20](https://github.com/mondomember/node/compare/v4.0.19...v4.0.20) (2022-12-31)
+
+
+### Bug Fixes
+
+* changing postalCode type from number to string ([2cbbc4c](https://github.com/mondomember/node/commit/2cbbc4c90e4c504619dca8c449601cbdb980f005))
+
+
+
+
+
 ## [4.0.19](https://github.com/mondomember/node/compare/v4.0.18...v4.0.19) (2022-12-31)
 
 
