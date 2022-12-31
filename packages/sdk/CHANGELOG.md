@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.17](https://github.com/mondomember/node/compare/v4.0.16...v4.0.17) (2022-12-31)
+
+
+### Features
+
+* adding payment source update card and billing details ([5e76022](https://github.com/mondomember/node/commit/5e76022b8513b02faaceeaea312b76d50b45756e))
+
+
+
+
+
 ## [4.0.16](https://github.com/mondomember/node/compare/v4.0.15...v4.0.16) (2022-12-30)
 
 
