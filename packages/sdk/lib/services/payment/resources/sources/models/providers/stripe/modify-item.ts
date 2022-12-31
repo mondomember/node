@@ -69,7 +69,7 @@ const AddressSchema = {
         type: JsonSchemaType.STRING,
       },
       postalCode: {
-        type: JsonSchemaType.NUMBER,
+        type: JsonSchemaType.STRING,
       },
       country: {
         type: JsonSchemaType.STRING,
@@ -86,7 +86,7 @@ interface AddressInterface {
   city: string;
   state: string;
   country: string;
-  postalCode: number;
+  postalCode: string;
 }
 
 const EmailPropertySchema = {
