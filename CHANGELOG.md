@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.18](https://github.com/mondomember/node/compare/v4.0.17...v4.0.18) (2022-12-31)
+
+
+### Bug Fixes
+
+* allowing source card dates to be more flexible ([9a91944](https://github.com/mondomember/node/commit/9a9194411bb4dd4586ee2e472fee55f98ec33943))
+
+
+
+
+
 ## [4.0.17](https://github.com/mondomember/node/compare/v4.0.16...v4.0.17) (2022-12-31)
 
 
