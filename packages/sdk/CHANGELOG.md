@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.22](https://github.com/mondomember/node/compare/v4.0.21...v4.0.22) (2023-01-12)
+
+
+### Features
+
+* adding related invoice id to contract schema response ([209d4df](https://github.com/mondomember/node/commit/209d4dfd040480cf7c66979ae2c97bba3ded0516))
+
+
+
+
+
 ## [4.0.21](https://github.com/mondomember/node/compare/v4.0.20...v4.0.21) (2023-01-12)
 
 
