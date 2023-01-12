@@ -6,6 +6,7 @@ import {
 import { UIDPrefix } from "../../../constants";
 import * as CRM from "../../../../../services/crm";
 import * as Payment from "../../../../../services/payment";
+import * as Billing from "../../../../../services/billing";
 import {
   ContractStatus,
   ContractStatusEnum,
@@ -39,6 +40,14 @@ export const ContractChildPropertySchema = {
 
 export interface ContractChildPropertyInterface {
   child: string;
+}
+
+export const InvoicePropertySchema = {
+  invoice: constructUIDSchema([Billing.UIDPrefix.INVOICE]),
+};
+
+export interface InvoicePropertyInterface {
+  invoice: string;
 }
 
 export const StatusPropertySchema = {

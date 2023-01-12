@@ -33,6 +33,8 @@ import {
   ResponseBillingPropertyInterface,
   ResponseRecurringPropertySchema,
   ResponseRecurringPropertyInterface,
+  InvoicePropertySchema,
+  InvoicePropertyInterface,
 } from "./base";
 import { UIDPrefix } from "../../../constants";
 
@@ -56,6 +58,7 @@ export const ContractResponseItemSchema = {
     ...ResponseBillingPropertySchema,
     ...ResponseRecurringPropertySchema,
     ...ContactsPropertySchema,
+    ...InvoicePropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
@@ -76,6 +79,7 @@ export interface ContractResponseItemInterface
     Partial<ResponseBillingPropertyInterface>,
     Partial<ResponseRecurringPropertyInterface>,
     Partial<ContactsPropertyInterface>,
+    Partial<InvoicePropertyInterface>,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,
     Partial<DeletedAtPropertyInterface>,
