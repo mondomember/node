@@ -19,6 +19,10 @@ import {
 import {
   StatusPropertySchema,
   StatusPropertyInterface,
+  ContractParentPropertySchema,
+  ContractParentPropertyInterface,
+  ContractChildPropertySchema,
+  ContractChildPropertyInterface,
   ContactsPropertySchema,
   ContactsPropertyInterface,
   PeriodPropertySchema,
@@ -44,6 +48,8 @@ export const ContractResponseItemSchema = {
   properties: {
     ...constructUIDPropertySchema(UIDPrefix.CONTRACT),
     ...StatusPropertySchema,
+    ...ContractParentPropertySchema,
+    ...ContractChildPropertySchema,
     ...CustomerPropertyResponseSchema,
     ...PeriodPropertySchema,
     ...LineItemsResponsePropertySchema,
@@ -64,6 +70,8 @@ export interface ContractResponseItemInterface
     StatusPropertyInterface,
     CustomerPropertyResponseInterface,
     PeriodPropertyInterface,
+    Partial<ContractParentPropertyInterface>,
+    Partial<ContractChildPropertyInterface>,
     Partial<LineItemsResponsePropertyInterface>,
     Partial<ResponseBillingPropertyInterface>,
     Partial<ResponseRecurringPropertyInterface>,

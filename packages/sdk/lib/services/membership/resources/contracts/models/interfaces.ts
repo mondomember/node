@@ -57,12 +57,12 @@ export const ContractBillingTermType = {
 export type AnyContractBillingTermType =
   typeof ContractBillingTermType[keyof typeof ContractBillingTermType];
 
-export const ContractRecurringAutoPayType = {
+export const ContractAutoPayType = {
   FINALIZED: "Finalized",
 } as const;
 
-export type AnyContractRecurringAutoPayType =
-  typeof ContractRecurringAutoPayType[keyof typeof ContractRecurringAutoPayType];
+export type AnyContractAutoPayType =
+  typeof ContractAutoPayType[keyof typeof ContractAutoPayType];
 
 interface LineItemProductRequestPropertyInterface {
   product: {

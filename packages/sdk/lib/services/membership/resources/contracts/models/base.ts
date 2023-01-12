@@ -11,7 +11,8 @@ import {
   ContractStatusEnum,
   ContractLineItemType,
   ContractBillingTermType,
-  ContractRecurringAutoPayType,
+  ContractAutoPayType,
+  AnyContractAutoPayType,
   RenewalFrequencySchemaEnum,
   AnyRenewalFrequency,
   ContractLineItemRequestInterface,
@@ -23,6 +24,22 @@ export const ContractIdSchema = constructUIDSchema([UIDPrefix.CONTRACT]);
 export const ContractIdPropertySchema = constructUIDPropertySchema(
   UIDPrefix.CONTRACT
 );
+
+export const ContractParentPropertySchema = {
+  parent: ContractIdSchema,
+};
+
+export interface ContractParentPropertyInterface {
+  parent: string;
+}
+
+export const ContractChildPropertySchema = {
+  child: ContractIdSchema,
+};
+
+export interface ContractChildPropertyInterface {
+  child: string;
+}
 
 export const StatusPropertySchema = {
   status: {
@@ -134,6 +151,31 @@ export interface CustomerPropertyInterface {
   };
 }
 
+const AutoPaySchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractAutoPayType.FINALIZED],
+    },
+    source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
+  },
+};
+
+const AutoPayPropertySchema = {
+  autoPay: AutoPaySchema,
+};
+
+interface AutoPayInterface {
+  type: AnyContractAutoPayType;
+  source?: string; // The payment source Id
+}
+
+interface AutoPayPropertyInterface {
+  autoPay: AutoPayInterface;
+}
+
 const NullBillingSchema = {
   type: JsonSchemaType.NULL,
   additionalProperties: false,
@@ -155,10 +197,11 @@ const FinalizedBillingSchema = {
       type: JsonSchemaType.STRING,
       enum: [ContractBillingTermType.FINALIZED],
     },
+    ...AutoPayPropertySchema,
   },
 };
 
-interface FinalizedBillingInterface {
+interface FinalizedBillingInterface extends Partial<AutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.FINALIZED;
 }
 
@@ -171,10 +214,11 @@ const ApprovedBillingSchema = {
       type: JsonSchemaType.STRING,
       enum: [ContractBillingTermType.APPROVED],
     },
+    ...AutoPayPropertySchema,
   },
 };
 
-interface ApprovedBillingInterface {
+interface ApprovedBillingInterface extends Partial<AutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.APPROVED;
 }
 
@@ -190,10 +234,11 @@ const OffsetBillingSchema = {
     seconds: {
       type: JsonSchemaType.NUMBER,
     },
+    ...AutoPayPropertySchema,
   },
 };
 
-interface OffsetBillingInterface {
+interface OffsetBillingInterface extends Partial<AutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.OFFSET;
   seconds: number;
 }
@@ -210,10 +255,11 @@ const ScheduledBillingSchema = {
     date: {
       type: JsonSchemaType.STRING,
     },
+    ...AutoPayPropertySchema,
   },
 };
 
-interface ScheduledBillingInterface {
+interface ScheduledBillingInterface extends Partial<AutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.SCHEDULED;
   date: string;
 }
@@ -256,33 +302,12 @@ export interface RequestBillingPropertyInterface {
   billing: BillingInterface | null;
 }
 
-const RecurringAutoPayFinalizedPropertySchema = {
-  type: JsonSchemaType.OBJECT,
-  additionalProperties: false,
-  required: ["type"],
-  properties: {
-    type: {
-      type: JsonSchemaType.STRING,
-      enum: [ContractRecurringAutoPayType.FINALIZED],
-    },
-    source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
-  },
-};
-
-interface RecurringAutoPayFinalizedInterface {
-  type: typeof ContractRecurringAutoPayType.FINALIZED;
-  source?: string; // The payment source Id
-}
-
 const RecurringSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["frequency", "terms"],
   properties: {
-    autoPay: {
-      type: JsonSchemaType.OBJECT,
-      oneOf: [RecurringAutoPayFinalizedPropertySchema],
-    },
+    ...AutoPayPropertySchema,
     frequency: {
       type: JsonSchemaType.STRING,
       enum: RenewalFrequencySchemaEnum,
@@ -311,10 +336,7 @@ export const ResponseRecurringPropertySchema = {
   recurring: RecurringSchema,
 };
 
-type RecurringAutoPayInterface = RecurringAutoPayFinalizedInterface;
-
-interface RecurringInterface {
-  autoPay?: RecurringAutoPayInterface;
+interface RecurringInterface extends Partial<AutoPayPropertyInterface> {
   frequency: AnyRenewalFrequency;
   terms: number;
   offset?: number;
