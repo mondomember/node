@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.21](https://github.com/mondomember/node/compare/v4.0.20...v4.0.21) (2023-01-12)
+
+
+### Features
+
+* adding new contract child/parent attributes + autopayment for billing ([2c22992](https://github.com/mondomember/node/commit/2c22992fd94556a2f945d927f1ebea73344131e6))
+
+
+
+
+
 ## [4.0.20](https://github.com/mondomember/node/compare/v4.0.19...v4.0.20) (2022-12-31)
 
 
