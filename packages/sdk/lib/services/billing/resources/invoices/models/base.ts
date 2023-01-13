@@ -191,7 +191,7 @@ export interface PaymentIntentPropertyInterface {
   paymentIntent: AnyInvoicePaymentMethodType;
 }
 
-const AutoPayFinalizedPropertySchema = {
+const AutoPayFinalizedSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
@@ -204,21 +204,44 @@ const AutoPayFinalizedPropertySchema = {
   },
 };
 
-interface AutoPayFinalizedPropertyInterface {
-  autoPay: {
-    type: typeof InvoiceAutoPayType.FINALIZED;
-    source?: string; // The payment source Id
-  };
+interface AutoPayFinalizedInterface {
+  type: typeof InvoiceAutoPayType.FINALIZED;
+  source?: string; // The payment source Id
 }
 
-export const AutoPayPropertySchema = {
-  autoPay: {
-    type: JsonSchemaType.OBJECT,
-    oneOf: [AutoPayFinalizedPropertySchema],
+const NullAutoPaySchema = {
+  type: JsonSchemaType.NULL,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [" "],
+    },
   },
 };
 
-export type AutoPayPropertyInterface = AutoPayFinalizedPropertyInterface;
+export const ResponseAutoPayPropertySchema = {
+  autoPay: {
+    type: JsonSchemaType.OBJECT,
+    oneOf: [AutoPayFinalizedSchema],
+  },
+};
+
+export const RequestAutoPayPropertySchema = {
+  autoPay: {
+    discriminator: { propertyName: "type" },
+    oneOf: [NullAutoPaySchema, AutoPayFinalizedSchema],
+  },
+};
+
+export type RequestAutoPayPropertyInterface = {
+  autoPay: AutoPayFinalizedInterface | null;
+};
+
+export type ResponseAutoPayPropertyInterface = {
+  autoPay: AutoPayFinalizedInterface;
+};
 
 const InvoicePaymentMethodOfflineResponseSchema = {
   type: JsonSchemaType.OBJECT,
