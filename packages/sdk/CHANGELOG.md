@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.23](https://github.com/mondomember/node/compare/v4.0.22...v4.0.23) (2023-01-13)
+
+
+### Features
+
+* adjusting auto pay for invoice schemas ([4f2027f](https://github.com/mondomember/node/commit/4f2027f33b2905f4c377f9f4ce6d7fa7bb85b2cd))
+
+
+
+
+
 ## [4.0.22](https://github.com/mondomember/node/compare/v4.0.21...v4.0.22) (2023-01-12)
 
 
