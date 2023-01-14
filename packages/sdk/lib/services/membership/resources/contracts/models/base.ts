@@ -13,7 +13,6 @@ import {
   ContractLineItemType,
   ContractBillingTermType,
   ContractAutoPayType,
-  AnyContractAutoPayType,
   RenewalFrequencySchemaEnum,
   AnyRenewalFrequency,
   ContractLineItemRequestInterface,
@@ -160,9 +159,10 @@ export interface CustomerPropertyInterface {
   };
 }
 
-const AutoPaySchema = {
+const AutoPayFinalizedSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
+  required: ["type"],
   properties: {
     type: {
       type: JsonSchemaType.STRING,
@@ -172,18 +172,44 @@ const AutoPaySchema = {
   },
 };
 
-const AutoPayPropertySchema = {
-  autoPay: AutoPaySchema,
-};
-
-interface AutoPayInterface {
-  type: AnyContractAutoPayType;
+interface AutoPayFinalizedInterface {
+  type: typeof ContractAutoPayType.FINALIZED;
   source?: string; // The payment source Id
 }
 
-interface AutoPayPropertyInterface {
-  autoPay: AutoPayInterface;
-}
+const NullAutoPaySchema = {
+  type: JsonSchemaType.NULL,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [" "],
+    },
+  },
+};
+
+export const ResponseAutoPayPropertySchema = {
+  autoPay: {
+    type: JsonSchemaType.OBJECT,
+    oneOf: [AutoPayFinalizedSchema],
+  },
+};
+
+export const RequestAutoPayPropertySchema = {
+  autoPay: {
+    discriminator: { propertyName: "type" },
+    oneOf: [NullAutoPaySchema, AutoPayFinalizedSchema],
+  },
+};
+
+export type RequestAutoPayPropertyInterface = {
+  autoPay: AutoPayFinalizedInterface | null;
+};
+
+export type ResponseAutoPayPropertyInterface = {
+  autoPay: AutoPayFinalizedInterface;
+};
 
 const NullBillingSchema = {
   type: JsonSchemaType.NULL,
@@ -197,7 +223,7 @@ const NullBillingSchema = {
   },
 };
 
-const FinalizedBillingSchema = {
+const RequestFinalizedBillingSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
@@ -206,15 +232,34 @@ const FinalizedBillingSchema = {
       type: JsonSchemaType.STRING,
       enum: [ContractBillingTermType.FINALIZED],
     },
-    ...AutoPayPropertySchema,
+    ...RequestAutoPayPropertySchema,
   },
 };
 
-interface FinalizedBillingInterface extends Partial<AutoPayPropertyInterface> {
+const ResponseFinalizedBillingSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractBillingTermType.FINALIZED],
+    },
+    ...ResponseAutoPayPropertySchema,
+  },
+};
+
+interface RequestFinalizedBillingInterface
+  extends Partial<RequestAutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.FINALIZED;
 }
 
-const ApprovedBillingSchema = {
+interface ResponseFinalizedBillingInterface
+  extends Partial<ResponseAutoPayPropertyInterface> {
+  type: typeof ContractBillingTermType.FINALIZED;
+}
+
+const RequestApprovedBillingSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
@@ -223,15 +268,34 @@ const ApprovedBillingSchema = {
       type: JsonSchemaType.STRING,
       enum: [ContractBillingTermType.APPROVED],
     },
-    ...AutoPayPropertySchema,
+    ...RequestAutoPayPropertySchema,
   },
 };
 
-interface ApprovedBillingInterface extends Partial<AutoPayPropertyInterface> {
+const ResponseApprovedBillingSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractBillingTermType.APPROVED],
+    },
+    ...ResponseAutoPayPropertySchema,
+  },
+};
+
+interface RequestApprovedBillingInterface
+  extends Partial<RequestAutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.APPROVED;
 }
 
-const OffsetBillingSchema = {
+interface ResponseApprovedBillingInterface
+  extends Partial<ResponseAutoPayPropertyInterface> {
+  type: typeof ContractBillingTermType.APPROVED;
+}
+
+const RequestOffsetBillingSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
@@ -243,16 +307,39 @@ const OffsetBillingSchema = {
     seconds: {
       type: JsonSchemaType.NUMBER,
     },
-    ...AutoPayPropertySchema,
+    ...RequestAutoPayPropertySchema,
   },
 };
 
-interface OffsetBillingInterface extends Partial<AutoPayPropertyInterface> {
+const ResponseOffsetBillingSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractBillingTermType.OFFSET],
+    },
+    seconds: {
+      type: JsonSchemaType.NUMBER,
+    },
+    ...ResponseAutoPayPropertySchema,
+  },
+};
+
+interface RequestOffsetBillingInterface
+  extends Partial<RequestAutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.OFFSET;
   seconds: number;
 }
 
-const ScheduledBillingSchema = {
+interface ResponseOffsetBillingInterface
+  extends Partial<ResponseAutoPayPropertyInterface> {
+  type: typeof ContractBillingTermType.OFFSET;
+  seconds: number;
+}
+
+const RequestScheduledBillingSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
@@ -264,11 +351,34 @@ const ScheduledBillingSchema = {
     date: {
       type: JsonSchemaType.STRING,
     },
-    ...AutoPayPropertySchema,
+    ...RequestAutoPayPropertySchema,
   },
 };
 
-interface ScheduledBillingInterface extends Partial<AutoPayPropertyInterface> {
+const ResponseScheduledBillingSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["type"],
+  properties: {
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [ContractBillingTermType.SCHEDULED],
+    },
+    date: {
+      type: JsonSchemaType.STRING,
+    },
+    ...ResponseAutoPayPropertySchema,
+  },
+};
+
+interface RequestScheduledBillingInterface
+  extends Partial<RequestAutoPayPropertyInterface> {
+  type: typeof ContractBillingTermType.SCHEDULED;
+  date: string;
+}
+
+interface ResponseScheduledBillingInterface
+  extends Partial<ResponseAutoPayPropertyInterface> {
   type: typeof ContractBillingTermType.SCHEDULED;
   date: string;
 }
@@ -278,10 +388,10 @@ export const RequestBillingPropertySchema = {
     discriminator: { propertyName: "type" },
     oneOf: [
       NullBillingSchema,
-      FinalizedBillingSchema,
-      ApprovedBillingSchema,
-      OffsetBillingSchema,
-      ScheduledBillingSchema,
+      RequestFinalizedBillingSchema,
+      RequestApprovedBillingSchema,
+      RequestOffsetBillingSchema,
+      RequestScheduledBillingSchema,
     ],
   },
 };
@@ -290,33 +400,59 @@ export const ResponseBillingPropertySchema = {
   billing: {
     discriminator: { propertyName: "type" },
     oneOf: [
-      FinalizedBillingSchema,
-      ApprovedBillingSchema,
-      OffsetBillingSchema,
-      ScheduledBillingSchema,
+      ResponseFinalizedBillingSchema,
+      ResponseApprovedBillingSchema,
+      ResponseOffsetBillingSchema,
+      ResponseScheduledBillingSchema,
     ],
   },
 };
 
-export type BillingInterface =
-  | FinalizedBillingInterface
-  | ApprovedBillingInterface
-  | OffsetBillingInterface
-  | ScheduledBillingInterface;
+export type RequestBillingInterface =
+  | RequestFinalizedBillingInterface
+  | RequestApprovedBillingInterface
+  | RequestOffsetBillingInterface
+  | RequestScheduledBillingInterface;
+
+export type ResponseBillingInterface =
+  | ResponseFinalizedBillingInterface
+  | ResponseApprovedBillingInterface
+  | ResponseOffsetBillingInterface
+  | ResponseScheduledBillingInterface;
+
+export interface RequestBillingPropertyInterface {
+  billing: RequestBillingInterface | null;
+}
 
 export interface ResponseBillingPropertyInterface {
-  billing: BillingInterface;
-}
-export interface RequestBillingPropertyInterface {
-  billing: BillingInterface | null;
+  billing: ResponseBillingInterface;
 }
 
-const RecurringSchema = {
+const RequestRecurringSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["frequency", "terms"],
   properties: {
-    ...AutoPayPropertySchema,
+    ...RequestAutoPayPropertySchema,
+    frequency: {
+      type: JsonSchemaType.STRING,
+      enum: RenewalFrequencySchemaEnum,
+    },
+    terms: {
+      type: JsonSchemaType.NUMBER,
+    },
+    offset: {
+      type: JsonSchemaType.NUMBER,
+    },
+  },
+};
+
+const ResponseRecurringSchema = {
+  type: JsonSchemaType.OBJECT,
+  additionalProperties: false,
+  required: ["frequency", "terms"],
+  properties: {
+    ...ResponseAutoPayPropertySchema,
     frequency: {
       type: JsonSchemaType.STRING,
       enum: RenewalFrequencySchemaEnum,
@@ -333,7 +469,7 @@ const RecurringSchema = {
 export const RequestRecurringPropertySchema = {
   recurring: {
     oneOf: [
-      RecurringSchema,
+      RequestRecurringSchema,
       {
         type: JsonSchemaType.NULL,
       },
@@ -342,21 +478,29 @@ export const RequestRecurringPropertySchema = {
 };
 
 export const ResponseRecurringPropertySchema = {
-  recurring: RecurringSchema,
+  recurring: ResponseRecurringSchema,
 };
 
-interface RecurringInterface extends Partial<AutoPayPropertyInterface> {
+interface RequestRecurringInterface
+  extends Partial<RequestAutoPayPropertyInterface> {
+  frequency: AnyRenewalFrequency;
+  terms: number;
+  offset?: number;
+}
+
+interface ResponseRecurringInterface
+  extends Partial<ResponseAutoPayPropertyInterface> {
   frequency: AnyRenewalFrequency;
   terms: number;
   offset?: number;
 }
 
 export interface RequestRecurringPropertyInterface {
-  recurring: RecurringInterface | null;
+  recurring: RequestRecurringInterface | null;
 }
 
 export interface ResponseRecurringPropertyInterface {
-  recurring: RecurringInterface;
+  recurring: ResponseRecurringInterface;
 }
 
 /**
