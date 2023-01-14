@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.24](https://github.com/mondomember/node/compare/v4.0.23...v4.0.24) (2023-01-14)
+
+
+### Bug Fixes
+
+* updating contract auto payment schema ([f2a01ea](https://github.com/mondomember/node/commit/f2a01ea8273077e10996ffa5cce6e8ade6e03689))
+
+
+
+
+
 ## [4.0.23](https://github.com/mondomember/node/compare/v4.0.22...v4.0.23) (2023-01-13)
 
 
