@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.25](https://github.com/mondomember/node/compare/v4.0.24...v4.0.25) (2023-01-14)
+
+
+### Reverts
+
+* Revert "fix: updating contract auto payment schema" ([b2463b9](https://github.com/mondomember/node/commit/b2463b9af4caca74046c82b269055a7bbb85cece))
+
+
+
+
+
 ## [4.0.24](https://github.com/mondomember/node/compare/v4.0.23...v4.0.24) (2023-01-14)
 
 
