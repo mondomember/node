@@ -20,6 +20,8 @@ import {
   TenantIdPropertySchema,
   MembershipPropertyInterface,
   MembershipPropertySchema,
+  SandboxPropertySchema,
+  SandboxPropertyInterface,
 } from "./base";
 
 export const TenantResponseItemSchema = {
@@ -30,6 +32,7 @@ export const TenantResponseItemSchema = {
     ...TenantIdPropertySchema,
     ...NamePropertySchema,
     ...SlugPropertySchema,
+    ...SandboxPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,
     ...UpdatedAtPropertySchema,
@@ -44,6 +47,7 @@ export interface TenantResponseItemInterface
     NamePropertyInterface,
     SlugPropertyInterface,
     MembershipPropertyInterface,
+    Partial<SandboxPropertyInterface>,
     CreatedAtPropertyInterface,
     UpdatedAtPropertyInterface,
     Partial<DeletedAtPropertyInterface>,

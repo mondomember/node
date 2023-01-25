@@ -10,6 +10,8 @@ import {
   SlugPropertySchema,
   SlugPropertyInterface,
   TenantIdPropertySchema,
+  SandboxPropertySchema,
+  SandboxPropertyInterface,
 } from "./base";
 
 export const TenantInsertItemSchema = {
@@ -20,6 +22,7 @@ export const TenantInsertItemSchema = {
     ...TenantIdPropertySchema,
     ...NamePropertySchema,
     ...SlugPropertySchema,
+    ...SandboxPropertySchema,
     ...MetadataPropertySchema,
   },
 };
@@ -28,4 +31,5 @@ export interface TenantInsertItemInterface
   extends Partial<IdPropertyInterface>,
     NamePropertyInterface,
     Partial<SlugPropertyInterface>,
+    Partial<SandboxPropertyInterface>,
     Partial<MetadataPropertyInterface> {}

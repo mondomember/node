@@ -27,6 +27,16 @@ export interface SlugPropertyInterface {
   slug: string;
 }
 
+export const SandboxPropertySchema = {
+  sandbox: {
+    type: JsonSchemaType.BOOLEAN,
+  },
+};
+
+export interface SandboxPropertyInterface {
+  sandbox: boolean;
+}
+
 export const MembershipPropertySchema = {
   membership: {
     type: JsonSchemaType.OBJECT,
