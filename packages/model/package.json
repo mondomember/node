@@ -2,7 +2,7 @@
   "name": "@mondomember/model",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "4.0.26",
+  "version": "5.0.0",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -26,7 +26,6 @@
     "url": "https://flipboxdigital.com"
   },
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "@tsconfig/node14": "^1.0.1",
     "@types/chance": "^1.1.2",

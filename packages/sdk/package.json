@@ -2,7 +2,7 @@
   "name": "@mondomember/sdk",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "4.0.26",
+  "version": "5.0.0",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -32,8 +32,8 @@
     "stripe": "^9.8.0"
   },
   "devDependencies": {
-    "@mondomember/model": "^4.0.26",
-    "@mondomember/test": "^4.0.26",
+    "@mondomember/model": "^5.0.0",
+    "@mondomember/test": "^5.0.0",
     "@tsconfig/node14": "^1.0.1",
     "@types/chance": "^1.1.2",
     "@types/jest": "^27.0",
