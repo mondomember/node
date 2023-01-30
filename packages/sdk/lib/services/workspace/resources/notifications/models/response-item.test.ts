@@ -1,13 +1,13 @@
 import { matchers } from "jest-json-schema";
 import { NotificationResponseItemSchema as Schema } from "./response-item";
-import { Workspace } from "@mondomember/test";
+import { Workspace as WorkspaceTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Workspace Workspace Notification - Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Workspace.createTestNotification(),
+      ...WorkspaceTests.createTestNotification(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -15,7 +15,7 @@ describe("Workspace Workspace Notification - Response Item Schema", () => {
 
   test("fail without id", async () => {
     const payload = {
-      ...Workspace.createTestNotification(),
+      ...WorkspaceTests.createTestNotification(),
       ...{
         id: undefined,
       },
@@ -26,7 +26,7 @@ describe("Workspace Workspace Notification - Response Item Schema", () => {
 
   test("fail without message", async () => {
     const payload = {
-      ...Workspace.createTestNotification(),
+      ...WorkspaceTests.createTestNotification(),
       ...{
         message: undefined,
       },
@@ -37,7 +37,7 @@ describe("Workspace Workspace Notification - Response Item Schema", () => {
 
   test("fail without type", async () => {
     const payload = {
-      ...Workspace.createTestNotification(),
+      ...WorkspaceTests.createTestNotification(),
       ...{
         type: undefined,
       },

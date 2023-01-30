@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Billing, Membership, CRM } from "@mondomember/sdk";
+import { Billing, Membership, Customer } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -12,24 +12,37 @@ import {
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Billing.InvoiceStatusEnum),
+  status: chance.pickone([
+    Billing.InvoiceStatus.DRAFT,
+    Billing.InvoiceStatus.OPEN,
+    Billing.InvoiceStatus.PAID,
+    Billing.InvoiceStatus.PROCESSING,
+    Billing.InvoiceStatus.VOID,
+    Billing.InvoiceStatus.PAST_DUE,
+  ]),
 };
 
 const PaymentIntentProperty = {
-  paymentIntent: chance.pickone(Billing.InvoicePaymentMethodEnum),
+  paymentIntent: chance.pickone([
+    Billing.InvoicePaymentMethodType.CHECK,
+    Billing.InvoicePaymentMethodType.CASH,
+    Billing.InvoicePaymentMethodType.SOURCE,
+    Billing.InvoicePaymentMethodType.TOKEN,
+    Billing.InvoicePaymentMethodType.WIRE,
+  ]),
 };
 
 const CustomerProperty = {
   customer: {
-    id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+    id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
   },
 };
 
 const ContactsProperty: { contacts: [string, string, string] } = {
   contacts: [
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
   ],
 };
 
@@ -65,8 +78,8 @@ const DueAt = {
 };
 
 export function createTestInsertInvoice(
-  overrides?: Partial<Billing.InvoiceInsertItemInterface>
-): Billing.InvoiceInsertItemInterface {
+  overrides?: Partial<Billing.InvoiceInsertItem>
+): Billing.InvoiceInsertItem {
   return {
     ...CustomerProperty,
     ...ContractProperty,
@@ -80,8 +93,8 @@ export function createTestInsertInvoice(
 }
 
 export function createTestModifyInvoice(
-  overrides?: Partial<Billing.InvoiceModifyItemInterface>
-): Billing.InvoiceModifyItemInterface {
+  overrides?: Partial<Billing.InvoiceModifyItem>
+): Billing.InvoiceModifyItem {
   return {
     ...DueAt,
     ...Discount,
@@ -93,8 +106,8 @@ export function createTestModifyInvoice(
 }
 
 export function createTestInvoicePayment(
-  overrides?: Partial<Billing.InvoiceResponseItemInterface["payment"]>
-): Billing.InvoiceResponseItemInterface["payment"] {
+  overrides?: Partial<Billing.InvoiceResponseItem["payment"]>
+): Billing.InvoiceResponseItem["payment"] {
   return {
     status: Billing.InvoicePaymentStatus.SUCCCESSFUL,
     method: {
@@ -110,20 +123,20 @@ export function createTestInvoicePayment(
 }
 
 export function createTestInvoice(
-  overrides?: Partial<Billing.InvoiceResponseItemInterface>
-): Billing.InvoiceResponseItemInterface {
+  overrides?: Partial<Billing.InvoiceResponseItem>
+): Billing.InvoiceResponseItem {
   return {
     id: generateTestKSUID(Billing.UIDPrefix.INVOICE),
     ...StatusProperty,
     customer: chance.pickone([
       {
-        id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-        type: CRM.CustomerType.COMPANY,
+        id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+        type: Customer.CustomerType.COMPANY,
         name: chance.company(),
       },
       {
-        id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-        type: CRM.CustomerType.CONTACT,
+        id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+        type: Customer.CustomerType.CONTACT,
         email: chance.email(),
         firstName: chance.first(),
         lastName: chance.last(),

@@ -1,75 +1,23 @@
-export const InvoiceStatus = {
-  DRAFT: "Draft",
-  OPEN: "Open", // Finalized
-  PROCESSING: "Processing",
-  PAID: "Paid",
-  VOID: "Void",
-  PAST_DUE: "Past Due",
-} as const;
-
-export type AnyInvoiceStatus = typeof InvoiceStatus[keyof typeof InvoiceStatus];
+import { Billing } from "@mondomember/model";
 
 export const InvoiceStatusEnum = [
-  InvoiceStatus.DRAFT,
-  InvoiceStatus.OPEN,
-  InvoiceStatus.PAID,
-  InvoiceStatus.PROCESSING,
-  InvoiceStatus.VOID,
-  InvoiceStatus.PAST_DUE,
+  Billing.InvoiceStatus.DRAFT,
+  Billing.InvoiceStatus.OPEN,
+  Billing.InvoiceStatus.PAID,
+  Billing.InvoiceStatus.PROCESSING,
+  Billing.InvoiceStatus.VOID,
+  Billing.InvoiceStatus.PAST_DUE,
 ];
-
-export const InvoicePaymentStatus = {
-  PENDING: "Pending",
-  SUCCCESSFUL: "Successful",
-  FAILED: "Failed",
-} as const;
-
-export type AnyInvoicePaymentStatus =
-  typeof InvoicePaymentStatus[keyof typeof InvoicePaymentStatus];
-
-export const InvoicePaymentMethodType = {
-  CHECK: "Check",
-  CASH: "Cash",
-  SOURCE: "Source",
-  TOKEN: "Token",
-  WIRE: "Wire",
-} as const;
-
-export type AnyInvoicePaymentMethodType =
-  typeof InvoicePaymentMethodType[keyof typeof InvoicePaymentMethodType];
 
 export const InvoicePaymentMethodEnum = [
-  InvoicePaymentMethodType.CHECK,
-  InvoicePaymentMethodType.CASH,
-  InvoicePaymentMethodType.SOURCE,
-  InvoicePaymentMethodType.TOKEN,
-  InvoicePaymentMethodType.WIRE,
+  Billing.InvoicePaymentMethodType.CHECK,
+  Billing.InvoicePaymentMethodType.CASH,
+  Billing.InvoicePaymentMethodType.SOURCE,
+  Billing.InvoicePaymentMethodType.TOKEN,
+  Billing.InvoicePaymentMethodType.WIRE,
 ];
-
-export const InvoicePaymentReceiptType = {
-  MANUAL: "Manual",
-  CHARGE: "Charge",
-} as const;
-
-export type AnyInvoicePaymentReceiptType =
-  typeof InvoicePaymentReceiptType[keyof typeof InvoicePaymentReceiptType];
 
 export const InvoicePaymentReceiptEnum = [
-  InvoicePaymentReceiptType.MANUAL,
-  InvoicePaymentReceiptType.CHARGE,
+  Billing.InvoicePaymentReceiptType.MANUAL,
+  Billing.InvoicePaymentReceiptType.CHARGE,
 ];
-
-export const InvoiceLineItemType = {
-  CUSTOM: "Custom",
-  PRODUCT: "Product",
-} as const;
-
-export type AnyInvoiceLineItemType =
-  typeof InvoiceLineItemType[keyof typeof InvoiceLineItemType];
-
-export const InvoiceAutoPayType = {
-  FINALIZED: "Finalized",
-} as const;
-
-export type AnyInvoiceAutoPayType =
-  typeof InvoiceAutoPayType[keyof typeof InvoiceAutoPayType];

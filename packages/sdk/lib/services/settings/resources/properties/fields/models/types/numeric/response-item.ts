@@ -1,34 +1,19 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../../../../models";
 import {
   FieldIdPropertySchema,
   NamePropertySchema,
-  NamePropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  DecimalPropertySchema,
-  DecimalProertyInterface,
-} from "./base";
+import { TypePropertySchema, DecimalPropertySchema } from "./base";
 
 export const NumericFieldResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -49,17 +34,3 @@ export const NumericFieldResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface NumericFieldResponseItemInterface
-  extends IdPropertyInterface,
-    TypePropertyInterface,
-    NamePropertyInterface,
-    LabelPropertyInterface,
-    FieldGroupPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<DecimalProertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

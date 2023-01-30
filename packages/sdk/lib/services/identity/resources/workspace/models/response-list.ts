@@ -1,8 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  IdentityWorkspaceResponseItemSchema,
-  IdentityWorkspaceResponseItemInterface,
-} from "./response-item";
+import { IdentityWorkspaceResponseItemSchema } from "./response-item";
 
 export const IdentityWorkspaceResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -15,7 +12,3 @@ export const IdentityWorkspaceResponseListSchema = {
     },
   },
 };
-
-export interface IdentityWorkspaceResponseListInterface {
-  items?: IdentityWorkspaceResponseItemInterface[];
-}

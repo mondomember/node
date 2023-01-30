@@ -3,14 +3,14 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../models";
-import { PerformerType, AnyPerformerType } from "./constants";
-import { UIDPrefix } from "../constants";
-import {} from "./constants";
+import { Activity } from "@mondomember/model";
 
-export const ActivityIdSchema = constructUIDSchema([UIDPrefix.ACTIVITY]);
+export const ActivityIdSchema = constructUIDSchema([
+  Activity.UIDPrefix.ACTIVITY,
+]);
 
 export const ActivityIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.ACTIVITY
+  Activity.UIDPrefix.ACTIVITY
 );
 
 export const PerformedBySchema = {
@@ -20,12 +20,12 @@ export const PerformedBySchema = {
     type: {
       type: JsonSchemaType.STRING,
       enum: [
-        PerformerType.SYSTEM,
-        PerformerType.GUEST,
-        PerformerType.IDENTITY,
-        PerformerType.AUTOMATION,
-        PerformerType.WORKFLOW,
-        PerformerType.INTEGRATION,
+        Activity.PerformerType.SYSTEM,
+        Activity.PerformerType.GUEST,
+        Activity.PerformerType.IDENTITY,
+        Activity.PerformerType.AUTOMATION,
+        Activity.PerformerType.WORKFLOW,
+        Activity.PerformerType.INTEGRATION,
       ],
     },
     identifier: {
@@ -33,15 +33,6 @@ export const PerformedBySchema = {
     },
   },
 };
-
-export type PerformedByType = {
-  identifier: string;
-  type: AnyPerformerType;
-};
-
-export interface PerformedByPropertyInterface {
-  performedBy: PerformedByType;
-}
 
 export const PerformedByPropertySchema = {
   performedBy: PerformedBySchema,
@@ -54,7 +45,3 @@ export const SourceSchema = {
 export const SourcePropertySchema = {
   source: SourceSchema,
 };
-
-export interface SourcePropertyInterface {
-  source: string;
-}

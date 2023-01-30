@@ -1,13 +1,8 @@
 import { JsonSchemaType } from "../../../../../../../schema";
+import { CustomerPropertyRequestSchema } from "../../../../../../customer";
 import {
-  CustomerPropertyRequestSchema,
-  CustomerPropertyRequestInterface,
-} from "../../../../../../crm";
-import {
-  GatewayPropertyInterface,
   GatewayPropertySchema,
   InvoicePropertySchema,
-  InvoicePropertyInterface,
 } from "../../../models/base";
 
 export const ChargeSessionInsertItemSchema = {
@@ -34,10 +29,3 @@ export const ChargeSessionInsertItemSchema = {
     },
   },
 };
-
-export interface ChargeSessionInsertItemInterface
-  extends CustomerPropertyRequestInterface,
-    GatewayPropertyInterface,
-    InvoicePropertyInterface {
-  options?: Record<string, string>;
-}

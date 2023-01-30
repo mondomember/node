@@ -1,9 +1,6 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import {
-  PerformedByPropertySchema,
-  PerformedByPropertyInterface,
-} from "../../base";
-import { MessagePropertySchema, MessagePropertyInterface } from "./base";
+import { PerformedByPropertySchema } from "../../base";
+import { MessagePropertySchema } from "./base";
 
 export const NoteActivityModifyItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -13,7 +10,3 @@ export const NoteActivityModifyItemSchema: JsonSchema = {
     ...MessagePropertySchema,
   },
 };
-
-export interface NoteActivityModifyItemInterface
-  extends Partial<PerformedByPropertyInterface>,
-    Partial<MessagePropertyInterface> {}

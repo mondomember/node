@@ -1,12 +1,12 @@
 import { matchers } from "jest-json-schema";
 import { NoteActivityResponseItemSchema as Schema } from "./response-item";
-import { Activity } from "@mondomember/test";
+import { Activity as ActivityTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Activity Note - Response Item Schema", () => {
   test("succeed with payload", async () => {
-    const payload = Activity.createTestNoteActivity();
+    const payload = ActivityTests.createTestNoteActivity();
 
     expect(payload).toMatchSchema(Schema);
   });

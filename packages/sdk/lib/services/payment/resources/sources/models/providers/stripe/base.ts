@@ -1,20 +1,15 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import {
-  StripeSourceObjectInterface,
-  StripeSourceType,
-  AnyStripeSourceType,
-} from "./interfaces";
+import { Payment } from "@mondomember/model";
 
 export const StripeTypePropertySchema = {
   type: {
     type: JsonSchemaType.STRING,
-    enum: [StripeSourceType.CARD, StripeSourceType.US_BANK_ACCOUNT],
+    enum: [
+      Payment.StripeSourceType.CARD,
+      Payment.StripeSourceType.US_BANK_ACCOUNT,
+    ],
   },
 };
-
-export interface StripeTypePropertyInterface {
-  type: AnyStripeSourceType;
-}
 
 export const StripeObjectPropertySchema = {
   object: {
@@ -34,7 +29,3 @@ export const StripeObjectPropertySchema = {
     },
   },
 };
-
-export interface StripeObjectPropertyInterface {
-  object: StripeSourceObjectInterface;
-}

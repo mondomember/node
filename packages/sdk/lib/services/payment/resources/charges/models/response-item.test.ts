@@ -1,13 +1,13 @@
 import { matchers } from "jest-json-schema";
 import { ChargeResponseItemSchema as Schema } from "./response-item";
-import { Payment } from "@mondomember/test";
+import { Payment as PaymentTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Payment Charge - Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Payment.createTestCharge(),
+      ...PaymentTests.createTestCharge(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -15,7 +15,7 @@ describe("Payment Charge - Response Item Schema", () => {
 
   test("fail without id", async () => {
     const payload = {
-      ...Payment.createTestCharge(),
+      ...PaymentTests.createTestCharge(),
       id: undefined,
     };
 

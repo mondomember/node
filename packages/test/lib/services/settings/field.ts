@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Settings, FieldType } from "@mondomember/sdk";
+import { FieldType, Settings } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -47,8 +47,8 @@ export function createTestInsertField() {
 }
 
 export function createTestInsertTextField(
-  overrides?: Partial<Settings.TextFieldInsertItemInterface>
-): Settings.TextFieldInsertItemInterface {
+  overrides?: Partial<Settings.TextFieldInsertItem>
+): Settings.TextFieldInsertItem {
   return {
     ...TextTypeProperty,
     ...NameProperty,
@@ -60,8 +60,8 @@ export function createTestInsertTextField(
 }
 
 export function createTestInsertNumericField(
-  overrides?: Partial<Settings.NumericFieldInsertItemInterface>
-): Settings.NumericFieldInsertItemInterface {
+  overrides?: Partial<Settings.NumericFieldInsertItem>
+): Settings.NumericFieldInsertItem {
   return {
     ...NumericTypeProperty,
     ...NameProperty,
@@ -73,8 +73,8 @@ export function createTestInsertNumericField(
 }
 
 export function createTestInsertToggleField(
-  overrides?: Partial<Settings.ToggleFieldInsertItemInterface>
-): Settings.ToggleFieldInsertItemInterface {
+  overrides?: Partial<Settings.ToggleFieldInsertItem>
+): Settings.ToggleFieldInsertItem {
   return {
     ...ToggleTypeProperty,
     ...NameProperty,
@@ -86,7 +86,7 @@ export function createTestInsertToggleField(
 }
 
 // MODIFY
-export function createTestModifyField(): Settings.FieldModifyItemInterface {
+export function createTestModifyField(): Settings.FieldModifyItem {
   return chance.pickone([
     createTestModifyTextField(),
     createTestModifyNumericField(),
@@ -95,8 +95,8 @@ export function createTestModifyField(): Settings.FieldModifyItemInterface {
 }
 
 export function createTestModifyTextField(
-  overrides?: Partial<Settings.TextFieldModifyItemInterface>
-): Settings.TextFieldModifyItemInterface {
+  overrides?: Partial<Settings.TextFieldModifyItem>
+): Settings.TextFieldModifyItem {
   return {
     ...TextTypeProperty,
     ...NameProperty,
@@ -108,8 +108,8 @@ export function createTestModifyTextField(
 }
 
 export function createTestModifyNumericField(
-  overrides?: Partial<Settings.NumericFieldModifyItemInterface>
-): Settings.NumericFieldModifyItemInterface {
+  overrides?: Partial<Settings.NumericFieldModifyItem>
+): Settings.NumericFieldModifyItem {
   return {
     ...NumericTypeProperty,
     ...NameProperty,
@@ -121,8 +121,8 @@ export function createTestModifyNumericField(
 }
 
 export function createTestModifyToggleField(
-  overrides?: Partial<Settings.ToggleFieldModifyItemInterface>
-): Settings.ToggleFieldModifyItemInterface {
+  overrides?: Partial<Settings.ToggleFieldModifyItem>
+): Settings.ToggleFieldModifyItem {
   return {
     ...ToggleTypeProperty,
     ...NameProperty,
@@ -134,7 +134,7 @@ export function createTestModifyToggleField(
 }
 
 // RESPONSE
-export function createTestField(): Settings.FieldResponseItemInterface {
+export function createTestField(): Settings.FieldResponseItem {
   return chance.pickone([
     createTestTextField(),
     createTestNumericField(),
@@ -143,8 +143,8 @@ export function createTestField(): Settings.FieldResponseItemInterface {
 }
 
 export function createTestTextField(
-  overrides?: Partial<Settings.TextFieldResponseItemInterface>
-): Settings.TextFieldResponseItemInterface {
+  overrides?: Partial<Settings.TextFieldResponseItem>
+): Settings.TextFieldResponseItem {
   return {
     id: generateTestKSUID(Settings.UIDPrefix.FIELD),
     ...TextTypeProperty,
@@ -159,8 +159,8 @@ export function createTestTextField(
 }
 
 export function createTestNumericField(
-  overrides?: Partial<Settings.NumericFieldResponseItemInterface>
-): Settings.NumericFieldResponseItemInterface {
+  overrides?: Partial<Settings.NumericFieldResponseItem>
+): Settings.NumericFieldResponseItem {
   return {
     id: generateTestKSUID(Settings.UIDPrefix.FIELD),
     ...NumericTypeProperty,
@@ -175,8 +175,8 @@ export function createTestNumericField(
 }
 
 export function createTestToggleField(
-  overrides?: Partial<Settings.ToggleFieldResponseItemInterface>
-): Settings.ToggleFieldResponseItemInterface {
+  overrides?: Partial<Settings.ToggleFieldResponseItem>
+): Settings.ToggleFieldResponseItem {
   return {
     id: generateTestKSUID(Settings.UIDPrefix.FIELD),
     ...ToggleTypeProperty,

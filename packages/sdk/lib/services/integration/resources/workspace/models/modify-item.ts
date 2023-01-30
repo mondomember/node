@@ -1,13 +1,9 @@
-import { DeepPartial } from "utility-types";
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 
 import {
   AuthorizationsPropertySchema,
-  AuthorizationsPropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
 } from "./base";
 
 export const WorkspaceTokenModifyItemSchema: JsonSchema = {
@@ -19,8 +15,3 @@ export const WorkspaceTokenModifyItemSchema: JsonSchema = {
     ...AuthorizationsPropertySchema,
   },
 };
-
-export interface WorkspaceTokenModifyItemInterface
-  extends Partial<LabelPropertyInterface>,
-    DeepPartial<AuthorizationsPropertyInterface>,
-    Partial<DescriptionPropertyInterface> {}

@@ -1,14 +1,14 @@
 import { Chance } from "chance";
 import {
   UIDPrefix,
-  LastUpdatedInterface,
-  LastUpdatedPropertyInterface,
-  MetadataInterface,
-  MetadataPropertyInterface,
-  PropertiesInterface,
-  PropertiesPropertyInterface,
+  LastUpdated,
+  LastUpdatedProperty,
+  Metadata,
+  MetadataProperty,
+  Properties,
+  PropertiesProperty,
   FieldType,
-} from "@mondomember/sdk";
+} from "@mondomember/model";
 import { generateTestKSUID } from "./ids";
 
 const chance: Chance.Chance = new Chance();
@@ -50,8 +50,8 @@ export function createDeletedAtProperty(override?: string): {
 }
 
 export function createLastUpdated(
-  override?: Partial<LastUpdatedInterface>
-): LastUpdatedInterface {
+  override?: Partial<LastUpdated>
+): LastUpdated {
   return {
     ...{
       at: chance.date().toISOString(),
@@ -65,14 +65,14 @@ export function createLastUpdated(
 }
 
 export function createLastUpdatedProperty(
-  override?: Partial<LastUpdatedInterface>
-): LastUpdatedPropertyInterface {
+  override?: Partial<LastUpdated>
+): LastUpdatedProperty {
   return {
     lastUpdated: createLastUpdated(override),
   };
 }
 
-export function createMetadata(): MetadataInterface {
+export function createMetadata(): Metadata {
   return {
     [chance.word()]: chance.word(),
     [chance.word()]: chance.sentence(),
@@ -80,13 +80,13 @@ export function createMetadata(): MetadataInterface {
   };
 }
 
-export function createMetadataProperty(): MetadataPropertyInterface {
+export function createMetadataProperty(): MetadataProperty {
   return {
     metadata: createMetadata(),
   };
 }
 
-export function createProperties(): PropertiesInterface {
+export function createProperties(): Properties {
   return {
     [chance.word()]: {
       type: FieldType.NUMERIC,
@@ -106,7 +106,7 @@ export function createProperties(): PropertiesInterface {
   };
 }
 
-export function createPropertiesProperty(): PropertiesPropertyInterface {
+export function createPropertiesProperty(): PropertiesProperty {
   return {
     properties: createProperties(),
   };

@@ -1,8 +1,6 @@
-export const RowOperation = {
-  CREATE: "Create",
-  UPDATE: "Update",
-} as const;
+import { Import } from "@mondomember/model";
 
-export type AnyRowOperation = typeof RowOperation[keyof typeof RowOperation];
-
-export const RowOperationEnum = [RowOperation.CREATE, RowOperation.UPDATE];
+export const RowOperationEnum = [
+  Import.RowOperation.CREATE,
+  Import.RowOperation.UPDATE,
+];

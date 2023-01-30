@@ -1,5 +1,5 @@
 import { matchers } from "jest-json-schema";
-import { Workspace } from "@mondomember/test";
+import { Workspace as WorkspaceTests } from "@mondomember/test";
 
 import { PreferencesUpsertItemSchema as Schema } from "./upsert-item";
 import { Chance } from "chance";
@@ -11,7 +11,7 @@ const chance: Chance.Chance = new Chance();
 describe("Workspace Workspace Preferences - Upsert Item Schema", () => {
   test("succeed with standard payload", async () => {
     const payload = {
-      ...Workspace.createTestUpsertPreferences(),
+      ...WorkspaceTests.createTestUpsertPreferences(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -19,7 +19,7 @@ describe("Workspace Workspace Preferences - Upsert Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Workspace.createTestUpsertPreferences(),
+      ...WorkspaceTests.createTestUpsertPreferences(),
       foo: chance.word(),
     };
 

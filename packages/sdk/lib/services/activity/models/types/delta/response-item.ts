@@ -1,32 +1,19 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 import {
   constructUIDPropertySchema,
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../models";
-import {
-  PerformedByPropertySchema,
-  SourcePropertySchema,
-  PerformedByPropertyInterface,
-  SourcePropertyInterface,
-} from "../../base";
+import { PerformedByPropertySchema, SourcePropertySchema } from "../../base";
 
 import {
   TypePropertySchema,
   OperationPropertySchema,
-  TypeInterface,
   DiffSchema,
-  DiffPropertyInterface,
-  OperationPropertyInterface,
 } from "./base";
-import { UIDPrefix } from "../../../constants";
+import { Activity } from "@mondomember/model";
 
 export const DeltaActivityResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -42,7 +29,7 @@ export const DeltaActivityResponseItemSchema: JsonSchema = {
   ],
 
   properties: {
-    ...constructUIDPropertySchema(UIDPrefix.ACTIVITY),
+    ...constructUIDPropertySchema(Activity.UIDPrefix.ACTIVITY),
     ...PerformedByPropertySchema,
     ...SourcePropertySchema,
     ...TypePropertySchema,
@@ -54,15 +41,3 @@ export const DeltaActivityResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface DeltaActivityResponseItemInterface
-  extends IdPropertyInterface,
-    PerformedByPropertyInterface,
-    TypeInterface,
-    OperationPropertyInterface,
-    DiffPropertyInterface,
-    SourcePropertyInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

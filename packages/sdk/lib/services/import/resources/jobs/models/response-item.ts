@@ -1,30 +1,19 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../models";
 
 import {
   JobIdPropertySchema,
   StatusPropertySchema,
-  StatusPropertyInterface,
   FilenamePropertySchema,
-  FilenamePropertyInterface,
   TypePropertySchema,
-  TypePropertyInterface,
   OwnerPropertySchema,
-  OwnerPropertyInterface,
   TotalCountPropertySchema,
-  TotalCountPropertyInterface,
   ImportCountPropertySchema,
-  ImportCountPropertyInterface,
   ErrorCountPropertySchema,
-  ErrorCountPropertyInterface,
 } from "./base";
 
 export const JobResponseItemSchema: JsonSchema = {
@@ -55,16 +44,3 @@ export const JobResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface JobResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    FilenamePropertyInterface,
-    TypePropertyInterface,
-    TotalCountPropertyInterface,
-    ImportCountPropertyInterface,
-    ErrorCountPropertyInterface,
-    Partial<OwnerPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<LastUpdatedPropertyInterface> {}

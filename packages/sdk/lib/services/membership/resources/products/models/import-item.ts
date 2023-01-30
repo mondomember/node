@@ -1,14 +1,7 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { IdPropertyInterface } from "../../../../../models";
 
-import {
-  ProductInsertItemSchema,
-  ProductInsertItemInterface,
-} from "./insert-item";
-import {
-  ProductModifyItemSchema,
-  ProductModifyItemInterface,
-} from "./modify-item";
+import { ProductInsertItemSchema } from "./insert-item";
+import { ProductModifyItemSchema } from "./modify-item";
 
 const AnyIdPropertySchema = {
   id: {
@@ -46,19 +39,3 @@ export const ProductImportItemSchema = {
   additionalProperties: false,
   oneOf: [ProductImportInsertItemSchema, ProductImportModifyItemSchema],
 };
-
-export interface ProductImportInsertItemInterface
-  extends ProductInsertItemInterface,
-    Partial<IdPropertyInterface> {
-  default?: boolean;
-}
-
-export interface ProductImportModifyItemInterface
-  extends ProductModifyItemInterface,
-    IdPropertyInterface {
-  default?: boolean;
-}
-
-export type ProductImportItemInterface =
-  | ProductImportInsertItemInterface
-  | ProductImportModifyItemInterface;

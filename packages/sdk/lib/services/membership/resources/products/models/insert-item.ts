@@ -1,17 +1,10 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   MetadataPropertySchema,
-  MetadataPropertyInterface,
   ExternalIdPropertySchema,
-  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 
-import {
-  LabelPropertySchema,
-  LabelPropertyInterface,
-  DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-} from "./base";
+import { LabelPropertySchema, DescriptionPropertySchema } from "./base";
 
 export const ProductInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -25,9 +18,3 @@ export const ProductInsertItemSchema = {
     ...ExternalIdPropertySchema,
   },
 };
-
-export interface ProductInsertItemInterface
-  extends LabelPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<ExternalIdsPropertyInterface> {}

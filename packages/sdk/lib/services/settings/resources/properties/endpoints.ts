@@ -1,21 +1,20 @@
 import { parseTemplate } from "../../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { buildResourcePath } from "../../../../client/utilities";
-import { FieldGroupsInterface } from "../../models";
+import { Settings } from "@mondomember/model";
 
 import FieldGroupEndpoints from "./field-groups/endpoints";
 import FieldEndpoints from "./fields/endpoints";
-import { AnyService, AnyResource, Resource } from "../../constants";
 
 type Expressions = { objectType: string };
 
-interface SettingsResponseInterface {
-  [Resource.BILLING_INVOICE]?: FieldGroupsInterface;
-  [Resource.CRM_COMPANY]?: FieldGroupsInterface;
-  [Resource.CRM_CONTACT]?: FieldGroupsInterface;
-  [Resource.CRM_COMPANY_CONTACT]?: FieldGroupsInterface;
-  [Resource.MEMBERSHIP_CONTRACT]?: FieldGroupsInterface;
-  [Resource.MEMBERSHIP_MEMBERSHIP]?: FieldGroupsInterface;
+interface SettingsResponse {
+  [Settings.Resource.BILLING_INVOICE]?: Settings.FieldGroups;
+  [Settings.Resource.CRM_COMPANY]?: Settings.FieldGroups;
+  [Settings.Resource.CRM_CONTACT]?: Settings.FieldGroups;
+  [Settings.Resource.CRM_COMPANY_CONTACT]?: Settings.FieldGroups;
+  [Settings.Resource.MEMBERSHIP_CONTRACT]?: Settings.FieldGroups;
+  [Settings.Resource.MEMBERSHIP_MEMBERSHIP]?: Settings.FieldGroups;
 }
 
 /**
@@ -42,7 +41,9 @@ export default class {
    * @param expression
    * @returns
    */
-  public get(resource: AnyResource): ClientResponse<FieldGroupsInterface> {
+  public get(
+    resource: Settings.AnyResource
+  ): ClientResponse<Settings.FieldGroups> {
     return this.client.get(
       parseTemplate(`${this.path}/{resource}`).expand({ resource })
     );
@@ -55,8 +56,8 @@ export default class {
    * @returns
    */
   public listItems(
-    service: AnyService
-  ): ClientResponse<SettingsResponseInterface> {
+    service: Settings.AnyService
+  ): ClientResponse<SettingsResponse> {
     return this.client.get(this.path, { params: { service } });
   }
 }

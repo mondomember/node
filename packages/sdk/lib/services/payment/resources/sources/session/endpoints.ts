@@ -2,10 +2,7 @@ import {
   ClientInstance,
   ClientResponse,
 } from "../../../../../client/interfaces";
-import {
-  SourceSessionInsertItemInterface,
-  SourceSessionResponseItemInterface,
-} from "./models";
+import { Payment } from "@mondomember/model";
 
 const PATH = {
   base: "payment/sources/session",
@@ -15,8 +12,8 @@ export default class {
   constructor(readonly client: ClientInstance) {}
 
   public createItem(
-    payload: SourceSessionInsertItemInterface
-  ): ClientResponse<SourceSessionResponseItemInterface> {
+    payload: Payment.SourceSessionInsertItem
+  ): ClientResponse<Payment.SourceSessionResponseItem> {
     return this.client.post(PATH.base, payload);
   }
 }

@@ -1,6 +1,6 @@
 import { Chance } from "chance";
 
-import { Account } from "@mondomember/sdk";
+import { Identity } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -21,8 +21,8 @@ const PhoneNumberProperty = {
 };
 
 export function createTestIdentity(
-  props?: Partial<Account.IdentityResponseItemInterface>
-): Account.IdentityResponseItemInterface {
+  props?: Partial<Identity.IdentityResponseItem>
+): Identity.IdentityResponseItem {
   return {
     id: chance.guid(),
     ...EmailProperty,
@@ -34,8 +34,8 @@ export function createTestIdentity(
 }
 
 export function createTestModifyIdentity(
-  props?: Partial<Account.IdentityModifyItemInterface>
-): Account.IdentityModifyItemInterface {
+  props?: Partial<Identity.IdentityModifyItem>
+): Identity.IdentityModifyItem {
   return {
     ...FirstNameProperty,
     ...LastNameProperty,

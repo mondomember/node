@@ -8,17 +8,9 @@ export const NamePropertySchema = {
   },
 };
 
-export interface NamePropertyInterface {
-  name: string;
-}
-
 export const FieldGroupPropertySchema = {
   group: FieldGroupIdSchema,
 };
-
-export interface FieldGroupPropertyInterface {
-  group: string;
-}
 
 export const LabelPropertySchema = {
   label: {
@@ -26,26 +18,14 @@ export const LabelPropertySchema = {
   },
 };
 
-export interface LabelPropertyInterface {
-  label: string;
-}
-
 export const DescriptionPropertySchema = {
   description: {
     type: JsonSchemaType.STRING,
   },
 };
 
-export interface DescriptionPropertyInterface {
-  description: string;
-}
-
 export const OrderPropertySchema = {
   order: {
     type: JsonSchemaType.NUMBER,
   },
 };
-
-export interface OrderPropertyInterface {
-  order: number;
-}

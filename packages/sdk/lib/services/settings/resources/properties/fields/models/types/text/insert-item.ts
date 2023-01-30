@@ -1,24 +1,13 @@
 import { JsonSchema, JsonSchemaType } from "../../../../../../../../schema";
-import { IdPropertyInterface } from "../../../../../../../../models";
 import {
   FieldIdPropertySchema,
   NamePropertySchema,
-  NamePropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  MultilinePropertySchema,
-  MultilinePropertyInterface,
-} from "./base";
+import { TypePropertySchema, MultilinePropertySchema } from "./base";
 
 export const TextFieldInsertItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -37,13 +26,3 @@ export const TextFieldInsertItemSchema: JsonSchema = {
     },
   },
 };
-
-export interface TextFieldInsertItemInterface
-  extends Partial<IdPropertyInterface>,
-    TypePropertyInterface,
-    NamePropertyInterface,
-    LabelPropertyInterface,
-    FieldGroupPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<MultilinePropertyInterface> {}

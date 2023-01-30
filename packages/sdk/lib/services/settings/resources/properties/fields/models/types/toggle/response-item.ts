@@ -1,34 +1,19 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../../../../models";
 import {
   FieldIdPropertySchema,
   NamePropertySchema,
-  NamePropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  AutoSelectPropertySchema,
-  AutoSelectPropertyInterface,
-} from "./base";
+import { TypePropertySchema, AutoSelectPropertySchema } from "./base";
 
 export const ToggleFieldResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -49,17 +34,3 @@ export const ToggleFieldResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface ToggleFieldResponseItemInterface
-  extends IdPropertyInterface,
-    TypePropertyInterface,
-    NamePropertyInterface,
-    LabelPropertyInterface,
-    FieldGroupPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<AutoSelectPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

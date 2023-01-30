@@ -1,13 +1,8 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../models";
+import { PaginationPropertySchema } from "../../../../../models";
 import {
   MembershipResponseItemSchema,
-  MembershipResponseItemInterface,
   DelegatedMembershipResponseItemSchema,
-  DelegatedMembershipResponseItemInterface,
 } from "./response-item";
 
 const AnyMembershipResponseItemSchema = {
@@ -27,12 +22,3 @@ export const MembershipResponseListSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-type ResponseItemInterface =
-  | MembershipResponseItemInterface
-  | DelegatedMembershipResponseItemInterface;
-
-export interface MembershipResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: ResponseItemInterface[];
-}

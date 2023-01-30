@@ -1,5 +1,5 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../../../schema";
-import { InvoiceTransactionType } from "./interfaces";
+import { JsonSchemaType } from "../../../../../../../schema";
+import { Billing } from "@mondomember/model";
 
 const AmountProperty = {
   amount: {
@@ -13,28 +13,28 @@ const NotesProperty = {
   },
 };
 
-const InvoiceManualRefundTransactionInsertItemSchema: JsonSchema = {
+const InvoiceManualRefundTransactionInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type"],
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceTransactionType.MANUAL_REFUND],
+      enum: [Billing.InvoiceTransactionType.MANUAL_REFUND],
     },
     ...AmountProperty,
     ...NotesProperty,
   },
 };
 
-const InvoiceAdjustmentTransactionInsertItemSchema: JsonSchema = {
+const InvoiceAdjustmentTransactionInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["type", "amount"],
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceTransactionType.ADJUSTMENT],
+      enum: [Billing.InvoiceTransactionType.ADJUSTMENT],
     },
     ...AmountProperty,
     ...NotesProperty,
@@ -49,17 +49,3 @@ export const InvoiceTransactionInsertItemSchema = {
     InvoiceAdjustmentTransactionInsertItemSchema,
   ],
 };
-
-interface ManualRefund {
-  type: typeof InvoiceTransactionType.MANUAL_REFUND;
-  amount?: number;
-  notes?: string;
-}
-
-interface Adjustment {
-  type: typeof InvoiceTransactionType.ADJUSTMENT;
-  amount: number;
-  notes?: string;
-}
-
-export type InvoiceTransactionInsertItemInterface = ManualRefund | Adjustment;

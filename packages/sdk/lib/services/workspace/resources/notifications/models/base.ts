@@ -3,15 +3,15 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
-import { AnyNotificationType, NotificationTypeEnum } from ".";
+import { NotificationTypeEnum } from "./interfaces";
+import { Workspace } from "@mondomember/model";
 
 export const NotificationIdSchema = constructUIDSchema([
-  UIDPrefix.NOTIFICATION,
+  Workspace.UIDPrefix.NOTIFICATION,
 ]);
 
 export const NotificationIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.NOTIFICATION
+  Workspace.UIDPrefix.NOTIFICATION
 );
 
 export const MessagePropertySchema = {
@@ -21,19 +21,11 @@ export const MessagePropertySchema = {
   },
 };
 
-export interface MessagePropertyInterface {
-  message: string;
-}
-
 export const TitlePropertySchema = {
   title: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface TitlePropertyInterface {
-  title: string;
-}
 
 export const TypePropertySchema = {
   type: {
@@ -42,7 +34,3 @@ export const TypePropertySchema = {
     minLength: 1,
   },
 };
-
-export interface TypePropertyInterface {
-  type: AnyNotificationType;
-}

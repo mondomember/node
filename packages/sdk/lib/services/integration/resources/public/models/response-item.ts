@@ -1,10 +1,5 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import {
-  DeviceIdPropertySchema,
-  DeviceIdPropertyInterface,
-  TokenPropertySchema,
-  TokenPropertyInterface,
-} from "./base";
+import { DeviceIdPropertySchema, TokenPropertySchema } from "./base";
 
 export const PublicTokenResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -14,7 +9,3 @@ export const PublicTokenResponseItemSchema: JsonSchema = {
     ...TokenPropertySchema,
   },
 };
-
-export interface PublicTokenResponseItemInterface
-  extends DeviceIdPropertyInterface,
-    TokenPropertyInterface {}

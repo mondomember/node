@@ -1,23 +1,15 @@
 import { JsonSchemaType } from "../../../../../../../../../schema";
 import {
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../../../../../models";
 import {
   AmountPropertySchema,
-  AmountPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   VersionPropertySchema,
-  VersionPropertyInterface,
 } from "./base";
 
 export const ProductTierPriceResponseItemSchema = {
@@ -35,13 +27,3 @@ export const ProductTierPriceResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface ProductTierPriceResponseItemInterface
-  extends VersionPropertyInterface,
-    AmountPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

@@ -1,10 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  BrandingPropertySchema,
-  BrandingPropertyInterface,
-  IntegrationsPropertyInterface,
-  IntegrationsPropertySchema,
-} from "./base";
+import { BrandingPropertySchema, IntegrationsPropertySchema } from "./base";
 
 export const AppSettingsUpsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -14,7 +9,3 @@ export const AppSettingsUpsertItemSchema = {
     ...IntegrationsPropertySchema,
   },
 };
-
-export interface AppSettingsUpsertItemInterface
-  extends Partial<BrandingPropertyInterface>,
-    Partial<IntegrationsPropertyInterface> {}

@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Payment } from "@mondomember/sdk";
+import { Payment } from "@mondomember/model";
 
 import {
   createCreatedAtProperty,
@@ -40,8 +40,8 @@ const StripeSettingsProviderProperty = {
 };
 
 export function createTestInsertStripeGateway(
-  overrides?: Partial<Payment.StripeGatewayInsertItemInterface>
-): Payment.StripeGatewayInsertItemInterface {
+  overrides?: Partial<Payment.StripeGatewayInsertItem>
+): Payment.StripeGatewayInsertItem {
   return {
     id: chance.guid(),
     ...DefaultProperty,
@@ -55,14 +55,14 @@ export function createTestInsertStripeGateway(
 }
 
 export function createTestInsertGateway(
-  overrides?: Partial<Payment.GatewayInsertItemInterface>
-): Payment.GatewayInsertItemInterface {
+  overrides?: Partial<Payment.GatewayInsertItem>
+): Payment.GatewayInsertItem {
   return createTestInsertStripeGateway(overrides);
 }
 
 export function createModifyStripeGateway(
-  overrides?: Partial<Payment.StripeGatewayModifyItemInterface>
-): Payment.StripeGatewayModifyItemInterface {
+  overrides?: Partial<Payment.StripeGatewayModifyItem>
+): Payment.StripeGatewayModifyItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -72,14 +72,14 @@ export function createModifyStripeGateway(
 }
 
 export function createTestModifyGateway(
-  overrides?: Partial<Payment.GatewayModifyItemInterface>
-): Payment.GatewayModifyItemInterface {
+  overrides?: Partial<Payment.GatewayModifyItem>
+): Payment.GatewayModifyItem {
   return chance.pickone([createModifyStripeGateway(overrides)]);
 }
 
 export function createTestStripeGateway(
-  overrides?: Partial<Payment.StripeGatewayResponseItemInterface>
-): Payment.StripeGatewayResponseItemInterface {
+  overrides?: Partial<Payment.StripeGatewayResponseItem>
+): Payment.StripeGatewayResponseItem {
   return {
     id: chance.guid(),
     ...IntegrationIdProperty,
@@ -96,7 +96,7 @@ export function createTestStripeGateway(
 }
 
 export function createTestGateway(
-  overrides?: Partial<Payment.GatewayResponseItemInterface>
-): Payment.GatewayResponseItemInterface {
+  overrides?: Partial<Payment.GatewayResponseItem>
+): Payment.GatewayResponseItem {
   return chance.pickone([createTestStripeGateway(overrides)]);
 }

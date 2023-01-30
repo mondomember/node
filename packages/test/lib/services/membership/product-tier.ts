@@ -6,7 +6,7 @@ import {
   createMetadataProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { Membership } from "@mondomember/sdk";
+import { Membership } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -19,8 +19,8 @@ const DescriptionProperty = {
 };
 
 export function createTestProductTier(
-  overide?: Partial<Membership.ProductTierResponseItemInterface>
-): Membership.ProductTierResponseItemInterface {
+  overide?: Partial<Membership.ProductTierResponseItem>
+): Membership.ProductTierResponseItem {
   return {
     id: generateTestKSUID(Membership.UIDPrefix.PRODUCT_TIER),
     ...LabelProperty,
@@ -37,8 +37,8 @@ export function createTestProductTier(
 }
 
 export function createTestInsertProductTier(
-  overide?: Partial<Membership.ProductTierInsertItemInterface>
-): Membership.ProductTierInsertItemInterface {
+  overide?: Partial<Membership.ProductTierInsertItem>
+): Membership.ProductTierInsertItem {
   return {
     ...LabelProperty,
     price: {
@@ -51,8 +51,8 @@ export function createTestInsertProductTier(
 }
 
 export function createTestModifyProductTier(
-  overide?: Partial<Membership.ProductTierModifyItemInterface>
-): Membership.ProductTierModifyItemInterface {
+  overide?: Partial<Membership.ProductTierModifyItem>
+): Membership.ProductTierModifyItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,

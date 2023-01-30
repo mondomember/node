@@ -12,26 +12,14 @@ export const EmailPropertySchema = {
   },
 };
 
-export interface EmailPropertyInterface {
-  email: string;
-}
-
 export const FirstNamePropertySchema = {
   firstName: {
     type: JsonSchemaType.STRING,
   },
 };
 
-export interface FirstNamePropertyInterface {
-  firstName: string;
-}
-
 export const LastNamePropertySchema = {
   lastName: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface LastNamePropertyInterface {
-  lastName: string;
-}

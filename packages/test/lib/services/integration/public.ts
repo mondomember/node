@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Integration } from "@mondomember/sdk";
+import { Integration } from "@mondomember/model";
 
 import { generateTestKSUID } from "../../utils";
 
@@ -13,8 +13,8 @@ const TokenProperty = {
 };
 
 export function createTestInsertPublicToken(
-  overrides?: Partial<Integration.PublicTokenCreateItemInterface>
-): Integration.PublicTokenCreateItemInterface {
+  overrides?: Partial<Integration.PublicTokenCreateItem>
+): Integration.PublicTokenCreateItem {
   return {
     deviceId: generateTestKSUID(Integration.UIDPrefix.PUBLIC_TOKEN_DEVICE),
     token: chance.string({ length: 32 }),
@@ -22,7 +22,7 @@ export function createTestInsertPublicToken(
   };
 }
 
-export function createTestPublicToken(): Integration.PublicTokenResponseItemInterface {
+export function createTestPublicToken(): Integration.PublicTokenResponseItem {
   return {
     ...TokenProperty,
     deviceId: generateTestKSUID(Integration.UIDPrefix.PUBLIC_TOKEN_DEVICE),

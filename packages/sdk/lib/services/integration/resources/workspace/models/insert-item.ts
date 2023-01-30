@@ -1,11 +1,8 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 
 import {
-  LabelPropertyInterface,
   LabelPropertySchema,
-  DescriptionPropertyInterface,
   DescriptionPropertySchema,
-  AuthorizationsPropertyInterface,
   AuthorizationsPropertySchema,
 } from "./base";
 
@@ -19,8 +16,3 @@ export const WorkspaceTokenInsertItemSchema: JsonSchema = {
     ...AuthorizationsPropertySchema,
   },
 };
-
-export interface WorkspaceTokenInsertItemInterface
-  extends LabelPropertyInterface,
-    DescriptionPropertyInterface,
-    AuthorizationsPropertyInterface {}

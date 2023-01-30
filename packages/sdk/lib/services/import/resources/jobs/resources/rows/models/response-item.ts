@@ -1,24 +1,14 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../../../schema";
-import {
-  IdPropertyInterface,
-  CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
-} from "../../../../../../../models";
+import { CreatedAtPropertySchema } from "../../../../../../../models";
 
 import {
   RowIdPropertySchema,
   JobPropertySchema,
-  JobPropertyInterface,
   RowPropertySchema,
-  RowPropertyInterface,
   OperationPropertySchema,
-  OperationPropertyInterface,
   ErrorPropertySchema,
-  ErrorPropertyInterface,
   ValidationErrorsPropertySchema,
-  ValidationErrorsPropertyInterface,
   ImportedIdPropertySchema,
-  ImportedIdPropertyInterface,
 } from "./base";
 
 export const RowResponseItemSchema: JsonSchema = {
@@ -36,13 +26,3 @@ export const RowResponseItemSchema: JsonSchema = {
     ...CreatedAtPropertySchema,
   },
 };
-
-export interface RowResponseItemInterface
-  extends IdPropertyInterface,
-    JobPropertyInterface,
-    RowPropertyInterface,
-    Partial<OperationPropertyInterface>,
-    Partial<ErrorPropertyInterface>,
-    Partial<ValidationErrorsPropertyInterface>,
-    Partial<ImportedIdPropertyInterface>,
-    CreatedAtPropertyInterface {}

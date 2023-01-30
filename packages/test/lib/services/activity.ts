@@ -5,7 +5,7 @@ import {
   createUpdatedAtProperty,
 } from "../utils";
 
-import { Activity, FieldType, UIDPrefix } from "@mondomember/sdk";
+import { Activity, FieldType, UIDPrefix } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -66,7 +66,7 @@ function createPerformedByProperty(override?: any) {
   };
 }
 
-export function createTestActivity(): Activity.ActivityResponseItemInterface {
+export function createTestActivity(): Activity.ActivityResponseItem {
   return chance.pickone([
     createTestNoteActivity(),
     createTestOperationActivity(),
@@ -75,8 +75,8 @@ export function createTestActivity(): Activity.ActivityResponseItemInterface {
 }
 
 export function createTestNoteActivity(
-  overrides?: Partial<Activity.NoteActivityResponseItemInterface>
-): Activity.NoteActivityResponseItemInterface {
+  overrides?: Partial<Activity.NoteActivityResponseItem>
+): Activity.NoteActivityResponseItem {
   return {
     id: generateTestKSUID(Activity.UIDPrefix.ACTIVITY),
     ...NoteActivity,
@@ -89,8 +89,8 @@ export function createTestNoteActivity(
 }
 
 export function createTestOperationActivity(
-  overrides?: Partial<Activity.OperationActivityResponseItemInterface>
-): Activity.OperationActivityResponseItemInterface {
+  overrides?: Partial<Activity.OperationActivityResponseItem>
+): Activity.OperationActivityResponseItem {
   return {
     id: generateTestKSUID(Activity.UIDPrefix.ACTIVITY),
     ...OperationActivity,
@@ -103,8 +103,8 @@ export function createTestOperationActivity(
 }
 
 export function createTestDeltaActivity(
-  overrides?: Partial<Activity.DeltaActivityResponseItemInterface>
-): Activity.DeltaActivityResponseItemInterface {
+  overrides?: Partial<Activity.DeltaActivityResponseItem>
+): Activity.DeltaActivityResponseItem {
   return {
     id: generateTestKSUID(Activity.UIDPrefix.ACTIVITY),
     ...DeltaActivity,
@@ -117,14 +117,14 @@ export function createTestDeltaActivity(
 }
 
 export function createTestInsertActivity(
-  overrides?: Partial<Activity.ActivityInsertItemInterface>
-): Activity.ActivityInsertItemInterface {
+  overrides?: Partial<Activity.ActivityInsertItem>
+): Activity.ActivityInsertItem {
   return createTestInsertNoteActivity(overrides);
 }
 
 export function createTestInsertNoteActivity(
-  overrides?: Partial<Activity.NoteActivityInsertItemInterface>
-): Activity.NoteActivityInsertItemInterface {
+  overrides?: Partial<Activity.NoteActivityInsertItem>
+): Activity.NoteActivityInsertItem {
   return {
     ...NoteActivity,
     ...overrides,
@@ -132,14 +132,14 @@ export function createTestInsertNoteActivity(
 }
 
 export function createTestModifyActivity(
-  overrides?: Partial<Activity.ActivityModifyItemInterface>
-): Activity.ActivityModifyItemInterface {
+  overrides?: Partial<Activity.ActivityModifyItem>
+): Activity.ActivityModifyItem {
   return createTestModifyNoteActivity(overrides);
 }
 
 export function createTestModifyNoteActivity(
-  overrides?: Partial<Activity.NoteActivityModifyItemInterface>
-): Activity.NoteActivityModifyItemInterface {
+  overrides?: Partial<Activity.NoteActivityModifyItem>
+): Activity.NoteActivityModifyItem {
   return {
     message: chance.sentence(),
     ...overrides,

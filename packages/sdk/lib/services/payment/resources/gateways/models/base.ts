@@ -9,19 +9,11 @@ export const GatewayIdPropertySchema = {
   id: GatewayIdSchema,
 };
 
-export interface GatewayIdPropertyInterface {
-  id: string;
-}
-
 export const IntegrationIdPropertySchema = {
   integrationId: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface IntegrationIdPropertyInterface {
-  integrationId: string;
-}
 
 export const LabelPropertySchema = {
   label: {
@@ -29,19 +21,11 @@ export const LabelPropertySchema = {
   },
 };
 
-export interface LabelPropertyInterface {
-  label: string;
-}
-
 export const DescriptionPropertySchema = {
   description: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface DescriptionPropertyInterface {
-  description: string;
-}
 
 export const DefaultPropertySchema = {
   default: {
@@ -49,16 +33,8 @@ export const DefaultPropertySchema = {
   },
 };
 
-export interface DefaultPropertyInterface {
-  default: boolean;
-}
-
 export const LivePropertySchema = {
   live: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
-
-export interface LivePropertyInterface {
-  live: boolean;
-}

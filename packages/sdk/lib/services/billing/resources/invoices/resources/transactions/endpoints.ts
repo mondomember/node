@@ -6,11 +6,7 @@ import {
 } from "../../../../../../client/interfaces";
 import { buildResourcePath } from "../../../../../../client/utilities";
 
-import {
-  InvoiceTransactionInsertItemInterface,
-  InvoiceTransactionResponseItemInterface,
-  InvoiceTransactionResponseListInterface,
-} from "./models";
+import { Billing } from "@mondomember/model";
 
 const PATH = {
   base: "transactions",
@@ -49,8 +45,8 @@ export default class {
    */
   public createItem(
     expression: Expressions,
-    payload: InvoiceTransactionInsertItemInterface
-  ): ClientResponse<InvoiceTransactionResponseItemInterface> {
+    payload: Billing.InvoiceTransactionInsertItem
+  ): ClientResponse<Billing.InvoiceTransactionResponseItem> {
     return this.client.post(
       parseTemplate(this.path.base).expand(expression),
       payload
@@ -65,7 +61,7 @@ export default class {
   public listItems(
     expression: Expressions,
     params?: ListItemsParams
-  ): ClientResponse<InvoiceTransactionResponseListInterface> {
+  ): ClientResponse<Billing.InvoiceTransactionResponseList> {
     return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });
@@ -79,7 +75,7 @@ export default class {
    */
   public getItem(
     expression: TransactionExpressions
-  ): ClientResponse<InvoiceTransactionResponseItemInterface> {
+  ): ClientResponse<Billing.InvoiceTransactionResponseItem> {
     return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 }

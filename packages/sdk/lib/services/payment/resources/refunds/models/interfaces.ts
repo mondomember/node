@@ -1,13 +1,7 @@
-export const RefundStatus = {
-  PROCESSING: "Processing",
-  SUCCEEDED: "Succeeded",
-  FAILED: "Failed",
-} as const;
-
-export type AnyRefundStatus = typeof RefundStatus[keyof typeof RefundStatus];
+import { Payment } from "@mondomember/model";
 
 export const RefundStatusEnum = [
-  RefundStatus.PROCESSING,
-  RefundStatus.SUCCEEDED,
-  RefundStatus.FAILED,
+  Payment.RefundStatus.PROCESSING,
+  Payment.RefundStatus.SUCCEEDED,
+  Payment.RefundStatus.FAILED,
 ];

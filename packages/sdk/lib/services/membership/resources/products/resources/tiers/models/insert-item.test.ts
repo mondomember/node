@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { ProductTierInsertItemSchema as Schema } from "./insert-item";
 import { Chance } from "chance";
-import { Membership } from "@mondomember/test";
+import { Membership as MembershipTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,7 +10,7 @@ const chance: Chance.Chance = new Chance();
 describe("Membership Product Tier - Create Item Schema", () => {
   test("succeed with full payload", async () => {
     const payload = {
-      ...Membership.createTestInsertProductTier(),
+      ...MembershipTests.createTestInsertProductTier(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -18,7 +18,7 @@ describe("Membership Product Tier - Create Item Schema", () => {
 
   test("fail with incorrect price", async () => {
     const payload = {
-      ...Membership.createTestInsertProductTier(),
+      ...MembershipTests.createTestInsertProductTier(),
       price: {
         version: chance.integer(),
       },
@@ -29,7 +29,7 @@ describe("Membership Product Tier - Create Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Membership.createTestInsertProductTier(),
+      ...MembershipTests.createTestInsertProductTier(),
       foo: chance.word(),
     };
 

@@ -35,21 +35,3 @@ export const ExternalIdPropertySchema = {
     oneOf: [ExternalIdSchema, ExternalIdArraySchema],
   },
 };
-
-export type ExternalIdValue = string | number;
-
-export interface ExternalIdsInterface {
-  [k: string]: ExternalIdValue;
-}
-
-export interface ExternalIdsArrayInterface {
-  [k: string]: ExternalIdValue[] | Set<ExternalIdValue>;
-}
-
-export interface ExternalIdsPropertyInterface {
-  externalIds: ExternalIdsInterface | ExternalIdsArrayInterface;
-}
-
-export interface ExternalIdsArrayPropertyInterface {
-  externalIds: ExternalIdsArrayInterface;
-}

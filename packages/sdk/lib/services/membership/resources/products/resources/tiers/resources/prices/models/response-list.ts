@@ -1,12 +1,6 @@
 import { JsonSchemaType } from "../../../../../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../../../../../models";
-import {
-  ProductTierPriceResponseItemSchema,
-  ProductTierPriceResponseItemInterface,
-} from "./response-item";
+import { PaginationPropertySchema } from "../../../../../../../../../models";
+import { ProductTierPriceResponseItemSchema } from "./response-item";
 
 export const ProductTierPriceResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +14,3 @@ export const ProductTierPriceResponseListSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface ProductTierPriceResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: ProductTierPriceResponseItemInterface[];
-}

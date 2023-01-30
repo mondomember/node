@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Settings } from "@mondomember/sdk";
+import { Settings } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -18,8 +18,8 @@ const Description = {
 };
 
 export function createTestInsertFieldGroup(
-  overrides?: Partial<Settings.FieldGroupInsertItemInterface>
-): Settings.FieldGroupInsertItemInterface {
+  overrides?: Partial<Settings.FieldGroupInsertItem>
+): Settings.FieldGroupInsertItem {
   return {
     ...Label,
     ...Description,
@@ -28,8 +28,8 @@ export function createTestInsertFieldGroup(
 }
 
 export function createTestModifyFieldGroup(
-  overrides?: Partial<Settings.FieldGroupModifyItemInterface>
-): Settings.FieldGroupModifyItemInterface {
+  overrides?: Partial<Settings.FieldGroupModifyItem>
+): Settings.FieldGroupModifyItem {
   return {
     ...Label,
     ...Description,
@@ -37,7 +37,7 @@ export function createTestModifyFieldGroup(
   };
 }
 
-export function createTestFieldGroup(): Settings.FieldGroupResponseItemInterface {
+export function createTestFieldGroup(): Settings.FieldGroupResponseItem {
   return {
     id: generateTestKSUID(Settings.UIDPrefix.FIELD_GROUP),
     ...Label,

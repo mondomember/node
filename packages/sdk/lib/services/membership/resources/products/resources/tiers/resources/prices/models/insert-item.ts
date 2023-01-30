@@ -1,16 +1,10 @@
 import { JsonSchemaType } from "../../../../../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../../../../../models";
+import { MetadataPropertySchema } from "../../../../../../../../../models";
 
 import {
   AmountPropertySchema,
-  AmountPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   DefaultPropertySchema,
-  DefaultPropertyInterface,
 } from "./base";
 
 export const ProductTierPriceInsertItemSchema = {
@@ -24,9 +18,3 @@ export const ProductTierPriceInsertItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface ProductTierPriceInsertItemInterface
-  extends AmountPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<DefaultPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

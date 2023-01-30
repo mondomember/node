@@ -3,12 +3,7 @@ import { parseTemplate } from "../../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
-import {
-  GatewayInsertItemInterface,
-  GatewayModifyItemInterface,
-  GatewayResponseItemInterface,
-  GatewayResponseListInterface,
-} from "./models";
+import { Payment } from "@mondomember/model";
 
 import { GatewayListItemsParams } from "./interfaces";
 
@@ -23,9 +18,9 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  GatewayInsertItemInterface,
-  GatewayModifyItemInterface,
-  GatewayResponseItemInterface
+  Payment.GatewayInsertItem,
+  Payment.GatewayModifyItem,
+  Payment.GatewayResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -38,7 +33,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: GatewayListItemsParams
-  ): ClientResponse<GatewayResponseListInterface> {
+  ): ClientResponse<Payment.GatewayResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -50,7 +45,7 @@ export default class extends CRUDEndpoints<
    */
   public defaultItem(
     expression: Expressions
-  ): ClientResponse<GatewayResponseItemInterface> {
+  ): ClientResponse<Payment.GatewayResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/default`).expand(expression)
     );
@@ -64,7 +59,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<GatewayResponseItemInterface> {
+  ): ClientResponse<Payment.GatewayResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

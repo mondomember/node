@@ -4,12 +4,7 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import { ExternalIdEndpoints } from "../../../../shared/external-id/endpoints";
 
-import {
-  ContractInsertItemInterface,
-  ContractModifyItemInterface,
-  ContractResponseItemInterface,
-  ContractResponseListInterface,
-} from "./models";
+import { Membership } from "@mondomember/model";
 
 import { ContractListItemsParams } from "./interfaces";
 
@@ -24,12 +19,12 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  ContractInsertItemInterface,
-  ContractModifyItemInterface,
-  ContractResponseItemInterface
+  Membership.ContractInsertItem,
+  Membership.ContractModifyItem,
+  Membership.ContractResponseItem
 > {
   readonly External: ExternalIdEndpoints<
-    ContractResponseItemInterface,
+    Membership.ContractResponseItem,
     "contract"
   >;
 
@@ -41,7 +36,7 @@ export default class extends CRUDEndpoints<
 
   public listItems(
     params?: ContractListItemsParams
-  ): ClientResponse<ContractResponseListInterface> {
+  ): ClientResponse<Membership.ContractResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -53,7 +48,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<ContractResponseItemInterface> {
+  ): ClientResponse<Membership.ContractResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
@@ -67,7 +62,7 @@ export default class extends CRUDEndpoints<
    */
   public finalizeItem(
     expression: Expressions
-  ): ClientResponse<ContractResponseItemInterface> {
+  ): ClientResponse<Membership.ContractResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/finalize`).expand(expression)
     );
@@ -81,7 +76,7 @@ export default class extends CRUDEndpoints<
    */
   public approveItem(
     expression: Expressions
-  ): ClientResponse<ContractResponseItemInterface> {
+  ): ClientResponse<Membership.ContractResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/approve`).expand(expression)
     );
@@ -95,7 +90,7 @@ export default class extends CRUDEndpoints<
    */
   public cancelItem(
     expression: Expressions
-  ): ClientResponse<ContractResponseItemInterface> {
+  ): ClientResponse<Membership.ContractResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/cancel`).expand(expression)
     );

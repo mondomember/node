@@ -11,8 +11,3 @@ export const ChargeSessionResponseItemSchema = {
     charge: ChargeIdSchema,
   },
 };
-
-export interface ChargeSessionResponseItemInterface {
-  key: string;
-  charge: string;
-}

@@ -1,9 +1,6 @@
 import { ClientInstance, ClientResponse } from "../../client/interfaces";
+import { Identity } from "@mondomember/model";
 
-import {
-  IdentityResponseItemInterface,
-  IdentityModifyItemInterface,
-} from "./models";
 import Workspaces from "./resources/workspace/endpoints";
 
 export class IdentityEndpoints {
@@ -16,7 +13,7 @@ export class IdentityEndpoints {
   /**
    * Get a item.
    */
-  public getItem(): ClientResponse<IdentityResponseItemInterface> {
+  public getItem(): ClientResponse<Identity.IdentityResponseItem> {
     return this.client.get("/identity");
   }
 
@@ -24,8 +21,8 @@ export class IdentityEndpoints {
    * Update a item.
    */
   public updateItem(
-    payload: IdentityModifyItemInterface
-  ): ClientResponse<IdentityResponseItemInterface> {
+    payload: Identity.IdentityModifyItem
+  ): ClientResponse<Identity.IdentityResponseItem> {
     return this.client.put("/identity", payload);
   }
 }

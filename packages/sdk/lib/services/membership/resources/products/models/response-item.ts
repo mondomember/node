@@ -1,32 +1,21 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   constructUIDPropertySchema,
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../models";
-import {
-  LabelPropertySchema,
-  LabelPropertyInterface,
-  DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-} from "./base";
-import { UIDPrefix } from "../../../constants";
+import { LabelPropertySchema, DescriptionPropertySchema } from "./base";
+import { Membership } from "@mondomember/model";
 
 export const ProductResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["id", "label", "createdAt", "updatedAt"],
   properties: {
-    ...constructUIDPropertySchema(UIDPrefix.PRODUCT),
+    ...constructUIDPropertySchema(Membership.UIDPrefix.PRODUCT),
     ...LabelPropertySchema,
     ...DescriptionPropertySchema,
     ...MetadataPropertySchema,
@@ -36,13 +25,3 @@ export const ProductResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface ProductResponseItemInterface
-  extends IdPropertyInterface,
-    LabelPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

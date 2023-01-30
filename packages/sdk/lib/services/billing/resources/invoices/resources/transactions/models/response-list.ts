@@ -1,14 +1,8 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../../../models";
-import {
-  InvoiceTransactionResponseItemSchema,
-  InvoiceTransactionResponseItemInterface,
-} from "./response-item";
+import { JsonSchemaType } from "../../../../../../../schema";
+import { PaginationPropertySchema } from "../../../../../../../models";
+import { InvoiceTransactionResponseItemSchema } from "./response-item";
 
-export const InvoiceTransactionResponseListSchema: JsonSchema = {
+export const InvoiceTransactionResponseListSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["items"],
@@ -20,8 +14,3 @@ export const InvoiceTransactionResponseListSchema: JsonSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface InvoiceTransactionResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: InvoiceTransactionResponseItemInterface[];
-}

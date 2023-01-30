@@ -1,38 +1,22 @@
 import { JsonSchemaType } from "../../../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../../../models";
-import {
-  CustomerPropertyResponseSchema,
-  CustomerPropertyResponseInterface,
-} from "../../../../../../crm/models";
+import { CustomerPropertyResponseSchema } from "../../../../../../customer/models";
 import {
   StatusPropertySchema,
-  StatusPropertyInterface,
   AmountPropertySchema,
-  AmountPropertyInterface,
   ChargePropertySchema,
-  ChargePropertyInterface,
   GatewayPropertySchema,
-  GatewayPropertyInterface,
   RefundIdPropertySchema,
 } from "../../base";
-import {
-  PaymentResponsePropertyInterface,
-  PaymentResponsePropertySchema,
-} from "../../../../charges/models/base";
+import { PaymentResponsePropertySchema } from "../../../../charges/models/base";
 
-import { StripeObjectSchema, StripeObjectInterface } from "./base";
+import { StripeObjectSchema } from "./base";
 
 export const StripeRefundResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -63,18 +47,3 @@ export const StripeRefundResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface StripeRefundResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    AmountPropertyInterface,
-    ChargePropertyInterface,
-    PaymentResponsePropertyInterface,
-    GatewayPropertyInterface,
-    StripeObjectInterface,
-    CustomerPropertyResponseInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

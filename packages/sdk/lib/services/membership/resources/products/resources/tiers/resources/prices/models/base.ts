@@ -6,19 +6,11 @@ export const VersionPropertySchema = {
   },
 };
 
-export interface VersionPropertyInterface {
-  version: number;
-}
-
 export const AmountPropertySchema = {
   amount: {
     type: JsonSchemaType.NUMBER,
   },
 };
-
-export interface AmountPropertyInterface {
-  amount: number;
-}
 
 export const DescriptionPropertySchema = {
   description: {
@@ -26,16 +18,8 @@ export const DescriptionPropertySchema = {
   },
 };
 
-export interface DescriptionPropertyInterface {
-  description: string;
-}
-
 export const DefaultPropertySchema = {
   default: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
-
-export interface DefaultPropertyInterface {
-  default: boolean;
-}

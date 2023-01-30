@@ -4,7 +4,7 @@ import {
   createMetadataProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { Workspace } from "@mondomember/sdk";
+import { Workspace } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -27,8 +27,8 @@ const MembershipProperty = {
 };
 
 export function createTestTenant(
-  overides?: Partial<Workspace.TenantResponseItemInterface>
-): Workspace.TenantResponseItemInterface {
+  overides?: Partial<Workspace.TenantResponseItem>
+): Workspace.TenantResponseItem {
   return {
     id: chance.guid(),
     ...NameProperty,
@@ -42,8 +42,8 @@ export function createTestTenant(
 }
 
 export function createTestInsertTenant(
-  overides?: Partial<Workspace.TenantInsertItemInterface>
-): Workspace.TenantInsertItemInterface {
+  overides?: Partial<Workspace.TenantInsertItem>
+): Workspace.TenantInsertItem {
   return {
     id: chance.guid(),
     ...NameProperty,
@@ -54,8 +54,8 @@ export function createTestInsertTenant(
 }
 
 export function createTestModifyTenant(
-  overides?: Partial<Workspace.TenantModifyItemInterface>
-): Workspace.TenantModifyItemInterface {
+  overides?: Partial<Workspace.TenantModifyItem>
+): Workspace.TenantModifyItem {
   return {
     ...NameProperty,
     ...SlugProperty,

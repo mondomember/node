@@ -3,11 +3,13 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { JobStatusEnum, AnyJobStatus } from "./interfaces";
-import { UIDPrefix } from "../../../constants";
+import { JobStatusEnum } from "./interfaces";
+import { Import } from "@mondomember/model";
 
-export const JobIdSchema = constructUIDSchema([UIDPrefix.JOB]);
-export const JobIdPropertySchema = constructUIDPropertySchema(UIDPrefix.JOB);
+export const JobIdSchema = constructUIDSchema([Import.UIDPrefix.JOB]);
+export const JobIdPropertySchema = constructUIDPropertySchema(
+  Import.UIDPrefix.JOB
+);
 
 export const StatusPropertySchema = {
   status: {
@@ -16,19 +18,11 @@ export const StatusPropertySchema = {
   },
 };
 
-export interface StatusPropertyInterface {
-  status: AnyJobStatus;
-}
-
 export const FilenamePropertySchema = {
   filename: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface FilenamePropertyInterface {
-  filename: string;
-}
 
 export const TypePropertySchema = {
   type: {
@@ -36,19 +30,11 @@ export const TypePropertySchema = {
   },
 };
 
-export interface TypePropertyInterface {
-  type: string;
-}
-
 export const OwnerPropertySchema = {
   owner: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface OwnerPropertyInterface {
-  owner: string;
-}
 
 export const TotalCountPropertySchema = {
   totalCount: {
@@ -56,26 +42,14 @@ export const TotalCountPropertySchema = {
   },
 };
 
-export interface TotalCountPropertyInterface {
-  totalCount: number;
-}
-
 export const ImportCountPropertySchema = {
   importCount: {
     type: JsonSchemaType.NUMBER,
   },
 };
 
-export interface ImportCountPropertyInterface {
-  importCount: number;
-}
-
 export const ErrorCountPropertySchema = {
   errorCount: {
     type: JsonSchemaType.NUMBER,
   },
 };
-
-export interface ErrorCountPropertyInterface {
-  errorCount: number;
-}

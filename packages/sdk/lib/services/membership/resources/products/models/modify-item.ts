@@ -1,15 +1,7 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
-import {
-  LabelPropertySchema,
-  LabelPropertyInterface,
-  DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-} from "./base";
+import { LabelPropertySchema, DescriptionPropertySchema } from "./base";
 
 export const ProductModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +12,3 @@ export const ProductModifyItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface ProductModifyItemInterface
-  extends Partial<LabelPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

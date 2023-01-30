@@ -1,35 +1,20 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 import {
   constructUIDPropertySchema,
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../models";
-import {
-  PerformedByPropertySchema,
-  SourcePropertySchema,
-  PerformedByPropertyInterface,
-  SourcePropertyInterface,
-} from "../../base";
+import { PerformedByPropertySchema, SourcePropertySchema } from "../../base";
 
 import {
   MessagePropertySchema,
   OperationPropertySchema,
   TargetPropertySchema,
   TypePropertySchema,
-  TypePropertyInterface,
-  MessagePropertyInterface,
-  OperationPropertyInterface,
-  TargetPropertyInterface,
 } from "./base";
-
-import { UIDPrefix } from "../../../constants";
+import { Activity } from "@mondomember/model";
 
 export const OperationActivityResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -47,7 +32,7 @@ export const OperationActivityResponseItemSchema: JsonSchema = {
   ],
 
   properties: {
-    ...constructUIDPropertySchema(UIDPrefix.ACTIVITY),
+    ...constructUIDPropertySchema(Activity.UIDPrefix.ACTIVITY),
     ...PerformedByPropertySchema,
     ...SourcePropertySchema,
     ...TypePropertySchema,
@@ -60,16 +45,3 @@ export const OperationActivityResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface OperationActivityResponseItemInterface
-  extends IdPropertyInterface,
-    PerformedByPropertyInterface,
-    TypePropertyInterface,
-    MessagePropertyInterface,
-    OperationPropertyInterface,
-    TargetPropertyInterface,
-    SourcePropertyInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

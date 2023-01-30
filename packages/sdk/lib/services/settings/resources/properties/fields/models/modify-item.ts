@@ -3,11 +3,8 @@ import { JsonSchemaType, JsonSchema } from "../../../../../../schema";
 // Types
 import {
   NumericFieldModifyItemSchema,
-  NumericFieldModifyItemInterface,
   TextFieldModifyItemSchema,
-  TextFieldModifyItemInterface,
   ToggleFieldModifyItemSchema,
-  ToggleFieldModifyItemInterface,
 } from "./types";
 
 export const FieldModifyItemSchema: JsonSchema = {
@@ -18,8 +15,3 @@ export const FieldModifyItemSchema: JsonSchema = {
     ToggleFieldModifyItemSchema,
   ],
 };
-
-export type FieldModifyItemInterface =
-  | NumericFieldModifyItemInterface
-  | TextFieldModifyItemInterface
-  | ToggleFieldModifyItemInterface;

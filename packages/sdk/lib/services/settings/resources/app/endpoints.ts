@@ -1,9 +1,6 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
-import {
-  AppSettingsResponseItemInterface,
-  AppSettingsUpsertItemInterface,
-} from "./models";
+import { Settings } from "@mondomember/model";
 
 export default class SettingsEndpoints {
   constructor(readonly client: ClientInstance) {}
@@ -13,7 +10,7 @@ export default class SettingsEndpoints {
    *
    * @returns
    */
-  public getItem(): ClientResponse<AppSettingsResponseItemInterface> {
+  public getItem(): ClientResponse<Settings.AppResponseItem> {
     return this.client.get("/settings/app");
   }
 
@@ -23,8 +20,8 @@ export default class SettingsEndpoints {
    * @returns
    */
   public upsertItem(
-    payload: AppSettingsUpsertItemInterface
-  ): ClientResponse<AppSettingsResponseItemInterface> {
+    payload: Settings.AppUpsertItem
+  ): ClientResponse<Settings.AppResponseItem> {
     return this.client.put("/settings/app", payload);
   }
 }

@@ -3,12 +3,7 @@ import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
-import {
-  UserInsertItemInterface,
-  UserModifyItemInterface,
-  UserResponseItemInterface,
-  UserResponseListInterface,
-} from "./models";
+import { Workspace } from "@mondomember/model";
 
 const PATH = {
   base: "workspace/users",
@@ -25,9 +20,9 @@ type ListItemsParams = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  UserInsertItemInterface,
-  UserModifyItemInterface,
-  UserResponseItemInterface
+  Workspace.UserInsertItem,
+  Workspace.UserModifyItem,
+  Workspace.UserResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -38,7 +33,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<UserResponseListInterface> {
+  ): ClientResponse<Workspace.UserResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -49,8 +44,8 @@ export default class extends CRUDEndpoints<
    * @returns
    */
   public inviteItem(
-    payload: UserInsertItemInterface
-  ): ClientResponse<UserResponseItemInterface> {
+    payload: Workspace.UserInsertItem
+  ): ClientResponse<Workspace.UserResponseItem> {
     return this.client.post(`${PATH.base}/invite`, payload);
   }
 
@@ -62,7 +57,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<UserResponseItemInterface> {
+  ): ClientResponse<Workspace.UserResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

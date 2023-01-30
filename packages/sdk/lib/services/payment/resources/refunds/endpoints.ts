@@ -1,13 +1,7 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
-import {
-  RefundInsertItemInterface,
-  RefundModifyItemInterface,
-  RefundResponseItemInterface,
-  RefundResponseListInterface,
-} from "./models";
-
 import { RefundListItemsParams } from "./interfaces";
+import { Payment } from "@mondomember/model";
 
 const PATH = {
   base: "payment/refunds",
@@ -20,9 +14,9 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  RefundInsertItemInterface,
-  RefundModifyItemInterface,
-  RefundResponseItemInterface
+  Payment.RefundInsertItem,
+  Payment.RefundModifyItem,
+  Payment.RefundResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -35,7 +29,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params: RefundListItemsParams
-  ): ClientResponse<RefundResponseListInterface> {
+  ): ClientResponse<Payment.RefundResponseList> {
     return this.client.get(PATH.base, { params });
   }
 }

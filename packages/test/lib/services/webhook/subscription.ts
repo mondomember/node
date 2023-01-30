@@ -5,7 +5,7 @@ import {
   createCreatedAtProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { Webhook } from "@mondomember/sdk";
+import { Webhook } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -18,8 +18,8 @@ function createSubscription() {
 }
 
 export function createTestInsertSubscription(
-  overrides?: Partial<Webhook.SubscriptionInsertItemInterface>
-): Webhook.SubscriptionInsertItemInterface {
+  overrides?: Partial<Webhook.SubscriptionInsertItem>
+): Webhook.SubscriptionInsertItem {
   return {
     ...createSubscription(),
     ...overrides,
@@ -27,8 +27,8 @@ export function createTestInsertSubscription(
 }
 
 export function createTestModifySubscription(
-  overrides?: Partial<Webhook.SubscriptionModifyItemInterface>
-): Webhook.SubscriptionModifyItemInterface {
+  overrides?: Partial<Webhook.SubscriptionModifyItem>
+): Webhook.SubscriptionModifyItem {
   return {
     ...createSubscription(),
     ...overrides,
@@ -36,8 +36,8 @@ export function createTestModifySubscription(
 }
 
 export function createTestSubscription(
-  overrides?: Partial<Webhook.SubscriptionResponseItemInterface>
-): Webhook.SubscriptionResponseItemInterface {
+  overrides?: Partial<Webhook.SubscriptionResponseItem>
+): Webhook.SubscriptionResponseItem {
   return {
     id: generateTestKSUID(Webhook.UIDPrefix.SUBSCRIPTION),
     ...createSubscription(),
@@ -51,8 +51,8 @@ export function createTestSubscription(
  * @deprecated
  */
 export function createTestSubscriptionInsertItem(
-  overrides?: Partial<Webhook.SubscriptionInsertItemInterface>
-): Webhook.SubscriptionInsertItemInterface {
+  overrides?: Partial<Webhook.SubscriptionInsertItem>
+): Webhook.SubscriptionInsertItem {
   return createTestInsertSubscription(overrides);
 }
 
@@ -60,8 +60,8 @@ export function createTestSubscriptionInsertItem(
  * @deprecated
  */
 export function createTestSubscriptionModifyItem(
-  overrides?: Partial<Webhook.SubscriptionModifyItemInterface>
-): Webhook.SubscriptionModifyItemInterface {
+  overrides?: Partial<Webhook.SubscriptionModifyItem>
+): Webhook.SubscriptionModifyItem {
   return createTestModifySubscription(overrides);
 }
 
@@ -69,7 +69,7 @@ export function createTestSubscriptionModifyItem(
  * @deprecated
  */
 export function createTestSubscriptionResponseItem(
-  overrides?: Partial<Webhook.SubscriptionResponseItemInterface>
-): Webhook.SubscriptionResponseItemInterface {
+  overrides?: Partial<Webhook.SubscriptionResponseItem>
+): Webhook.SubscriptionResponseItem {
   return createTestSubscription(overrides);
 }

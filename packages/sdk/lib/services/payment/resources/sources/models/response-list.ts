@@ -1,12 +1,6 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../models";
-import {
-  SourceResponseItemSchema,
-  SourceResponseItemInterface,
-} from "./response-item";
+import { PaginationPropertySchema } from "../../../../../models";
+import { SourceResponseItemSchema } from "./response-item";
 
 export const SourceResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +14,3 @@ export const SourceResponseListSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface SourceResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: SourceResponseItemInterface[];
-}

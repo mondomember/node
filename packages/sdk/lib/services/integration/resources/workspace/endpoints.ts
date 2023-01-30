@@ -4,12 +4,7 @@ import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
-import {
-  WorkspaceTokenInsertItemInterface,
-  WorkspaceTokenModifyItemInterface,
-  WorkspaceTokenResponseItemInterface,
-  WorkspaceTokenResponseListInterface,
-} from "./models";
+import { Integration } from "@mondomember/model";
 
 const PATH = {
   base: "integrations/workspace",
@@ -26,9 +21,9 @@ type ListItemsParams = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  WorkspaceTokenInsertItemInterface,
-  WorkspaceTokenModifyItemInterface,
-  WorkspaceTokenResponseItemInterface
+  Integration.WorkspaceTokenInsertItem,
+  Integration.WorkspaceTokenModifyItem,
+  Integration.WorkspaceTokenResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -36,7 +31,7 @@ export default class extends CRUDEndpoints<
 
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<WorkspaceTokenResponseListInterface> {
+  ): ClientResponse<Integration.WorkspaceTokenResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -48,7 +43,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<WorkspaceTokenResponseItemInterface> {
+  ): ClientResponse<Integration.WorkspaceTokenResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

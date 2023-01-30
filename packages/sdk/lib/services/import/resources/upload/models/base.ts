@@ -6,10 +6,6 @@ export const UrlPropertySchema = {
   },
 };
 
-export interface UrlPropertyInterface {
-  url: string;
-}
-
 export const FieldsPropertySchema = {
   fields: {
     type: JsonSchemaType.OBJECT,
@@ -20,7 +16,3 @@ export const FieldsPropertySchema = {
     },
   },
 };
-
-export interface FieldsPropertyInterface {
-  fields: { [key: string]: string };
-}

@@ -1,15 +1,7 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../../../models";
+import { MetadataPropertySchema } from "../../../../../../../models";
 
-import {
-  LabelPropertySchema,
-  LabelPropertyInterface,
-  DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-} from "./base";
+import { LabelPropertySchema, DescriptionPropertySchema } from "./base";
 
 const PriceSchema = {
   price: {
@@ -24,12 +16,6 @@ const PriceSchema = {
   },
 };
 
-interface PriceInterface {
-  price: {
-    amount: number;
-  };
-}
-
 export const ProductTierInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -41,9 +27,3 @@ export const ProductTierInsertItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface ProductTierInsertItemInterface
-  extends LabelPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    PriceInterface,
-    Partial<MetadataPropertyInterface> {}

@@ -4,17 +4,9 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import { ExternalIdEndpoints } from "../../../../shared/external-id/endpoints";
 
-import {
-  InvoicePayItemInterface,
-  InvoiceInsertItemInterface,
-  InvoiceModifyItemInterface,
-  InvoiceResponseItemInterface,
-  InvoiceResponseListInterface,
-} from "./models";
-import { InvoiceTransactionInsertItemInterface } from "./resources/transactions";
-
 import { InvoiceListItemsParams } from "./interfaces";
 import TransactionEndpoints from "./resources/transactions/endpoints";
+import { Billing } from "@mondomember/model";
 
 const PATH = {
   base: "billing/invoices",
@@ -27,12 +19,12 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  InvoiceInsertItemInterface,
-  InvoiceModifyItemInterface,
-  InvoiceResponseItemInterface
+  Billing.InvoiceInsertItem,
+  Billing.InvoiceModifyItem,
+  Billing.InvoiceResponseItem
 > {
   readonly External: ExternalIdEndpoints<
-    InvoiceResponseItemInterface,
+    Billing.InvoiceResponseItem,
     "invoice"
   >;
   readonly Transactions: TransactionEndpoints;
@@ -51,7 +43,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: InvoiceListItemsParams
-  ): ClientResponse<InvoiceResponseListInterface> {
+  ): ClientResponse<Billing.InvoiceResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -63,8 +55,8 @@ export default class extends CRUDEndpoints<
    */
   public payItem(
     expression: Expressions,
-    payload: InvoicePayItemInterface
-  ): ClientResponse<InvoiceResponseItemInterface> {
+    payload: Billing.InvoicePayItem
+  ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/pay`).expand(expression),
       payload
@@ -79,8 +71,8 @@ export default class extends CRUDEndpoints<
    */
   public adjustItem(
     expression: Expressions,
-    payload: InvoiceTransactionInsertItemInterface
-  ): ClientResponse<InvoiceResponseItemInterface> {
+    payload: Billing.InvoiceTransactionInsertItem
+  ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/adjust`).expand(expression),
       payload
@@ -95,7 +87,7 @@ export default class extends CRUDEndpoints<
    */
   public finalizeItem(
     expression: Expressions
-  ): ClientResponse<InvoiceResponseItemInterface> {
+  ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/finalize`).expand(expression)
     );
@@ -109,7 +101,7 @@ export default class extends CRUDEndpoints<
    */
   public voidItem(
     expression: Expressions
-  ): ClientResponse<InvoiceResponseItemInterface> {
+  ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/void`).expand(expression)
     );
@@ -123,7 +115,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<InvoiceResponseItemInterface> {
+  ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

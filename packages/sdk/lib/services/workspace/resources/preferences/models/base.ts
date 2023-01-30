@@ -20,11 +20,3 @@ export const ViewsSchema = {
     },
   },
 };
-
-export interface ViewsItemInterface {
-  views: {
-    [k: string]: {
-      columns: string[];
-    };
-  };
-}

@@ -7,7 +7,7 @@ import {
   createUpdatedAtProperty,
 } from "../../utils";
 
-import { Membership } from "@mondomember/sdk";
+import { Membership } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -20,8 +20,8 @@ const DescriptionProperty = {
 };
 
 export function createTestProduct(
-  overide?: Partial<Membership.ProductResponseItemInterface>
-): Membership.ProductResponseItemInterface {
+  overide?: Partial<Membership.ProductResponseItem>
+): Membership.ProductResponseItem {
   return {
     id: generateTestKSUID(Membership.UIDPrefix.PRODUCT),
     ...LabelProperty,
@@ -34,8 +34,8 @@ export function createTestProduct(
 }
 
 export function createTestInsertProduct(
-  overide?: Partial<Membership.ProductInsertItemInterface>
-): Membership.ProductInsertItemInterface {
+  overide?: Partial<Membership.ProductInsertItem>
+): Membership.ProductInsertItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -45,8 +45,8 @@ export function createTestInsertProduct(
 }
 
 export function createTestModifyProduct(
-  overide?: Partial<Membership.ProductModifyItemInterface>
-): Membership.ProductModifyItemInterface {
+  overide?: Partial<Membership.ProductModifyItem>
+): Membership.ProductModifyItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,

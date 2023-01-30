@@ -6,7 +6,7 @@ import {
   createUpdatedAtProperty,
 } from "../../utils";
 
-import { Membership } from "@mondomember/sdk";
+import { Membership } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -19,8 +19,8 @@ const DescriptionProperty = {
 };
 
 export function createTestProductTierPrice(
-  overide?: Partial<Membership.ProductTierPriceResponseItemInterface>
-): Membership.ProductTierPriceResponseItemInterface {
+  overide?: Partial<Membership.ProductTierPriceResponseItem>
+): Membership.ProductTierPriceResponseItem {
   return {
     version: chance.natural({ min: 1, max: 100 }),
     ...AmountProperty,
@@ -33,8 +33,8 @@ export function createTestProductTierPrice(
 }
 
 export function createTestInsertProductTierPrice(
-  overide?: Partial<Membership.ProductTierPriceInsertItemInterface>
-): Membership.ProductTierPriceInsertItemInterface {
+  overide?: Partial<Membership.ProductTierPriceInsertItem>
+): Membership.ProductTierPriceInsertItem {
   return {
     ...AmountProperty,
     ...DescriptionProperty,
@@ -44,8 +44,8 @@ export function createTestInsertProductTierPrice(
 }
 
 export function createTestModifyProductTierPrice(
-  overide?: Partial<Membership.ProductTierPriceModifyItemInterface>
-): Membership.ProductTierPriceModifyItemInterface {
+  overide?: Partial<Membership.ProductTierPriceModifyItem>
+): Membership.ProductTierPriceModifyItem {
   return {
     ...DescriptionProperty,
     ...createMetadataProperty(),

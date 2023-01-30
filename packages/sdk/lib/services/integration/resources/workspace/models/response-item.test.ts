@@ -1,13 +1,13 @@
 import { matchers } from "jest-json-schema";
 import { WorkspaceTokenResponseItemSchema as Schema } from "./response-item";
-import { Integration } from "@mondomember/test";
+import { Integration as IntegrationTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Integration Workspace Token - Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Integration.createTestWorkspaceToken(),
+      ...IntegrationTests.createTestWorkspaceToken(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -15,7 +15,7 @@ describe("Integration Workspace Token - Response Item Schema", () => {
 
   test("fail without id", async () => {
     const payload = {
-      ...Integration.createTestWorkspaceToken(),
+      ...IntegrationTests.createTestWorkspaceToken(),
       id: undefined,
     };
 
@@ -24,7 +24,7 @@ describe("Integration Workspace Token - Response Item Schema", () => {
 
   test("fail without label", async () => {
     const payload = {
-      ...Integration.createTestWorkspaceToken(),
+      ...IntegrationTests.createTestWorkspaceToken(),
       label: undefined,
     };
 

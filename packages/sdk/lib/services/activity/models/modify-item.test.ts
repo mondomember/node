@@ -1,23 +1,23 @@
 import { matchers } from "jest-json-schema";
 import { ActivityModifyItemSchema as Schema } from "./modify-item";
-import { Activity } from "@mondomember/test";
-import { OperationType } from "./constants";
+import { Activity as ActivityTests } from "@mondomember/test";
+import { Activity } from "@mondomember/model";
 
 expect.extend(matchers);
 
 describe("Global Activity Update Item Schema", () => {
   test("succeed with note payload", async () => {
-    const payload = Activity.createTestModifyNoteActivity();
+    const payload = ActivityTests.createTestModifyNoteActivity();
 
     expect(payload).toMatchSchema(Schema);
   });
 
   test("fail with delta payload props", async () => {
-    const payload = Activity.createTestModifyNoteActivity();
+    const payload = ActivityTests.createTestModifyNoteActivity();
 
     expect({
       ...payload,
-      operation: OperationType.AUTOMATION,
+      operation: Activity.OperationType.AUTOMATION,
     }).not.toMatchSchema(Schema);
   });
 });

@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Payment, CRM } from "@mondomember/sdk";
+import { Payment, Customer } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -11,7 +11,11 @@ import {
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Payment.RefundStatusEnum),
+  status: chance.pickone([
+    Payment.RefundStatus.PROCESSING,
+    Payment.RefundStatus.SUCCEEDED,
+    Payment.RefundStatus.FAILED,
+  ]),
 };
 
 const ChargeProperty = {
@@ -43,8 +47,8 @@ const AmountProperty = {
 };
 
 export function createTestInsertRefund(
-  overrides?: Partial<Payment.RefundInsertItemInterface>
-): Payment.RefundInsertItemInterface {
+  overrides?: Partial<Payment.RefundInsertItem>
+): Payment.RefundInsertItem {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.REFUND),
     charge: generateTestKSUID(Payment.UIDPrefix.CHARGE),
@@ -55,8 +59,8 @@ export function createTestInsertRefund(
 }
 
 export function createTestModifyRefund(
-  overrides?: Partial<Payment.RefundModifyItemInterface>
-): Payment.RefundModifyItemInterface {
+  overrides?: Partial<Payment.RefundModifyItem>
+): Payment.RefundModifyItem {
   return {
     ...createMetadataProperty(),
     ...overrides,
@@ -64,8 +68,8 @@ export function createTestModifyRefund(
 }
 
 export function createTestStripeRefund(
-  overrides?: Partial<Payment.StripeRefundResponseItemInterface>
-): Payment.StripeRefundResponseItemInterface {
+  overrides?: Partial<Payment.StripeRefundResponseItem>
+): Payment.StripeRefundResponseItem {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.REFUND),
     ...StatusProperty,
@@ -76,13 +80,13 @@ export function createTestStripeRefund(
     ...StripeObjectProperty,
     customer: chance.pickone([
       {
-        id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-        type: CRM.CustomerType.COMPANY,
+        id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+        type: Customer.CustomerType.COMPANY,
         name: chance.company(),
       },
       {
-        id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-        type: CRM.CustomerType.CONTACT,
+        id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+        type: Customer.CustomerType.CONTACT,
         email: chance.email(),
         firstName: chance.first(),
         lastName: chance.last(),
@@ -96,7 +100,7 @@ export function createTestStripeRefund(
 }
 
 export function createTestRefund(
-  overrides?: Partial<Payment.RefundResponseItemInterface>
-): Payment.RefundResponseItemInterface {
+  overrides?: Partial<Payment.RefundResponseItem>
+): Payment.RefundResponseItem {
   return chance.pickone([createTestStripeRefund(overrides)]);
 }

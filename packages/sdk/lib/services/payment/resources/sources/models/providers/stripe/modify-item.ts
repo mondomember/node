@@ -1,9 +1,6 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../../../models";
-import { LabelSchema, LabelInterface } from "../../base";
+import { MetadataPropertySchema } from "../../../../../../../models";
+import { LabelPropertySchema } from "../../base";
 
 const currentYear = new Date().getFullYear();
 
@@ -80,15 +77,6 @@ const AddressSchema = {
   },
 };
 
-interface AddressInterface {
-  addressLine1: string;
-  addressLine2: string;
-  city: string;
-  state: string;
-  country: string;
-  postalCode: string;
-}
-
 const EmailPropertySchema = {
   email: {
     type: JsonSchemaType.STRING,
@@ -122,35 +110,13 @@ const BillingDetailsPropertySchema = {
   },
 };
 
-interface BillingDetailsPropertyInterface {
-  billingDetails: {
-    address?: AddressInterface;
-    email?: string;
-    fullName?: string;
-    phoneNumber?: string;
-  };
-}
-
-interface CardPropertyInterface {
-  card: {
-    expirationMonth?: string | number;
-    expirationYear?: string | number;
-  };
-}
-
 export const StripeSourceModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {
-    ...LabelSchema,
+    ...LabelPropertySchema,
     ...BillingDetailsPropertySchema,
     ...CardPropertySchema,
     ...MetadataPropertySchema,
   },
 };
-
-export interface StripeSourceModifyItemInterface
-  extends Partial<LabelInterface>,
-    Partial<BillingDetailsPropertyInterface>,
-    Partial<CardPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

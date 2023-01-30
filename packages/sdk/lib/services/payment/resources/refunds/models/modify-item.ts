@@ -1,8 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
 export const RefundModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -11,6 +8,3 @@ export const RefundModifyItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface RefundModifyItemInterface
-  extends Partial<MetadataPropertyInterface> {}

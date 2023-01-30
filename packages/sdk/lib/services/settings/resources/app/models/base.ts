@@ -7,10 +7,6 @@ export const NamePropertySchema = {
   },
 };
 
-export interface NamePropertyInterface {
-  name: string;
-}
-
 export const AppPropertySchema = {
   app: {
     type: JsonSchemaType.OBJECT,
@@ -22,10 +18,6 @@ export const AppPropertySchema = {
     },
   },
 };
-
-export interface AppPropertyInterface {
-  app?: { uiVersion?: string };
-}
 
 const IntegrationUrlSchema = {
   type: JsonSchemaType.OBJECT,
@@ -59,17 +51,6 @@ export const IntegrationsPropertySchema = {
   },
 };
 
-interface IntegrationInterface {
-  label: string;
-  urls?: {
-    [key: string]: string;
-  };
-}
-
-export interface IntegrationsPropertyInterface {
-  integrations: { [key: string]: IntegrationInterface };
-}
-
 export const BrandingPropertySchema = {
   branding: {
     type: JsonSchemaType.OBJECT,
@@ -81,7 +62,3 @@ export const BrandingPropertySchema = {
     },
   },
 };
-
-export interface BrandingPropertyInterface {
-  branding: { [key: string]: string };
-}

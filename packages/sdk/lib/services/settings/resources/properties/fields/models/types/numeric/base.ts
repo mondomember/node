@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../../../../schema";
-import { FieldType } from "../../../../../../../../models";
+import { FieldType } from "@mondomember/model";
 
 export const TypePropertySchema = {
   type: {
@@ -8,16 +8,8 @@ export const TypePropertySchema = {
   },
 };
 
-export interface TypePropertyInterface {
-  type: typeof FieldType.NUMERIC;
-}
-
 export const DecimalPropertySchema = {
   decimal: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
-
-export interface DecimalProertyInterface {
-  decimal: boolean;
-}

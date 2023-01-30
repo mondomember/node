@@ -1,24 +1,16 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../models";
 
 import {
   NotificationIdPropertySchema,
   MessagePropertySchema,
-  MessagePropertyInterface,
   TitlePropertySchema,
-  TitlePropertyInterface,
   TypePropertySchema,
-  TypePropertyInterface,
 } from "./base";
 
 export const NotificationResponseItemSchema = {
@@ -36,13 +28,3 @@ export const NotificationResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface NotificationResponseItemInterface
-  extends IdPropertyInterface,
-    Partial<TitlePropertyInterface>,
-    MessagePropertyInterface,
-    TypePropertyInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

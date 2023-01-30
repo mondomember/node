@@ -1,40 +1,21 @@
 import { constructJWTSchema, constructUIDSchema } from "../../../../../models";
 import { JsonSchemaType } from "../../../../../schema";
-import { UIDPrefix } from "../../../constants";
-
-import { ActionEnum, AuthorizationService } from "../../../interfaces";
-import {
-  WorkspaceActivityAuthorizations,
-  WorkspaceBillingAuthorizations,
-  WorkspaceCRMAuthorizations,
-  WorkspaceMembershipAuthorizations,
-  WorkspacePaymentAuthorizations,
-  WorkspaceSearchAuthorizations,
-  WorkspaceSettingsAuthorizations,
-  WorkspaceWebhookAuthorizations,
-} from "./interfaces";
+import { ActionEnum } from "../../../interfaces";
+import { Integration } from "@mondomember/model";
 
 export const WorkspaceTokenSchema = constructJWTSchema();
 
 export const WorkspaceIdSchema = constructUIDSchema([
-  UIDPrefix.WORKSPACE_TOKEN,
+  Integration.UIDPrefix.WORKSPACE_TOKEN,
 ]);
 
 export const IdPropertySchema = {
   id: WorkspaceIdSchema,
 };
 
-export interface IdPropertyInterface {
-  id: string;
-}
-
 export const TokenPropertySchema = {
   jwt: WorkspaceTokenSchema,
 };
-
-export interface TokenPropertyInterface {
-  jwt: string;
-}
 
 export const LabelPropertySchema = {
   label: {
@@ -43,19 +24,11 @@ export const LabelPropertySchema = {
   },
 };
 
-export interface LabelPropertyInterface {
-  label: string;
-}
-
 export const DescriptionPropertySchema = {
   description: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface DescriptionPropertyInterface {
-  description: string;
-}
 
 export const ActivityAuthorizationsSchema = {
   type: JsonSchemaType.OBJECT,
@@ -151,28 +124,16 @@ export const AuthorizationsPropertySchema = {
   authorizations: {
     type: JsonSchemaType.OBJECT,
     properties: {
-      [AuthorizationService.ACTIVITY]: ActivityAuthorizationsSchema,
-      [AuthorizationService.BILLING]: BillingAuthorizationsSchema,
-      [AuthorizationService.CRM]: CRMAuthorizationsSchema,
-      [AuthorizationService.IMPORT]: ImportAuthorizationsSchema,
-      [AuthorizationService.MEMBERSHIP]: MembershipAuthorizationsSchema,
-      [AuthorizationService.PAYMENT]: PaymentAuthorizationsSchema,
-      [AuthorizationService.SEARCH]: SearchAuthorizationsSchema,
-      [AuthorizationService.SETTINGS]: SettingsAuthorizationsSchema,
-      [AuthorizationService.WEBHOOK]: WebhookAuthorizationsSchema,
+      [Integration.AuthorizationService.ACTIVITY]: ActivityAuthorizationsSchema,
+      [Integration.AuthorizationService.BILLING]: BillingAuthorizationsSchema,
+      [Integration.AuthorizationService.CRM]: CRMAuthorizationsSchema,
+      [Integration.AuthorizationService.IMPORT]: ImportAuthorizationsSchema,
+      [Integration.AuthorizationService.MEMBERSHIP]:
+        MembershipAuthorizationsSchema,
+      [Integration.AuthorizationService.PAYMENT]: PaymentAuthorizationsSchema,
+      [Integration.AuthorizationService.SEARCH]: SearchAuthorizationsSchema,
+      [Integration.AuthorizationService.SETTINGS]: SettingsAuthorizationsSchema,
+      [Integration.AuthorizationService.WEBHOOK]: WebhookAuthorizationsSchema,
     },
   },
 };
-
-export interface AuthorizationsPropertyInterface {
-  authorizations: {
-    [AuthorizationService.ACTIVITY]?: WorkspaceActivityAuthorizations;
-    [AuthorizationService.BILLING]?: WorkspaceBillingAuthorizations;
-    [AuthorizationService.CRM]?: WorkspaceCRMAuthorizations;
-    [AuthorizationService.MEMBERSHIP]?: WorkspaceMembershipAuthorizations;
-    [AuthorizationService.PAYMENT]?: WorkspacePaymentAuthorizations;
-    [AuthorizationService.SEARCH]?: WorkspaceSearchAuthorizations;
-    [AuthorizationService.SETTINGS]?: WorkspaceSettingsAuthorizations;
-    [AuthorizationService.WEBHOOK]?: WorkspaceWebhookAuthorizations;
-  };
-}

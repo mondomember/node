@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Payment, CRM } from "@mondomember/sdk";
+import { Payment, Customer } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -90,12 +90,12 @@ const StripeObjectProperty: { object: Stripe.PaymentMethod } = {
 };
 
 export function createTestInsertStripeSource(
-  overrides?: Partial<Payment.StripeSourceInsertItemInterface>
-): Payment.StripeSourceInsertItemInterface {
+  overrides?: Partial<Payment.StripeSourceInsertItem>
+): Payment.StripeSourceInsertItem {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.SOURCE),
     customer: {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
     },
     ...GatewayProperty,
     ...DefaultProperty,
@@ -107,11 +107,11 @@ export function createTestInsertStripeSource(
 }
 
 export function createTestInsertSourceSession(
-  overrides?: Partial<Payment.SourceSessionInsertItemInterface>
-): Payment.SourceSessionInsertItemInterface {
+  overrides?: Partial<Payment.SourceSessionInsertItem>
+): Payment.SourceSessionInsertItem {
   return {
     customer: {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
     },
     ...GatewayProperty,
     ...overrides,
@@ -119,14 +119,14 @@ export function createTestInsertSourceSession(
 }
 
 export function createTestInsertSource(
-  overrides?: Partial<Payment.SourceInsertItemInterface>
-): Payment.SourceInsertItemInterface {
+  overrides?: Partial<Payment.SourceInsertItem>
+): Payment.SourceInsertItem {
   return chance.pickone([createTestInsertStripeSource(overrides)]);
 }
 
 export function createTestModifyStripeSource(
-  overrides?: Partial<Payment.StripeSourceModifyItemInterface>
-): Payment.StripeSourceModifyItemInterface {
+  overrides?: Partial<Payment.StripeSourceModifyItem>
+): Payment.StripeSourceModifyItem {
   return {
     ...LabelProperty,
     ...createMetadataProperty(),
@@ -135,27 +135,27 @@ export function createTestModifyStripeSource(
 }
 
 export function createTestModifySource(
-  overrides?: Partial<Payment.SourceModifyItemInterface>
-): Payment.SourceModifyItemInterface {
+  overrides?: Partial<Payment.SourceModifyItem>
+): Payment.SourceModifyItem {
   return chance.pickone([createTestModifyStripeSource(overrides)]);
 }
 
 export function createTestStripeSource(
-  overrides?: Partial<Payment.StripeSourceResponseItemInterface>
-): Payment.StripeSourceResponseItemInterface {
+  overrides?: Partial<Payment.StripeSourceResponseItem>
+): Payment.StripeSourceResponseItem {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.SOURCE),
     ...LabelProperty,
     ...GatewayProperty,
     customer: chance.pickone([
       {
-        id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-        type: CRM.CustomerType.COMPANY,
+        id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+        type: Customer.CustomerType.COMPANY,
         name: chance.company(),
       },
       {
-        id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-        type: CRM.CustomerType.CONTACT,
+        id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+        type: Customer.CustomerType.CONTACT,
         email: chance.email(),
         firstName: chance.first(),
         lastName: chance.last(),
@@ -173,7 +173,7 @@ export function createTestStripeSource(
 }
 
 export function createTestSource(
-  overrides?: Partial<Payment.SourceResponseItemInterface>
-): Payment.SourceResponseItemInterface {
+  overrides?: Partial<Payment.SourceResponseItem>
+): Payment.SourceResponseItem {
   return chance.pickone([createTestStripeSource(overrides)]);
 }

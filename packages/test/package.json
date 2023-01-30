@@ -27,7 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/sdk": "^4.0.26",
+    "@mondomember/model": "^4.0.26",
     "chance": "^1.1.8",
     "stripe": "^9.8.0"
   },

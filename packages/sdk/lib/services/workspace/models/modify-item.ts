@@ -1,14 +1,6 @@
 import { JsonSchemaType } from "../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../models";
-import {
-  NamePropertySchema,
-  NamePropertyInterface,
-  SlugPropertySchema,
-  SlugPropertyInterface,
-} from "./base";
+import { MetadataPropertySchema } from "../../../models";
+import { NamePropertySchema, SlugPropertySchema } from "./base";
 
 export const TenantModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -19,8 +11,3 @@ export const TenantModifyItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface TenantModifyItemInterface
-  extends Partial<NamePropertyInterface>,
-    Partial<SlugPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

@@ -1,23 +1,15 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
 } from "../../../../../../models";
 import {
   FieldGroupIdPropertySchema,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "./base";
 
 export const FieldGroupResponseItemSchema: JsonSchema = {
@@ -35,13 +27,3 @@ export const FieldGroupResponseItemSchema: JsonSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface FieldGroupResponseItemInterface
-  extends IdPropertyInterface,
-    LabelPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

@@ -6,13 +6,9 @@ import {
 } from "../../../../../../../../client/interfaces";
 import { NestedCRUDEndpoints } from "../../../../../../../../client/endpoints";
 import { buildResourcePath } from "../../../../../../../../client/utilities";
-import {
-  ProductTierPriceInsertItemInterface,
-  ProductTierPriceModifyItemInterface,
-  ProductTierPriceResponseItemInterface,
-  ProductTierPriceResponseListInterface,
-} from "./models";
+
 import { ProductTierPriceListItemsParams } from "./interfaces";
+import { Membership } from "@mondomember/model";
 
 const PATH = {
   base: "prices",
@@ -31,9 +27,9 @@ type PriceExpressions = Expressions & {
 export default class extends NestedCRUDEndpoints<
   Expressions,
   PriceExpressions,
-  ProductTierPriceInsertItemInterface,
-  ProductTierPriceModifyItemInterface,
-  ProductTierPriceResponseItemInterface
+  Membership.ProductTierPriceInsertItem,
+  Membership.ProductTierPriceModifyItem,
+  Membership.ProductTierPriceResponseItem
 > {
   constructor(path: string, client: ClientInstance) {
     super(
@@ -53,7 +49,7 @@ export default class extends NestedCRUDEndpoints<
   public listItems(
     expression: Expressions,
     params?: ProductTierPriceListItemsParams
-  ): ClientResponse<ProductTierPriceResponseListInterface> {
+  ): ClientResponse<Membership.ProductTierPriceResponseList> {
     return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });
@@ -66,7 +62,7 @@ export default class extends NestedCRUDEndpoints<
    */
   public defaultItem(
     expression: PriceExpressions
-  ): ClientResponse<ProductTierPriceResponseItemInterface> {
+  ): ClientResponse<Membership.ProductTierPriceResponseItem> {
     return this.client.post(
       `${parseTemplate(this.path.item).expand(expression)}/default`
     );

@@ -7,19 +7,24 @@ import {
   createPropertiesProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { CRM, Membership } from "@mondomember/sdk";
+import { Customer, Membership } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Membership.ContractStatusEnum),
+  status: chance.pickone([
+    Membership.ContractStatus.UPCOMING,
+    Membership.ContractStatus.ACTIVE,
+    Membership.ContractStatus.FULFILLED,
+    Membership.ContractStatus.CANCELED,
+  ]),
 };
 
 const ContactsProperty: { contacts: [string, string, string] } = {
   contacts: [
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
   ],
 };
 
@@ -30,20 +35,20 @@ const PeriodDatesProperty = {
   },
 };
 
-const TestContractProps: Membership.ContractResponseItemInterface = {
+const TestContractProps: Membership.ContractResponseItem = {
   id: generateTestKSUID(Membership.UIDPrefix.CONTRACT),
   ...StatusProperty,
   ...PeriodDatesProperty,
   ...ContactsProperty,
   customer: chance.pickone([
     {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-      type: CRM.CustomerType.COMPANY,
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+      type: Customer.CustomerType.COMPANY,
       name: chance.company(),
     },
     {
-      id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-      type: CRM.CustomerType.CONTACT,
+      id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+      type: Customer.CustomerType.CONTACT,
       email: chance.email(),
       firstName: chance.first(),
       lastName: chance.last(),
@@ -76,8 +81,8 @@ const TestContractProps: Membership.ContractResponseItemInterface = {
 };
 
 export function createTestContract(
-  overides?: Partial<Membership.ContractResponseItemInterface>
-): Membership.ContractResponseItemInterface {
+  overides?: Partial<Membership.ContractResponseItem>
+): Membership.ContractResponseItem {
   return {
     ...TestContractProps,
     ...overides,
@@ -85,13 +90,13 @@ export function createTestContract(
 }
 
 export function createTestInsertContract(
-  overides?: Partial<Membership.ContractInsertItemInterface>
-): Membership.ContractInsertItemInterface {
+  overides?: Partial<Membership.ContractInsertItem>
+): Membership.ContractInsertItem {
   return {
     ...PeriodDatesProperty,
     ...ContactsProperty,
     customer: {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
     },
     lines: [
       {
@@ -114,8 +119,8 @@ export function createTestInsertContract(
 }
 
 export function createTestModifyContract(
-  overides?: Partial<Membership.ContractModifyItemInterface>
-): Membership.ContractModifyItemInterface {
+  overides?: Partial<Membership.ContractModifyItem>
+): Membership.ContractModifyItem {
   return {
     ...PeriodDatesProperty,
     ...ContactsProperty,

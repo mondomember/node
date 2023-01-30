@@ -5,7 +5,7 @@ import {
   createCreatedAtProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { Webhook } from "@mondomember/sdk";
+import { Webhook } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -22,8 +22,8 @@ const Delivery = {
 };
 
 export function createTestDelivery(
-  overrides?: Partial<Webhook.DeliveryResponseItemInterface>
-): Webhook.DeliveryResponseItemInterface {
+  overrides?: Partial<Webhook.DeliveryResponseItem>
+): Webhook.DeliveryResponseItem {
   return {
     id: generateTestKSUID(Webhook.UIDPrefix.DELIVERY),
     ...Delivery,
@@ -37,7 +37,7 @@ export function createTestDelivery(
  * @deprecated
  */
 export function createTestDeliveryResponseItem(
-  overrides?: Partial<Webhook.DeliveryResponseItemInterface>
-): Webhook.DeliveryResponseItemInterface {
+  overrides?: Partial<Webhook.DeliveryResponseItem>
+): Webhook.DeliveryResponseItem {
   return createTestDelivery(overrides);
 }

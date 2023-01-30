@@ -1,13 +1,6 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { IdPropertyInterface } from "../../../../../models";
-import { StatusPropertySchema, StatusPropertyInterface } from "./base";
-
-import {
-  ContractInsertItemSchema,
-  ContractInsertItemInterface,
-  ContractModifyItemSchema,
-  ContractModifyItemInterface,
-} from "../models";
+import { StatusPropertySchema } from "./base";
+import { ContractInsertItemSchema, ContractModifyItemSchema } from "../models";
 
 const AnyIdPropertySchema = {
   id: {
@@ -41,15 +34,3 @@ export const ContractImportItemSchema = {
   additionalProperties: false,
   oneOf: [ContractImportInsertItemSchema, ContractImportModifyItemSchema],
 };
-
-export interface ContractImportInsertItemInterface
-  extends ContractInsertItemInterface,
-    Partial<StatusPropertyInterface> {}
-
-export interface ContractImportModifyItemInterface
-  extends ContractModifyItemInterface,
-    IdPropertyInterface {}
-
-export type ContractImportItemInterface =
-  | ContractImportInsertItemInterface
-  | ContractImportModifyItemInterface;

@@ -1,6 +1,5 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
-
-import { UploadResponseItemInterface } from "./models";
+import { Import } from "@mondomember/model";
 
 /**
  * A collection of upload endpoints.
@@ -16,7 +15,7 @@ export class UploadResourceEndpoints {
   public getItem(
     filename: string,
     params?: { [key: string]: string }
-  ): ClientResponse<UploadResponseItemInterface> {
+  ): ClientResponse<Import.UploadResponseItem> {
     return this.client.get(this.path, {
       params: { ...(params || {}), filename },
     });

@@ -1,8 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
 export const ChargeModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -11,6 +8,3 @@ export const ChargeModifyItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface ChargeModifyItemInterface
-  extends Partial<MetadataPropertyInterface> {}

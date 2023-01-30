@@ -1,8 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  NotificationResponseItemSchema,
-  NotificationResponseItemInterface,
-} from "./response-item";
+import { NotificationResponseItemSchema } from "./response-item";
 
 export const NotificationResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -15,6 +12,3 @@ export const NotificationResponseListSchema = {
     },
   },
 };
-export interface NotificationResponseListInterface {
-  items?: NotificationResponseItemInterface[];
-}

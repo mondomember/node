@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../../../../schema";
-import { FieldType } from "../../../../../../../../models";
+import { FieldType } from "@mondomember/model";
 
 export const TypePropertySchema = {
   type: {
@@ -8,16 +8,8 @@ export const TypePropertySchema = {
   },
 };
 
-export interface TypePropertyInterface {
-  type: typeof FieldType.TEXT;
-}
-
 export const MultilinePropertySchema = {
   multiLine: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
-
-export interface MultilinePropertyInterface {
-  multiLine: boolean;
-}

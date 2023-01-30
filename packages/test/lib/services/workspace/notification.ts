@@ -6,7 +6,7 @@ import {
   createLastUpdatedProperty,
 } from "../../utils";
 
-import { Workspace } from "@mondomember/sdk";
+import { Workspace } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -19,12 +19,15 @@ const TitleProperty = {
 };
 
 const TypeProperty = {
-  type: chance.pickone(Workspace.NotificationTypeEnum),
+  type: chance.pickone([
+    Workspace.NotificationType.INFO,
+    Workspace.NotificationType.IMPORT,
+  ]),
 };
 
 export function createTestNotification(
-  overide?: Partial<Workspace.NotificationResponseItemInterface>
-): Workspace.NotificationResponseItemInterface {
+  overide?: Partial<Workspace.NotificationResponseItem>
+): Workspace.NotificationResponseItem {
   return {
     id: generateTestKSUID(Workspace.UIDPrefix.NOTIFICATION),
     ...TypeProperty,
@@ -38,8 +41,8 @@ export function createTestNotification(
 }
 
 export function createTestInsertNotification(
-  overide?: Partial<Workspace.NotificationInsertItemInterface>
-): Workspace.NotificationInsertItemInterface {
+  overide?: Partial<Workspace.NotificationInsertItem>
+): Workspace.NotificationInsertItem {
   return {
     id: generateTestKSUID(Workspace.UIDPrefix.NOTIFICATION),
     ...TypeProperty,
@@ -50,8 +53,8 @@ export function createTestInsertNotification(
 }
 
 export function createTestModifyNotification(
-  overide?: Partial<Workspace.NotificationModifyItemInterface>
-): Workspace.NotificationModifyItemInterface {
+  overide?: Partial<Workspace.NotificationModifyItem>
+): Workspace.NotificationModifyItem {
   return {
     ...TypeProperty,
     ...TitleProperty,

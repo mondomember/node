@@ -4,12 +4,7 @@ import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 
-import {
-  NotificationInsertItemInterface,
-  NotificationModifyItemInterface,
-  NotificationResponseItemInterface,
-  NotificationResponseListInterface,
-} from "./models";
+import { Workspace } from "@mondomember/model";
 
 const PATH = {
   base: "workspace/notifications",
@@ -26,9 +21,9 @@ type ListItemsParams = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  NotificationInsertItemInterface,
-  NotificationModifyItemInterface,
-  NotificationResponseItemInterface
+  Workspace.NotificationInsertItem,
+  Workspace.NotificationModifyItem,
+  Workspace.NotificationResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -41,7 +36,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<NotificationResponseListInterface> {
+  ): ClientResponse<Workspace.NotificationResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -53,7 +48,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<NotificationResponseItemInterface> {
+  ): ClientResponse<Workspace.NotificationResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

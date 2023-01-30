@@ -1,7 +1,6 @@
+import { JsonSchemaType } from "../../../../../schema";
 import { constructUIDSchema } from "../../../../../models";
-import { UIDPrefix as PaymentUIDPrefix } from "../../../../../services/payment";
-import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import { InvoicePaymentMethodType } from "./interfaces";
+import { Billing, Payment } from "@mondomember/model";
 
 const Notes = {
   notes: {
@@ -17,9 +16,9 @@ const OfflineMethod = {
     type: {
       type: JsonSchemaType.STRING,
       enum: [
-        InvoicePaymentMethodType.CASH,
-        InvoicePaymentMethodType.CHECK,
-        InvoicePaymentMethodType.WIRE,
+        Billing.InvoicePaymentMethodType.CASH,
+        Billing.InvoicePaymentMethodType.CHECK,
+        Billing.InvoicePaymentMethodType.WIRE,
       ],
     },
     reference: {
@@ -35,12 +34,12 @@ const TokenMethod = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentMethodType.TOKEN],
+      enum: [Billing.InvoicePaymentMethodType.TOKEN],
     },
     token: {
       type: JsonSchemaType.STRING,
     },
-    gateway: constructUIDSchema([PaymentUIDPrefix.GATEWAY]),
+    gateway: constructUIDSchema([Payment.UIDPrefix.GATEWAY]),
   },
 };
 
@@ -51,9 +50,9 @@ const SourceMethod = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentMethodType.SOURCE],
+      enum: [Billing.InvoicePaymentMethodType.SOURCE],
     },
-    id: constructUIDSchema([PaymentUIDPrefix.SOURCE]),
+    id: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
   },
 };
 
@@ -65,7 +64,7 @@ const PaymentMethodPropertySchema = {
   },
 };
 
-export const InvoicePayItemSchema: JsonSchema = {
+export const InvoicePayItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: ["method"],
@@ -74,51 +73,3 @@ export const InvoicePayItemSchema: JsonSchema = {
     ...Notes,
   },
 };
-
-interface CheckPayment {
-  notes?: string;
-  method: {
-    reference?: string;
-    type: typeof InvoicePaymentMethodType.CHECK;
-  };
-}
-
-interface CashPayment {
-  notes?: string;
-  method: {
-    reference?: string;
-    type: typeof InvoicePaymentMethodType.CASH;
-  };
-}
-
-interface WirePayment {
-  notes?: string;
-  method: {
-    reference?: string;
-    type: typeof InvoicePaymentMethodType.WIRE;
-  };
-}
-
-interface SourcePayment {
-  notes?: string;
-  method: {
-    type: typeof InvoicePaymentMethodType.SOURCE;
-    id: string;
-  };
-}
-
-interface TokenPayment {
-  notes?: string;
-  method: {
-    type: typeof InvoicePaymentMethodType.TOKEN;
-    token: string;
-    gateway?: string;
-  };
-}
-
-export type InvoicePayItemInterface =
-  | CheckPayment
-  | CashPayment
-  | WirePayment
-  | SourcePayment
-  | TokenPayment;

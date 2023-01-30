@@ -1,9 +1,6 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
-import {
-  PreferencesUpsertItemInterface,
-  PreferencesResponseItemInterface,
-} from "./models";
+import { Workspace } from "@mondomember/model";
 
 const PATH = {
   base: "workspace/preferences",
@@ -17,7 +14,7 @@ export default class {
    *
    * @returns
    */
-  public getItem(): ClientResponse<PreferencesResponseItemInterface> {
+  public getItem(): ClientResponse<Workspace.PreferencesResponseItem> {
     return this.client.get(PATH.base);
   }
 
@@ -28,8 +25,8 @@ export default class {
    * @returns
    */
   public upsertItem(
-    payload: PreferencesUpsertItemInterface
-  ): ClientResponse<PreferencesResponseItemInterface> {
+    payload: Workspace.PreferencesUpsertItem
+  ): ClientResponse<Workspace.PreferencesResponseItem> {
     return this.client.put(PATH.base, payload);
   }
 }

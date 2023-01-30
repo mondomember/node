@@ -5,10 +5,7 @@ import {
   ClientResponse,
 } from "../../../../../../client/interfaces";
 
-import {
-  DeliveryResponseItemInterface,
-  DeliveryResponseListInterface,
-} from "./models";
+import { Webhook } from "@mondomember/model";
 
 type Path = {
   base: string;
@@ -50,7 +47,7 @@ export default class {
    */
   public getItem(
     expression: DeliveryExpressions
-  ): ClientResponse<DeliveryResponseItemInterface> {
+  ): ClientResponse<Webhook.DeliveryResponseItem> {
     return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 
@@ -62,7 +59,7 @@ export default class {
   public listItems(
     expression: Expressions,
     params?: ListItemsParams
-  ): ClientResponse<DeliveryResponseListInterface> {
+  ): ClientResponse<Webhook.DeliveryResponseList> {
     return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });

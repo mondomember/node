@@ -2,17 +2,13 @@ import { parseTemplate } from "../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../client/interfaces";
 
 import { PaginationParams } from "../../../models";
-import { SearchResponseListInterface } from "./models";
 import {
-  CompanyResponseItemInterface,
-  ContactResponseItemInterface,
-  CompanyContactResponseItemInterface,
-} from "../../crm";
-import {
-  ContractResponseItemInterface,
-  MembershipResponseItemInterface,
-} from "../../membership";
-import { InvoiceResponseItemInterface } from "../../billing";
+  Search,
+  Customer,
+  Membership,
+  Billing,
+  Payment,
+} from "@mondomember/model";
 
 export interface ParsedQuery {
   query?: string;
@@ -46,7 +42,7 @@ export class SearchEndpoints {
   public listItems<Item = any>(
     query?: ParsedQuery,
     pagination?: PaginationParams
-  ): ClientResponse<SearchResponseListInterface<Item>> {
+  ): ClientResponse<Search.SearchResponseList<Item>> {
     return this.client.get("/search", {
       params: {
         filter: query,
@@ -62,7 +58,7 @@ export class SearchEndpoints {
     expression: Expressions,
     filter?: any,
     pagination?: PaginationParams
-  ): ClientResponse<SearchResponseListInterface<Item>> {
+  ): ClientResponse<Search.SearchResponseList<Item>> {
     return this.client.get(parseTemplate(`/search/{key}`).expand(expression), {
       params: {
         filter,
@@ -78,7 +74,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<CompanyResponseItemInterface>(
+    return this.listItems<Customer.CompanyResponseItem>(
       {
         ...query,
         target: "CRM.Company",
@@ -94,7 +90,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<ContactResponseItemInterface>(
+    return this.listItems<Customer.ContactResponseItem>(
       {
         ...query,
         target: "CRM.Contact",
@@ -110,7 +106,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<CompanyContactResponseItemInterface>(
+    return this.listItems<Customer.CompanyContactResponseItem>(
       {
         ...query,
         target: "CRM.Company-Contact",
@@ -126,7 +122,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<ContractResponseItemInterface>(
+    return this.listItems<Membership.ContractResponseItem>(
       {
         ...query,
         target: "Membership.Contract",
@@ -142,7 +138,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<MembershipResponseItemInterface>(
+    return this.listItems<Membership.MembershipResponseItem>(
       {
         ...query,
         target: "Membership.Membership",
@@ -158,7 +154,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<InvoiceResponseItemInterface>(
+    return this.listItems<Billing.InvoiceResponseItem>(
       {
         ...query,
         target: "Billing.Invoice",
@@ -174,7 +170,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<InvoiceResponseItemInterface>(
+    return this.listItems<Payment.ChargeResponseItem>(
       {
         ...query,
         target: "Payment.Charge",
@@ -190,7 +186,7 @@ export class SearchEndpoints {
     query?: Omit<ParsedQuery, "target">,
     pagination?: PaginationParams
   ) {
-    return this.listItems<InvoiceResponseItemInterface>(
+    return this.listItems<Payment.RefundResponseItem>(
       {
         ...query,
         target: "Payment.Refund",

@@ -5,11 +5,7 @@ import {
 } from "../../../../../client/interfaces";
 import { NestedCRUDEndpoints } from "../../../../../client/endpoints";
 import { buildResourcePath } from "../../../../../client/utilities";
-import {
-  FieldGroupInsertItemInterface,
-  FieldGroupModifyItemInterface,
-  FieldGroupResponseItemInterface,
-} from "./models";
+import { Settings } from "@mondomember/model";
 
 type ItemExpressions = {
   fieldGroup: string;
@@ -21,9 +17,9 @@ type ItemExpressions = {
 export default class<Expressions extends {}> extends NestedCRUDEndpoints<
   Expressions,
   Expressions & ItemExpressions,
-  FieldGroupInsertItemInterface,
-  FieldGroupModifyItemInterface,
-  FieldGroupResponseItemInterface
+  Settings.FieldGroupInsertItem,
+  Settings.FieldGroupModifyItem,
+  Settings.FieldGroupResponseItem
 > {
   constructor(basePath: string, client: ClientInstance) {
     const resourcePath = buildResourcePath([basePath, "field-groups"]);
@@ -45,7 +41,7 @@ export default class<Expressions extends {}> extends NestedCRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions & ItemExpressions
-  ): ClientResponse<FieldGroupResponseItemInterface> {
+  ): ClientResponse<Settings.FieldGroupResponseItem> {
     return this.client.post(
       parseTemplate(`${this.path.item}/restore`).expand(expression)
     );

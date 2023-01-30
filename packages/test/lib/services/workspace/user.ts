@@ -4,8 +4,7 @@ import {
   createMetadataProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-
-import { Workspace } from "@mondomember/sdk";
+import { Workspace } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -22,8 +21,8 @@ const LastNameProperty = {
 };
 
 export function createTestUser(
-  overides?: Partial<Workspace.UserResponseItemInterface>
-): Workspace.UserResponseItemInterface {
+  overides?: Partial<Workspace.UserResponseItem>
+): Workspace.UserResponseItem {
   return {
     id: chance.guid(),
     ...EmailProperty,
@@ -37,8 +36,8 @@ export function createTestUser(
 }
 
 export function createTestInsertUser(
-  overides?: Partial<Workspace.UserInsertItemInterface>
-): Workspace.UserInsertItemInterface {
+  overides?: Partial<Workspace.UserInsertItem>
+): Workspace.UserInsertItem {
   return {
     ...EmailProperty,
     ...FirstNameProperty,
@@ -48,8 +47,8 @@ export function createTestInsertUser(
 }
 
 export function createTestModifyUser(
-  overide?: Partial<Workspace.UserModifyItemInterface>
-): Workspace.UserModifyItemInterface {
+  overide?: Partial<Workspace.UserModifyItem>
+): Workspace.UserModifyItem {
   return {
     ...FirstNameProperty,
     ...LastNameProperty,

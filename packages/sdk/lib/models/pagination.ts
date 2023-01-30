@@ -1,13 +1,10 @@
 import { JsonSchemaType } from "../schema";
-
-export type PaginationParams = {
-  pageSize?: number;
-  nextToken?: string;
-};
-
-export type PaginationPropertyParams = {
-  pagination: PaginationParams;
-};
+export {
+  PaginationParams,
+  PaginationPropertyParams,
+  Pagination as PaginationInterface,
+  PaginationProperty as PaginationPropertyInterface,
+} from "@mondomember/model";
 
 /**
  * "pagination": {
@@ -27,11 +24,3 @@ export const PaginationSchema = {
 export const PaginationPropertySchema = {
   pagination: PaginationSchema,
 };
-
-export interface PaginationInterface {
-  nextToken?: string;
-}
-
-export interface PaginationPropertyInterface {
-  pagination: PaginationInterface;
-}

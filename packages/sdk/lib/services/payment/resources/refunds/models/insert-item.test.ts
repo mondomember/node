@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { RefundInsertItemSchema as Schema } from "./insert-item";
 import { Chance } from "chance";
-import { Payment } from "@mondomember/test";
+import { Payment as PaymentTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,14 +10,14 @@ const chance: Chance.Chance = new Chance();
 describe("Payment Refund - Create Item Schema", () => {
   test("succeed with full payload", async () => {
     const payload = {
-      ...Payment.createTestInsertRefund(),
+      ...PaymentTests.createTestInsertRefund(),
     };
 
     expect(payload).toMatchSchema(Schema);
   });
 
   test("succeed with Id and charge", async () => {
-    const refund = Payment.createTestInsertRefund();
+    const refund = PaymentTests.createTestInsertRefund();
 
     const payload = {
       id: refund.id,
@@ -28,10 +28,10 @@ describe("Payment Refund - Create Item Schema", () => {
   });
 
   test("fail with improper Id format", async () => {
-    const refund = Payment.createTestInsertRefund();
+    const refund = PaymentTests.createTestInsertRefund();
 
     const payload = {
-      ...Payment.createTestInsertRefund(),
+      ...PaymentTests.createTestInsertRefund(),
       charge: refund.charge,
       id: chance.word(),
     };

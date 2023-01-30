@@ -1,24 +1,13 @@
 import { JsonSchema, JsonSchemaType } from "../../../../../../../../schema";
-import { IdPropertyInterface } from "../../../../../../../../models";
 import {
   FieldIdPropertySchema,
   NamePropertySchema,
-  NamePropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  AutoSelectPropertySchema,
-  AutoSelectPropertyInterface,
-} from "./base";
+import { TypePropertySchema, AutoSelectPropertySchema } from "./base";
 
 export const ToggleFieldInsertItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -37,13 +26,3 @@ export const ToggleFieldInsertItemSchema: JsonSchema = {
     },
   },
 };
-
-export interface ToggleFieldInsertItemInterface
-  extends Partial<IdPropertyInterface>,
-    TypePropertyInterface,
-    NamePropertyInterface,
-    LabelPropertyInterface,
-    FieldGroupPropertyInterface,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<AutoSelectPropertyInterface> {}

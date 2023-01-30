@@ -3,39 +3,27 @@ import {
   constructUIDSchema,
   constructUIDPropertySchema,
 } from "../../../../../../../models";
-import { UIDPrefix } from "../../../../../constants";
-import {
-  AnyInvoiceTransactionStatus,
-  InvoiceTransactionStatus,
-} from "./interfaces";
+import { Billing } from "@mondomember/model";
 
 export const InvoiceTransactionIdSchema = constructUIDSchema([
-  UIDPrefix.INVOICE_TRANSACTION,
+  Billing.UIDPrefix.INVOICE_TRANSACTION,
 ]);
 
 export const InvoiceTransactionIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.INVOICE_TRANSACTION
+  Billing.UIDPrefix.INVOICE_TRANSACTION
 );
-
-export interface InvoicePropertyInterface {
-  invoice: string;
-}
 
 export const StatusPropertySchema = {
   status: {
     type: JsonSchemaType.STRING,
     enum: [
-      InvoiceTransactionStatus.PENDING,
-      InvoiceTransactionStatus.SUCCESS,
-      InvoiceTransactionStatus.FAIL,
+      Billing.InvoiceTransactionStatus.PENDING,
+      Billing.InvoiceTransactionStatus.SUCCESS,
+      Billing.InvoiceTransactionStatus.FAIL,
     ],
     minLength: 1,
   },
 };
-
-export interface StatusPropertyInterface {
-  status: AnyInvoiceTransactionStatus;
-}
 
 export const AmountPropertySchema = {
   amount: {
@@ -43,16 +31,8 @@ export const AmountPropertySchema = {
   },
 };
 
-export interface AmountPropertyInterface {
-  amount: number;
-}
-
 export const NotesPropertySchema = {
   notes: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface NotesPropertyInterface {
-  notes: string;
-}

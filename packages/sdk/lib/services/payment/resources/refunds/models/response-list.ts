@@ -1,12 +1,6 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../models";
-import {
-  RefundResponseItemSchema,
-  RefundResponseItemInterface,
-} from "./response-item";
+import { PaginationPropertySchema } from "../../../../../models";
+import { RefundResponseItemSchema } from "./response-item";
 
 export const RefundResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +14,3 @@ export const RefundResponseListSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface RefundResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: RefundResponseItemInterface[];
-}

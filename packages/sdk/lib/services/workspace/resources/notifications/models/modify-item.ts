@@ -1,11 +1,8 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   MessagePropertySchema,
-  MessagePropertyInterface,
   TitlePropertySchema,
-  TitlePropertyInterface,
   TypePropertySchema,
-  TypePropertyInterface,
 } from "./base";
 
 export const NotificationModifyItemSchema = {
@@ -17,8 +14,3 @@ export const NotificationModifyItemSchema = {
     ...TypePropertySchema,
   },
 };
-
-export interface NotificationModifyItemInterface
-  extends Partial<TitlePropertyInterface>,
-    Partial<MessagePropertyInterface>,
-    Partial<TypePropertyInterface> {}

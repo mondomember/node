@@ -7,19 +7,24 @@ import {
   createPropertiesProperty,
   createUpdatedAtProperty,
 } from "../../utils";
-import { CRM, Membership } from "@mondomember/sdk";
+import { Customer, Membership } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Membership.MembershipStatusEnum),
+  status: chance.pickone([
+    Membership.MembershipStatus.ACTIVE,
+    Membership.MembershipStatus.CANCELED,
+    Membership.MembershipStatus.LAPSED,
+    Membership.MembershipStatus.PENDING,
+  ]),
 };
 
 const ContactsProperty: { contacts: [string, string, string] } = {
   contacts: [
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
-    generateTestKSUID(CRM.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
+    generateTestKSUID(Customer.UIDPrefix.CONTACT),
   ],
 };
 
@@ -37,13 +42,13 @@ const DescriptionProperty = {
 const CustomerProperty = {
   customer: chance.pickone([
     {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-      type: CRM.CustomerType.COMPANY,
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+      type: Customer.CustomerType.COMPANY,
       name: chance.company(),
     },
     {
-      id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-      type: CRM.CustomerType.CONTACT,
+      id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+      type: Customer.CustomerType.CONTACT,
       email: chance.email(),
       firstName: chance.first(),
       lastName: chance.last(),
@@ -52,8 +57,8 @@ const CustomerProperty = {
 };
 
 export function createTestMembership(
-  overide?: Partial<Membership.MembershipResponseItemInterface>
-): Membership.MembershipResponseItemInterface {
+  overide?: Partial<Membership.MembershipResponseItem>
+): Membership.MembershipResponseItem {
   return {
     id: generateTestKSUID(Membership.UIDPrefix.MEMBERSHIP),
     ...StatusProperty,
@@ -76,24 +81,24 @@ export function createTestMembership(
 export const CustomerRequestProperty = {
   customer: chance.pickone([
     {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
     },
     {
-      id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
+      id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
     },
   ]),
 };
 
 export function createTestInsertMembership(
-  overide?: Partial<Membership.MembershipInsertItemInterface>
-): Membership.MembershipInsertItemInterface {
+  overide?: Partial<Membership.MembershipInsertItem>
+): Membership.MembershipInsertItem {
   return {
     customer: chance.pickone([
       {
-        id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+        id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
       },
       {
-        id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
+        id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
       },
     ]),
     product: {
@@ -109,8 +114,8 @@ export function createTestInsertMembership(
 }
 
 export function createTestModifyMembership(
-  overide?: Partial<Membership.MembershipModifyItemInterface>
-): Membership.MembershipModifyItemInterface {
+  overide?: Partial<Membership.MembershipModifyItem>
+): Membership.MembershipModifyItem {
   return {
     ...ContactsProperty,
     ...DescriptionProperty,

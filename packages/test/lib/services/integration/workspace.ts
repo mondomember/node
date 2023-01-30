@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Integration } from "@mondomember/sdk";
+import { Integration } from "@mondomember/model";
 
 import {
   createCreatedAtProperty,
@@ -31,14 +31,14 @@ const DescriptionProperty = {
 const AuthorizationsProperty = {
   authorizations: {
     [Integration.AuthorizationService.CRM]: {
-      "*": Integration.Action.READ,
+      companies: Integration.Action.READ,
     },
   },
 };
 
 export function createTestInsertWorkspaceToken(
-  overrides?: Partial<Integration.WorkspaceTokenInsertItemInterface>
-): Integration.WorkspaceTokenInsertItemInterface {
+  overrides?: Partial<Integration.WorkspaceTokenInsertItem>
+): Integration.WorkspaceTokenInsertItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -48,8 +48,8 @@ export function createTestInsertWorkspaceToken(
 }
 
 export function createTestModifyWorkspaceToken(
-  overrides?: Partial<Integration.WorkspaceTokenModifyItemInterface>
-): Integration.WorkspaceTokenModifyItemInterface {
+  overrides?: Partial<Integration.WorkspaceTokenModifyItem>
+): Integration.WorkspaceTokenModifyItem {
   return {
     ...LabelProperty,
     ...DescriptionProperty,
@@ -59,8 +59,8 @@ export function createTestModifyWorkspaceToken(
 }
 
 export function createTestWorkspaceToken(
-  overrides?: Partial<Integration.WorkspaceTokenResponseItemInterface>
-): Integration.WorkspaceTokenResponseItemInterface {
+  overrides?: Partial<Integration.WorkspaceTokenResponseItem>
+): Integration.WorkspaceTokenResponseItem {
   return {
     ...IdProperty,
     ...TokenProperty,

@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Import } from "@mondomember/sdk";
+import { Import } from "@mondomember/model";
 
 import { generateTestKSUID, createCreatedAtProperty } from "../../utils";
 
@@ -17,7 +17,10 @@ const RowProperty = {
 };
 
 const OperationProperty = {
-  operation: chance.pickone(Import.RowOperationEnum),
+  operation: chance.pickone([
+    Import.RowOperation.CREATE,
+    Import.RowOperation.UPDATE,
+  ]),
 };
 
 const ImportedIdProperty = {
@@ -25,8 +28,8 @@ const ImportedIdProperty = {
 };
 
 export function createTestRow(
-  overrides?: Partial<Import.RowResponseItemInterface>
-): Import.RowResponseItemInterface {
+  overrides?: Partial<Import.RowResponseItem>
+): Import.RowResponseItem {
   return {
     id: generateTestKSUID(Import.UIDPrefix.ROW),
     ...JobProperty,

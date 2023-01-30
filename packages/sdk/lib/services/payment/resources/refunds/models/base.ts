@@ -1,18 +1,17 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { AnyRefundStatus, RefundStatusEnum } from ".";
+import { RefundStatusEnum } from ".";
 import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
-import { AnyPaymentProvider, Provider } from "../../../models";
 import { ChargeIdSchema } from "../../charges/models/base";
 import { GatewayIdSchema } from "../../gateways/models/base";
+import { Payment } from "@mondomember/model";
 
-export const RefundIdSchema = constructUIDSchema([UIDPrefix.REFUND]);
+export const RefundIdSchema = constructUIDSchema([Payment.UIDPrefix.REFUND]);
 
 export const RefundIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.REFUND
+  Payment.UIDPrefix.REFUND
 );
 
 export const StatusPropertySchema = {
@@ -22,10 +21,6 @@ export const StatusPropertySchema = {
   },
 };
 
-export interface StatusPropertyInterface {
-  status: AnyRefundStatus;
-}
-
 export const AmountPropertySchema = {
   amount: {
     type: JsonSchemaType.INTEGER,
@@ -33,17 +28,9 @@ export const AmountPropertySchema = {
   },
 };
 
-export interface AmountPropertyInterface {
-  amount: number;
-}
-
 export const ChargePropertySchema = {
   charge: ChargeIdSchema,
 };
-
-export interface ChargePropertyInterface {
-  charge: string;
-}
 
 export const GatewayPropertySchema = {
   gateway: {
@@ -54,14 +41,8 @@ export const GatewayPropertySchema = {
       id: GatewayIdSchema,
       provider: {
         type: JsonSchemaType.STRING,
-        enum: [Provider.STRIPE],
+        enum: [Payment.Provider.STRIPE],
       },
     },
   },
 };
-export interface GatewayPropertyInterface {
-  gateway: {
-    id: string;
-    provider: AnyPaymentProvider;
-  };
-}

@@ -6,7 +6,7 @@ import {
 } from "../../../../../../client/interfaces";
 import { PaginationParams } from "../../../../../../models";
 
-import { RowResponseListInterface } from "./models";
+import { Import } from "@mondomember/model";
 
 const PATH = {
   base: "rows",
@@ -35,7 +35,7 @@ export default class {
   public listItems(
     expression: Expressions,
     params?: ListItemsParams
-  ): ClientResponse<RowResponseListInterface> {
+  ): ClientResponse<Import.RowResponseList> {
     return this.client.get(parseTemplate(this.path).expand(expression), {
       params,
     });

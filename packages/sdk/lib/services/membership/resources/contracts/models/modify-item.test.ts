@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { ContractModifyItemSchema as Schema } from "./modify-item";
 import { Chance } from "chance";
-import { Membership } from "@mondomember/test";
+import { Membership as MembershipTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -9,12 +9,12 @@ const chance: Chance.Chance = new Chance();
 
 describe("Membership Contract - Update Item Schema", () => {
   test("succeed with full payload", async () => {
-    expect(Membership.createTestModifyContract()).toMatchSchema(Schema);
+    expect(MembershipTests.createTestModifyContract()).toMatchSchema(Schema);
   });
 
   test("suceed with empty contacts", async () => {
     const payload = {
-      ...Membership.createTestModifyContract(),
+      ...MembershipTests.createTestModifyContract(),
       ...{
         contacts: [],
       },
@@ -25,7 +25,7 @@ describe("Membership Contract - Update Item Schema", () => {
 
   test("fail with invalid period", async () => {
     const payload = {
-      ...Membership.createTestModifyContract(),
+      ...MembershipTests.createTestModifyContract(),
       ...{
         period: {
           endAt: "foo",
@@ -38,7 +38,7 @@ describe("Membership Contract - Update Item Schema", () => {
 
   test("fail with invalid period date", async () => {
     const payload = {
-      ...Membership.createTestModifyContract(),
+      ...MembershipTests.createTestModifyContract(),
       ...{
         period: {
           startAt: chance.word(),

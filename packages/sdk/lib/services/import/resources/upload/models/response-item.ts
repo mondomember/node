@@ -1,11 +1,6 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
 
-import {
-  UrlPropertyInterface,
-  UrlPropertySchema,
-  FieldsPropertyInterface,
-  FieldsPropertySchema,
-} from "./base";
+import { UrlPropertySchema, FieldsPropertySchema } from "./base";
 
 export const UploadResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -16,7 +11,3 @@ export const UploadResponseItemSchema: JsonSchema = {
     ...FieldsPropertySchema,
   },
 };
-
-export interface UploadResponseItemInterface
-  extends UrlPropertyInterface,
-    FieldsPropertyInterface {}

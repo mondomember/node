@@ -1,8 +1,5 @@
 import { JsonSchema, JsonSchemaType } from "../../../../../../schema";
-import {
-  FieldResponseItemSchema,
-  FieldResponseItemInterface,
-} from "./response-item";
+import { FieldResponseItemSchema } from "./response-item";
 
 export const FieldResponseListSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -15,7 +12,3 @@ export const FieldResponseListSchema: JsonSchema = {
     },
   },
 };
-
-export interface FieldResponseListInterface {
-  items?: FieldResponseItemInterface[];
-}

@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { ViewsSchema, ViewsItemInterface } from "./base";
+import { ViewsSchema } from "./base";
 
 export const PreferencesUpsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -8,6 +8,3 @@ export const PreferencesUpsertItemSchema = {
     ...ViewsSchema,
   },
 };
-
-export interface PreferencesUpsertItemInterface
-  extends Partial<ViewsItemInterface> {}

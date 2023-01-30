@@ -1,10 +1,10 @@
-import { JsonSchemaType, JsonSchema } from "../../../schema";
+import { JsonSchemaType } from "../../../schema";
 import {
   FieldGroupResponseItemSchema,
   FieldResponseItemSchema,
 } from "../resources/properties";
 
-const FieldGroupWithFieldsSchema: JsonSchema = {
+const FieldGroupWithFieldsSchema = {
   ...FieldGroupResponseItemSchema,
   ...{
     properties: {
@@ -19,7 +19,7 @@ const FieldGroupWithFieldsSchema: JsonSchema = {
   },
 };
 
-export const FieldGroupsSchema: JsonSchema = {
+export const FieldGroupsSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   properties: {

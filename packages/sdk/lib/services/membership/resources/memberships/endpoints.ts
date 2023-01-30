@@ -4,14 +4,8 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import { ExternalIdEndpoints } from "../../../../shared/external-id/endpoints";
 
-import {
-  MembershipInsertItemInterface,
-  MembershipModifyItemInterface,
-  MembershipResponseItemInterface,
-  MembershipResponseListInterface,
-} from "./models";
-
 import { MembershipListItemsParams } from "./interfaces";
+import { Membership } from "@mondomember/model";
 
 const PATH = {
   base: "membership/memberships",
@@ -24,12 +18,12 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  MembershipInsertItemInterface,
-  MembershipModifyItemInterface,
-  MembershipResponseItemInterface
+  Membership.MembershipInsertItem,
+  Membership.MembershipModifyItem,
+  Membership.MembershipResponseItem
 > {
   readonly External: ExternalIdEndpoints<
-    MembershipResponseItemInterface,
+    Membership.MembershipResponseItem,
     "membership"
   >;
 
@@ -50,7 +44,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: MembershipListItemsParams
-  ): ClientResponse<MembershipResponseListInterface> {
+  ): ClientResponse<Membership.MembershipResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -62,7 +56,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<MembershipResponseItemInterface> {
+  ): ClientResponse<Membership.MembershipResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

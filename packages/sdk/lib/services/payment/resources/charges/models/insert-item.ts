@@ -1,22 +1,13 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
 import {
   SaveSourcePropertySchema,
-  SaveSourcePropertyInterface,
   PaymentRequestPropertySchema,
-  PaymentRequestPropertyInterface,
   GatewayPropertySchema,
-  GatewayPropertyInterface,
-  // SourcePropertySchema,
-  // SourcePropertyInterface,
   InvoicePropertySchema,
-  InvoicePropertyInterface,
 } from "./base";
-import { ChargeType } from "./interfaces";
+import { Payment } from "@mondomember/model";
 
 // Invoice + Token (new source to pay invoice)
 export const InvoiceChargeInsertItemSchema = {
@@ -26,7 +17,7 @@ export const InvoiceChargeInsertItemSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ChargeType.INVOICE],
+      enum: [Payment.ChargeType.INVOICE],
     },
     ...PaymentRequestPropertySchema,
     ...GatewayPropertySchema,
@@ -36,19 +27,8 @@ export const InvoiceChargeInsertItemSchema = {
   },
 };
 
-export interface InvoiceChargeInsertItemInterface
-  extends PaymentRequestPropertyInterface,
-    InvoicePropertyInterface,
-    Partial<GatewayPropertyInterface>,
-    Partial<SaveSourcePropertyInterface>,
-    Partial<MetadataPropertyInterface> {
-  type: typeof ChargeType.INVOICE;
-}
-
 export const ChargeInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   discriminator: { propertyName: "type" },
   oneOf: [InvoiceChargeInsertItemSchema],
 };
-
-export type ChargeInsertItemInterface = InvoiceChargeInsertItemInterface;

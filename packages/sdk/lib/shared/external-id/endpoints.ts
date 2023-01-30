@@ -1,6 +1,6 @@
 import { parseTemplate } from "../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../client/interfaces";
-import { ResponseListInterface } from "./models";
+import { ExternalIdResponseList } from "@mondomember/model";
 
 const PATH = {
   base: "external",
@@ -46,7 +46,7 @@ export class ExternalIdEndpoints<ItemResponse, Resource extends string> {
    */
   public listIds(params: {
     [key in Resource]: string;
-  }): ClientResponse<ResponseListInterface> {
+  }): ClientResponse<ExternalIdResponseList> {
     return this.client.get(this.path.listIds, { params });
   }
 

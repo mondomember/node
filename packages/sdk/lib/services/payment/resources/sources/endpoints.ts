@@ -2,16 +2,10 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
-import {
-  SourceInsertItemInterface,
-  SourceModifyItemInterface,
-  SourceResponseItemInterface,
-  SourceResponseListInterface,
-} from "./models";
-
-import Session from "./session/endpoints";
-
 import { SourceListItemsParams } from "./interfaces";
+
+import { Payment } from "@mondomember/model";
+import Session from "./session/endpoints";
 
 const PATH = {
   base: "payment/sources",
@@ -24,9 +18,9 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  SourceInsertItemInterface,
-  SourceModifyItemInterface,
-  SourceResponseItemInterface
+  Payment.SourceInsertItem,
+  Payment.SourceModifyItem,
+  Payment.SourceResponseItem
 > {
   readonly Session: Session;
 
@@ -43,7 +37,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: SourceListItemsParams
-  ): ClientResponse<SourceResponseListInterface> {
+  ): ClientResponse<Payment.SourceResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -55,7 +49,7 @@ export default class extends CRUDEndpoints<
    */
   public defaultItem(
     expression: Expressions
-  ): ClientResponse<SourceResponseItemInterface> {
+  ): ClientResponse<Payment.SourceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/default`).expand(expression)
     );
@@ -69,7 +63,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<SourceResponseItemInterface> {
+  ): ClientResponse<Payment.SourceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );

@@ -1,38 +1,20 @@
 import { JsonSchemaType } from "../../../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../../../models";
+import { CustomerPropertyResponseSchema } from "../../../../../../customer";
 import {
-  CustomerPropertyResponseSchema,
-  CustomerPropertyResponseInterface,
-} from "../../../../../../crm";
-import {
-  DefaultSchema,
-  DefaultInterface,
-  ReferenceSchema,
-  ReferenceInterface,
-  LabelSchema,
-  LabelInterface,
+  DefaultPropertySchema,
+  ReferencePropertySchema,
+  LabelPropertySchema,
   GatewayPropertySchema,
-  GatewayPropertyInterface,
   SourceIdPropertySchema,
 } from "../../base";
-import {
-  StripeTypePropertySchema,
-  StripeTypePropertyInterface,
-  StripeObjectPropertySchema,
-  StripeObjectPropertyInterface,
-} from "./base";
+import { StripeTypePropertySchema, StripeObjectPropertySchema } from "./base";
 
 export const StripeSourceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -49,11 +31,11 @@ export const StripeSourceResponseItemSchema = {
   ],
   properties: {
     ...SourceIdPropertySchema,
-    ...ReferenceSchema,
-    ...LabelSchema,
+    ...ReferencePropertySchema,
+    ...LabelPropertySchema,
     ...GatewayPropertySchema,
     ...CustomerPropertyResponseSchema,
-    ...DefaultSchema,
+    ...DefaultPropertySchema,
     ...StripeTypePropertySchema,
     ...StripeObjectPropertySchema,
     ...MetadataPropertySchema,
@@ -63,18 +45,3 @@ export const StripeSourceResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface StripeSourceResponseItemInterface
-  extends IdPropertyInterface,
-    ReferenceInterface,
-    GatewayPropertyInterface,
-    CustomerPropertyResponseInterface,
-    StripeObjectPropertyInterface,
-    StripeTypePropertyInterface,
-    Partial<DefaultInterface>,
-    Partial<LabelInterface>,
-    Partial<DeletedAtPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

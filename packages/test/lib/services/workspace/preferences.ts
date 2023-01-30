@@ -1,6 +1,6 @@
 import { Chance } from "chance";
 
-import { Workspace } from "@mondomember/sdk";
+import { Workspace } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -16,8 +16,8 @@ const ViewsProperty = {
 };
 
 export function createTestPreferences(
-  overides?: Partial<Workspace.PreferencesResponseItemInterface>
-): Workspace.PreferencesResponseItemInterface {
+  overides?: Partial<Workspace.PreferencesResponseItem>
+): Workspace.PreferencesResponseItem {
   return {
     ...ViewsProperty,
     ...overides,
@@ -25,8 +25,8 @@ export function createTestPreferences(
 }
 
 export function createTestUpsertPreferences(
-  overides?: Partial<Workspace.PreferencesUpsertItemInterface>
-): Workspace.PreferencesUpsertItemInterface {
+  overides?: Partial<Workspace.PreferencesUpsertItem>
+): Workspace.PreferencesUpsertItem {
   return {
     ...ViewsProperty,
     ...overides,

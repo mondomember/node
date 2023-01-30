@@ -1,13 +1,16 @@
 import { matchers } from "jest-json-schema";
 import { ContractResponseListSchema as Schema } from "./response-list";
-import { Membership } from "@mondomember/test";
+import { Membership as MembershipTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Membership Contract - Response List Schema", () => {
   test("succeed with items", async () => {
     const payload = {
-      items: [Membership.createTestContract(), Membership.createTestContract()],
+      items: [
+        MembershipTests.createTestContract(),
+        MembershipTests.createTestContract(),
+      ],
     };
 
     expect(payload).toMatchSchema(Schema);

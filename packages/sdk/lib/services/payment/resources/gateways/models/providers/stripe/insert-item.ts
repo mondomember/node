@@ -1,23 +1,11 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../../../models";
-import {
-  StripeProviderPropertySchema,
-  StripeProviderPropertyInterface,
-  StripeCodePropertySchema,
-  StripeCodePropertyInterface,
-} from "./base";
+import { MetadataPropertySchema } from "../../../../../../../models";
+import { StripeProviderPropertySchema, StripeCodePropertySchema } from "./base";
 import {
   GatewayIdPropertySchema,
-  GatewayIdPropertyInterface,
   DefaultPropertySchema,
-  DefaultPropertyInterface,
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
 } from "../../base";
 
 export const StripeGatewayInsertItemSchema = {
@@ -34,12 +22,3 @@ export const StripeGatewayInsertItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface StripeGatewayInsertItemInterface
-  extends StripeProviderPropertyInterface,
-    StripeCodePropertyInterface,
-    Partial<GatewayIdPropertyInterface>,
-    Partial<LabelPropertyInterface>,
-    Partial<DefaultPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

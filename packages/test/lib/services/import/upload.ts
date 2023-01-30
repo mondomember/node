@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Import } from "@mondomember/sdk";
+import { Import } from "@mondomember/model";
 
 const chance: Chance.Chance = new Chance();
 
@@ -16,8 +16,8 @@ const FieldsProperty = {
 };
 
 export function createTestUpload(
-  overrides?: Partial<Import.UploadResponseItemInterface>
-): Import.UploadResponseItemInterface {
+  overrides?: Partial<Import.UploadResponseItem>
+): Import.UploadResponseItem {
   return {
     ...UrlProperty,
     ...FieldsProperty,

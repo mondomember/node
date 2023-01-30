@@ -1,13 +1,13 @@
 import { matchers } from "jest-json-schema";
 import { IdentityResponseItemSchema as Schema } from "./response-item";
-import { Identity } from "@mondomember/test";
+import { Identity as IdentityTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
 describe("Identity - Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Identity.createTestIdentity(),
+      ...IdentityTests.createTestIdentity(),
     };
 
     expect(payload).toMatchSchema(Schema);

@@ -1,11 +1,8 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../../schema";
 import {
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
 } from "./base";
 
 export const FieldGroupModifyItemSchema: JsonSchema = {
@@ -17,8 +14,3 @@ export const FieldGroupModifyItemSchema: JsonSchema = {
     ...OrderPropertySchema,
   },
 };
-
-export interface FieldGroupModifyItemInterface
-  extends Partial<LabelPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface> {}

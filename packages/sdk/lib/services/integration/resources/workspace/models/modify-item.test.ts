@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { WorkspaceTokenModifyItemSchema as Schema } from "./modify-item";
 import { Chance } from "chance";
-import { Integration } from "@mondomember/test";
+import { Integration as IntegrationTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,7 +10,7 @@ const chance: Chance.Chance = new Chance();
 describe("Integration Workspace Token - Update Item Schema", () => {
   test("succeed with full payload", async () => {
     const payload = {
-      ...Integration.createTestModifyWorkspaceToken(),
+      ...IntegrationTests.createTestModifyWorkspaceToken(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -18,7 +18,7 @@ describe("Integration Workspace Token - Update Item Schema", () => {
 
   test("fail with Id", async () => {
     const payload = {
-      ...Integration.createTestModifyWorkspaceToken(),
+      ...IntegrationTests.createTestModifyWorkspaceToken(),
       id: chance.guid(),
     };
 
@@ -27,7 +27,7 @@ describe("Integration Workspace Token - Update Item Schema", () => {
 
   test("fail null label", async () => {
     const payload = {
-      ...Integration.createTestModifyWorkspaceToken(),
+      ...IntegrationTests.createTestModifyWorkspaceToken(),
       label: null,
     };
 
@@ -36,7 +36,7 @@ describe("Integration Workspace Token - Update Item Schema", () => {
 
   test("fail with empty label", async () => {
     const payload = {
-      ...Integration.createTestModifyWorkspaceToken(),
+      ...IntegrationTests.createTestModifyWorkspaceToken(),
       label: "",
     };
 
@@ -45,7 +45,7 @@ describe("Integration Workspace Token - Update Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Integration.createTestModifyWorkspaceToken(),
+      ...IntegrationTests.createTestModifyWorkspaceToken(),
       foo: chance.word(),
     };
 

@@ -1,34 +1,25 @@
-import { JsonSchemaType, JsonSchema } from "../../../../../../../schema";
+import { JsonSchemaType } from "../../../../../../../schema";
 import {
   constructUIDSchema,
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../../../models";
 import {
   InvoiceTransactionIdPropertySchema,
-  InvoicePropertyInterface,
   AmountPropertySchema,
-  AmountPropertyInterface,
   NotesPropertySchema,
-  NotesPropertyInterface,
   StatusPropertySchema,
-  StatusPropertyInterface,
 } from "./base";
-import { InvoiceTransactionType } from "./interfaces";
+
 import { InvoiceIdSchema } from "../../../models/base";
-import * as Payment from "../../../../../../../services/payment";
+import { Billing, Payment } from "@mondomember/model";
 
 const ChargeIdSchema = constructUIDSchema([Payment.UIDPrefix.CHARGE]);
 const RefundIdSchema = constructUIDSchema([Payment.UIDPrefix.REFUND]);
 
-export const BasicInvoiceTransactionResponseItemSchema: JsonSchema = {
+export const BasicInvoiceTransactionResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
@@ -46,10 +37,10 @@ export const BasicInvoiceTransactionResponseItemSchema: JsonSchema = {
       type: {
         type: JsonSchemaType.STRING,
         enum: [
-          InvoiceTransactionType.CHARGE,
-          InvoiceTransactionType.CHARGE_REFUND,
-          InvoiceTransactionType.MANUAL_REFUND,
-          InvoiceTransactionType.ADJUSTMENT,
+          Billing.InvoiceTransactionType.CHARGE,
+          Billing.InvoiceTransactionType.CHARGE_REFUND,
+          Billing.InvoiceTransactionType.MANUAL_REFUND,
+          Billing.InvoiceTransactionType.ADJUSTMENT,
         ],
       },
       invoice: InvoiceIdSchema,
@@ -64,22 +55,7 @@ export const BasicInvoiceTransactionResponseItemSchema: JsonSchema = {
   },
 };
 
-export interface BasicInvoiceTransactionResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    InvoicePropertyInterface,
-    AmountPropertyInterface,
-    Partial<NotesPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {
-  type:
-    | typeof InvoiceTransactionType.MANUAL_REFUND
-    | typeof InvoiceTransactionType.ADJUSTMENT;
-}
-
-export const ChargeInvoiceTransactionResponseItemSchema: JsonSchema = {
+export const ChargeInvoiceTransactionResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
@@ -97,7 +73,7 @@ export const ChargeInvoiceTransactionResponseItemSchema: JsonSchema = {
     ...{
       type: {
         type: JsonSchemaType.STRING,
-        enum: [InvoiceTransactionType.CHARGE],
+        enum: [Billing.InvoiceTransactionType.CHARGE],
       },
       invoice: InvoiceIdSchema,
       charge: ChargeIdSchema,
@@ -112,21 +88,7 @@ export const ChargeInvoiceTransactionResponseItemSchema: JsonSchema = {
   },
 };
 
-export interface ChargeInvoiceTransactionResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    InvoicePropertyInterface,
-    AmountPropertyInterface,
-    Partial<NotesPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {
-  charge: string;
-  type: typeof InvoiceTransactionType.CHARGE;
-}
-
-export const ChargeRefundInvoiceTransactionResponseItemSchema: JsonSchema = {
+export const ChargeRefundInvoiceTransactionResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
   required: [
@@ -145,7 +107,7 @@ export const ChargeRefundInvoiceTransactionResponseItemSchema: JsonSchema = {
     ...{
       type: {
         type: JsonSchemaType.STRING,
-        enum: [InvoiceTransactionType.CHARGE_REFUND],
+        enum: [Billing.InvoiceTransactionType.CHARGE_REFUND],
       },
       invoice: InvoiceIdSchema,
       charge: ChargeIdSchema,
@@ -161,30 +123,7 @@ export const ChargeRefundInvoiceTransactionResponseItemSchema: JsonSchema = {
   },
 };
 
-export interface ChargeRefundInvoiceTransactionResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    InvoicePropertyInterface,
-    AmountPropertyInterface,
-    Partial<NotesPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {
-  charge: string;
-  refund: string;
-  type: typeof InvoiceTransactionType.CHARGE_REFUND;
-}
-
-/**
- * COMBINED / UNIONS
- */
-export type InvoiceTransactionResponseItemInterface =
-  | BasicInvoiceTransactionResponseItemInterface
-  | ChargeRefundInvoiceTransactionResponseItemInterface
-  | ChargeInvoiceTransactionResponseItemInterface;
-
-export const InvoiceTransactionResponseItemSchema: JsonSchema = {
+export const InvoiceTransactionResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
   oneOf: [
     BasicInvoiceTransactionResponseItemSchema,

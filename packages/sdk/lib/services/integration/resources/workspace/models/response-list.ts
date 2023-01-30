@@ -1,12 +1,6 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../models";
-import {
-  WorkspaceTokenResponseItemSchema,
-  WorkspaceTokenResponseItemInterface,
-} from "./response-item";
+import { PaginationPropertySchema } from "../../../../../models";
+import { WorkspaceTokenResponseItemSchema } from "./response-item";
 
 export const WorkspaceTokenResponseListSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +14,3 @@ export const WorkspaceTokenResponseListSchema: JsonSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface WorkspaceTokenResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: WorkspaceTokenResponseItemInterface[];
-}

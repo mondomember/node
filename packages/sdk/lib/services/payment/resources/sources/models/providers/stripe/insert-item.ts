@@ -1,21 +1,10 @@
 import { JsonSchemaType } from "../../../../../../../schema";
+import { MetadataPropertySchema } from "../../../../../../../models";
+import { CustomerPropertyRequestSchema } from "../../../../../../customer";
 import {
-  IdPropertyInterface,
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../../../models";
-import {
-  CustomerPropertyRequestSchema,
-  CustomerPropertyRequestInterface,
-} from "../../../../../../crm";
-import {
-  DefaultSchema,
-  DefaultInterface,
-  LabelSchema,
-  LabelInterface,
-  TokenSchema,
-  TokenInterface,
-  GatewayPropertyInterface,
+  DefaultPropertySchema,
+  LabelPropertySchema,
+  TokenPropertySchema,
   GatewayPropertySchema,
   SourceIdPropertySchema,
 } from "../../base";
@@ -28,18 +17,9 @@ export const StripeSourceInsertItemSchema = {
     ...SourceIdPropertySchema,
     ...CustomerPropertyRequestSchema,
     ...GatewayPropertySchema,
-    ...DefaultSchema,
-    ...LabelSchema,
-    ...TokenSchema,
+    ...DefaultPropertySchema,
+    ...LabelPropertySchema,
+    ...TokenPropertySchema,
     ...MetadataPropertySchema,
   },
 };
-
-export interface StripeSourceInsertItemInterface
-  extends Partial<IdPropertyInterface>,
-    TokenInterface,
-    CustomerPropertyRequestInterface,
-    GatewayPropertyInterface,
-    Partial<LabelInterface>,
-    Partial<DefaultInterface>,
-    Partial<MetadataPropertyInterface> {}

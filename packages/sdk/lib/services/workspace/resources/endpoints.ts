@@ -1,8 +1,5 @@
 import { ClientInstance, ClientResponse } from "../../../client/interfaces";
-import {
-  TenantResponseItemInterface,
-  TenantModifyItemInterface,
-} from "../models";
+import { Workspace } from "@mondomember/model";
 
 import Notifications from "./notifications/endpoints";
 import Preferences from "./preferences/endpoints";
@@ -24,7 +21,7 @@ export class WorkspaceEndpoints {
    *
    * @returns
    */
-  public getItem(): ClientResponse<TenantResponseItemInterface> {
+  public getItem(): ClientResponse<Workspace.TenantResponseItem> {
     return this.client.get("/workspace");
   }
 
@@ -34,8 +31,8 @@ export class WorkspaceEndpoints {
    * @returns
    */
   public updateItem(
-    payload: TenantModifyItemInterface
-  ): ClientResponse<TenantResponseItemInterface> {
+    payload: Workspace.TenantModifyItem
+  ): ClientResponse<Workspace.TenantResponseItem> {
     return this.client.put("/workspace", payload);
   }
 
@@ -44,7 +41,7 @@ export class WorkspaceEndpoints {
    *
    * @returns
    */
-  public deleteItem(): ClientResponse<TenantResponseItemInterface> {
+  public deleteItem(): ClientResponse<Workspace.TenantResponseItem> {
     return this.client.delete("/workspace");
   }
 }

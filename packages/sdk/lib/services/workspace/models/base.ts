@@ -1,6 +1,6 @@
 import { JsonSchemaType } from "../../../schema";
 import { UUIDSchema, UUIDPropertySchema } from "../../../models";
-import { MembershipPlan, AnyMembershipPlan } from "./interfaces";
+import { Workspace } from "@mondomember/model";
 
 export const TenantIdSchema = UUIDSchema;
 export const TenantIdPropertySchema = UUIDPropertySchema;
@@ -12,10 +12,6 @@ export const NamePropertySchema = {
   },
 };
 
-export interface NamePropertyInterface {
-  name: string;
-}
-
 export const SlugPropertySchema = {
   slug: {
     type: JsonSchemaType.STRING,
@@ -23,19 +19,11 @@ export const SlugPropertySchema = {
   },
 };
 
-export interface SlugPropertyInterface {
-  slug: string;
-}
-
 export const SandboxPropertySchema = {
   sandbox: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
-
-export interface SandboxPropertyInterface {
-  sandbox: boolean;
-}
 
 export const MembershipPropertySchema = {
   membership: {
@@ -46,9 +34,9 @@ export const MembershipPropertySchema = {
       plan: {
         type: JsonSchemaType.STRING,
         enum: [
-          MembershipPlan.FREE,
-          MembershipPlan.ON_DEMAND,
-          MembershipPlan.BUSINCESS,
+          Workspace.MembershipPlan.FREE,
+          Workspace.MembershipPlan.ON_DEMAND,
+          Workspace.MembershipPlan.BUSINCESS,
         ],
       },
       startAt: {
@@ -62,13 +50,3 @@ export const MembershipPropertySchema = {
     },
   },
 };
-
-export interface MembershipInterface {
-  plan: AnyMembershipPlan;
-  startAt?: string;
-  endAt?: string;
-}
-
-export interface MembershipPropertyInterface {
-  membership: MembershipInterface;
-}

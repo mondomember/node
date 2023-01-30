@@ -3,14 +3,7 @@ import { PaginationParams } from "../../../../models";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
-import {
-  IdentityWorkspaceResponseItemInterface,
-  IdentityWorkspaceResponseListInterface,
-} from ".";
-import {
-  TenantInsertItemInterface,
-  TenantModifyItemInterface,
-} from "../../../workspace/models";
+import { Workspace, Identity } from "@mondomember/model";
 
 const PATH = {
   base: "/identity/workspaces",
@@ -35,7 +28,7 @@ export default class {
    */
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<IdentityWorkspaceResponseListInterface> {
+  ): ClientResponse<Identity.IdentityWorkspaceResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -46,8 +39,8 @@ export default class {
    * @returns
    */
   public createItem(
-    payload: TenantInsertItemInterface
-  ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
+    payload: Workspace.TenantInsertItem
+  ): ClientResponse<Identity.IdentityWorkspaceResponseItem> {
     return this.client.post(PATH.base, payload);
   }
 
@@ -59,8 +52,8 @@ export default class {
    */
   public updateItem(
     expression: Expressions,
-    payload: TenantModifyItemInterface
-  ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
+    payload: Workspace.TenantModifyItem
+  ): ClientResponse<Identity.IdentityWorkspaceResponseItem> {
     return this.client.put(
       parseTemplate(PATH.item).expand(expression),
       payload
@@ -75,7 +68,7 @@ export default class {
    */
   public leaveItem(
     expression: Expressions
-  ): ClientResponse<IdentityWorkspaceResponseItemInterface> {
+  ): ClientResponse<Identity.IdentityWorkspaceResponseItem> {
     return this.client.delete(parseTemplate(PATH.item).expand(expression));
   }
 }

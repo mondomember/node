@@ -1,16 +1,10 @@
 import { JsonSchemaType } from "../../../../../../../../../schema";
-import { VersionPropertySchema, VersionPropertyInterface } from "./base";
+import { VersionPropertySchema } from "./base";
 import { ProductIdSchema } from "../../../../../models/base";
 import { ProductTierIdSchema } from "../../../models/base";
 
-import {
-  ProductTierPriceInsertItemSchema,
-  ProductTierPriceInsertItemInterface,
-} from "./insert-item";
-import {
-  ProductTierPriceModifyItemSchema,
-  ProductTierPriceModifyItemInterface,
-} from "./modify-item";
+import { ProductTierPriceInsertItemSchema } from "./insert-item";
+import { ProductTierPriceModifyItemSchema } from "./modify-item";
 
 export const ProductTierPriceImportInsertItemSchema = {
   ...ProductTierPriceInsertItemSchema,
@@ -44,20 +38,3 @@ export const ProductTierPriceImportItemSchema = {
     ProductTierPriceImportModifyItemSchema,
   ],
 };
-
-export interface ProductTierPriceImportInsertItemInterface
-  extends ProductTierPriceInsertItemInterface {
-  product: string;
-  tier: string;
-}
-
-export interface ProductTierPriceImportModifyItemInterface
-  extends ProductTierPriceModifyItemInterface,
-    VersionPropertyInterface {
-  product: string;
-  tier: string;
-}
-
-export type ProductTierPriceImportItemInterface =
-  | ProductTierPriceImportInsertItemInterface
-  | ProductTierPriceImportModifyItemInterface;

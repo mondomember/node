@@ -1,15 +1,15 @@
 import { matchers } from "jest-json-schema";
 import { StripeGatewayResponseItemSchema as Schema } from "./response-item";
-import { Payment } from "@mondomember/test";
-import { Provider } from "../../../../../models";
+import { Payment as PaymentTests } from "@mondomember/test";
+import { Payment } from "@mondomember/model";
 
 expect.extend(matchers);
 
 describe("Payment Gateway - Stripe Response Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Payment.createTestGateway(),
-      provider: Provider.STRIPE,
+      ...PaymentTests.createTestGateway(),
+      provider: Payment.Provider.STRIPE,
     };
 
     expect(payload).toMatchSchema(Schema);

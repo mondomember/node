@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Payment, CRM, Billing } from "@mondomember/sdk";
+import { Payment, Customer, Billing } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -11,7 +11,15 @@ import {
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Payment.ChargeStatusEnum),
+  status: chance.pickone([
+    Payment.ChargeStatus.PROCESSING,
+    Payment.ChargeStatus.SUCCEEDED,
+    Payment.ChargeStatus.FAILED,
+    Payment.ChargeStatus.CANCELED,
+    Payment.ChargeStatus.REFUNDED,
+    Payment.ChargeStatus.REQUIRES_ACTION,
+    Payment.ChargeStatus.PARTIALLY_REFUNDED,
+  ]),
 };
 
 const RefundableAmountProperty = {
@@ -52,11 +60,11 @@ const ReferenceProperty = {
 };
 
 export function createTestInsertChargeSession(
-  overrides?: Partial<Payment.ChargeSessionInsertItemInterface>
-): Payment.ChargeSessionInsertItemInterface {
+  overrides?: Partial<Payment.ChargeSessionInsertItem>
+): Payment.ChargeSessionInsertItem {
   return {
     customer: {
-      id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
+      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
     },
     invoice: generateTestKSUID(Billing.UIDPrefix.INVOICE),
     ...GatewayProperty,
@@ -65,8 +73,8 @@ export function createTestInsertChargeSession(
 }
 
 export function createTestInsertCharge(
-  overrides?: Payment.ChargeInsertItemInterface
-): Payment.ChargeInsertItemInterface {
+  overrides?: Payment.ChargeInsertItem
+): Payment.ChargeInsertItem {
   return {
     type: Payment.ChargeType.INVOICE,
     ...PaymentProperty,
@@ -77,8 +85,8 @@ export function createTestInsertCharge(
 }
 
 export function createTestModifyCharge(
-  overrides?: Partial<Payment.ChargeModifyItemInterface>
-): Payment.ChargeModifyItemInterface {
+  overrides?: Partial<Payment.ChargeModifyItem>
+): Payment.ChargeModifyItem {
   return {
     ...createMetadataProperty(),
     ...overrides,
@@ -86,8 +94,8 @@ export function createTestModifyCharge(
 }
 
 export function createTestStripeCharge(
-  overrides?: Partial<Payment.StripeChargeResponseItemInterface>
-): Payment.StripeChargeResponseItemInterface {
+  overrides?: Partial<Payment.StripeChargeResponseItem>
+): Payment.StripeChargeResponseItem {
   return {
     id: generateTestKSUID(Payment.UIDPrefix.CHARGE),
     type: "Invoice",
@@ -100,13 +108,13 @@ export function createTestStripeCharge(
     ...ReferenceProperty,
     customer: chance.pickone([
       {
-        id: generateTestKSUID(CRM.UIDPrefix.COMPANY),
-        type: CRM.CustomerType.COMPANY,
+        id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
+        type: Customer.CustomerType.COMPANY,
         name: chance.company(),
       },
       {
-        id: generateTestKSUID(CRM.UIDPrefix.CONTACT),
-        type: CRM.CustomerType.CONTACT,
+        id: generateTestKSUID(Customer.UIDPrefix.CONTACT),
+        type: Customer.CustomerType.CONTACT,
         email: chance.email(),
         firstName: chance.first(),
         lastName: chance.last(),
@@ -121,7 +129,7 @@ export function createTestStripeCharge(
 }
 
 export function createTestCharge(
-  overrides?: Partial<Payment.ChargeResponseItemInterface>
-): Payment.ChargeResponseItemInterface {
+  overrides?: Partial<Payment.ChargeResponseItem>
+): Payment.ChargeResponseItem {
   return chance.pickone([createTestStripeCharge(overrides)]);
 }

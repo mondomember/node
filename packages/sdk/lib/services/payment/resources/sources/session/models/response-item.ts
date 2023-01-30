@@ -11,8 +11,3 @@ export const SourceSessionResponseItemSchema = {
     source: SourceIdSchema,
   },
 };
-
-export interface SourceSessionResponseItemInterface {
-  key: string;
-  source: string;
-}

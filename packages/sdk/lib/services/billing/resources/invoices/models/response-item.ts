@@ -1,53 +1,30 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
   PropertiesPropertySchema,
-  PropertiesPropertyInterface,
 } from "../../../../../models";
 import {
   ContractPropertySchema,
-  ContractPropertyInterface,
   InvoiceIdPropertySchema,
   StatusPropertySchema,
-  StatusPropertyInterface,
   LineItemsResponsePropertySchema,
-  LineItemsResponsePropertyInterface,
   PaymentIntentPropertySchema,
-  PaymentIntentPropertyInterface,
   ResponseAutoPayPropertySchema,
-  ResponseAutoPayPropertyInterface,
   PaymentPropertyResponseSchema,
-  PaymentPropertyResponseInterface,
   ContactsPropertySchema,
-  ContactsPropertyInterface,
   AdjustmentsTotalPropertySchema,
-  AdjustmentsTotalPropertyInterface,
   LinesTotalPropertySchema,
-  LinesTotalPropertyInterface,
   PayableTotalPropertySchema,
-  PayableTotalPropertyInterface,
   AdjustedTotalPropertySchema,
-  AdjustedTotalPropertyInterface,
   DiscountPropertySchema,
-  DiscountPropertyInterface,
   DueAtPropertySchema,
-  DueAtPropertyInterface,
 } from "./base";
 
-import {
-  CustomerPropertyResponseSchema,
-  CustomerPropertyResponseInterface,
-} from "../../../../crm";
+import { CustomerPropertyResponseSchema } from "../../../../customer";
 
 export const InvoiceResponseItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -88,26 +65,3 @@ export const InvoiceResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface InvoiceResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    CustomerPropertyResponseInterface,
-    Partial<ContractPropertyInterface>,
-    Partial<LineItemsResponsePropertyInterface>,
-    Partial<AdjustmentsTotalPropertyInterface>,
-    LinesTotalPropertyInterface,
-    PayableTotalPropertyInterface,
-    AdjustedTotalPropertyInterface,
-    DiscountPropertyInterface,
-    DueAtPropertyInterface,
-    Partial<PaymentIntentPropertyInterface>,
-    Partial<ResponseAutoPayPropertyInterface>,
-    Partial<PaymentPropertyResponseInterface>,
-    Partial<ContactsPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}

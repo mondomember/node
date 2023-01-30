@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Billing, Payment } from "@mondomember/sdk";
+import { Billing, Payment } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -27,8 +27,8 @@ const AmountProperty = {
 };
 
 export function createTestAdjustmentInvoiceTransaction(
-  props?: Partial<Billing.BasicInvoiceTransactionResponseItemInterface>
-): Billing.BasicInvoiceTransactionResponseItemInterface {
+  props?: Partial<Billing.BasicInvoiceTransactionResponseItem>
+): Billing.BasicInvoiceTransactionResponseItem {
   return {
     id: generateTestKSUID(Billing.UIDPrefix.INVOICE_TRANSACTION),
     ...{
@@ -46,8 +46,8 @@ export function createTestAdjustmentInvoiceTransaction(
 }
 
 export function createTestManualRefundInvoiceTransaction(
-  props?: Partial<Billing.BasicInvoiceTransactionResponseItemInterface>
-): Billing.BasicInvoiceTransactionResponseItemInterface {
+  props?: Partial<Billing.BasicInvoiceTransactionResponseItem>
+): Billing.BasicInvoiceTransactionResponseItem {
   return {
     id: generateTestKSUID(Billing.UIDPrefix.INVOICE_TRANSACTION),
     ...{
@@ -65,8 +65,8 @@ export function createTestManualRefundInvoiceTransaction(
 }
 
 export function createTestChargeRefundInvoiceTransaction(
-  props?: Partial<Billing.ChargeRefundInvoiceTransactionResponseItemInterface>
-): Billing.ChargeRefundInvoiceTransactionResponseItemInterface {
+  props?: Partial<Billing.ChargeRefundInvoiceTransactionResponseItem>
+): Billing.ChargeRefundInvoiceTransactionResponseItem {
   return {
     id: generateTestKSUID(Billing.UIDPrefix.INVOICE_TRANSACTION),
     ...{
@@ -86,8 +86,8 @@ export function createTestChargeRefundInvoiceTransaction(
 }
 
 export function createTestChargeInvoiceTransaction(
-  props?: Partial<Billing.ChargeInvoiceTransactionResponseItemInterface>
-): Billing.ChargeInvoiceTransactionResponseItemInterface {
+  props?: Partial<Billing.ChargeInvoiceTransactionResponseItem>
+): Billing.ChargeInvoiceTransactionResponseItem {
   return {
     id: generateTestKSUID(Billing.UIDPrefix.INVOICE_TRANSACTION),
     ...{
@@ -105,7 +105,7 @@ export function createTestChargeInvoiceTransaction(
   };
 }
 
-export function createTestInvoiceTransaction(): Billing.InvoiceTransactionResponseItemInterface {
+export function createTestInvoiceTransaction(): Billing.InvoiceTransactionResponseItem {
   return chance.pickone([
     createTestAdjustmentInvoiceTransaction(),
     createTestManualRefundInvoiceTransaction(),

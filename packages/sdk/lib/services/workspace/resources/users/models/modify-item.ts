@@ -1,15 +1,7 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
-import {
-  FirstNamePropertySchema,
-  FirstNamePropertyInterface,
-  LastNamePropertySchema,
-  LastNamePropertyInterface,
-} from "./base";
+import { FirstNamePropertySchema, LastNamePropertySchema } from "./base";
 
 export const UserModifyItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +12,3 @@ export const UserModifyItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface UserModifyItemInterface
-  extends Partial<FirstNamePropertyInterface>,
-    Partial<LastNamePropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

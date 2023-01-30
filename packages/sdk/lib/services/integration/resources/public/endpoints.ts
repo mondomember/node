@@ -2,10 +2,7 @@ import { parseTemplate } from "../../../../client/url-template";
 
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 
-import {
-  PublicTokenCreateItemInterface,
-  PublicTokenResponseItemInterface,
-} from "./models";
+import { Integration } from "@mondomember/model";
 
 const PATH = "integrations/public/{tenant}";
 
@@ -24,8 +21,8 @@ export default class {
    */
   public createItem(
     expression: Expressions,
-    payload: PublicTokenCreateItemInterface
-  ): ClientResponse<PublicTokenResponseItemInterface> {
+    payload: Integration.PublicTokenCreateItem
+  ): ClientResponse<Integration.PublicTokenResponseItem> {
     return this.client.post(parseTemplate(PATH).expand(expression), payload);
   }
 }

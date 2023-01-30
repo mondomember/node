@@ -1,13 +1,7 @@
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
-import {
-  ChargeInsertItemInterface,
-  ChargeModifyItemInterface,
-  ChargeResponseItemInterface,
-  ChargeResponseListInterface,
-} from "./models";
-
 import { ChargeListItemsParams } from "./interfaces";
+import { Payment } from "@mondomember/model";
 
 import Session from "./resources/session/endpoints";
 
@@ -22,9 +16,9 @@ type Expressions = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  ChargeInsertItemInterface,
-  ChargeModifyItemInterface,
-  ChargeResponseItemInterface
+  Payment.ChargeInsertItem,
+  Payment.ChargeModifyItem,
+  Payment.ChargeResponseItem
 > {
   readonly Session: Session;
 
@@ -41,7 +35,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: ChargeListItemsParams
-  ): ClientResponse<ChargeResponseListInterface> {
+  ): ClientResponse<Payment.ChargeResponseList> {
     return this.client.get(PATH.base, { params });
   }
 }

@@ -1,12 +1,8 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   NamePropertySchema,
-  NamePropertyInterface,
   AppPropertySchema,
-  AppPropertyInterface,
   BrandingPropertySchema,
-  BrandingPropertyInterface,
-  IntegrationsPropertyInterface,
   IntegrationsPropertySchema,
 } from "./base";
 
@@ -21,9 +17,3 @@ export const AppSettingsResponseItemSchema = {
     ...IntegrationsPropertySchema,
   },
 };
-
-export interface AppSettingsResponseItemInterface
-  extends NamePropertyInterface,
-    AppPropertyInterface,
-    Partial<BrandingPropertyInterface>,
-    Partial<IntegrationsPropertyInterface> {}

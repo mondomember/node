@@ -3,26 +3,13 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
-import * as CRM from "../../../../../services/crm";
-import * as Membership from "../../../../../services/membership";
-import * as Payment from "../../../../../services/payment";
-import {
-  InvoiceStatusEnum,
-  AnyInvoiceStatus,
-  InvoicePaymentMethodType,
-  AnyInvoicePaymentMethodType,
-  InvoicePaymentReceiptType,
-  InvoicePaymentMethodEnum,
-  InvoiceLineItemType,
-  InvoiceAutoPayType,
-  InvoicePaymentStatus,
-} from "./interfaces";
+import { InvoiceStatusEnum, InvoicePaymentMethodEnum } from "./interfaces";
+import { Billing, Payment, Membership, Customer } from "@mondomember/model";
 
-export const InvoiceIdSchema = constructUIDSchema([UIDPrefix.INVOICE]);
+export const InvoiceIdSchema = constructUIDSchema([Billing.UIDPrefix.INVOICE]);
 
 export const InvoiceIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.INVOICE
+  Billing.UIDPrefix.INVOICE
 );
 
 export const StatusPropertySchema = {
@@ -32,52 +19,18 @@ export const StatusPropertySchema = {
   },
 };
 
-export interface StatusPropertyInterface {
-  status: AnyInvoiceStatus;
-}
-
 export const ContractPropertySchema = {
   contract: constructUIDSchema([Membership.UIDPrefix.CONTRACT]),
 };
 
-export interface ContractPropertyInterface {
-  contract: string;
-}
-
 export const ContactsPropertySchema = {
   contacts: {
     type: JsonSchemaType.ARRAY,
-    items: constructUIDSchema([CRM.UIDPrefix.CONTACT]),
+    items: constructUIDSchema([Customer.UIDPrefix.CONTACT]),
     uniqueItems: true,
     maxItems: 10,
   },
 };
-
-export interface ContactsPropertyInterface {
-  contacts:
-    | []
-    | [string]
-    | [string, string]
-    | [string, string, string]
-    | [string, string, string, string]
-    | [string, string, string, string, string]
-    | [string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string, string]
-    | [
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string
-      ];
-}
 
 export const MembershipsPropertySchema = {
   memberships: {
@@ -86,10 +39,6 @@ export const MembershipsPropertySchema = {
     uniqueItems: true,
   },
 };
-
-export interface MembershipsPropertyInterface {
-  memberships: string[];
-}
 
 export const DiscountPropertySchema = {
   discount: {
@@ -107,13 +56,6 @@ export const DiscountPropertySchema = {
   },
 };
 
-export interface DiscountPropertyInterface {
-  discount: {
-    amount: number;
-    description?: string;
-  };
-}
-
 export const DueAtPropertySchema = {
   dueAt: {
     type: JsonSchemaType.STRING,
@@ -121,19 +63,11 @@ export const DueAtPropertySchema = {
   },
 };
 
-export interface DueAtPropertyInterface {
-  dueAt: string;
-}
-
 export const AdjustmentsTotalPropertySchema = {
   adjustmentsTotal: {
     type: JsonSchemaType.NUMBER,
   },
 };
-
-export interface AdjustmentsTotalPropertyInterface {
-  adjustmentsTotal: number;
-}
 
 export const LinesTotalPropertySchema = {
   linesTotal: {
@@ -141,19 +75,11 @@ export const LinesTotalPropertySchema = {
   },
 };
 
-export interface LinesTotalPropertyInterface {
-  linesTotal: number;
-}
-
 export const PayableTotalPropertySchema = {
   payableTotal: {
     type: JsonSchemaType.NUMBER,
   },
 };
-
-export interface PayableTotalPropertyInterface {
-  payableTotal: number;
-}
 
 export const AdjustedTotalPropertySchema = {
   adjustedTotal: {
@@ -161,24 +87,17 @@ export const AdjustedTotalPropertySchema = {
   },
 };
 
-export interface AdjustedTotalPropertyInterface {
-  adjustedTotal: number;
-}
-
 export const CustomerPropertySchema = {
   customer: {
     type: JsonSchemaType.OBJECT,
     properties: {
-      id: constructUIDSchema([CRM.UIDPrefix.COMPANY, CRM.UIDPrefix.CONTACT]),
+      id: constructUIDSchema([
+        Customer.UIDPrefix.COMPANY,
+        Customer.UIDPrefix.CONTACT,
+      ]),
     },
   },
 };
-
-export interface CustomerPropertyInterface {
-  customer: {
-    id: string;
-  };
-}
 
 export const PaymentIntentPropertySchema = {
   paymentIntent: {
@@ -187,10 +106,6 @@ export const PaymentIntentPropertySchema = {
   },
 };
 
-export interface PaymentIntentPropertyInterface {
-  paymentIntent: AnyInvoicePaymentMethodType;
-}
-
 const AutoPayFinalizedSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -198,16 +113,11 @@ const AutoPayFinalizedSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceAutoPayType.FINALIZED],
+      enum: [Billing.InvoiceAutoPayType.FINALIZED],
     },
     source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
   },
 };
-
-interface AutoPayFinalizedInterface {
-  type: typeof InvoiceAutoPayType.FINALIZED;
-  source?: string; // The payment source Id
-}
 
 const NullAutoPaySchema = {
   type: JsonSchemaType.NULL,
@@ -235,14 +145,6 @@ export const RequestAutoPayPropertySchema = {
   },
 };
 
-export type RequestAutoPayPropertyInterface = {
-  autoPay: AutoPayFinalizedInterface | null;
-};
-
-export type ResponseAutoPayPropertyInterface = {
-  autoPay: AutoPayFinalizedInterface;
-};
-
 const InvoicePaymentMethodOfflineResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -251,9 +153,9 @@ const InvoicePaymentMethodOfflineResponseSchema = {
     type: {
       type: JsonSchemaType.STRING,
       enum: [
-        InvoicePaymentMethodType.CASH,
-        InvoicePaymentMethodType.CHECK,
-        InvoicePaymentMethodType.WIRE,
+        Billing.InvoicePaymentMethodType.CASH,
+        Billing.InvoicePaymentMethodType.CHECK,
+        Billing.InvoicePaymentMethodType.WIRE,
       ],
     },
     reference: {
@@ -261,14 +163,6 @@ const InvoicePaymentMethodOfflineResponseSchema = {
     },
   },
 };
-
-interface InvoicePaymentMethodOfflineResponseInterface {
-  type:
-    | typeof InvoicePaymentMethodType.CASH
-    | typeof InvoicePaymentMethodType.CHECK
-    | typeof InvoicePaymentMethodType.WIRE;
-  reference?: string;
-}
 
 const InvoicePaymentMethodOnlineResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -278,15 +172,10 @@ const InvoicePaymentMethodOnlineResponseSchema = {
     id: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentMethodType.SOURCE],
+      enum: [Billing.InvoicePaymentMethodType.SOURCE],
     },
   },
 };
-
-interface InvoicePaymentMethodOnlineResponseInterface {
-  type: typeof InvoicePaymentMethodType.SOURCE;
-  id: string;
-}
 
 const InvoicePaymentMethodResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -296,10 +185,6 @@ const InvoicePaymentMethodResponseSchema = {
   ],
 };
 
-type InvoicePaymentMethodResponseInterface =
-  | InvoicePaymentMethodOfflineResponseInterface
-  | InvoicePaymentMethodOnlineResponseInterface;
-
 const InvoicePaymentReceiptManualResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -307,14 +192,10 @@ const InvoicePaymentReceiptManualResponseSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentReceiptType.MANUAL],
+      enum: [Billing.InvoicePaymentReceiptType.MANUAL],
     },
   },
 };
-
-interface InvoicePaymentReceiptManualResponseInterface {
-  type: typeof InvoicePaymentReceiptType.MANUAL;
-}
 
 const InvoicePaymentReceiptChargeResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -324,19 +205,13 @@ const InvoicePaymentReceiptChargeResponseSchema = {
     id: constructUIDSchema([Payment.UIDPrefix.CHARGE]),
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentReceiptType.CHARGE],
+      enum: [Billing.InvoicePaymentReceiptType.CHARGE],
     },
     reference: {
       type: JsonSchemaType.STRING,
     },
   },
 };
-
-interface InvoicePaymentReceiptChargeResponseInterface {
-  type: typeof InvoicePaymentReceiptType.CHARGE;
-  id: string;
-  reference: string;
-}
 
 const InvoicePaymentReceiptResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -346,10 +221,6 @@ const InvoicePaymentReceiptResponseSchema = {
   ],
 };
 
-type InvoicePaymentReceiptResponseInterface =
-  | InvoicePaymentReceiptManualResponseInterface
-  | InvoicePaymentReceiptChargeResponseInterface;
-
 export const SuccessfulPaymentResponseSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -357,7 +228,7 @@ export const SuccessfulPaymentResponseSchema = {
   properties: {
     status: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentStatus.SUCCCESSFUL],
+      enum: [Billing.InvoicePaymentStatus.SUCCCESSFUL],
     },
     paidAt: {
       type: JsonSchemaType.STRING,
@@ -379,7 +250,10 @@ export const IncompletePaymentResponseSchema = {
   properties: {
     status: {
       type: JsonSchemaType.STRING,
-      enum: [InvoicePaymentStatus.PENDING, InvoicePaymentStatus.FAILED],
+      enum: [
+        Billing.InvoicePaymentStatus.PENDING,
+        Billing.InvoicePaymentStatus.FAILED,
+      ],
     },
     method: InvoicePaymentMethodResponseSchema,
     lastActivityAt: {
@@ -395,32 +269,6 @@ export const PaymentPropertyResponseSchema = {
     oneOf: [SuccessfulPaymentResponseSchema, IncompletePaymentResponseSchema],
   },
 };
-
-interface SuccessfulInvoicePaymentResponseInterface {
-  status: typeof InvoicePaymentStatus.SUCCCESSFUL;
-  method: InvoicePaymentMethodResponseInterface;
-  paidAt: string;
-  lastActivityAt: string;
-  receipt: InvoicePaymentReceiptResponseInterface;
-  notes?: string;
-}
-
-interface IncompleteInvoicePaymentResponseInterface {
-  status:
-    | typeof InvoicePaymentStatus.FAILED
-    | typeof InvoicePaymentStatus.PENDING;
-  method: InvoicePaymentMethodResponseInterface;
-  lastActivityAt: string;
-  notes?: string;
-}
-
-export type InvoicePaymentResponseInterface =
-  | SuccessfulInvoicePaymentResponseInterface
-  | IncompleteInvoicePaymentResponseInterface;
-
-export interface PaymentPropertyResponseInterface {
-  payment: InvoicePaymentResponseInterface;
-}
 
 const ProductTierPriceResponseSchema = {
   type: JsonSchemaType.OBJECT,
@@ -462,7 +310,7 @@ const CustomLineItemRequestPropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceLineItemType.CUSTOM],
+      enum: [Billing.InvoiceLineItemType.CUSTOM],
     },
     quantity: {
       type: JsonSchemaType.NUMBER,
@@ -486,7 +334,7 @@ const ProductLineItemRequestPropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceLineItemType.PRODUCT],
+      enum: [Billing.InvoiceLineItemType.PRODUCT],
     },
     quantity: {
       type: JsonSchemaType.NUMBER,
@@ -520,75 +368,6 @@ export const LineItemsRequestPropertySchema = {
   },
 };
 
-interface ProductRequestInterface {
-  id: string;
-  tier: {
-    id: string;
-    price: {
-      version: number;
-    };
-  };
-}
-
-type CustomLineItemRequestInterface = {
-  type: typeof InvoiceLineItemType.CUSTOM;
-  label: string;
-  description?: string;
-  quantity?: number;
-  amount: number;
-};
-
-type ProductLineItemRequestInterface = {
-  type: typeof InvoiceLineItemType.PRODUCT;
-  product: ProductRequestInterface;
-  label?: string;
-  description?: string;
-  quantity?: number;
-  amount?: number;
-};
-
-export type InvoiceLineItemRequestInterface =
-  | CustomLineItemRequestInterface
-  | ProductLineItemRequestInterface;
-
-interface ProductResponseInterface {
-  id: string;
-  label: string;
-  tier: {
-    id: string;
-    label: string;
-    price: {
-      version: number;
-      amount: number;
-    };
-  };
-}
-
-type CustomLineItemResponseInterface = {
-  type: typeof InvoiceLineItemType.CUSTOM;
-  label: string;
-  description?: string;
-  quantity: number;
-  amount: number;
-};
-
-type ProductLineItemResponseInterface = {
-  type: typeof InvoiceLineItemType.PRODUCT;
-  product: ProductResponseInterface;
-  label: string;
-  description?: string;
-  quantity: number;
-  amount: number;
-};
-
-export type InvoiceLineItemResponseInterface =
-  | CustomLineItemResponseInterface
-  | ProductLineItemResponseInterface;
-
-export interface LineItemsRequestPropertyInterface {
-  lines: InvoiceLineItemRequestInterface[];
-}
-
 const CustomLineItemResponsePropertySchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -596,7 +375,7 @@ const CustomLineItemResponsePropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceLineItemType.CUSTOM],
+      enum: [Billing.InvoiceLineItemType.CUSTOM],
     },
     label: {
       type: JsonSchemaType.STRING,
@@ -620,7 +399,7 @@ const ProductLineItemResponsePropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [InvoiceLineItemType.PRODUCT],
+      enum: [Billing.InvoiceLineItemType.PRODUCT],
     },
     ...ProductPropertySchema,
     label: {
@@ -652,7 +431,3 @@ export const LineItemsResponsePropertySchema = {
     items: LineItemResponsePropertySchema,
   },
 };
-
-export interface LineItemsResponsePropertyInterface {
-  lines: InvoiceLineItemResponseInterface[];
-}

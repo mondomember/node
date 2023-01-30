@@ -4,12 +4,7 @@ import { PaginationParams } from "../../models";
 import { ClientInstance, ClientResponse } from "../../client/interfaces";
 import { NestedCRUDEndpoints } from "../../client/endpoints";
 
-import {
-  ActivityInsertItemInterface,
-  ActivityModifyItemInterface,
-  ActivityResponseItemInterface,
-  ActivityResponseListInterface,
-} from "./models";
+import { Activity } from "@mondomember/model";
 
 const PATH = {
   base: "activities/{source}",
@@ -31,9 +26,9 @@ type ListItemsParams = {
 export class ActivityEndpoints extends NestedCRUDEndpoints<
   Expressions,
   ItemExpressions,
-  ActivityInsertItemInterface,
-  ActivityModifyItemInterface,
-  ActivityResponseItemInterface
+  Activity.ActivityInsertItem,
+  Activity.ActivityModifyItem,
+  Activity.ActivityResponseItem
 > {
   constructor(client: ClientInstance) {
     super(PATH, client);
@@ -42,7 +37,7 @@ export class ActivityEndpoints extends NestedCRUDEndpoints<
   public listItems(
     expression: Expressions,
     params?: ListItemsParams
-  ): ClientResponse<ActivityResponseListInterface> {
+  ): ClientResponse<Activity.ActivityResponseList> {
     return this.client.get(parseTemplate(this.path.base).expand(expression), {
       params,
     });
@@ -56,7 +51,7 @@ export class ActivityEndpoints extends NestedCRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions & ItemExpressions
-  ): ClientResponse<ActivityResponseItemInterface> {
+  ): ClientResponse<Activity.ActivityResponseItem> {
     return this.client.post(
       parseTemplate(`${this.path.item}/restore`).expand(expression)
     );

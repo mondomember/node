@@ -1,23 +1,15 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   UUIDPropertySchema,
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
 } from "../../../../../models";
 import {
   NamePropertySchema,
-  NamePropertyInterface,
   SlugPropertySchema,
-  SlugPropertyInterface,
 } from "../../../../workspace/models/base";
 
 export const IdentityWorkspaceResponseItemSchema = {
@@ -35,13 +27,3 @@ export const IdentityWorkspaceResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface IdentityWorkspaceResponseItemInterface
-  extends IdPropertyInterface,
-    NamePropertyInterface,
-    SlugPropertyInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

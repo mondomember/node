@@ -1,36 +1,20 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
-  IdPropertyInterface,
   CreatedAtPropertySchema,
-  CreatedAtPropertyInterface,
   UpdatedAtPropertySchema,
-  UpdatedAtPropertyInterface,
   DeletedAtPropertySchema,
-  DeletedAtPropertyInterface,
   LastUpdatedPropertySchema,
-  LastUpdatedPropertyInterface,
   MetadataPropertySchema,
-  MetadataPropertyInterface,
   PropertiesPropertySchema,
-  PropertiesPropertyInterface,
 } from "../../../../../models";
-import {
-  CustomerPropertyResponseSchema,
-  CustomerPropertyResponseInterface,
-} from "../../../../crm/models";
+import { CustomerPropertyResponseSchema } from "../../../../customer/models";
 import {
   StatusPropertySchema,
-  StatusPropertyInterface,
   ContactsPropertySchema,
-  ContactsPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-  PeriodPropertyInterface,
   PeriodPropertySchema,
   ProductPropertyResponseSchema,
-  ProductPropertyResponseInterface,
   MembershipIdPropertySchema,
-  IsDelegatedPropertyInterface,
   IsDelegatedPropertySchema,
 } from "./base";
 
@@ -88,30 +72,3 @@ export const DelegatedMembershipResponseItemSchema = {
     ...LastUpdatedPropertySchema,
   },
 };
-
-export interface MembershipResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    CustomerPropertyResponseInterface,
-    ProductPropertyResponseInterface,
-    PeriodPropertyInterface,
-    Partial<ContactsPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface> {}
-
-export interface DelegatedMembershipResponseItemInterface
-  extends IdPropertyInterface,
-    StatusPropertyInterface,
-    CustomerPropertyResponseInterface,
-    ProductPropertyResponseInterface,
-    PeriodPropertyInterface,
-    IsDelegatedPropertyInterface,
-    CreatedAtPropertyInterface,
-    UpdatedAtPropertyInterface,
-    Partial<DeletedAtPropertyInterface>,
-    Partial<LastUpdatedPropertyInterface> {}

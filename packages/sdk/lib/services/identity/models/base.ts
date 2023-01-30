@@ -8,19 +8,11 @@ export const EmailPropertySchema = {
   },
 };
 
-export interface EmailPropertyInterface {
-  email: string;
-}
-
 export const FirstNamePropertySchema = {
   firstName: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface FirstNamePropertyInterface {
-  firstName: string;
-}
 
 export const LastNamePropertySchema = {
   lastName: {
@@ -28,16 +20,8 @@ export const LastNamePropertySchema = {
   },
 };
 
-export interface LastNamePropertyInterface {
-  lastName: string;
-}
-
 export const PhoneNumberPropertySchema = {
   phoneNumber: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface PhoneNumberPropertyInterface {
-  phoneNumber: string;
-}

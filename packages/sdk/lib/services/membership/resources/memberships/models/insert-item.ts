@@ -1,25 +1,15 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   MetadataPropertySchema,
-  MetadataPropertyInterface,
   PropertiesPropertySchema,
-  PropertiesPropertyInterface,
   ExternalIdPropertySchema,
-  ExternalIdsPropertyInterface,
 } from "../../../../../models";
-import {
-  CustomerPropertyRequestSchema,
-  CustomerPropertyRequestInterface,
-} from "../../../../../services/crm/models";
+import { CustomerPropertyRequestSchema } from "../../../../customer/models";
 import {
   ContactsPropertySchema,
-  ContactsPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
-  PeriodPropertyInterface,
   PeriodPropertySchema,
   ProductPropertyRequestSchema,
-  ProductPropertyRequestInterface,
 } from "./base";
 
 export const MembershipInsertItemSchema = {
@@ -37,13 +27,3 @@ export const MembershipInsertItemSchema = {
     ...ExternalIdPropertySchema,
   },
 };
-
-export interface MembershipInsertItemInterface
-  extends ProductPropertyRequestInterface,
-    CustomerPropertyRequestInterface,
-    Partial<PeriodPropertyInterface>,
-    Partial<ContactsPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface>,
-    Partial<ExternalIdsPropertyInterface> {}

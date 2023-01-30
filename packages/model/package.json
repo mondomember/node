@@ -1,0 +1,44 @@
+{
+  "name": "@mondomember/model",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "version": "4.0.26",
+  "scripts": {
+    "analyse": "yarn run lint && yarn run test",
+    "build:cjs": "tsc -d -p ./tsconfig.json",
+    "build": "yarn build:cjs",
+    "lint": "eslint . --ext .ts",
+    "test": "jest --passWithNoTests",
+    "test:ci": "jest --passWithNoTests -i",
+    "watch": "tsc -w",
+    "version": "tsc -v"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mondomember/node.git",
+    "directory": "packages/models"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Flipbox Digital",
+    "url": "https://flipboxdigital.com"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@tsconfig/node14": "^1.0.1",
+    "@types/chance": "^1.1.2",
+    "@types/jest": "^27.0",
+    "@types/node": "^14.0.27",
+    "ts-jest": "^27.1.4",
+    "ts-node": "^8.10.2",
+    "typescript": "^4.0.0",
+    "utility-types": "^3.10.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "gitHead": "ad62bbf3bf0d4acafc409f9f72e2fcccb4de9a0f"
+}

@@ -1,8 +1,5 @@
 import { JsonSchemaType } from "../../../schema";
-import {
-  ExternalIdArraySchema,
-  ExternalIdsArrayInterface,
-} from "../../../models/external-id";
+import { ExternalIdArraySchema } from "../../../models/external-id";
 
 export const ResponseListSchema = {
   type: JsonSchemaType.OBJECT,
@@ -13,8 +10,3 @@ export const ResponseListSchema = {
     locks: ExternalIdArraySchema,
   },
 };
-
-export interface ResponseListInterface {
-  ids: ExternalIdsArrayInterface;
-  locks?: ExternalIdsArrayInterface;
-}

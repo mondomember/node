@@ -1,4 +1,5 @@
 import { JsonSchemaType } from "../schema";
+import { UIDPrefix } from "@mondomember/model";
 
 export const constructUIDSchema = (prefix?: string[]) => ({
   type: JsonSchemaType.STRING,
@@ -14,6 +15,11 @@ export const constructJWTSchema = () => ({
   pattern: `^[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*`,
 });
 
+export const FieldIdSchema = constructUIDSchema([UIDPrefix.FIELD]);
+export const FieldIdPropertySchema = constructUIDPropertySchema(
+  UIDPrefix.FIELD
+);
+
 export const UUIDSchema = {
   type: JsonSchemaType.STRING,
   format: "uuid",
@@ -22,10 +28,6 @@ export const UUIDSchema = {
 export const UUIDPropertySchema = {
   id: UUIDSchema,
 };
-
-export interface IdPropertyInterface {
-  id: string;
-}
 
 export const CreatedAtSchema = {
   type: JsonSchemaType.STRING,
@@ -36,10 +38,6 @@ export const CreatedAtPropertySchema = {
   createdAt: CreatedAtSchema,
 };
 
-export interface CreatedAtPropertyInterface {
-  createdAt: string;
-}
-
 export const UpdatedAtSchema = {
   type: JsonSchemaType.STRING,
   format: "date-time",
@@ -49,10 +47,6 @@ export const UpdatedAtPropertySchema = {
   updatedAt: UpdatedAtSchema,
 };
 
-export interface UpdatedAtPropertyInterface {
-  updatedAt: string;
-}
-
 export const DeletedAtSchema = {
   type: JsonSchemaType.STRING,
   format: "date-time",
@@ -61,22 +55,6 @@ export const DeletedAtSchema = {
 export const DeletedAtPropertySchema = {
   deletedAt: DeletedAtSchema,
 };
-
-export interface DeletedAtPropertyInterface {
-  deletedAt: string;
-}
-
-export type LastUpdatedInterface = {
-  at?: string;
-  by?: {
-    identifier: string;
-    type: "System" | "Identity" | "Automation";
-  };
-};
-
-export interface LastUpdatedPropertyInterface {
-  lastUpdated?: LastUpdatedInterface;
-}
 
 export const LastUpdatedSchema = {
   type: JsonSchemaType.OBJECT,
@@ -117,15 +95,3 @@ export const MetadataSchema = {
 export const MetadataPropertySchema = {
   metadata: MetadataSchema,
 };
-
-export type MetadataInterface = {
-  /**
-   * This interface was referenced by `undefined`'s JSON-Schema definition
-   * via the `patternProperty` "^.*$".
-   */
-  [k: string]: string;
-};
-
-export interface MetadataPropertyInterface {
-  metadata: MetadataInterface;
-}

@@ -1,14 +1,6 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import {
-  IdPropertyInterface,
-  MetadataPropertyInterface,
-} from "../../../../../../../models";
 
-import {
-  ProductTierIdPropertySchema,
-  DescriptionPropertyInterface,
-  LabelPropertyInterface,
-} from "./base";
+import { ProductTierIdPropertySchema } from "./base";
 import { ProductIdSchema } from "../../../models/base";
 
 import { ProductTierInsertItemSchema } from "./insert-item";
@@ -64,33 +56,3 @@ export const ProductTierImportItemSchema = {
   additionalProperties: false,
   oneOf: [ProductTierImportInsertItemSchema, ProductTierImportModifyItemSchema],
 };
-
-export interface ProductTierImportInsertItemInterface
-  extends Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<IdPropertyInterface>,
-    LabelPropertyInterface {
-  price?: {
-    amount: number;
-  };
-  product: string;
-}
-
-export interface ProductTierImportModifyItemInterface
-  extends Partial<LabelPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    IdPropertyInterface {
-  price?:
-    | {
-        version: number;
-      }
-    | {
-        amount: number;
-      };
-  product: string;
-}
-
-export type ProductTierImportItemInterface =
-  | ProductTierImportInsertItemInterface
-  | ProductTierImportModifyItemInterface;

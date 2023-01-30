@@ -1,20 +1,11 @@
 import { JsonSchema, JsonSchemaType } from "../../../../../../../../schema";
 import {
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  AutoSelectPropertySchema,
-  AutoSelectPropertyInterface,
-} from "./base";
+import { TypePropertySchema, AutoSelectPropertySchema } from "./base";
 
 export const ToggleFieldModifyItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -29,11 +20,3 @@ export const ToggleFieldModifyItemSchema: JsonSchema = {
     ...AutoSelectPropertySchema,
   },
 };
-
-export interface ToggleFieldModifyItemInterface
-  extends TypePropertyInterface,
-    Partial<FieldGroupPropertyInterface>,
-    Partial<LabelPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<AutoSelectPropertyInterface> {}

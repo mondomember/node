@@ -1,8 +1,5 @@
 import { JsonSchemaType, JsonSchema } from "../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../models";
+import { PaginationPropertySchema } from "../../../../models";
 
 export const SearchResponseListSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -15,8 +12,3 @@ export const SearchResponseListSchema: JsonSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface SearchResponseListInterface<Item = any>
-  extends Partial<PaginationPropertyInterface> {
-  items?: Item[];
-}

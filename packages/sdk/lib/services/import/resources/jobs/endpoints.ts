@@ -4,7 +4,7 @@ import RowEndpoints from "./resources/rows/endpoints";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { PaginationParams } from "../../../../models";
 
-import { JobResponseItemInterface, JobResponseListInterface } from "./models";
+import { Import } from "@mondomember/model";
 
 const PATH = {
   base: "imports/jobs",
@@ -33,7 +33,7 @@ export default class {
    */
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<JobResponseListInterface> {
+  ): ClientResponse<Import.JobResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -45,7 +45,7 @@ export default class {
    */
   public getItem(
     expression: Expressions
-  ): ClientResponse<JobResponseItemInterface> {
+  ): ClientResponse<Import.JobResponseItem> {
     return this.client.get(parseTemplate(PATH.item).expand(expression));
   }
 }

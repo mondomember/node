@@ -1,16 +1,12 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { ActivityType } from "../../constants";
+import { Activity } from "@mondomember/model";
 
 export const TypePropertySchema = {
   type: {
     type: JsonSchemaType.STRING,
-    enum: [ActivityType.NOTE],
+    enum: [Activity.ActivityType.NOTE],
   },
 };
-
-export interface TypePropertyInterface {
-  type: typeof ActivityType.NOTE;
-}
 
 export const MessagePropertySchema = {
   message: {
@@ -18,7 +14,3 @@ export const MessagePropertySchema = {
     minLength: 1,
   },
 };
-
-export interface MessagePropertyInterface {
-  message: string;
-}

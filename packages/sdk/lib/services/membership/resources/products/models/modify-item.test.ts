@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { ProductModifyItemSchema as Schema } from "./modify-item";
 import { Chance } from "chance";
-import { Membership } from "@mondomember/test";
+import { Membership as MembershipTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,7 +10,7 @@ const chance: Chance.Chance = new Chance();
 describe("Membership Product - Update Item Schema", () => {
   test("succeed with payload", async () => {
     const payload = {
-      ...Membership.createTestModifyProduct(),
+      ...MembershipTests.createTestModifyProduct(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -18,7 +18,7 @@ describe("Membership Product - Update Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Membership.createTestModifyProduct(),
+      ...MembershipTests.createTestModifyProduct(),
       ...{
         foo: chance.word(),
       },

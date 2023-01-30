@@ -1,5 +1,5 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import { Provider } from "../../../../../models";
+import { Payment } from "@mondomember/model";
 
 export const StripeCodePropertySchema = {
   code: {
@@ -7,20 +7,12 @@ export const StripeCodePropertySchema = {
   },
 };
 
-export interface StripeCodePropertyInterface {
-  code: string;
-}
-
 export const StripeProviderPropertySchema = {
   provider: {
     type: JsonSchemaType.STRING,
-    enum: [Provider.STRIPE],
+    enum: [Payment.Provider.STRIPE],
   },
 };
-
-export interface StripeProviderPropertyInterface {
-  provider: typeof Provider.STRIPE;
-}
 
 export const StripeSettingsPropertySchema = {
   settings: {
@@ -33,9 +25,3 @@ export const StripeSettingsPropertySchema = {
     },
   },
 };
-
-export interface StripeSettingsPropertyInterface {
-  settings: {
-    publishableKey: string;
-  };
-}

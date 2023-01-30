@@ -2,12 +2,7 @@ import { parseTemplate } from "../../../../client/url-template";
 import { PaginationParams } from "../../../../models";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
-import {
-  SubscriptionInsertItemInterface,
-  SubscriptionModifyItemInterface,
-  SubscriptionResponseItemInterface,
-  SubscriptionResponseListInterface,
-} from "./models";
+import { Webhook } from "@mondomember/model";
 
 import Deliveries from "./resources/delivery/endpoints";
 
@@ -26,9 +21,9 @@ type ListItemsParams = {
 
 export default class extends CRUDEndpoints<
   Expressions,
-  SubscriptionInsertItemInterface,
-  SubscriptionModifyItemInterface,
-  SubscriptionResponseItemInterface
+  Webhook.SubscriptionInsertItem,
+  Webhook.SubscriptionModifyItem,
+  Webhook.SubscriptionResponseItem
 > {
   readonly Deliveries: Deliveries;
 
@@ -45,7 +40,7 @@ export default class extends CRUDEndpoints<
    */
   public listItems(
     params?: ListItemsParams
-  ): ClientResponse<SubscriptionResponseListInterface> {
+  ): ClientResponse<Webhook.SubscriptionResponseList> {
     return this.client.get(PATH.base, { params });
   }
 
@@ -57,7 +52,7 @@ export default class extends CRUDEndpoints<
    */
   public restoreItem(
     expression: Expressions
-  ): ClientResponse<SubscriptionResponseItemInterface> {
+  ): ClientResponse<Webhook.SubscriptionResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/restore`).expand(expression)
     );
@@ -71,7 +66,7 @@ export default class extends CRUDEndpoints<
    */
   public enableItem(
     expression: Expressions
-  ): ClientResponse<SubscriptionResponseItemInterface> {
+  ): ClientResponse<Webhook.SubscriptionResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/enable`).expand(expression)
     );
@@ -85,7 +80,7 @@ export default class extends CRUDEndpoints<
    */
   public disableItem(
     expression: Expressions
-  ): ClientResponse<SubscriptionResponseItemInterface> {
+  ): ClientResponse<Webhook.SubscriptionResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/disable`).expand(expression)
     );

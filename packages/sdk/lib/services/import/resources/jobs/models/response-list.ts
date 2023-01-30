@@ -1,12 +1,6 @@
 import { JsonSchemaType, JsonSchema } from "../../../../../schema";
-import {
-  PaginationPropertySchema,
-  PaginationPropertyInterface,
-} from "../../../../../models";
-import {
-  JobResponseItemSchema,
-  JobResponseItemInterface,
-} from "./response-item";
+import { PaginationPropertySchema } from "../../../../../models";
+import { JobResponseItemSchema } from "./response-item";
 
 export const JobResponseListSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -20,8 +14,3 @@ export const JobResponseListSchema: JsonSchema = {
     ...PaginationPropertySchema,
   },
 };
-
-export interface JobResponseListInterface
-  extends Partial<PaginationPropertyInterface> {
-  items?: JobResponseItemInterface[];
-}

@@ -1,7 +1,7 @@
 import { matchers } from "jest-json-schema";
 import { UserInsertItemSchema as Schema } from "./insert-item";
 import { Chance } from "chance";
-import { Workspace } from "@mondomember/test";
+import { Workspace as WorkspaceTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,7 +10,7 @@ const chance: Chance.Chance = new Chance();
 describe("Workspace Workspace User - Create Item Schema", () => {
   test("succeed with proper payload", async () => {
     const payload = {
-      ...Workspace.createTestInsertUser(),
+      ...WorkspaceTests.createTestInsertUser(),
     };
 
     expect(payload).toMatchSchema(Schema);
@@ -18,7 +18,7 @@ describe("Workspace Workspace User - Create Item Schema", () => {
 
   test("fail with improper email", async () => {
     const payload = {
-      ...Workspace.createTestInsertUser(),
+      ...WorkspaceTests.createTestInsertUser(),
       email: chance.word(),
     };
 
@@ -27,7 +27,7 @@ describe("Workspace Workspace User - Create Item Schema", () => {
 
   test("fail null email", async () => {
     const payload = {
-      ...Workspace.createTestInsertUser(),
+      ...WorkspaceTests.createTestInsertUser(),
       email: null,
     };
 
@@ -36,7 +36,7 @@ describe("Workspace Workspace User - Create Item Schema", () => {
 
   test("fail with empty email", async () => {
     const payload = {
-      ...Workspace.createTestInsertUser(),
+      ...WorkspaceTests.createTestInsertUser(),
       email: "",
     };
 
@@ -45,7 +45,7 @@ describe("Workspace Workspace User - Create Item Schema", () => {
 
   test("fail with extra data", async () => {
     const payload = {
-      ...Workspace.createTestInsertUser(),
+      ...WorkspaceTests.createTestInsertUser(),
       foo: chance.word(),
     };
 

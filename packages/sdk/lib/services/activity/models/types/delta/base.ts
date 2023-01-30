@@ -1,44 +1,26 @@
+import { UIDPrefix, FieldType } from "@mondomember/model";
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  constructUIDPropertySchema,
-  FieldType,
-  IdPropertyInterface,
-  AnyFieldType,
-  UIDPrefix,
-} from "../../../../../models";
-
-import { ActivityType, OperationType } from "../../constants";
+import { constructUIDPropertySchema } from "../../../../../models";
+import { Activity } from "@mondomember/model";
 
 export const TypePropertySchema = {
   type: {
     type: JsonSchemaType.STRING,
-    enum: [ActivityType.DELTA],
+    enum: [Activity.ActivityType.DELTA],
   },
 };
-
-export interface TypeInterface {
-  type: typeof ActivityType.DELTA;
-}
 
 export const OperationPropertySchema = {
   operation: {
     type: JsonSchemaType.STRING,
     enum: [
-      OperationType.CREATE,
-      OperationType.UPDATE,
-      OperationType.DELETE,
-      OperationType.AUTOMATION,
+      Activity.OperationType.CREATE,
+      Activity.OperationType.UPDATE,
+      Activity.OperationType.DELETE,
+      Activity.OperationType.AUTOMATION,
     ],
   },
 };
-
-export interface OperationPropertyInterface {
-  operation:
-    | typeof OperationType.CREATE
-    | typeof OperationType.UPDATE
-    | typeof OperationType.DELETE
-    | typeof OperationType.AUTOMATION;
-}
 
 const AttributesProperty = {
   attributes: {
@@ -132,53 +114,3 @@ export const DiffSchema = {
     },
   },
 };
-
-export interface DiffPropertyInterface {
-  diff: {
-    attributes?: {
-      [k: string]: {
-        source:
-          | unknown[]
-          | boolean
-          | number
-          | null
-          | {
-              [k: string]: unknown;
-            }
-          | string;
-        target:
-          | unknown[]
-          | boolean
-          | number
-          | null
-          | {
-              [k: string]: unknown;
-            }
-          | string;
-      };
-    };
-    properties?: {
-      [k: string]: IdPropertyInterface & {
-        source:
-          | unknown[]
-          | boolean
-          | number
-          | null
-          | {
-              [k: string]: unknown;
-            }
-          | string;
-        type: AnyFieldType;
-        target:
-          | unknown[]
-          | boolean
-          | number
-          | null
-          | {
-              [k: string]: unknown;
-            }
-          | string;
-      };
-    };
-  };
-}

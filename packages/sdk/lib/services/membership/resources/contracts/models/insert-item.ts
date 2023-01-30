@@ -1,26 +1,17 @@
 import { JsonSchemaType } from "../../../../../schema";
 import {
   MetadataPropertySchema,
-  MetadataPropertyInterface,
   PropertiesPropertySchema,
-  PropertiesPropertyInterface,
   ExternalIdPropertySchema,
-  ExternalIdsPropertyInterface,
 } from "../../../../../models";
 
 import {
   ContactsPropertySchema,
-  ContactsPropertyInterface,
   PeriodPropertySchema,
-  PeriodPropertyInterface,
   CustomerPropertySchema,
-  CustomerPropertyInterface,
   LineItemsRequestPropertySchema,
-  LineItemsRequestPropertyInterface,
   RequestBillingPropertySchema,
-  RequestBillingPropertyInterface,
   RequestRecurringPropertySchema,
-  RequestRecurringPropertyInterface,
 } from "./base";
 
 export const ContractInsertItemSchema = {
@@ -41,14 +32,3 @@ export const ContractInsertItemSchema = {
     ...ExternalIdPropertySchema,
   },
 };
-
-export interface ContractInsertItemInterface
-  extends CustomerPropertyInterface,
-    PeriodPropertyInterface,
-    Partial<LineItemsRequestPropertyInterface>,
-    Partial<RequestBillingPropertyInterface>,
-    Partial<RequestRecurringPropertyInterface>,
-    Partial<ContactsPropertyInterface>,
-    Partial<MetadataPropertyInterface>,
-    Partial<PropertiesPropertyInterface>,
-    Partial<ExternalIdsPropertyInterface> {}

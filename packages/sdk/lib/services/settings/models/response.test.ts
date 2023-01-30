@@ -1,6 +1,6 @@
 import { matchers } from "jest-json-schema";
 import { SettingsResponseSchema as Schema } from "./response";
-import { Settings } from "@mondomember/test";
+import { Settings as SettingsTests } from "@mondomember/test";
 
 expect.extend(matchers);
 
@@ -10,9 +10,12 @@ describe("Common Settings - Response List Schema", () => {
       "SOME.RESOURCE": {
         groups: [
           {
-            ...Settings.createTestFieldGroup(),
+            ...SettingsTests.createTestFieldGroup(),
             ...{
-              fields: [Settings.createTestField(), Settings.createTestField()],
+              fields: [
+                SettingsTests.createTestField(),
+                SettingsTests.createTestField(),
+              ],
             },
           },
         ],

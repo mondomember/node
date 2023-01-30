@@ -1,20 +1,11 @@
 import { JsonSchema, JsonSchemaType } from "../../../../../../../../schema";
 import {
   LabelPropertySchema,
-  LabelPropertyInterface,
   DescriptionPropertySchema,
-  DescriptionPropertyInterface,
   OrderPropertySchema,
-  OrderPropertyInterface,
   FieldGroupPropertySchema,
-  FieldGroupPropertyInterface,
 } from "../../base";
-import {
-  TypePropertySchema,
-  TypePropertyInterface,
-  DecimalPropertySchema,
-  DecimalProertyInterface,
-} from "./base";
+import { TypePropertySchema, DecimalPropertySchema } from "./base";
 
 export const NumericFieldModifyItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
@@ -29,11 +20,3 @@ export const NumericFieldModifyItemSchema: JsonSchema = {
     ...DecimalPropertySchema,
   },
 };
-
-export interface NumericFieldModifyItemInterface
-  extends TypePropertyInterface,
-    Partial<FieldGroupPropertyInterface>,
-    Partial<LabelPropertyInterface>,
-    Partial<DescriptionPropertyInterface>,
-    Partial<OrderPropertyInterface>,
-    Partial<DecimalProertyInterface> {}

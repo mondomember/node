@@ -1,11 +1,8 @@
 import { JsonSchemaType } from "../../../schema";
 import {
   NoteActivityResponseItemSchema,
-  NoteActivityResponseItemInterface,
   DeltaActivityResponseItemSchema,
-  DeltaActivityResponseItemInterface,
   OperationActivityResponseItemSchema,
-  OperationActivityResponseItemInterface,
 } from "./types";
 
 export const ActivityResponseItemSchema = {
@@ -16,8 +13,3 @@ export const ActivityResponseItemSchema = {
     OperationActivityResponseItemSchema,
   ],
 };
-
-export type ActivityResponseItemInterface =
-  | NoteActivityResponseItemInterface
-  | DeltaActivityResponseItemInterface
-  | OperationActivityResponseItemInterface;

@@ -1,57 +1,40 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { Provider, AnyPaymentProvider } from "../../../models";
 import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
 import { GatewayIdSchema } from "../../gateways/models/base";
+import { Payment } from "@mondomember/model";
 
-export const SourceIdSchema = constructUIDSchema([UIDPrefix.SOURCE]);
+export const SourceIdSchema = constructUIDSchema([Payment.UIDPrefix.SOURCE]);
 
 export const SourceIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.SOURCE
+  Payment.UIDPrefix.SOURCE
 );
 
-export const LabelSchema = {
+export const LabelPropertySchema = {
   label: {
     type: JsonSchemaType.STRING,
   },
 };
 
-export interface LabelInterface {
-  label: string;
-}
-
-export const DefaultSchema = {
+export const DefaultPropertySchema = {
   default: {
     type: JsonSchemaType.BOOLEAN,
   },
 };
 
-export interface DefaultInterface {
-  default: boolean;
-}
-
-export const ReferenceSchema = {
+export const ReferencePropertySchema = {
   reference: {
     type: JsonSchemaType.STRING,
   },
 };
 
-export interface ReferenceInterface {
-  reference: string;
-}
-
-export const TokenSchema = {
+export const TokenPropertySchema = {
   token: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface TokenInterface {
-  token: string;
-}
 
 export const GatewayPropertySchema = {
   gateway: {
@@ -62,14 +45,8 @@ export const GatewayPropertySchema = {
       id: GatewayIdSchema,
       provider: {
         type: JsonSchemaType.STRING,
-        enum: [Provider.STRIPE],
+        enum: [Payment.Provider.STRIPE],
       },
     },
   },
 };
-export interface GatewayPropertyInterface {
-  gateway: {
-    id: string;
-    provider: AnyPaymentProvider;
-  };
-}

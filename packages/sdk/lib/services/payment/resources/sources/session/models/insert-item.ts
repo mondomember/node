@@ -1,12 +1,6 @@
 import { JsonSchemaType } from "../../../../../../schema";
-import {
-  CustomerPropertyRequestSchema,
-  CustomerPropertyRequestInterface,
-} from "../../../../../crm";
-import {
-  GatewayPropertyInterface,
-  GatewayPropertySchema,
-} from "../../models/base";
+import { CustomerPropertyRequestSchema } from "../../../../../customer";
+import { GatewayPropertySchema } from "../../models/base";
 
 export const SourceSessionInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
@@ -31,9 +25,3 @@ export const SourceSessionInsertItemSchema = {
     },
   },
 };
-
-export interface SourceSessionInsertItemInterface
-  extends CustomerPropertyRequestInterface,
-    GatewayPropertyInterface {
-  options?: Record<string, string>;
-}

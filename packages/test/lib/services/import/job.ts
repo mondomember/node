@@ -1,5 +1,5 @@
 import { Chance } from "chance";
-import { Import } from "@mondomember/sdk";
+import { Import } from "@mondomember/model";
 
 import {
   generateTestKSUID,
@@ -10,7 +10,12 @@ import {
 const chance: Chance.Chance = new Chance();
 
 const StatusProperty = {
-  status: chance.pickone(Import.JobStatusEnum),
+  status: chance.pickone([
+    Import.JobStatus.RECEIVED,
+    Import.JobStatus.ACCEPTED,
+    Import.JobStatus.UNPROCESSABLE,
+    Import.JobStatus.FAILED,
+  ]),
 };
 
 const FilenameProperty = {
@@ -38,8 +43,8 @@ const ErrorCountProperty = {
 };
 
 export function createTestJob(
-  overrides?: Partial<Import.JobResponseItemInterface>
-): Import.JobResponseItemInterface {
+  overrides?: Partial<Import.JobResponseItem>
+): Import.JobResponseItem {
   return {
     id: generateTestKSUID(Import.UIDPrefix.JOB),
     ...StatusProperty,

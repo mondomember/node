@@ -1,16 +1,10 @@
 import { JsonSchemaType } from "../../../../../schema";
-import {
-  MetadataPropertySchema,
-  MetadataPropertyInterface,
-} from "../../../../../models";
+import { MetadataPropertySchema } from "../../../../../models";
 
 import {
   EmailPropertySchema,
-  EmailPropertyInterface,
   FirstNamePropertySchema,
-  FirstNamePropertyInterface,
   LastNamePropertySchema,
-  LastNamePropertyInterface,
 } from "./base";
 
 export const UserInsertItemSchema = {
@@ -24,9 +18,3 @@ export const UserInsertItemSchema = {
     ...MetadataPropertySchema,
   },
 };
-
-export interface UserInsertItemInterface
-  extends EmailPropertyInterface,
-    Partial<FirstNamePropertyInterface>,
-    Partial<LastNamePropertyInterface>,
-    Partial<MetadataPropertyInterface> {}

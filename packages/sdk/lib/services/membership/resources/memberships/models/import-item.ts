@@ -1,14 +1,7 @@
 import { JsonSchemaType } from "../../../../../schema";
-import { IdPropertyInterface } from "../../../../../models";
 
-import {
-  MembershipInsertItemSchema,
-  MembershipInsertItemInterface,
-} from "./insert-item";
-import {
-  MembershipModifyItemSchema,
-  MembershipModifyItemInterface,
-} from "./modify-item";
+import { MembershipInsertItemSchema } from "./insert-item";
+import { MembershipModifyItemSchema } from "./modify-item";
 
 const AnyIdPropertySchema = {
   id: {
@@ -40,14 +33,3 @@ export const MembershipImportItemSchema = {
   additionalProperties: false,
   oneOf: [MembershipImportInsertItemSchema, MembershipImportModifyItemSchema],
 };
-
-export interface MembershipImportInsertItemInterface
-  extends MembershipInsertItemInterface {}
-
-export interface MembershipImportModifyItemInterface
-  extends MembershipModifyItemInterface,
-    IdPropertyInterface {}
-
-export type MembershipImportItemInterface =
-  | MembershipImportInsertItemInterface
-  | MembershipImportModifyItemInterface;

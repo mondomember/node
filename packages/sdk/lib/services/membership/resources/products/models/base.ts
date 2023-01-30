@@ -3,12 +3,14 @@ import {
   constructUIDSchema,
   constructUIDPropertySchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
+import { Membership } from "@mondomember/model";
 
-export const ProductIdSchema = constructUIDSchema([UIDPrefix.PRODUCT]);
+export const ProductIdSchema = constructUIDSchema([
+  Membership.UIDPrefix.PRODUCT,
+]);
 
 export const ProductIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.PRODUCT
+  Membership.UIDPrefix.PRODUCT
 );
 
 export const LabelPropertySchema = {
@@ -17,16 +19,8 @@ export const LabelPropertySchema = {
   },
 };
 
-export interface LabelPropertyInterface {
-  label: string;
-}
-
 export const DescriptionPropertySchema = {
   description: {
     type: JsonSchemaType.STRING,
   },
 };
-
-export interface DescriptionPropertyInterface {
-  description: string;
-}

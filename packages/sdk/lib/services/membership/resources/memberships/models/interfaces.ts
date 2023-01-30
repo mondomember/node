@@ -1,16 +1,8 @@
-export const MembershipStatus = {
-  ACTIVE: "Active",
-  CANCELED: "Canceled",
-  LAPSED: "Lapsed",
-  PENDING: "Pending",
-} as const;
-
-export type AnyMembershipStatus =
-  typeof MembershipStatus[keyof typeof MembershipStatus];
+import { Membership } from "@mondomember/model";
 
 export const MembershipStatusEnum = [
-  MembershipStatus.ACTIVE,
-  MembershipStatus.CANCELED,
-  MembershipStatus.LAPSED,
-  MembershipStatus.PENDING,
+  Membership.MembershipStatus.ACTIVE,
+  Membership.MembershipStatus.CANCELED,
+  Membership.MembershipStatus.LAPSED,
+  Membership.MembershipStatus.PENDING,
 ];

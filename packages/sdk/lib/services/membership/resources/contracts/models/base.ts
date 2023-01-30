@@ -3,52 +3,29 @@ import {
   constructUIDPropertySchema,
   constructUIDSchema,
 } from "../../../../../models";
-import { UIDPrefix } from "../../../constants";
-import * as CRM from "../../../../../services/crm";
-import * as Payment from "../../../../../services/payment";
-import * as Billing from "../../../../../services/billing";
-import {
-  ContractStatus,
-  ContractStatusEnum,
-  ContractLineItemType,
-  ContractBillingTermType,
-  ContractAutoPayType,
-  AnyContractAutoPayType,
-  RenewalFrequencySchemaEnum,
-  AnyRenewalFrequency,
-  ContractLineItemRequestInterface,
-  ContractLineItemResponseInterface,
-} from "./interfaces";
 
-export const ContractIdSchema = constructUIDSchema([UIDPrefix.CONTRACT]);
+import { ContractStatusEnum, RenewalFrequencySchemaEnum } from "./interfaces";
+import { Billing, Customer, Payment, Membership } from "@mondomember/model";
+
+export const ContractIdSchema = constructUIDSchema([
+  Membership.UIDPrefix.CONTRACT,
+]);
 
 export const ContractIdPropertySchema = constructUIDPropertySchema(
-  UIDPrefix.CONTRACT
+  Membership.UIDPrefix.CONTRACT
 );
 
 export const ContractParentPropertySchema = {
   parent: ContractIdSchema,
 };
 
-export interface ContractParentPropertyInterface {
-  parent: string;
-}
-
 export const ContractChildPropertySchema = {
   child: ContractIdSchema,
 };
 
-export interface ContractChildPropertyInterface {
-  child: string;
-}
-
 export const InvoicePropertySchema = {
   invoice: constructUIDSchema([Billing.UIDPrefix.INVOICE]),
 };
-
-export interface InvoicePropertyInterface {
-  invoice: string;
-}
 
 export const StatusPropertySchema = {
   status: {
@@ -56,16 +33,6 @@ export const StatusPropertySchema = {
     enum: ContractStatusEnum,
   },
 };
-
-export interface StatusPropertyInterface {
-  status:
-    | typeof ContractStatus.DRAFT
-    | typeof ContractStatus.PENDING
-    | typeof ContractStatus.UPCOMING
-    | typeof ContractStatus.ACTIVE
-    | typeof ContractStatus.FULFILLED
-    | typeof ContractStatus.CANCELED;
-}
 
 export const PeriodPropertySchema = {
   period: {
@@ -102,63 +69,27 @@ export const PartialPeriodPropertySchema = {
   },
 };
 
-export interface PeriodPropertyInterface {
-  period: {
-    startAt: string;
-    endAt: string;
-  };
-}
-
 export const ContactsPropertySchema = {
   contacts: {
     type: JsonSchemaType.ARRAY,
-    items: constructUIDSchema([CRM.UIDPrefix.CONTACT]),
+    items: constructUIDSchema([Customer.UIDPrefix.CONTACT]),
     uniqueItems: true,
     maxItems: 10,
   },
 };
-
-export interface ContactsPropertyInterface {
-  contacts:
-    | []
-    | [string]
-    | [string, string]
-    | [string, string, string]
-    | [string, string, string, string]
-    | [string, string, string, string, string]
-    | [string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string]
-    | [string, string, string, string, string, string, string, string, string]
-    | [
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string,
-        string
-      ];
-}
 
 export const CustomerPropertySchema = {
   customer: {
     type: JsonSchemaType.OBJECT,
     additionalProperties: false,
     properties: {
-      id: constructUIDSchema([CRM.UIDPrefix.COMPANY, CRM.UIDPrefix.CONTACT]),
+      id: constructUIDSchema([
+        Customer.UIDPrefix.COMPANY,
+        Customer.UIDPrefix.CONTACT,
+      ]),
     },
   },
 };
-
-export interface CustomerPropertyInterface {
-  customer: {
-    id: string;
-  };
-}
 
 const AutoPaySchema = {
   type: JsonSchemaType.OBJECT,
@@ -166,7 +97,7 @@ const AutoPaySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractAutoPayType.FINALIZED],
+      enum: [Membership.ContractAutoPayType.FINALIZED],
     },
     source: constructUIDSchema([Payment.UIDPrefix.SOURCE]),
   },
@@ -175,15 +106,6 @@ const AutoPaySchema = {
 const AutoPayPropertySchema = {
   autoPay: AutoPaySchema,
 };
-
-interface AutoPayInterface {
-  type: AnyContractAutoPayType;
-  source?: string; // The payment source Id
-}
-
-interface AutoPayPropertyInterface {
-  autoPay: AutoPayInterface;
-}
 
 const NullBillingSchema = {
   type: JsonSchemaType.NULL,
@@ -204,15 +126,11 @@ const FinalizedBillingSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractBillingTermType.FINALIZED],
+      enum: [Membership.ContractBillingTermType.FINALIZED],
     },
     ...AutoPayPropertySchema,
   },
 };
-
-interface FinalizedBillingInterface extends Partial<AutoPayPropertyInterface> {
-  type: typeof ContractBillingTermType.FINALIZED;
-}
 
 const ApprovedBillingSchema = {
   type: JsonSchemaType.OBJECT,
@@ -221,15 +139,11 @@ const ApprovedBillingSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractBillingTermType.APPROVED],
+      enum: [Membership.ContractBillingTermType.APPROVED],
     },
     ...AutoPayPropertySchema,
   },
 };
-
-interface ApprovedBillingInterface extends Partial<AutoPayPropertyInterface> {
-  type: typeof ContractBillingTermType.APPROVED;
-}
 
 const OffsetBillingSchema = {
   type: JsonSchemaType.OBJECT,
@@ -238,7 +152,7 @@ const OffsetBillingSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractBillingTermType.OFFSET],
+      enum: [Membership.ContractBillingTermType.OFFSET],
     },
     seconds: {
       type: JsonSchemaType.NUMBER,
@@ -247,11 +161,6 @@ const OffsetBillingSchema = {
   },
 };
 
-interface OffsetBillingInterface extends Partial<AutoPayPropertyInterface> {
-  type: typeof ContractBillingTermType.OFFSET;
-  seconds: number;
-}
-
 const ScheduledBillingSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
@@ -259,7 +168,7 @@ const ScheduledBillingSchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractBillingTermType.SCHEDULED],
+      enum: [Membership.ContractBillingTermType.SCHEDULED],
     },
     date: {
       type: JsonSchemaType.STRING,
@@ -267,11 +176,6 @@ const ScheduledBillingSchema = {
     ...AutoPayPropertySchema,
   },
 };
-
-interface ScheduledBillingInterface extends Partial<AutoPayPropertyInterface> {
-  type: typeof ContractBillingTermType.SCHEDULED;
-  date: string;
-}
 
 export const RequestBillingPropertySchema = {
   billing: {
@@ -297,19 +201,6 @@ export const ResponseBillingPropertySchema = {
     ],
   },
 };
-
-export type BillingInterface =
-  | FinalizedBillingInterface
-  | ApprovedBillingInterface
-  | OffsetBillingInterface
-  | ScheduledBillingInterface;
-
-export interface ResponseBillingPropertyInterface {
-  billing: BillingInterface;
-}
-export interface RequestBillingPropertyInterface {
-  billing: BillingInterface | null;
-}
 
 const RecurringSchema = {
   type: JsonSchemaType.OBJECT,
@@ -345,20 +236,6 @@ export const ResponseRecurringPropertySchema = {
   recurring: RecurringSchema,
 };
 
-interface RecurringInterface extends Partial<AutoPayPropertyInterface> {
-  frequency: AnyRenewalFrequency;
-  terms: number;
-  offset?: number;
-}
-
-export interface RequestRecurringPropertyInterface {
-  recurring: RecurringInterface | null;
-}
-
-export interface ResponseRecurringPropertyInterface {
-  recurring: RecurringInterface;
-}
-
 /**
  * LINE ITEM
  */
@@ -378,7 +255,7 @@ const ProductTierRequestSchema = {
   additionalProperties: false,
   required: ["id", "price"],
   properties: {
-    id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
+    id: constructUIDSchema([Membership.UIDPrefix.PRODUCT_TIER]),
     price: ProductTierPriceRequest,
   },
 };
@@ -389,7 +266,7 @@ const ProductRequestPropertySchema = {
     additionalProperties: false,
     required: ["id", "tier"],
     properties: {
-      id: constructUIDSchema([UIDPrefix.PRODUCT]),
+      id: constructUIDSchema([Membership.UIDPrefix.PRODUCT]),
       tier: ProductTierRequestSchema,
     },
   },
@@ -414,7 +291,7 @@ const ProductTierResponseSchema = {
   additionalProperties: false,
   required: ["id", "label", "price"],
   properties: {
-    id: constructUIDSchema([UIDPrefix.PRODUCT_TIER]),
+    id: constructUIDSchema([Membership.UIDPrefix.PRODUCT_TIER]),
     label: {
       type: JsonSchemaType.STRING,
     },
@@ -428,7 +305,7 @@ const ProductResponsePropertySchema = {
     additionalProperties: false,
     required: ["id", "label", "tier"],
     properties: {
-      id: constructUIDSchema([UIDPrefix.PRODUCT]),
+      id: constructUIDSchema([Membership.UIDPrefix.PRODUCT]),
       label: {
         type: JsonSchemaType.STRING,
       },
@@ -444,10 +321,10 @@ const ProductLineItemRequestPropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractLineItemType.PRODUCT],
+      enum: [Membership.ContractLineItemType.PRODUCT],
     },
     ...ProductRequestPropertySchema,
-    membership: constructUIDSchema([UIDPrefix.MEMBERSHIP]),
+    membership: constructUIDSchema([Membership.UIDPrefix.MEMBERSHIP]),
     quantity: {
       type: JsonSchemaType.NUMBER,
     },
@@ -469,9 +346,6 @@ export const LineItemsRequestPropertySchema = {
     items: ProductLineItemRequestPropertySchema,
   },
 };
-export interface LineItemsRequestPropertyInterface {
-  lines: ContractLineItemRequestInterface[];
-}
 
 const LineItemResponsePropertySchema = {
   type: JsonSchemaType.OBJECT,
@@ -480,10 +354,10 @@ const LineItemResponsePropertySchema = {
   properties: {
     type: {
       type: JsonSchemaType.STRING,
-      enum: [ContractLineItemType.PRODUCT],
+      enum: [Membership.ContractLineItemType.PRODUCT],
     },
     ...ProductResponsePropertySchema,
-    membership: constructUIDSchema([UIDPrefix.MEMBERSHIP]),
+    membership: constructUIDSchema([Membership.UIDPrefix.MEMBERSHIP]),
     quantity: {
       type: JsonSchemaType.NUMBER,
     },
@@ -505,7 +379,3 @@ export const LineItemsResponsePropertySchema = {
     items: LineItemResponsePropertySchema,
   },
 };
-
-export interface LineItemsResponsePropertyInterface {
-  lines: ContractLineItemResponseInterface[];
-}
