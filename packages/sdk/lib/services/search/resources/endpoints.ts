@@ -77,7 +77,7 @@ export class SearchEndpoints {
     return this.listItems<Customer.CompanyResponseItem>(
       {
         ...query,
-        target: "CRM.Company",
+        target: "Customer.Company",
       },
       pagination
     );
@@ -93,7 +93,7 @@ export class SearchEndpoints {
     return this.listItems<Customer.ContactResponseItem>(
       {
         ...query,
-        target: "CRM.Contact",
+        target: "Customer.Contact",
       },
       pagination
     );
@@ -109,7 +109,7 @@ export class SearchEndpoints {
     return this.listItems<Customer.CompanyContactResponseItem>(
       {
         ...query,
-        target: "CRM.Company-Contact",
+        target: "Customer.Company-Contact",
       },
       pagination
     );

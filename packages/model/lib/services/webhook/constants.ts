@@ -4,30 +4,30 @@ export const UIDPrefix = {
 } as const;
 
 export const CustomerCompanyWebhookEvents = {
-  COMPANY_CREATE: `crm.company.insert`,
-  COMPANY_UPDATE: `crm.company.modify`,
-  COMPANY_DELETE: `crm.company.remove`,
-  COMPANY_RESTORE: `crm.company.restore`,
+  COMPANY_CREATE: `customer.company.insert`,
+  COMPANY_UPDATE: `customer.company.modify`,
+  COMPANY_DELETE: `customer.company.remove`,
+  COMPANY_RESTORE: `customer.company.restore`,
 } as const;
 
 export type AnyCustomerCompanyWebhookEvents =
   typeof CustomerCompanyWebhookEvents[keyof typeof CustomerCompanyWebhookEvents];
 
 export const CustomerContactWebhookEvents = {
-  CONTACT_CREATE: `crm.contact.insert`,
-  CONTACT_UPDATE: `crm.contact.modify`,
-  CONTACT_DELETE: `crm.contact.remove`,
-  CONTACT_RESTORE: `crm.contact.restore`,
+  CONTACT_CREATE: `customer.contact.insert`,
+  CONTACT_UPDATE: `customer.contact.modify`,
+  CONTACT_DELETE: `customer.contact.remove`,
+  CONTACT_RESTORE: `customer.contact.restore`,
 } as const;
 
 export type AnyCustomerContactWebhookEvents =
   typeof CustomerContactWebhookEvents[keyof typeof CustomerContactWebhookEvents];
 
 export const CustomerCompanyContactWebhookEvents = {
-  COMPANY_CONTACT_CREATE: `crm.company-contact.insert`,
-  COMPANY_CONTACT_UPDATE: `crm.company-contact.modify`,
-  COMPANY_CONTACT_DELETE: `crm.company-contact.remove`,
-  COMPANY_CONTACT_RESTORE: `crm.company-contact.restore`,
+  COMPANY_CONTACT_CREATE: `customer.company-contact.insert`,
+  COMPANY_CONTACT_UPDATE: `customer.company-contact.modify`,
+  COMPANY_CONTACT_DELETE: `customer.company-contact.remove`,
+  COMPANY_CONTACT_RESTORE: `customer.company-contact.restore`,
 } as const;
 
 export type AnyCustomerCompanyContactWebhookEvents =

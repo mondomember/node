@@ -1,6 +1,6 @@
 export const Service = {
   BILLING: "Billing",
-  CRM: "CRM",
+  CUSTOMER: "Customer",
   MEMBERSHIP: "Membership",
 } as const;
 
@@ -8,9 +8,9 @@ export type AnyService = typeof Service[keyof typeof Service];
 
 export const Resource = {
   BILLING_INVOICE: `${Service.BILLING}.Invoice`,
-  CRM_COMPANY: `${Service.CRM}.Company`,
-  CRM_CONTACT: `${Service.CRM}.Contact`,
-  CRM_COMPANY_CONTACT: `${Service.CRM}.Company-Contact`,
+  CUSTOMER_COMPANY: `${Service.CUSTOMER}.Company`,
+  CUSTOMER_CONTACT: `${Service.CUSTOMER}.Contact`,
+  CUSTOMER_COMPANY_CONTACT: `${Service.CUSTOMER}.Company-Contact`,
   MEMBERSHIP_CONTRACT: `${Service.MEMBERSHIP}.Contract`,
   MEMBERSHIP_MEMBERSHIP: `${Service.MEMBERSHIP}.Membership`,
 } as const;

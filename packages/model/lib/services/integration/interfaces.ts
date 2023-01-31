@@ -7,7 +7,7 @@ export type AnyAction = typeof Action[keyof typeof Action];
 
 export const AuthorizationService = {
   ACTIVITY: "activity",
-  CRM: "crm",
+  CUSTOMER: "customer",
   BILLING: "billing",
   IMPORT: "import",
   MEMBERSHIP: "membership",

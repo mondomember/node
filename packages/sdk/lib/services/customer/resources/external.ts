@@ -7,8 +7,8 @@ type CustomerResponseItem =
   | Customer.CompanyResponseItem;
 
 const PATH = {
-  base: "crm/external",
-  item: "crm/external/{appKey}/{externalId}",
+  base: "customer/external",
+  item: "customer/external/{appKey}/{externalId}",
 };
 
 type Expressions = {

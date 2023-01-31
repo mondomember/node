@@ -50,7 +50,7 @@ export const BillingAuthorizationsSchema = {
   },
 };
 
-export const CRMAuthorizationsSchema = {
+export const CustomerAuthorizationsSchema = {
   type: JsonSchemaType.OBJECT,
   properties: {
     "*": {
@@ -126,7 +126,7 @@ export const AuthorizationsPropertySchema = {
     properties: {
       [Integration.AuthorizationService.ACTIVITY]: ActivityAuthorizationsSchema,
       [Integration.AuthorizationService.BILLING]: BillingAuthorizationsSchema,
-      [Integration.AuthorizationService.CRM]: CRMAuthorizationsSchema,
+      [Integration.AuthorizationService.CUSTOMER]: CustomerAuthorizationsSchema,
       [Integration.AuthorizationService.IMPORT]: ImportAuthorizationsSchema,
       [Integration.AuthorizationService.MEMBERSHIP]:
         MembershipAuthorizationsSchema,

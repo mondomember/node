@@ -30,7 +30,7 @@ const DescriptionProperty = {
 
 const AuthorizationsProperty = {
   authorizations: {
-    [Integration.AuthorizationService.CRM]: {
+    [Integration.AuthorizationService.CUSTOMER]: {
       companies: Integration.Action.READ,
     },
   },

@@ -2,7 +2,7 @@ import { AuthorizationService } from "../interfaces";
 import {
   WorkspaceActivityAuthorizations,
   WorkspaceBillingAuthorizations,
-  WorkspaceCRMAuthorizations,
+  WorkspaceCustomerAuthorizations,
   WorkspaceMembershipAuthorizations,
   WorkspacePaymentAuthorizations,
   WorkspaceSearchAuthorizations,
@@ -30,7 +30,7 @@ export interface AuthorizationsProperty {
   authorizations: {
     [AuthorizationService.ACTIVITY]?: WorkspaceActivityAuthorizations;
     [AuthorizationService.BILLING]?: WorkspaceBillingAuthorizations;
-    [AuthorizationService.CRM]?: WorkspaceCRMAuthorizations;
+    [AuthorizationService.CUSTOMER]?: WorkspaceCustomerAuthorizations;
     [AuthorizationService.MEMBERSHIP]?: WorkspaceMembershipAuthorizations;
     [AuthorizationService.PAYMENT]?: WorkspacePaymentAuthorizations;
     [AuthorizationService.SEARCH]?: WorkspaceSearchAuthorizations;

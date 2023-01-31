@@ -10,9 +10,9 @@ type Expressions = { objectType: string };
 
 interface SettingsResponse {
   [Settings.Resource.BILLING_INVOICE]?: Settings.FieldGroups;
-  [Settings.Resource.CRM_COMPANY]?: Settings.FieldGroups;
-  [Settings.Resource.CRM_CONTACT]?: Settings.FieldGroups;
-  [Settings.Resource.CRM_COMPANY_CONTACT]?: Settings.FieldGroups;
+  [Settings.Resource.CUSTOMER_COMPANY]?: Settings.FieldGroups;
+  [Settings.Resource.CUSTOMER_CONTACT]?: Settings.FieldGroups;
+  [Settings.Resource.CUSTOMER_COMPANY_CONTACT]?: Settings.FieldGroups;
   [Settings.Resource.MEMBERSHIP_CONTRACT]?: Settings.FieldGroups;
   [Settings.Resource.MEMBERSHIP_MEMBERSHIP]?: Settings.FieldGroups;
 }

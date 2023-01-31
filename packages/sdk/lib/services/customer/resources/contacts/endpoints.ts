@@ -6,8 +6,8 @@ import { ContactListItemsParams } from "./interfaces";
 import { Customer } from "@mondomember/model";
 
 const PATH = {
-  base: "crm/contacts",
-  item: "crm/contacts/{contact}",
+  base: "customer/contacts",
+  item: "customer/contacts/{contact}",
 };
 
 type Expressions = {

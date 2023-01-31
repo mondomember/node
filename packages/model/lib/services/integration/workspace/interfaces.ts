@@ -10,7 +10,8 @@ export interface WorkspaceBillingAuthorizations extends ResourceAuthorizations {
   invoices?: AnyAction;
 }
 
-export interface WorkspaceCRMAuthorizations extends ResourceAuthorizations {
+export interface WorkspaceCustomerAuthorizations
+  extends ResourceAuthorizations {
   companies?: AnyAction;
   contacts?: AnyAction;
   "company-contacts"?: AnyAction;
@@ -52,7 +53,7 @@ export interface WorkspaceSettingsAuthorizations
 export interface WorkspaceAuthorizations extends ServiceAuthorizations {
   [AuthorizationService.ACTIVITY]?: WorkspaceActivityAuthorizations;
   [AuthorizationService.BILLING]?: WorkspaceBillingAuthorizations;
-  [AuthorizationService.CRM]?: WorkspaceCRMAuthorizations;
+  [AuthorizationService.CUSTOMER]?: WorkspaceCustomerAuthorizations;
   [AuthorizationService.IMPORT]?: WorkspaceImportAuthorizations;
   [AuthorizationService.MEMBERSHIP]?: WorkspaceMembershipAuthorizations;
   [AuthorizationService.PAYMENT]?: WorkspacePaymentAuthorizations;
