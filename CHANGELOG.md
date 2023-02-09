@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/mondomember/node/compare/v5.0.2...v5.0.3) (2023-02-09)
+
+
+### Features
+
+* adding endpoints to create relationships via external ids ([25b0b12](https://github.com/mondomember/node/commit/25b0b1234ae2969c8c66fe374829b391b3c81cf8))
+
+
+
+
+
 ## [5.0.2](https://github.com/mondomember/node/compare/v5.0.1...v5.0.2) (2023-01-31)
 
 **Note:** Version bump only for package node
