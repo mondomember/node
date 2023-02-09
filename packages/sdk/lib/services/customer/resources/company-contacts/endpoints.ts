@@ -1,5 +1,6 @@
 import { parseTemplate } from "../../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
+import { ExternalIdEndpoints } from "./external-endpoints";
 import { CompanyContactListItemsParams } from "./interfaces";
 import { Customer } from "@mondomember/model";
 
@@ -14,7 +15,11 @@ type Expressions = {
 };
 
 export default class {
-  constructor(readonly client: ClientInstance) {}
+  readonly External: ExternalIdEndpoints<Customer.CompanyContactResponseItem>;
+
+  constructor(readonly client: ClientInstance) {
+    this.External = new ExternalIdEndpoints(PATH.base, client);
+  }
 
   public listItems(
     params?: CompanyContactListItemsParams
