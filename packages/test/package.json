@@ -2,7 +2,7 @@
   "name": "@mondomember/test",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "5.0.2",
+  "version": "5.0.4",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
@@ -27,7 +27,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@mondomember/model": "^5.0.2",
+    "@mondomember/model": "^5.0.4",
     "chance": "^1.1.8",
     "stripe": "^9.8.0"
   },
