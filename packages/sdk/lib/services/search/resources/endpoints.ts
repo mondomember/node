@@ -8,6 +8,7 @@ import {
   Membership,
   Billing,
   Payment,
+  PaginationPropertyParams,
 } from "@mondomember/model";
 
 export interface ParsedQuery {
@@ -32,6 +33,12 @@ export interface ParsedQuery {
 type Expressions = {
   key: string;
 };
+
+export interface ListMembershipContractParams
+  extends Partial<PaginationPropertyParams> {
+  filter?: Search.ContractFilter;
+  sort?: Search.SortOrder;
+}
 
 export class SearchEndpoints {
   constructor(readonly client: ClientInstance) {}
@@ -70,128 +77,142 @@ export class SearchEndpoints {
   /**
    * @returns
    */
-  public listCompanyItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listInvoices(
+    filter?: Search.InvoiceFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Customer.CompanyResponseItem>(
-      {
-        ...query,
-        target: "Customer.Company",
+  ): ClientResponse<Search.SearchResponseList<Billing.InvoiceResponseItem>> {
+    return this.client.get("/search/invoices", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listContactItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listCompanies(
+    filter?: Search.CompanyFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Customer.ContactResponseItem>(
-      {
-        ...query,
-        target: "Customer.Contact",
+  ): ClientResponse<Search.SearchResponseList<Customer.CompanyResponseItem>> {
+    return this.client.get("/search/companies", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listCompanyContactItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listContacts(
+    filter?: Search.ContactFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Customer.CompanyContactResponseItem>(
-      {
-        ...query,
-        target: "Customer.Company-Contact",
+  ): ClientResponse<Search.SearchResponseList<Customer.ContactResponseItem>> {
+    return this.client.get("/search/contacts", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listContractItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listCompanyContacts(
+    filter?: Search.CompanyContactFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Membership.ContractResponseItem>(
-      {
-        ...query,
-        target: "Membership.Contract",
+  ): ClientResponse<
+    Search.SearchResponseList<Customer.CompanyContactResponseItem>
+  > {
+    return this.client.get("/search/company-contacts", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listMembershipItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listContracts(
+    filter?: Search.ContractFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Membership.MembershipResponseItem>(
-      {
-        ...query,
-        target: "Membership.Membership",
+  ): ClientResponse<
+    Search.SearchResponseList<Membership.ContractResponseItem>
+  > {
+    return this.client.get("/search/contracts", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listInvoiceItems(
-    query?: Omit<ParsedQuery, "target">,
+  public listMemberships(
+    filter?: Search.MembershipFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Billing.InvoiceResponseItem>(
-      {
-        ...query,
-        target: "Billing.Invoice",
+  ): ClientResponse<
+    Search.SearchResponseList<Membership.MembershipResponseItem>
+  > {
+    return this.client.get("/search/memberships", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listPaymentCharges(
-    query?: Omit<ParsedQuery, "target">,
+  public listCharges(
+    filter?: Search.ChargeFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Payment.ChargeResponseItem>(
-      {
-        ...query,
-        target: "Payment.Charge",
+  ): ClientResponse<Search.SearchResponseList<Payment.ChargeResponseItem>> {
+    return this.client.get("/search/charges", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 
   /**
    * @returns
    */
-  public listPaymentRefunds(
-    query?: Omit<ParsedQuery, "target">,
+  public listRefunds(
+    filter?: Search.RefundFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
-  ) {
-    return this.listItems<Payment.RefundResponseItem>(
-      {
-        ...query,
-        target: "Payment.Refund",
+  ): ClientResponse<Search.SearchResponseList<Payment.RefundResponseItem>> {
+    return this.client.get("/search/refunds", {
+      params: {
+        filter,
+        sort,
+        pagination,
       },
-      pagination
-    );
+    });
   }
 }
