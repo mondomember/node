@@ -27,7 +27,7 @@ type RelatedIds =
   | string;
 
 type RelatedIdsFilter = {
-  relatedIds?: Record<RelatedIds, string | string[]>;
+  relatedIds?: Record<RelatedIds, undefined | string | string[]>;
 };
 
 export type AnyFilter = KeywordFilter &
