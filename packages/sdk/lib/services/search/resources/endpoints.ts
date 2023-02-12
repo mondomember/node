@@ -11,25 +11,6 @@ import {
   PaginationPropertyParams,
 } from "@mondomember/model";
 
-export interface ParsedQuery {
-  query?: string;
-  sort?: string | Record<string, "asc" | "desc">[];
-  // index or alias
-  target?: string | string[];
-  relatedIds?: {
-    customerId?: string | string[];
-    companyId?: string | string[];
-    contactId?: string | string[];
-    invoiceId?: string | string[];
-    contractId?: string | string[];
-    productId?: string | string[];
-    membershipId?: string | string[];
-    chargeId?: string | string[];
-  };
-  dateStart?: string;
-  dateEnd?: string;
-}
-
 type Expressions = {
   key: string;
 };
@@ -47,12 +28,14 @@ export class SearchEndpoints {
    * @returns
    */
   public listItems<Item = any>(
-    query?: ParsedQuery,
+    filter?: Search.AnyFilter,
+    sort?: Search.SortOrder,
     pagination?: PaginationParams
   ): ClientResponse<Search.SearchResponseList<Item>> {
     return this.client.get("/search", {
       params: {
-        filter: query,
+        filter,
+        sort,
         pagination,
       },
     });

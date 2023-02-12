@@ -15,9 +15,24 @@ type AuditFilter = {
   updatedAt?: string;
 };
 
+type RelatedIds =
+  | "customerId"
+  | "companyId"
+  | "contactId"
+  | "invoiceId"
+  | "contractId"
+  | "productId"
+  | "membershipId"
+  | "chargeId"
+  | string;
+
 type RelatedIdsFilter = {
-  relatedIds?: Record<string, string | string[]>;
+  relatedIds?: Record<RelatedIds, string | string[]>;
 };
+
+export type AnyFilter = KeywordFilter &
+  AuditFilter &
+  RelatedIdsFilter & { target?: string | string[] };
 
 export type InvoiceFilter = KeywordFilter &
   AuditFilter &
