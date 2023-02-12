@@ -1,4 +1,3 @@
-import { parseTemplate } from "../../../client/url-template";
 import { ClientInstance, ClientResponse } from "../../../client/interfaces";
 
 import { PaginationParams } from "../../../models";
@@ -10,10 +9,6 @@ import {
   Payment,
   PaginationPropertyParams,
 } from "@mondomember/model";
-
-type Expressions = {
-  key: string;
-};
 
 export interface ListMembershipContractParams
   extends Partial<PaginationPropertyParams> {
@@ -45,12 +40,13 @@ export class SearchEndpoints {
    * @returns
    */
   public listItemsByKey<Item = any>(
-    expression: Expressions,
+    key: string,
     filter?: any,
     pagination?: PaginationParams
   ): ClientResponse<Search.SearchResponseList<Item>> {
-    return this.client.get(parseTemplate(`/search/{key}`).expand(expression), {
+    return this.client.get(`/search`, {
       params: {
+        key,
         filter,
         pagination,
       },
