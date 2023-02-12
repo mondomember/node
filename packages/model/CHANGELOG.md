@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.6](https://github.com/mondomember/node/compare/v5.0.5...v5.0.6) (2023-02-12)
+
+
+### Bug Fixes
+
+* optional company contact filter params ([c9998f6](https://github.com/mondomember/node/commit/c9998f6c15660de5088f929e1b412896d32e6811))
+
+
+
+
+
 ## [5.0.5](https://github.com/mondomember/node/compare/v5.0.4...v5.0.5) (2023-02-12)
 
 
