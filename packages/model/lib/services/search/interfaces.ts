@@ -57,10 +57,10 @@ export type ContactFilter = KeywordFilter &
 export type CompanyContactFilter = KeywordFilter &
   AuditFilter &
   RelatedIdsFilter & {
-    company: {
+    company?: {
       name?: string | string[];
     };
-    contact: {
+    contact?: {
       firstName?: string | string[];
       lastName?: string | string[];
     };
