@@ -1,10 +1,13 @@
 import { CustomerPropertyRequest } from "../../customer";
 
-import { GatewayProperty, InvoiceProperty } from "../charge/base";
+import { InvoiceProperty } from "../charge/base";
+import { ChargeType } from "../charge/interfaces";
 
-export interface ChargeSessionInsertItem
+export interface InvoiceChargeSessionInsertItem
   extends CustomerPropertyRequest,
-    GatewayProperty,
     InvoiceProperty {
-  options?: Record<string, string>;
+  type: typeof ChargeType.INVOICE;
+  options?: Record<string, string | number | boolean | unknown>;
 }
+
+export type ChargeSessionInsertItem = InvoiceChargeSessionInsertItem;

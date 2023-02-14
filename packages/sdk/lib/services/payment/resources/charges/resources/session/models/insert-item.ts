@@ -1,17 +1,16 @@
 import { JsonSchemaType } from "../../../../../../../schema";
-import { CustomerPropertyRequestSchema } from "../../../../../../customer";
-import {
-  GatewayPropertySchema,
-  InvoicePropertySchema,
-} from "../../../models/base";
+import { InvoicePropertySchema } from "../../../models/base";
+import { Payment } from "@mondomember/model";
 
-export const ChargeSessionInsertItemSchema = {
+export const InvoiceChargeSessionInsertItemSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["customer", "gateway", "invoice"],
+  required: ["type", "invoice"],
   properties: {
-    ...CustomerPropertyRequestSchema,
-    ...GatewayPropertySchema,
+    type: {
+      type: JsonSchemaType.STRING,
+      enum: [Payment.ChargeType.INVOICE],
+    },
     ...InvoicePropertySchema,
     options: {
       type: JsonSchemaType.OBJECT,
@@ -28,4 +27,10 @@ export const ChargeSessionInsertItemSchema = {
       },
     },
   },
+};
+
+export const ChargeSessionInsertItemSchema = {
+  type: JsonSchemaType.OBJECT,
+  discriminator: { propertyName: "type" },
+  oneOf: [InvoiceChargeSessionInsertItemSchema],
 };

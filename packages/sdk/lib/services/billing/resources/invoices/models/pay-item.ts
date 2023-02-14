@@ -22,7 +22,7 @@ const OfflineMethod = {
       ],
     },
     reference: {
-      type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
+      type: JsonSchemaType.STRING,
     },
   },
 };

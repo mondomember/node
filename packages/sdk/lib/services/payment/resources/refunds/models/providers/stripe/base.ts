@@ -10,13 +10,13 @@ export const StripeObjectSchema = {
         type: JsonSchemaType.STRING,
       },
       status: {
-        type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
+        type: JsonSchemaType.STRING,
       },
       reason: {
-        type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
+        type: JsonSchemaType.STRING,
       },
       receipt_number: {
-        type: [JsonSchemaType.STRING, JsonSchemaType.NULL],
+        type: JsonSchemaType.STRING,
       },
     },
   },
