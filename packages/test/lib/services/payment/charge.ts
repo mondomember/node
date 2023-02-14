@@ -63,11 +63,8 @@ export function createTestInsertChargeSession(
   overrides?: Partial<Payment.ChargeSessionInsertItem>
 ): Payment.ChargeSessionInsertItem {
   return {
-    customer: {
-      id: generateTestKSUID(Customer.UIDPrefix.COMPANY),
-    },
+    type: Payment.ChargeType.INVOICE,
     invoice: generateTestKSUID(Billing.UIDPrefix.INVOICE),
-    ...GatewayProperty,
     ...overrides,
   };
 }
