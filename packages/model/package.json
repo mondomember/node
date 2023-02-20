@@ -2,7 +2,7 @@
   "name": "@mondomember/model",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "version": "5.0.9",
+  "version": "5.0.10",
   "scripts": {
     "analyse": "yarn run lint && yarn run test",
     "build:cjs": "tsc -d -p ./tsconfig.json",
