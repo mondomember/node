@@ -22,6 +22,7 @@ import {
   AdjustedTotalPropertySchema,
   DiscountPropertySchema,
   DueAtPropertySchema,
+  GatewayPropertySchema,
 } from "./base";
 
 import { CustomerPropertyResponseSchema } from "../../../../customer";
@@ -57,6 +58,7 @@ export const InvoiceResponseItemSchema = {
     ...ResponseAutoPayPropertySchema,
     ...PaymentPropertyResponseSchema,
     ...ContactsPropertySchema,
+    ...GatewayPropertySchema,
     ...PropertiesPropertySchema,
     ...MetadataPropertySchema,
     ...CreatedAtPropertySchema,

@@ -9,7 +9,8 @@ type Path = {
 export abstract class BaseEndpoints<
   Expressions extends {},
   UpdatePayload,
-  ItemResponse
+  ItemResponse,
+  GetItemParams extends {}
 > {
   constructor(readonly path: Path, readonly client: ClientInstance) {}
 
@@ -19,7 +20,10 @@ export abstract class BaseEndpoints<
    * @param expression
    * @returns
    */
-  public getItem(expression: Expressions): ClientResponse<ItemResponse> {
+  public getItem(
+    expression: Expressions,
+    params?: GetItemParams
+  ): ClientResponse<ItemResponse> {
     return this.client.get(parseTemplate(this.path.item).expand(expression));
   }
 

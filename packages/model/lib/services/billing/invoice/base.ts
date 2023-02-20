@@ -1,3 +1,4 @@
+import { GatewayResponseItem } from "../../payment";
 import {
   AnyInvoiceStatus,
   InvoicePaymentMethodType,
@@ -77,6 +78,14 @@ export interface CustomerProperty {
   customer: {
     id: string;
   };
+}
+
+export interface GatewayProperty {
+  gateway:
+    | {
+        id: string;
+      }
+    | GatewayResponseItem;
 }
 
 export interface PaymentIntentProperty {

@@ -7,11 +7,13 @@ export abstract class NestedCRUDEndpoints<
   ItemExpressions extends {},
   CreatePayload,
   UpdatePayload,
-  ItemResponse
+  ItemResponse,
+  GetItemParams extends {} = {}
 > extends BaseEndpoints<
   BaseExpressions & ItemExpressions,
   UpdatePayload,
-  ItemResponse
+  ItemResponse,
+  GetItemParams
 > {
   /**
    * Create a new item.

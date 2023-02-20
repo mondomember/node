@@ -20,3 +20,7 @@ export type InvoiceListItemsParams = {
   pagination: PaginationParams;
   filter?: InvoiceFilter;
 };
+
+export type InvoiceGetItemParams = {
+  expand?: string[];
+};

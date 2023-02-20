@@ -21,6 +21,7 @@ import {
   AdjustedTotalProperty,
   DiscountProperty,
   DueAtProperty,
+  GatewayProperty,
 } from "./base";
 
 import { CustomerPropertyResponse } from "../../customer";
@@ -37,6 +38,7 @@ export interface InvoiceResponseItem
     AdjustedTotalProperty,
     DiscountProperty,
     DueAtProperty,
+    Partial<GatewayProperty>,
     Partial<PaymentIntentProperty>,
     Partial<ResponseAutoPayProperty>,
     Partial<PaymentPropertyResponse>,

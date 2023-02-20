@@ -4,7 +4,7 @@ import { ClientInstance, ClientResponse } from "../../../../client/interfaces";
 import { CRUDEndpoints } from "../../../../client/endpoints";
 import { ExternalIdEndpoints } from "../../../../shared/external-id/endpoints";
 
-import { InvoiceListItemsParams } from "./interfaces";
+import { InvoiceListItemsParams, InvoiceGetItemParams } from "./interfaces";
 import TransactionEndpoints from "./resources/transactions/endpoints";
 import { Billing } from "@mondomember/model";
 
@@ -21,7 +21,8 @@ export default class extends CRUDEndpoints<
   Expressions,
   Billing.InvoiceInsertItem,
   Billing.InvoiceModifyItem,
-  Billing.InvoiceResponseItem
+  Billing.InvoiceResponseItem,
+  InvoiceGetItemParams
 > {
   readonly External: ExternalIdEndpoints<
     Billing.InvoiceResponseItem,

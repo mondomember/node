@@ -4,6 +4,7 @@ import {
   constructUIDSchema,
 } from "../../../../../models";
 import { InvoiceStatusEnum, InvoicePaymentMethodEnum } from "./interfaces";
+import { GatewayResponseItemSchema } from "../../../../payment";
 import { Billing, Payment, Membership, Customer } from "@mondomember/model";
 
 export const InvoiceIdSchema = constructUIDSchema([Billing.UIDPrefix.INVOICE]);
@@ -96,6 +97,20 @@ export const CustomerPropertySchema = {
         Customer.UIDPrefix.CONTACT,
       ]),
     },
+  },
+};
+
+const SimpleGatewaySchema = {
+  type: JsonSchemaType.OBJECT,
+  properties: {
+    id: constructUIDSchema([Payment.UIDPrefix.GATEWAY]),
+  },
+};
+
+export const GatewayPropertySchema = {
+  gateway: {
+    type: JsonSchemaType.OBJECT,
+    oneOf: [SimpleGatewaySchema, GatewayResponseItemSchema],
   },
 };
 

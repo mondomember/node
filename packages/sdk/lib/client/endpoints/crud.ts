@@ -5,8 +5,14 @@ export abstract class CRUDEndpoints<
   Expressions extends {},
   CreatePayload,
   UpdatePayload,
-  ItemResponse
-> extends BaseEndpoints<Expressions, UpdatePayload, ItemResponse> {
+  ItemResponse,
+  GetItemParams extends {} = {}
+> extends BaseEndpoints<
+  Expressions,
+  UpdatePayload,
+  ItemResponse,
+  GetItemParams
+> {
   /**
    * Create a new item.
    *
