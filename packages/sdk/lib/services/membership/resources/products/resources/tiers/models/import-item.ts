@@ -17,6 +17,26 @@ export const ProductTierImportInsertItemSchema = {
   },
 };
 
+const PriceVersion = {
+  type: JsonSchemaType.OBJECT,
+  required: ["version"],
+  properties: {
+    version: {
+      type: JsonSchemaType.NUMBER,
+    },
+  },
+};
+
+const PriceAmount = {
+  type: JsonSchemaType.OBJECT,
+  required: ["amount"],
+  properties: {
+    amount: {
+      type: JsonSchemaType.NUMBER,
+    },
+  },
+};
+
 export const ProductTierImportModifyItemSchema = {
   ...ProductTierModifyItemSchema,
   additionalProperties: true,
@@ -27,26 +47,7 @@ export const ProductTierImportModifyItemSchema = {
     product: ProductIdSchema,
     price: {
       type: JsonSchemaType.OBJECT,
-      oneOf: [
-        {
-          type: JsonSchemaType.OBJECT,
-          required: ["version"],
-          properties: {
-            version: {
-              type: JsonSchemaType.NUMBER,
-            },
-          },
-        },
-        {
-          type: JsonSchemaType.OBJECT,
-          required: ["amount"],
-          properties: {
-            amount: {
-              type: JsonSchemaType.NUMBER,
-            },
-          },
-        },
-      ],
+      oneOf: [PriceVersion, PriceAmount],
     },
   },
 };

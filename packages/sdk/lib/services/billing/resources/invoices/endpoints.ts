@@ -49,7 +49,7 @@ export default class extends CRUDEndpoints<
   }
 
   /**
-   * Submit an 'offline' payment for an item
+   * Submit a payment for an item
    *
    * @param expression
    * @returns
@@ -60,6 +60,22 @@ export default class extends CRUDEndpoints<
   ): ClientResponse<Billing.InvoiceResponseItem> {
     return this.client.post(
       parseTemplate(`${PATH.item}/pay`).expand(expression),
+      payload
+    );
+  }
+
+  /**
+   * Submit a 'tokenized' payment for an item
+   *
+   * @param expression
+   * @returns
+   */
+  public chargeItem(
+    expression: Expressions,
+    payload: Billing.InvoiceChargeItem
+  ): ClientResponse<Billing.InvoiceResponseItem> {
+    return this.client.post(
+      parseTemplate(`${PATH.item}/charge`).expand(expression),
       payload
     );
   }
