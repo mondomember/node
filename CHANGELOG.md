@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.11](https://github.com/mondomember/node/compare/v5.0.10...v5.0.11) (2023-02-24)
+
+
+### Bug Fixes
+
+* typing compile errors ([370e851](https://github.com/mondomember/node/commit/370e8513fe5a9db4333869dee54e31e2d4ed26e2))
+
+
+
+
+
 ## [5.0.10](https://github.com/mondomember/node/compare/v5.0.9...v5.0.10) (2023-02-20)
 
 **Note:** Version bump only for package node
