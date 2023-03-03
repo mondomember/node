@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.12](https://github.com/mondomember/node/compare/v5.0.11...v5.0.12) (2023-03-03)
+
+**Note:** Version bump only for package @mondomember/test
+
+
+
+
+
 ## [5.0.10](https://github.com/mondomember/node/compare/v5.0.9...v5.0.10) (2023-02-20)
 
 **Note:** Version bump only for package @mondomember/test
