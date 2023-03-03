@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.16](https://github.com/mondomember/node/compare/v5.0.15...v5.0.16) (2023-03-03)
+
+
+### Bug Fixes
+
+* correcting hubspot connect url path ([452e307](https://github.com/mondomember/node/commit/452e307c2b644a5ff88a452db2d81203f36bbfe6))
+
+
+
+
+
 ## [5.0.15](https://github.com/mondomember/node/compare/v5.0.14...v5.0.15) (2023-03-03)
 
 
