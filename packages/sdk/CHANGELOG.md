@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.13](https://github.com/mondomember/node/compare/v5.0.12...v5.0.13) (2023-03-03)
+
+
+### Features
+
+* adding integration app schemas ([7cbbd12](https://github.com/mondomember/node/commit/7cbbd12446efc2fae08946d0eb382e7bf5eae631))
+
+
+
+
+
 ## [5.0.12](https://github.com/mondomember/node/compare/v5.0.11...v5.0.12) (2023-03-03)
 
 
