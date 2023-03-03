@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.17](https://github.com/mondomember/node/compare/v5.0.16...v5.0.17) (2023-03-03)
+
+
+### Bug Fixes
+
+* aligning url path ([4004368](https://github.com/mondomember/node/commit/40043684da803d9b2e8c6a0169178744abf43d9e))
+
+
+
+
+
 ## [5.0.16](https://github.com/mondomember/node/compare/v5.0.15...v5.0.16) (2023-03-03)
 
 
