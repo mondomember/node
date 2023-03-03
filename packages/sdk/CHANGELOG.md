@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.15](https://github.com/mondomember/node/compare/v5.0.14...v5.0.15) (2023-03-03)
+
+
+### Bug Fixes
+
+* correcting delete app expression ([d21c756](https://github.com/mondomember/node/commit/d21c75641ddb91233e5176fa2efcedd80362dec4))
+
+
+
+
+
 ## [5.0.14](https://github.com/mondomember/node/compare/v5.0.13...v5.0.14) (2023-03-03)
 
 
