@@ -15,6 +15,11 @@ type ListItemsParams = {
   pagination: PaginationParams;
 };
 
+type Expressions = {
+  type: Integration.AnyAppType;
+  app: string | number;
+};
+
 export default class {
   readonly HubSpot: HubSpot;
 
@@ -29,11 +34,8 @@ export default class {
   }
 
   public deleteItem(
-    type: Integration.AnyAppType,
-    app: string | number
+    expression: Expressions
   ): ClientResponse<Integration.AppResponseItem> {
-    return this.client.delete(
-      parseTemplate(`${PATH.item}`).expand({ type, app })
-    );
+    return this.client.delete(parseTemplate(`${PATH.item}`).expand(expression));
   }
 }
