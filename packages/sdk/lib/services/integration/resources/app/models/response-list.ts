@@ -11,7 +11,7 @@ import { Integration } from "@mondomember/model";
 export const HubSpotAppResponseItemSchema: JsonSchema = {
   type: JsonSchemaType.OBJECT,
   additionalProperties: false,
-  required: ["type", "appId", "hubId"],
+  required: ["type", "appId", "integrationId"],
   properties: {
     type: {
       type: JsonSchemaType.STRING,
@@ -21,7 +21,7 @@ export const HubSpotAppResponseItemSchema: JsonSchema = {
       type: JsonSchemaType.STRING,
       minLength: 1,
     },
-    hubId: {
+    integrationId: {
       type: JsonSchemaType.STRING,
       minLength: 1,
     },

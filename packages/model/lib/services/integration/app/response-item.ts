@@ -14,7 +14,7 @@ export interface HubSpotAppResponseItem
     Partial<LastUpdatedProperty> {
   type: typeof AppType.HUBSPOT;
   appId: string;
-  hubId: string;
+  integrationId: string;
 }
 
 export type AppResponseItem = HubSpotAppResponseItem;
