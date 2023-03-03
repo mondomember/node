@@ -6,7 +6,7 @@ import {
 import { Integration } from "@mondomember/model";
 
 const PATH = {
-  base: "integrations/apps/hubspot",
+  base: "integrations/hubspot",
 };
 
 export default class {
