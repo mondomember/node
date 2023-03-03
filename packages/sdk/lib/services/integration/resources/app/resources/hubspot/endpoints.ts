@@ -15,6 +15,6 @@ export default class {
   public connect(
     code: string
   ): ClientResponse<Integration.HubSpotAppUpsertItem> {
-    return this.client.post(PATH.base, { code });
+    return this.client.post(`${PATH.base}/connect`, { code });
   }
 }
