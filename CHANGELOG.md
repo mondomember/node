@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.14](https://github.com/mondomember/node/compare/v5.0.13...v5.0.14) (2023-03-03)
+
+
+### Features
+
+* hubspot specific app schemas ([199207d](https://github.com/mondomember/node/commit/199207da8ebc8046737b0e6b6afc7da44e1dbaaa))
+
+
+
+
+
 ## [5.0.13](https://github.com/mondomember/node/compare/v5.0.12...v5.0.13) (2023-03-03)
 
 
